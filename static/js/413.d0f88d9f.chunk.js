@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkstore_of_stylish_clothes=self.webpackChunkstore_of_stylish_clothes||[]).push([[413],{8413:function(t,e,s){s.r(e);var o=s(2791),r=s(9434),n=s(456),a=s(4116),c=s(8472),i=s(3329);e.default=function(){var t=(0,r.I0)();return(0,o.useEffect)((function(){t((0,n.X)({headerBottom:"addHeaderBottom"}))}),[]),(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(a.H,{title:"Basket",description:"Your shopping bag"}),(0,i.jsx)(c.L,{})]})}}}]);
+//# sourceMappingURL=413.d0f88d9f.chunk.js.map

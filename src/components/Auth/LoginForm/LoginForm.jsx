@@ -1,33 +1,37 @@
+import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { useFormik, Formik } from 'formik';
-import { useTranslation } from 'react-i18next';
-
+import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import schemas from 'utils/schemas';
-import { theme } from 'components/baseStyles/Variables.styled';
-import { Section, Container } from 'components/baseStyles/CommonStyle.styled';
-import { Error, FormField, FormLabel } from 'components/baseStyles/Form.styled';
-import { BtnLight } from 'components/baseStyles/Button.styled';
+import theme from 'components/baseStyles/Variables.styled';
+
+import { FormLogin, TitleLogin } from './LoginForm.styled';
+import { logIn } from 'redux/auth/operations';
 import {
-  TitleLogin,
-  ErrorBox,
-  FormInputLogin,
-  ShowPassword,
-  Btn,
-  StyledLink,
   BoxText,
+  Btn,
+  BtnContainer,
+  ErrorBox,
   FormContainer,
-  FormStyled,
-} from './LoginForm.styled';
-import { logIn } from '../../../redux/auth/operations';
+  FormSection,
+  IconInValid,
+  IconValid,
+  Input,
+  ShowPassword,
+  Span,
+  StyledLink,
+} from '../AuthForm.styled';
 
 export const LoginForm = () => {
-  const { t } = useTranslation();
-
+  const [isShown, setIsShown] = useState(true); //
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+
+  const hideForm = () => {
+    setIsShown(true);
+  };
 
   const onSubmit = values => {
     setIsLoading(true);
@@ -36,7 +40,8 @@ export const LoginForm = () => {
       logIn({
         email,
         password,
-      })
+      }),
+      hideForm(),
     );
     setIsLoading(false);
   };
@@ -68,76 +73,89 @@ export const LoginForm = () => {
       : `${theme.colors.darkGreen}`;
   };
   return (
-    <Section>
-      <Container>
+    <FormSection>
+      <FormContainer>
         <Formik validationSchema={schemas.schemasLogin}>
-          <FormStyled onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleLogin hidden>Log In</TitleLogin>
-            <FormField>
-              <FormLabel htmlFor="email">
-                <span>Email</span>
-                {formik.errors.name && formik.touched.name ? (
-                  <Error>{formik.errors.name}</Error>
+          <FormLogin onSubmit={formik.handleSubmit} autoComplete="off">
+            <TitleLogin>{'Login Page'}</TitleLogin>
+            {isShown && (
+              <div>
+                <Input
+                  style={{
+                    borderColor: showAccentValidateInput(
+                      formik.values.email,
+                      formik.errors.email,
+                    ),
+                  }}
+                  name="email"
+                  type="email"
+                  validate={schemas.schemasLogin.email}
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
+                  onBlur={formik.handleBlur}
+                />
+                {!formik.values.email ? null : !formik.errors.email ? (
+                  <IconValid color={theme.colors.green} />
+                ) : (
+                  <IconInValid color={theme.colors.red} />
+                )}
+                {formik.errors.email || formik.touched.email ? (
+                  <ErrorBox>{formik.errors.email}</ErrorBox>
                 ) : null}
-              </FormLabel>
-              <FormInputLogin
-                style={{
-                  borderColor: showAccentValidateInput(
-                    formik.values.email,
-                    formik.errors.email
-                  ),
-                }}
-                name="email"
-                type="email"
-                // validate={schemas.schemasLogin.email}
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                onBlur={formik.handleBlur}
-              />
-            </FormField>
-            <FormField>
-              <FormLabel htmlFor="password">
-                <span>Password</span>
-                {formik.errors.name && formik.touched.name ? (
-                  <Error>{formik.errors.name}</Error>
+                <Span className="floating-label">Email</Span>
+              </div>
+            )}
+
+            {isShown && (
+              <div>
+                <Input
+                  style={{
+                    borderColor: showAccentValidateInput(
+                      formik.values.password,
+                      formik.errors.password,
+                    ),
+                  }}
+                  name="password"
+                  type={showPass ? 'text' : 'password'}
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  onBlur={formik.handleBlur}
+                />
+
+                <ShowPassword onClick={showPassword}>
+                  {!showPass ? <ImEyeBlocked /> : <ImEye />}
+                </ShowPassword>
+                {formik.errors.password && formik.touched.password ? (
+                  <ErrorBox>{formik.errors.password}</ErrorBox>
                 ) : null}
-              </FormLabel>
-              <FormInputLogin
-                style={{
-                  borderColor: showAccentValidateInput(
-                    formik.values.password,
-                    formik.errors.password
-                  ),
-                }}
-                name="password"
-                type={showPass ? 'text' : 'password'}
-                onChange={formik.handleChange}
-                value={formik.values.password}
-                onBlur={formik.handleBlur}
-              />
-              <ShowPassword onClick={showPassword}>
-                {!showPass ? <ImEyeBlocked /> : <ImEye />}
-              </ShowPassword>
-              {formik.errors.password && formik.touched.password ? (
-                <ErrorBox>{formik.errors.password}</ErrorBox>
-              ) : null}
-            </FormField>
-            <FormContainer>
+                <Span className="floating-label">Password</Span>
+              </div>
+            )}
+            <BtnContainer>
+              {isShown && (
+                <Btn
+                  type="submit"
+                  disabled={isValid}
+                  aria-label="submit sign in"
+                >
+                  {isLoading ? 'Loading' : 'Sign In'}
+                </Btn>
+              )}
+
+              {!isShown && (
+                <Btn type="submit">{isLoading ? 'Loading' : 'Sign In'}</Btn>
+              )}
               <BoxText>
-                <StyledLink to="/forgot_password">Forgot password?</StyledLink>
+                <StyledLink to="/register">{'Create acount'}</StyledLink>
+                <StyledLink to="/forgot_password">
+                  {'Forgot your password?'}
+                </StyledLink>
               </BoxText>
-              <BtnLight
-                type="submit"
-                disabled={isValid}
-                aria-label="submit log in"
-              >
-                {isLoading ? 'Loading' : 'Log In'}
-              </BtnLight>
-            </FormContainer>
-          </FormStyled>
+            </BtnContainer>
+          </FormLogin>
         </Formik>
-      </Container>
-    </Section>
+      </FormContainer>
+    </FormSection>
   );
 };
 

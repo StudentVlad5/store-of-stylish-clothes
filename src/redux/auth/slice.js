@@ -4,22 +4,24 @@ import {
   logIn,
   logOut,
   refreshUser,
-  addEvents,
-  removeEvents,
+  addFavorite,
+  removeFavorite,
   update,
 } from './operations';
 
 const initialState = {
   user: {
     _id: null,
-    name: null,
+    userName: null,
     surname: null,
-    avatar: null,
+    avatarUrl: null,
     email: null,
+    location: null,
     phone: null,
-    events: [],
-    favorites: [],
-    role: 'candidate',
+    favorites: null,
+    birthday: null,
+    delivery: null,
+    address: {},
   },
   token: null,
   permission: null,
@@ -35,7 +37,7 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        if (action.payload?.data) {
+        if (action.payload.data.authToken) {
           state.user = action.payload.data;
           state.token = action.payload.data.authToken;
           state.permission = action.payload.data.role;
@@ -95,29 +97,31 @@ export const authSlice = createSlice({
         state.token = null;
         state.permission = null;
       })
-      .addCase(addEvents.pending, state => {
+      .addCase(addFavorite.pending, state => {
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(addEvents.fulfilled, (state, { payload }) => {
-        state.user.events = [...state.user.events, payload];
+      .addCase(addFavorite.fulfilled, (state, { payload }) => {
+        state.user.favorites = [...state.user.favorites, payload];
         state.isLoading = false;
         state.isError = null;
       })
-      .addCase(addEvents.rejected, (state, { payload }) => {
+      .addCase(addFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       })
-      .addCase(removeEvents.pending, state => {
+      .addCase(removeFavorite.pending, state => {
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(removeEvents.fulfilled, (state, { payload }) => {
-        state.user.events = state.user.events.filter(_id => +_id !== payload);
+      .addCase(removeFavorite.fulfilled, (state, { payload }) => {
+        state.user.favorites = state.user.favorites.filter(
+          _id => +_id !== payload,
+        );
         state.isLoading = false;
         state.isError = null;
       })
-      .addCase(removeEvents.rejected, (state, { payload }) => {
+      .addCase(removeFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
       });

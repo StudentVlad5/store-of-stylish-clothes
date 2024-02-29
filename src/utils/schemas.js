@@ -1,132 +1,195 @@
-import * as Yup from "yup";
-
-// ----- USERS -----//
-const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+import * as Yup from 'yup';
 
 const registerSchema = Yup.object().shape({
-  name: Yup.string().required("Require field"),
-  email: Yup.string().email("Invalid email").required("Require field"),
-  phone: Yup.number().nullable(true).required("Require field"),
+  email: Yup.string()
+    .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
+    .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
+    .matches(
+      /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+      'Invalid email',
+    )
+    .matches(
+      /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+      'Dashes should only be inside email',
+    )
+    .required('Require field'),
+  password: Yup.string()
+    .min(7, 'Password too short (min 7)')
+    .max(32, 'Password too long (max 32)')
+    .matches(/^\s*\S+\s*$/, 'Password must be without spaces')
+    .required('Require field'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Password must match')
+    .required('Require field'),
+  name: Yup.string()
+    .matches(/\S{2,}/, 'Name too short (min 2)')
+    .matches(
+      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+      'Name must includes only Latin alphabet',
+    )
+    .required('Require field'),
+  phone: Yup.number()
+    .nullable(true)
+    .required('Require field')
+    .min(99999)
+    .max(999999999999),
+  location: Yup.string()
+    .matches(
+      /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+      'Invalid format. Example: Brovary, Kyiv ...',
+    )
+    .required('Require field'),
 });
 
 const schemasLogin = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Require"),
+  email: Yup.string()
+    .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
+    .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
+    .matches(
+      /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+      'Invalid email',
+    )
+    .matches(
+      /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+      'Dashes should only be inside email',
+    )
+    .required('Require'),
   password: Yup.string()
-    .min(4, "Password too short (min 4)")
-    .max(32, "Password too long (max 32)")
-    .matches(/^\s*\S+\s*$/, "Password must be without spaces")
-    .required("Require"),
+    .min(7, 'Password too short (min 7)')
+    .max(32, 'Password too long (max 32)')
+    .matches(/^\s*\S+\s*$/, 'Password must be without spaces')
+    .required('Require'),
 });
 
 const changePasswordSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Require field"),
+  email: Yup.string()
+    .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
+    .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
+    .matches(
+      /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+      'Invalid email',
+    )
+    .matches(
+      /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+      'Dashes should only be inside email',
+    )
+    .required('Require field'),
 });
 
-const updateUserSchema = Yup.object().shape({
-  name: Yup.string().required("Require field"),
-  surname: Yup.string(),
-  email: Yup.string().email("Invalid email").required("Require field"),
-  phone: Yup.number(),
-  // .nullable(true)
-  // .required("Require field")
-  // .matches(phoneRegExp, "Phone number is not valid"),
-  avatar: Yup.string(),
-  favorites: Yup.array(),
-  events: Yup.array(),
-  role: Yup.string(),
-});
-
-const createUserSchema = Yup.object().shape({
-  name: Yup.string().required("Require field"),
-  surname: Yup.string(),
-  email: Yup.string().email("Invalid email").required("Require field"),
-  password: Yup.string(),
-  // .min(7, "Password too short (min 7)")
-  // .max(32, "Password too long (max 32)")
-  // .matches(/^\s*\S+\s*$/, "Password must be without spaces")
-  // .required("Require field"),
-  phone: Yup.number(),
-  // .nullable(true)
-  // .required("Require field")
-  // .matches(phoneRegExp, "Phone number is not valid"),
-  avatar: Yup.string(),
-  favorites: Yup.array(),
-  events: Yup.array(),
-  role: Yup.string(),
+const updateSchema = Yup.object().shape({
+  userName: Yup.string()
+    .matches(/\S{2,}/, 'Name too short (min 2)')
+    .matches(
+      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+      'Name must includes only Latin alphabet',
+    )
+    .required('Require field'),
+  surname: Yup.string()
+    .matches(/\S{2,}/, 'Name too short (min 2)')
+    .matches(
+      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+      'Surname must includes only Latin alphabet',
+    ),
+  email: Yup.string()
+    .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
+    .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
+    .matches(
+      /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+      'Invalid email',
+    )
+    .matches(
+      /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+      'Dashes should only be inside email',
+    )
+    .required('Require field'),
+  phone: Yup.number()
+    .nullable(true)
+    .required('Require field')
+    .min(99999)
+    .max(999999999999),
+  birthday: Yup.date(),
+  location: Yup.string()
+    .matches(
+      /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+      'Invalid format. Example: Brovary, Kyiv ...',
+    )
+    .required('Require field'),
+  delivery: Yup.string(),
+  address: Yup.mixed(),
 });
 
 const updatePasswordSchema = Yup.object().shape({
-  password: Yup.string(),
-  // .min(7, "Password too short (min 7)")
-  // .max(32, "Password too long (max 32)")
-  // .matches(/^\s*\S+\s*$/, "Password must be without spaces")
-  // .required("Require field"),
-  confirmPassword: Yup.string(),
-  // .oneOf([Yup.ref("password")], "Your passwords do not match")
-  // .required("Require field"),
+  password: Yup.string()
+    .min(7, 'Password too short (min 7)')
+    .max(32, 'Password too long (max 32)')
+    .matches(/^\s*\S+\s*$/, 'Password must be without spaces')
+    .required('Require field'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Your passwords do not match')
+    .required('Require field'),
 });
 
-// ----- EVENTS -----//
-// const schemasEvents = Yup.object().shape({
-//   article_event: Yup.string(),
-//   date: Yup.date().required("Require field"),
-//   time: Yup.string().required("Require field"),
-//   image: Yup.string().required("Require field"),
-//   duration: Yup.string().required("Require field"),
-//   price: Yup.string().required("Require field"),
-//   seats: Yup.number().nullable(true).required("Require field"),
-//   booking: Yup.number().nullable(true),
-//   vacancies: Yup.number().nullable(true),
+const addressSchema = Yup.object().shape({
+  userName: Yup.string()
+    .matches(/\S{2,}/, 'Name too short (min 2)')
+    .matches(
+      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+      'Name must includes only Latin alphabet',
+    )
+    .required('Require field'),
+  surname: Yup.string()
+    .matches(/\S{2,}/, 'Name too short (min 2)')
+    .matches(
+      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+      'Surname must includes only Latin alphabet',
+    )
+    .required('Require field'),
+  email: Yup.string()
+    .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
+    .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
+    .matches(
+      /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+      'Invalid email',
+    )
+    .matches(
+      /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+      'Dashes should only be inside email',
+    )
+    .required('Require field'),
+  phone: Yup.number()
+    .nullable(true)
+    .required('Require field')
+    .min(99999)
+    .max(999999999999),
+  company: Yup.string(),
+  address1: Yup.string(),
+  address2: Yup.string(),
+  city: Yup.string()
+    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
+    .required('Require field'),
+  state: Yup.string()
+    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
+    .required('Require field'),
+  zipCode: Yup.number()
+    .nullable(true)
+    .required('Require field')
+    .min(11)
+    .max(9999999),
+});
 
-//   nameFr: Yup.string().required("Require field"),
-//   locationFr: Yup.string().required("Require field"),
-//   adressFr: Yup.string().required("Require field"),
-//   descriptionFr: Yup.string().required("Require field"),
-//   categoryFr: Yup.string().required("Require field"),
-
-//   nameUa: Yup.string().required("Require field"),
-//   locationUa: Yup.string().required("Require field"),
-//   adressUa: Yup.string().required("Require field"),
-//   descriptionUa: Yup.string().required("Require field"),
-//   categoryUa: Yup.string().required("Require field"),
-
-//   nameRu: Yup.string().required("Require field"),
-//   locationRu: Yup.string().required("Require field"),
-//   adressRu: Yup.string().required("Require field"),
-//   descriptionRu: Yup.string().required("Require field"),
-//   categoryRu: Yup.string().required("Require field"),
-// });
-
-// ----- Team -----//
-// const schemasTeam = Yup.object().shape({
-//   email: Yup.string().email("Invalid email").required("Require field"),
-//   phone: Yup.number()
-//     .nullable(true)
-//     .required("Require field")
-//     .matches(phoneRegExp, "Phone number is not valid"),
-//   rating: Yup.number().nullable(true),
-//   image: Yup.string().required("Require field"),
-//   status: Yup.string().required("Require field"),
-
-//   nameFr: Yup.string().required("Require field"),
-//   descriptionFr: Yup.string().required("Require field"),
-
-//   nameUa: Yup.string().required("Require field"),
-//   descriptionUa: Yup.string().required("Require field"),
-
-//   nameRu: Yup.string().required("Require field"),
-//   descriptionRu: Yup.string().required("Require field"),
-// });
+const checkDepartmentNP = Yup.object().shape({
+  city: Yup.string().min(3).max(80).required('Require field'),
+  department: Yup.string().min(3).max(180).required('Require field'),
+});
 
 const schemas = {
   registerSchema,
   schemasLogin,
   changePasswordSchema,
-  updateUserSchema,
-  createUserSchema,
+  checkDepartmentNP,
+  updateSchema,
   updatePasswordSchema,
-  // schemasEvents,
-  // schemasTeam,
+  addressSchema,
 };
 
 export default schemas;

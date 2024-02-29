@@ -1,0 +1,28 @@
+import React from 'react';
+import { useEffect } from 'react';
+import { SEO } from 'utils/SEO';
+import { useDispatch } from 'react-redux';
+import { cleanHeaderBottom } from 'redux/header_bottom/operation';
+import { Addition } from 'components/Addition/Addition';
+
+const AdditionPage = () => {
+  const dispatch = useDispatch();
+
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+  useEffect(() => {
+    dispatch(cleanHeaderBottom());
+  }, []);
+
+  return (
+    <>
+      <SEO
+        title="HomeForest Addition"
+        description="Addition Blogs Deliveries"
+      />
+      <Addition />
+    </>
+  );
+};
+
+export default AdditionPage;

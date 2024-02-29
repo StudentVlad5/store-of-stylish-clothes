@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { refreshUser } from '../redux/auth/operations';
-import { store } from '../redux/store';
-import { BASE_URL } from 'helpers/constants';
+import { refreshUser } from 'redux/auth/operations';
+import { store } from 'redux/store';
+import { BASE_URL } from 'BASE_CONST/Base-const';
 
 axios.defaults.baseURL = BASE_URL;
+
 export * from './auth';
 
 axios.interceptors.request.use(

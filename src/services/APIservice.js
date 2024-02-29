@@ -1,18 +1,42 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { BASE_URL } from 'helpers/constants';
+import { BASE_URL } from 'BASE_CONST/Base-const';
 
+// pathParams
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
-    baseURL: `${BASE_URL}${pathParams}`,
+    baseURL: `${BASE_URL}${pathParams}`, //${pathParams}
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
+      // 'Access-Control-Expose-Headers': 'Content-Range',
+      // 'Access-Control-Allow-Header': 'Origin, Content-Type, X-Auth-Token',
     },
   });
+
   return await axiosInstance.get();
+}
+
+async function updateUserData(pathParams, body, file) {
+  const formData = new FormData();
+  file && formData.set('avatar', file);
+  formData.append('userName', body.userName);
+  formData.append('surname', body.surname);
+  formData.append('email', body.email);
+  formData.append('birthday', body.birthday);
+  formData.append('location', body.location);
+  formData.append('password', body.password);
+  formData.append('phone', body.phone);
+  // formData.append('role', body.role);
+
+  return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
 }
 
 async function deleteData(pathParams) {
@@ -22,213 +46,126 @@ async function deleteData(pathParams) {
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
 
-async function createData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-async function createFormRegistration(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-async function changePassword(pathParams, body) {
+async function getFavorites(pathParams) {
   const formData = new FormData();
-  formData.append('password', body);
-  return axios.patch(`${BASE_URL}${pathParams}`, formData, {
+  return axios.post(`${BASE_URL}${pathParams}`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
 
-// ==== CATEGORIES ==== //
+async function getListOfCities(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+async function getListOfCitiesUP(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
 
-async function updateCategoryData(pathParams, body) {
+async function getListOfDepartments(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function getListOfDepartmentsUP(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function getCareList(pathParams) {
+  return await axios.get(`${BASE_URL}${pathParams}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function makeOrder(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function getOrder(pathParams) {
+  return await axios.get(`${BASE_URL}${pathParams}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function addItemInBasket(pathParams, body) {
+  return await axios.post(`${BASE_URL}${pathParams}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function removeItemInBasket(pathParams, body) {
   return await axios.patch(`${BASE_URL}${pathParams}`, body, {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
-async function createCategoryData(pathParams, body) {
+
+async function getItemInBasket(pathParams) {
+  return await axios.get(`${BASE_URL}${pathParams}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
+async function updateItemInBasket(pathParams, body) {
   return await axios.post(`${BASE_URL}${pathParams}`, body, {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function deleteCategoryData(pathParams, body) {
-  return await axios.delete(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-// ==== SPECIALISTS ==== //
-
-async function updateSpecialistData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function createSpecialistData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function deleteSpecialistData(pathParams, body) {
-  return await axios.delete(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-// ==== EVENTS ==== //
-
-async function updateEventData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function createEventData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function deleteEventData(pathParams, body) {
-  return await axios.delete(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-// ==== ACTIVATE EVENTS ==== //
-
-async function updateActiveEventData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function createActiveEventData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function deleteActiveEventData(pathParams, body) {
-  return await axios.delete(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-// ==== ORDERS ==== //
-
-async function updateOrderData(pathParams, body) {
-  return await axios.post(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-async function deleteOrderData(pathParams, body) {
-  return await axios.delete(`${BASE_URL}${pathParams}`, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
-    },
-  });
-}
-
-// IMAGES
-
-async function createImg(pathParams, body, file) {
-  const formData = new FormData();
-  formData.append('name', body.name);
-  file && formData.set('avatar', file);
-  return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
@@ -241,109 +178,81 @@ deleteData.propTypes = {
   pathParams: PropTypes.string.isRequired,
 };
 
-createData.propTypes = {
+updateUserData.propTypes = {
   pathParams: PropTypes.string.isRequired,
   formData: PropTypes.string.isRequired,
 };
 
-deleteCategoryData.propTypes = {
+getFavorites.propTypes = {
   pathParams: PropTypes.string.isRequired,
   formData: PropTypes.string.isRequired,
 };
 
-updateCategoryData.propTypes = {
+getListOfCities.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-createCategoryData.propTypes = {
+getListOfCitiesUP.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-createFormRegistration.propTypes = {
+getListOfDepartments.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-updateSpecialistData.propTypes = {
+getListOfDepartmentsUP.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-createSpecialistData.propTypes = {
+makeOrder.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-deleteSpecialistData.propTypes = {
+getOrder.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
 };
 
-updateEventData.propTypes = {
+getCareList.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
 };
 
-createEventData.propTypes = {
+addItemInBasket.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-deleteEventData.propTypes = {
+removeItemInBasket.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-updateActiveEventData.propTypes = {
+updateItemInBasket.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
 };
 
-createActiveEventData.propTypes = {
+getItemInBasket.propTypes = {
   pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
-};
-
-deleteActiveEventData.propTypes = {
-  pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
-};
-updateOrderData.propTypes = {
-  pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
-};
-
-deleteOrderData.propTypes = {
-  pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
-};
-
-createImg.propTypes = {
-  pathParams: PropTypes.string.isRequired,
-  formData: PropTypes.string.isRequired,
-  file: PropTypes.string,
 };
 export {
   fetchData,
-  createData,
+  updateUserData,
   deleteData,
-  createFormRegistration,
-  changePassword,
-  updateCategoryData,
-  createCategoryData,
-  deleteCategoryData,
-  updateSpecialistData,
-  createSpecialistData,
-  deleteSpecialistData,
-  updateEventData,
-  createEventData,
-  deleteEventData,
-  updateActiveEventData,
-  deleteActiveEventData,
-  createActiveEventData,
-  updateOrderData,
-  deleteOrderData,
-  createImg,
+  getFavorites,
+  getListOfCities,
+  getListOfDepartments,
+  getListOfCitiesUP,
+  getListOfDepartmentsUP,
+  getCareList,
+  makeOrder,
+  getOrder,
+  addItemInBasket,
+  getItemInBasket,
+  removeItemInBasket,
+  updateItemInBasket,
 };

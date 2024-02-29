@@ -1,34 +1,31 @@
+import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFormik, Formik } from 'formik';
-import { useTranslation } from 'react-i18next';
-import { forgotPasswordAuth } from '../../../redux/auth/operations';
 import schemas from 'utils/schemas';
-import { onSuccess } from 'helpers/Messages/NotifyMessages.jsx';
-import { Section, Container } from 'components/baseStyles/CommonStyle.styled';
-import { theme } from 'components/baseStyles/Variables.styled.js';
+import { forgotPasswordAuth } from 'redux/auth/operations';
+import theme from 'components/baseStyles/Variables.styled';
+import { FormRegister, TitleRegister } from './ForgotPasswordForm.styled.js';
+import { onSuccess } from 'components/helpers/Messages/NotifyMessages.jsx';
+import { useNavigate } from 'react-router-dom';
 import {
-  FormInputLogin,
-  FormStyled,
-  TitleLogin,
-  Btn,
   BoxText,
-  StyledLink,
+  Btn,
+  BtnContainer,
   ErrorBox,
-} from '../LoginForm/LoginForm.styled.js';
-import {
-  FormLabel,
-  Error,
-  FormField,
-} from 'components/baseStyles/Form.styled.js';
-import { BtnLight } from 'components/baseStyles/Button.styled.js';
+  FormContainer,
+  FormSection,
+  IconInValid,
+  IconValid,
+  Input,
+  Span,
+  StyledLink,
+} from '../AuthForm.styled.js';
 
 const ForgotPasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const onSubmit = ({ values }) => {
     setIsLoading(true);
@@ -36,11 +33,11 @@ const ForgotPasswordForm = () => {
     dispatch(
       forgotPasswordAuth({
         email,
-      })
+      }),
     );
     onSuccess('password has been changed. Please check your email');
     setIsLoading(false);
-    navigate(`/login`);
+    navigate(`/signin`);
   };
 
   const formik = useFormik({
@@ -67,23 +64,17 @@ const ForgotPasswordForm = () => {
   };
 
   return (
-    <Section>
-      <Container>
+    <FormSection>
+      <FormContainer>
         <Formik validationSchema={schemas.changePasswordSchema}>
-          <FormStyled onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleLogin>Forgot Password</TitleLogin>
-            <FormField>
-              <FormLabel htmlFor="email">
-                <span>E-mail</span>
-                {formik.errors.name && formik.touched.name ? (
-                  <Error>{formik.errors.name}</Error>
-                ) : null}
-              </FormLabel>
-              <FormInputLogin
+          <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
+            <TitleRegister>{'Forgot Password'}</TitleRegister>
+            <div>
+              <Input
                 style={{
                   borderColor: showAccentValidateInput(
                     formik.values.email,
-                    formik.errors.email
+                    formik.errors.email,
                   ),
                 }}
                 name="email"
@@ -93,29 +84,34 @@ const ForgotPasswordForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              {formik.errors.email && formik.touched.email ? (
-                <ErrorBox style={{ bottom: '22px' }}>
-                  {formik.errors.email}
-                </ErrorBox>
-              ) : null}
-            </FormField>
 
-            <BtnLight
-              style={{ height: 'auto' }}
-              type="submit"
-              disabled={isValid}
-              aria-label="submit to change password"
-            >
-              {isLoading ? 'Loading' : 'Change'}
-            </BtnLight>
-            <BoxText>
-              <span>Already have an account?</span>
-              <StyledLink to="/login">Log In</StyledLink>
-            </BoxText>
-          </FormStyled>
+              {!formik.values.email ? null : !formik.errors.email ? (
+                <IconValid color={theme.colors.green1} />
+              ) : (
+                <IconInValid color={theme.colors.red} />
+              )}
+              {formik.errors.email && formik.touched.email ? (
+                <ErrorBox>{formik.errors.email}</ErrorBox>
+              ) : null}
+              <Span className="floating-label">Email</Span>
+            </div>
+            <BtnContainer>
+              <Btn
+                type="submit"
+                disabled={isValid}
+                aria-label="submit to change password"
+              >
+                {isLoading ? 'Loading' : 'Change Password'}{' '}
+              </Btn>
+              <BoxText>
+                <span>{'Already have an account?'}</span>{' '}
+                <StyledLink to="/signin">{'Sign In'}</StyledLink>
+              </BoxText>
+            </BtnContainer>
+          </FormRegister>
         </Formik>
-      </Container>
-    </Section>
+      </FormContainer>
+    </FormSection>
   );
 };
 

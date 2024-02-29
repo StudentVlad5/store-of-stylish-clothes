@@ -1,27 +1,27 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import {
   signUp,
   signIn,
   singOut,
-  addToEvents,
-  removeFromEvents,
   refreshUserToken,
+  addToFavorite,
+  removeFromFavorite,
   updateUserData,
   changePassword,
   forgotPassword,
-} from "services";
+} from 'services';
 
-const setAuthHeader = (token) => {
+const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
-  "/auth/signup",
+  '/auth/signup',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await signUp(credentials);
@@ -31,11 +31,11 @@ export const register = createAsyncThunk(
       alert(`Something wrong`, error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const logIn = createAsyncThunk(
-  "/auth/signin",
+  '/auth/signin',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await signIn(credentials);
@@ -45,12 +45,12 @@ export const logIn = createAsyncThunk(
       alert(`Something wrong`, error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
-export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
   try {
-    await singOut("/auth/logout");
+    await singOut('/auth/logout');
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -58,7 +58,7 @@ export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
 });
 
 export const update = createAsyncThunk(
-  "/auth/update/:id",
+  '/auth/update/:id',
   async (updateData, thunkAPI) => {
     try {
       const result = await updateUserData(updateData);
@@ -66,31 +66,31 @@ export const update = createAsyncThunk(
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data.message);
     }
-  }
+  },
 );
 
 export const refreshUser = createAsyncThunk(
-  "/auth/refresh",
+  '/auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue("Unable to fetch user");
+      return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
       setAuthHeader(persistedToken);
-      const { data } = await refreshUserToken("/auth");
+      const { data } = await refreshUserToken('/auth');
 
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const changePasswordAuth = createAsyncThunk(
-  "/auth/changePassword",
+  '/auth/changePassword',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await changePassword(credentials);
@@ -99,11 +99,11 @@ export const changePasswordAuth = createAsyncThunk(
       alert(`Something wrong`, error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const forgotPasswordAuth = createAsyncThunk(
-  "/auth/forgotPassword",
+  '/auth/forgotPassword',
   async (credentials, thunkAPI) => {
     try {
       const { data } = await forgotPassword(credentials);
@@ -112,29 +112,29 @@ export const forgotPasswordAuth = createAsyncThunk(
       alert(`Something wrong`, error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
-export const addEvents = createAsyncThunk(
-  "/auth/addEvents",
+export const addFavorite = createAsyncThunk(
+  '/auth/addFavorite',
   async (id, thunkAPI) => {
     try {
-      await addToEvents(`${id}`);
+      await addToFavorite(`${id}`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
-export const removeEvents = createAsyncThunk(
-  "/auth/removeEvents",
+export const removeFavorite = createAsyncThunk(
+  '/auth/removeFavorite',
   async (id, thunkAPI) => {
     try {
-      await removeFromEvents(`${id}`);
+      await removeFromFavorite(`${id}`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );

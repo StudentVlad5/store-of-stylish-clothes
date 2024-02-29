@@ -1,138 +1,61 @@
 import styled from 'styled-components';
-import { theme } from 'components/baseStyles/Variables.styled';
-import { Container } from 'components/baseStyles/CommonStyle.styled';
-import { ReactComponent as BurgerMenu } from 'images/burgerMenu.svg';
+import theme from 'components/baseStyles/Variables.styled';
+import { Section, Container } from 'components/baseStyles/CommonStyle.styled';
 
-export const SHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 215;
-
-  width: 100vw;
-  padding: 20px;
-
-  background-color: ${theme.colors.fon};
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    /* width: ${theme.breakpoints.desktop}; */
-    margin: 0 auto;
-    padding: 20px 50px;
-  }
-`;
-
-export const HeaderContainer = styled(Container)`
+const HeaderSectionWrap = styled.header`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-content: center;
-  text-align: left;
-
-  padding: 0;
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    padding: 0 30px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    max-width: ${theme.breakpoints.desktop};
-    padding: 0 80px;
-  }
-`;
-
-export const Navigation = styled.nav`
-  & > ul {
-    display: none;
-
-    @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-
-    & > li > a {
-      color: ${theme.colors.grey2};
-
-      font-family: ${theme.fonts[0]};
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-
-      transition: ${theme.transition};
-      text-decoration: none;
-
-      &:hover,
-      &:focus,
-      &.active {
-        padding-bottom: 1px;
-        border-bottom: 1px solid ${theme.colors.grey2};
-      }
-    }
-  }
-`;
-
-export const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-  }
-`;
-
-export const BurgerBtn = styled(BurgerMenu)`
-// width: 30px;
-// height: 30px;
-// transition: ${theme.transition};
-
-// &:hover,
-// &:focus {
-//   fill: ${theme.colors.black};
-// }
-`;
-
-export const MenuBtn = styled.button`
-  /* position: fixed;
-  top: 20px;
-  right: 20px; */
-  z-index: 15;
-
-  /* position: fixed;
-  top: 15px;
-  right: 50px;
-  z-index: 215; */
-
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 10;
+  transition: background-color 0.3s ease-in-out;
+  ${({ isScrolled }) => isScrolled && `background-color: rgb(252, 249, 242);`};
+`;
 
-  padding: 0;
+const HeaderSection = styled(Section)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px 0px 30px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 10;
+  transition: background-color 0.3s ease-in-out;
 
-  color: ${theme.colors.grey2};
-  background: transparent;
-  border: none;
-
-  cursor: pointer;
-  transition: ${theme.transition};
-
-  &:hover,
-  &:focus {
-    color: ${theme.colors.black};
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    padding: 40px 30px 0px 30px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    display: none;
-  }
-
-  & > svg {
-    fill: currentColor;
-  }
-
-  &> BurgerBtn {
-    fill: currentColor;
-    
+    padding: 50px 120px 0px 120px;
+    max-width: ${theme.breakpoints.desktop};
   }
 `;
+const HeaderUnderLine = styled.div`
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  margin-top: 40px;
+`;
+
+const HeaderContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 40px 30px 0px 30px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 50px 120px 0px 120px;
+  }
+`;
+
+export { HeaderContainer, HeaderSection, HeaderUnderLine, HeaderSectionWrap };

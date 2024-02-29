@@ -1,15 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { reloadSlice } from './reload/slice';
+import { authReducer } from './auth/slice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/slice';
-import { reloadSlice } from './reload/slice';
 import { modalReducer } from './modal/slice';
-import { categoryReducer } from './category/slice';
-import { eventsReducer } from './events/slice';
-import { specialistsReducer } from './specialists/slice';
-import { activate_eventsReducer } from './activate_events/slice';
-import { ordersReducer } from './orders/slice';
-import { messagesReducer } from './messages/slice';
+import { headerBottomReducer } from './header_bottom/slice';
+import { basketReducer } from './basket/slice';
 
 // Persisting token and role fields from auth slice to localstorage
 const authPersistConfig = {
@@ -18,17 +14,20 @@ const authPersistConfig = {
   whitelist: ['token', 'permission'],
 };
 
+// const basketPersistConfig = {
+//   key: 'basket',
+//   storage,
+//   whitelist: [],
+// };
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    modal: modalReducer,
-    category: categoryReducer,
-    specialists: specialistsReducer,
-    events: eventsReducer,
-    activate_events: activate_eventsReducer,
-    orders: ordersReducer,
-    messages: messagesReducer,
     reload: reloadSlice.reducer,
+    modal: modalReducer,
+    headerBottom: headerBottomReducer,
+    basket: basketReducer,
+    // persistReducer(basketPersistConfig, basketReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,29 +1,29 @@
-import PropTypes from 'prop-types';
 import React, { createContext, useState } from 'react';
 import { getFromStorage, saveToStorage } from 'services/localStorService';
+import uuid4 from 'uuid4';
 
 export const StatusContext = createContext();
 
 export const StatusProvider = ({ children }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    getFromStorage('chosenLanguage') || 'fr'
+  const [userAnonimusID, setUserAnonimusID] = useState(
+    getFromStorage('userAnonimusID')
+      ? getFromStorage('userAnonimusID')
+      : uuid4(),
   );
-
-  if (!getFromStorage('chosenLanguage')) {
-    saveToStorage('chosenLanguage', 'fr');
+  if (!getFromStorage('userAnonimusID')) {
+    saveToStorage('userAnonimusID', userAnonimusID);
   }
+  const [contextBasket, setContextBasket] = useState([]);
   return (
     <StatusContext.Provider
       value={{
-        selectedLanguage,
-        setSelectedLanguage,
+        userAnonimusID,
+        setUserAnonimusID,
+        contextBasket,
+        setContextBasket,
       }}
     >
       {children}
     </StatusContext.Provider>
   );
-};
-
-StatusProvider.propTypes = {
-  children: PropTypes.any,
 };

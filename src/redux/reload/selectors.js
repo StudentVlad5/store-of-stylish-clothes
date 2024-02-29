@@ -1,1 +1,1 @@
-export const reloadValue = (state) => state.reload.value;
+export const reloadValue = state => state.reload.value;

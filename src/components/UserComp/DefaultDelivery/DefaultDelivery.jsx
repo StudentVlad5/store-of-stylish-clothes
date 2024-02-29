@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
+import { selectId } from 'redux/auth/selectors';
+import { useAuth } from 'hooks/useAuth';
+import { update } from 'redux/auth/operations';
+// import schemas from 'utils/schemas';
+import { Error, ProfileLabel, ProfileList } from '../Profile/Profile.styled';
+import {
+  BtnContainer,
+  BtnGreen,
+  BtnLight,
+  PensilStyle,
+} from '../UserData/UserData.styled';
+import {
+  ProfileInputSelect,
+  EditBtn,
+  Input,
+  Label,
+} from './DefaultDelivery.styled';
+
+export const DefaultDelivery = () => {
+  const [isShown, setIsShown] = useState(false);
+  const id = useSelector(selectId);
+  let { userIn } = useAuth();
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      {!isShown && (
+        <Label>
+          <Input>{userIn.delivery}</Input>
+          <EditBtn onClick={() => setIsShown(true)}>
+            <PensilStyle />
+          </EditBtn>
+        </Label>
+      )}
+      {isShown && (
+        <Formik
+          initialValues={{
+            delivery: userIn?.delivery ? userIn.delivery : '',
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            dispatch(update({ ...values, id }));
+            setSubmitting(false);
+            setIsShown(false);
+          }}
+          enableReinitialize={true}
+          //   validationSchema={schemas.updateSchema}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            isSubmitting,
+            values,
+            errors,
+            touched,
+          }) => (
+            <ProfileList
+              autoComplete="off"
+              onSubmit={handleSubmit}
+              onChange={handleChange}
+            >
+              <ProfileLabel htmlFor="delivery">
+                <ProfileInputSelect
+                  as="select"
+                  name="delivery"
+                  id="delivery"
+                  value={values.delivery}
+                  onChange={handleChange}
+                >
+                  <option value="">Select a delivery</option>
+                  <option value="NovaPoshta">NovaPoshta</option>
+                  <option value="UkrPoshta">UkrPoshta</option>
+                  <option value="Courier delivery">Courier delivery</option>
+                </ProfileInputSelect>
+                {errors.delivery && touched.delivery ? (
+                  <Error>{errors.delivery}</Error>
+                ) : null}
+              </ProfileLabel>
+
+              <BtnContainer>
+                <BtnLight
+                  type="button"
+                  aria-label="Close"
+                  onClick={() => setIsShown(false)}
+                >
+                  CANCEL
+                </BtnLight>
+                <BtnGreen
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-label="Submit"
+                >
+                  SAVE
+                </BtnGreen>
+              </BtnContainer>
+            </ProfileList>
+          )}
+        </Formik>
+      )}
+    </>
+  );
+};

@@ -1,94 +1,44 @@
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Logo } from './Logo/Logo';
-import { Menu } from './Menu/Menu';
-import Language from 'components/Header/Language/Language';
-import sprite from 'images/sprite.svg';
+import React from 'react';
+import { Navigation } from 'components/Header/Navigation/Navigation';
 import {
-  SHeader,
   HeaderContainer,
-  Navigation,
-  Wrap,
-  MenuBtn,
-  BurgerBtn,
+  HeaderUnderLine,
+  HeaderSectionWrap,
 } from './Header.styled';
+import { Logo } from './Elements/logo/Logo';
+import { Menu } from './Elements/menu/Menu';
+import { useState, useEffect } from 'react';
+import { headerBottomComponent } from 'redux/header_bottom/selectors';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const toggleModal = () => {
-    setShowMenu(state => !state);
-  };
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerBottom = useSelector(headerBottomComponent);
 
-  showMenu && (document.querySelector('body').style.overflow = 'hidden');
-  !showMenu && (document.querySelector('body').style.overflow = 'auto');
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-  const { t } = useTranslation();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <>
-      <SHeader>
-        <HeaderContainer>
-          <Logo />
-          <Navigation>
-            <ul>
-              <li>
-                <NavLink to="/" aria-label={t('Accueil')} data-info="Home">
-                  {t('Accueil')}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/specialists"
-                  aria-label={t('Les experts')}
-                  data-info="Team"
-                >
-                  {t('Les experts')}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/events"
-                  aria-label={t('Caléndrier des événements')}
-                  data-info="Events calendar"
-                >
-                  {t('Caléndrier des événements')}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/about"
-                  aria-label={t('A propos')}
-                  data-info="About"
-                >
-                  {t('A propos')}
-                </NavLink>
-              </li>
-            </ul>
-          </Navigation>
-          <Wrap>
-            <Language />
-            <MenuBtn
-              type="button"
-              aria-label="Switch mobile menu"
-              aria-expanded="false"
-              aria-controls="mobile-menu"
-              onClick={toggleModal}
-            >
-              {!showMenu ? (
-                // <use href={sprite + '#menu_40px'}></use>
-                <BurgerBtn />
-              ) : (
-                <svg width="30" height="30">
-                  <use href={sprite + '#close_40px'}></use>
-                </svg>
-
-              )}
-            </MenuBtn>
-          </Wrap>
-        </HeaderContainer>
-      </SHeader>
-      {showMenu && <Menu onClose={toggleModal} />}
-    </>
+    <HeaderSectionWrap isScrolled={isScrolled}>
+      <HeaderContainer>
+        <Menu />
+        <Logo />
+        <Navigation />
+      </HeaderContainer>
+      <HeaderUnderLine className={headerBottom.headerBottom} />
+    </HeaderSectionWrap>
   );
 };

@@ -4,8 +4,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 body {
-  font-family: 'Archivo', sans-serif;
- font-family: 'Fraunces', serif;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
 
   background-color:${theme.colors.fon};
   

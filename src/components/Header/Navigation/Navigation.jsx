@@ -11,7 +11,7 @@ import {
   Container,
   IconSearch,
   NavBlock,
-  IconFavorite,
+  IconBookmark,
   MobileContainer,
   MobileNavBlock,
   IconWrapper,
@@ -44,16 +44,16 @@ export const Navigation = () => {
           {isLoggedIn ? <UserNav /> : <AuthNav />}
 
           {isLoggedIn ? (
-            <Link to={'/user/favorites'}>
+            <Link to={'/user/bookmark'}>
               <IconWrapper>
-                <IconFavorite aria-label="Favorites" />
-                {favorites.length > 0 && <Count>{favorites.length}</Count>}
+                <IconBookmark aria-label="Bookmark" />
+                {bookmark.length > 0 && <Count>{favorites.length}</Count>}
               </IconWrapper>
             </Link>
           ) : (
             <Link to={'/signin'}>
               <IconWrapper>
-                <IconFavorite aria-label="Favorites" />
+                <IconBookmark aria-label="Bookmark" />
               </IconWrapper>
             </Link>
           )}
@@ -91,14 +91,14 @@ export const MobileNavigation = ({ toggleMobileMenu }) => {
         {isLoggedIn ? (
           <Link to={'/user/favorites'} onClick={toggleMobileMenu}>
             <IconWrapper>
-              <IconFavorite aria-label="Favorites" />
-              {favorites.length > 0 && <Count>{favorites.length}</Count>}
+              <IconBookmark aria-label="Bookmark" />
+              {bookmark.length > 0 && <Count>{bookmark.length}</Count>}
             </IconWrapper>
           </Link>
         ) : (
           <Link to={'/signin'}>
             <IconWrapper>
-              <IconFavorite aria-label="Favorites" />
+              <IconBookmark aria-label="Bookmark" />
             </IconWrapper>
           </Link>
         )}

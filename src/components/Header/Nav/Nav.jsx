@@ -42,8 +42,8 @@ export const Nav = () => {
       <NavItem to={`/?${searchParams}`}>{t('About Us')}</NavItem>
       <NavItem to={`/catalog?${searchParams}`}>{t('Shop')}</NavItem>
       <NavItem to={`/gifts?${searchParams}`}>{t('Gifts')}</NavItem>
-      <NavItem to="/care">{t('Care')}</NavItem>
-      <NavItem to="/addition/about_company">{t('Addition')}</NavItem>
+      <NavItem to="/care">{t('Man')}</NavItem>
+      <NavItem to="/addition/about_company">{t('Woman')}</NavItem>
     </NavList>
   );
 };

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import theme from 'components/baseStyles/Variables.styled';
 import { ReactComponent as iconSearch } from 'images/svg/icon_searchLight__header.svg';
-import { ReactComponent as iconFavorite } from 'images/svg/icon_favorite__header.svg';
-import { ReactComponent as iconBasket } from 'images/svg/icon_basketLight__header.svg';
+import { ReactComponent as iconBookmark } from 'images/svg/bookmark.svg';
+import { ReactComponent as iconBasket } from 'images/svg/basket.svg';
 
 const IconWrapper = styled.div`
   position: relative;
@@ -62,7 +62,7 @@ const View = styled.div`
 `;
 
 const IconSearch = styled(iconSearch)``;
-const IconFavorite = styled(iconFavorite)``;
+const IconBookmark = styled(iconBookmark)``;
 const IconBasket = styled(iconBasket)``;
 
 const Container = styled.div`
@@ -124,7 +124,7 @@ export {
   IconWrapper,
   Count,
   IconSearch,
-  IconFavorite,
+  IconBookmark,
   IconBasket,
   MobileContainer,
   MobileNavBlock,

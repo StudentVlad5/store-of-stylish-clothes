@@ -27,7 +27,7 @@ const theme = {
     beige5: '#F3ECDF',
     brown: '#3F3222',
     brown1: '#5F4A32',
-    brown2: '#8C8276',
+    brown2: '#2F2F2F',
     brown3: '#BDAF9F',
     blue: '#C8CFD5',
     blue1: '#D5DDE3',
@@ -40,7 +40,7 @@ const theme = {
     greyOpacity: 'rgba(113, 113, 113, 0.1)',
     white: '#ffffff',
   },
-  fonts: ['Archivo, sans-serif', 'Fraunces, serif'],
+  fonts: ['Playfair Display, serif'],
   fontSizes: {
     extrasmall: '10px',
     small: '14px',

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import theme from 'components/baseStyles/Variables.styled';
-import { IconFavorite } from 'components/Header/Navigation/Navigation.styled';
+import { ReactComponent as IconFavorite } from 'images/svg/icon_favorite__header.svg';
 
 const IconFav = styled(IconFavorite)`
   display: block;

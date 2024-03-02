@@ -25,6 +25,7 @@ const Language = () => {
       <SelectLanguage onChange={changeLanguage} value={selectedLanguage}>
         <option value="en">En</option>
         <option value="ua">Ua</option>
+        <option value="ua">De</option>
       </SelectLanguage>
     </SelectContainerLanguage>
   );

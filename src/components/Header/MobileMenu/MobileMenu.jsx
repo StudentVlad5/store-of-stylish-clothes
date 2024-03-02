@@ -17,7 +17,7 @@ export const MobileMenu = ({ toggleMenu }) => {
       <MobileHeader>
         <IconClose onClick={toggleMenu} />
         <Text to="/" onClick={toggleMenu}>
-          homeforest
+          Quillis
         </Text>
       </MobileHeader>
 

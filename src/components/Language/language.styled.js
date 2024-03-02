@@ -1,58 +1,57 @@
+import theme from 'components/baseStyles/Variables.styled';
 import styled from 'styled-components';
 
 export const SelectContainerLanguage = styled.div`
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: absolute;
-  left: 140px;
-  height: auto;
-
-  background-color: transparent;
-
-  border-color: ${props => props.theme.logout};
-  background: ${props => props.theme.mainBg};
+  color: ${theme.colors.brown2};
+  font-size: ${theme.fontSizes.extra};
+  font-style: normal;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+  position: relative;
+  background: transparent;
+  border: transparent;
 
   @media screen and (min-width: 768px) {
-    left: 165px;
+    /* left: 165px; */
   }
 `;
 
 export const SelectLanguage = styled.select`
-  width: auto;
-  height: auto;
-  border-radius: 5px;
-  color: ${props => props.theme.black};
-  border-color: transparent;
-  background: ${props => props.theme.mainBg};
-  padding: 3px;
   cursor: pointer;
-
-  font-family: 'Manrope';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${theme.colors.brown2};
+  font-size: ${theme.fontSizes.medium};
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  transition: all 0.25s ease-in;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  position: relative;
+  background: transparent;
+  border: transparent;
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: ${theme.fontSizes.large};
   }
-
   @media screen and (min-width: 1280px) {
-    font-size: 16px;
+    font-size: ${theme.fontSizes.extra};
   }
 
   &:focus,
   &:hover,
   &:focus-visible {
-    border-color: ${props => props.theme.orangeLight};
+    transform: ${theme.scale[0]};
+    transition: ${theme.transition[0]};
   }
   &.active {
-    color: ${props => props.theme.orangeLight};
-    text-decoration: underline;
   }
 `;

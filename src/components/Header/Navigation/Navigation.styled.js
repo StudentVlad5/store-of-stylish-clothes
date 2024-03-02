@@ -61,9 +61,18 @@ const View = styled.div`
   }
 `;
 
-const IconSearch = styled(iconSearch)``;
-const IconBookmark = styled(iconBookmark)``;
-const IconBasket = styled(iconBasket)``;
+const IconSearch = styled(iconSearch)`
+  width: 32px;
+  height: 32px;
+`;
+const IconBookmark = styled(iconBookmark)`
+  width: 32px;
+  height: 32px;
+`;
+const IconBasket = styled(iconBasket)`
+  width: 32px;
+  height: 32px;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -72,7 +81,7 @@ const Container = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 100%;
-    margin-left: 94px;
+    margin-left: 32px;
   }
 `;
 

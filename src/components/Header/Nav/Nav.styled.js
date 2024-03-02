@@ -11,7 +11,7 @@ const MobileNavList = styled.nav`
   font-size: ${theme.medium};
   text-decoration: none;
   white-space: nowrap;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-top: 60px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -30,7 +30,7 @@ const NavList = styled(MobileNavList)`
     display: flex;
     flex-direction: row;
     justify-content: start;
-    gap: 82px;
+    gap: 40px;
     margin: 0px;
   }
 `;
@@ -39,14 +39,38 @@ const NavItem = styled(NavLink)`
   cursor: pointer;
   font-family: ${theme.fonts[0]};
   font-style: normal;
+  padding: 0 4px;
   font-weight: 500;
-  text-transform: uppercase;
-  font-size: ${theme.fontSizes.small};
+  text-transform: capitalize;
+  font-size: ${theme.fontSizes.extra};
   line-height: normal;
   text-decoration: none;
   white-space: nowrap;
   color: ${theme.colors.brown1};
 
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии*/
+    transition: width 0.5s; /* Время эффекта */
+  }
+  :hover:after {
+    content: '';
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px; /* Высота линии */
+    background-color: ${theme.colors
+      .brown3}; /* Цвет подчеркивания при появлении линии*/
+    transition: width 0.5s; /* Время эффекта */
+  }
   &:not(:first-child) {
     margin-top: 40px;
   }
@@ -64,15 +88,62 @@ const NavItem = styled(NavLink)`
   transition: ${theme.transition[0]};
   :focus,
   :hover {
-    color: ${theme.colors.darkGreen};
     transform: ${theme.scale[0]};
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
   }
   &.active {
-    color: ${theme.colors.darkGreen};
     transform: ${theme.scale[0]};
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+    border-bottom: solid 1px ${theme.colors.brown4};
+  }
+  &.changeStyle {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 8px 10px;
+    border: solid 1px ${theme.colors.brown4};
+    border-radius: 9px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fontSizes.extra};
+    font-style: normal;
+    font-family: ${theme.fonts[0]};
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0;
+    background-color: ${theme.colors.brown4};
+  }
+  &.not-changeStyle {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 8px 10px;
+    border: solid 1px ${theme.colors.brown4};
+    border-radius: 9px;
+    color: ${theme.colors.brown2};
+    font-size: ${theme.fontSizes.extra};
+    font-style: normal;
+    font-family: ${theme.fonts[0]};
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0;
+    background-color: ${theme.colors.fon};
   }
 `;
+const NavSubContainerUp = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  transform: translateY(-30px);
+`;
+const NavSubContainerDown = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  transform: translate(-30px, 30px);
+`;
 
-export { MobileNavList, NavList, NavItem };
+export {
+  MobileNavList,
+  NavList,
+  NavItem,
+  NavSubContainerUp,
+  NavSubContainerDown,
+};

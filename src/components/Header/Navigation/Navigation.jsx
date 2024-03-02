@@ -18,6 +18,7 @@ import {
   Count,
   View,
 } from './Navigation.styled';
+import Language from 'components/Language/Language';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -36,6 +37,7 @@ export const Navigation = () => {
       <Nav />
       <NavBlock>
         <View>
+          <Language />
           {!showSearchForm && (
             <IconSearch onClick={toggleSearchForm} aria-label="Search" />
           )}

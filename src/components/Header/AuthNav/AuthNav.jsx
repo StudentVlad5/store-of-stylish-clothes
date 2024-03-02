@@ -1,24 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ButtonAuth } from '../Elements/button/ButtonAuth';
-import { MobileContainer, Container } from './AuthNav.styled';
-import { useTranslation } from 'react-i18next';
+// import { ButtonAuth } from '../Elements/button/ButtonAuth';
+import { MobileContainer, Container, IconUser } from './AuthNav.styled';
+import { Link } from 'react-router-dom';
 
 export const MobileAuthNav = ({ toggleMenu }) => {
-  const { t } = useTranslation();
   return (
     <MobileContainer>
-      <ButtonAuth title={t('Sign in')} path="/signin" onClick={toggleMenu} />
+      <Link to={'/login'}>
+        <IconUser onClick={toggleMenu} />
+      </Link>
     </MobileContainer>
   );
 };
 
 export const AuthNav = ({ toggleMenu }) => {
-  const { t } = useTranslation();
-
   return (
     <Container>
-      <ButtonAuth title={t('Sign in')} path="/signin" onClick={toggleMenu} />
+      <Link to={'/signin'}>
+        <IconUser onClick={toggleMenu} />
+      </Link>
     </Container>
   );
 };

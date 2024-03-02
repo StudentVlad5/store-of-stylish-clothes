@@ -1,5 +1,6 @@
 import theme from 'components/baseStyles/Variables.styled';
 import styled from 'styled-components';
+import { ReactComponent as iconUser } from 'images/svg/icon_user_light.svg';
 
 const MobileContainer = styled.nav`
   display: flex;
@@ -34,5 +35,9 @@ const Container = styled(MobileContainer)`
     text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.4);
   }
 `;
+const IconUser = styled(iconUser)`
+  width: 32px;
+  height: 32px;
+`;
 
-export { MobileContainer, Container };
+export { MobileContainer, Container, IconUser };

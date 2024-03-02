@@ -8,7 +8,7 @@ const theme = {
     desktop_max: '1439.98px',
   },
   colors: {
-    fon: '#FCF9F2',
+    fon: '#FCF9F2', // фон
     green: '#5A6B47',
     green1: '#65784F',
     green2: '#9AB879',
@@ -27,8 +27,9 @@ const theme = {
     beige5: '#F3ECDF',
     brown: '#3F3222',
     brown1: '#5F4A32',
-    brown2: '#2F2F2F',
-    brown3: '#BDAF9F',
+    brown2: '#2F2F2F', // назви в меню
+    brown3: '#BDAF9F', // фокус, ховер на кнопки
+    brown4: '#754f23', // бордер назв меню
     blue: '#C8CFD5',
     blue1: '#D5DDE3',
     blue2: '#E3EAEF',
@@ -38,7 +39,7 @@ const theme = {
     grey: '#717171',
     grey1: '#656970',
     greyOpacity: 'rgba(113, 113, 113, 0.1)',
-    white: '#ffffff',
+    white: '#ffffff', // білий
   },
   fonts: ['Playfair Display, serif'],
   fontSizes: {
@@ -46,7 +47,7 @@ const theme = {
     small: '14px',
     medium: '18px',
     large: '20px',
-    extra: '24px',
+    extra: '24px', // +
     extraXL: '32px',
     extraXXL: '36px',
   },

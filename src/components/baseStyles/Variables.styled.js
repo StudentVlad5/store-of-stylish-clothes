@@ -41,7 +41,7 @@ const theme = {
     greyOpacity: 'rgba(113, 113, 113, 0.1)',
     white: '#ffffff', // білий
   },
-  fonts: ['Playfair Display, serif'],
+  fonts: ['Playfair Display, serif', 'Playfair Display, semibold'],
   fontSizes: {
     extrasmall: '10px',
     small: '14px',

@@ -160,7 +160,7 @@ img {
 //-----Swiper-----//
 
 .swiper {
-  width: 100%;
+  width: 90%;
   height: 100%;
 }
 
@@ -169,8 +169,15 @@ img {
   text-align: center;
   font-size: 18px;
   background: ${theme.colors.fon};
+  padding: 30px;
+  border-radius: 16px;
 
   /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide.swiper-slide-active {
   display: flex;
   justify-content: center;
   align-items: center;

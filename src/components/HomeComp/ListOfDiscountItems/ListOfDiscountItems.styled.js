@@ -7,13 +7,19 @@ export const CardContainerSection = styled(Section)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0;
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0px 30px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    padding: 0px 30px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 0px 40px;
+  }
 `;
 export const SectionTitle = styled.h1`
   color: ${theme.colors.brown2};

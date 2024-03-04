@@ -17,8 +17,10 @@ import {
   Keyboard,
   Autoplay,
   EffectCoverflow,
+  EffectCreative,
 } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/effect-creative';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -45,7 +47,7 @@ export const ListOfNewItems = () => {
               EffectCoverflow,
               Autoplay,
             ]}
-            spaceBetween={30}
+            // spaceBetween={30}
             slidesPerView={3}
             navigation={{
               prevEl: '.swiper-button-prev',
@@ -98,7 +100,7 @@ export const ListOfNewItems = () => {
               EffectCoverflow,
               Autoplay,
             ]}
-            spaceBetween={30}
+            // spaceBetween={30}
             slidesPerView={2}
             navigation={{
               prevEl: '.swiper-button-prev',
@@ -144,7 +146,13 @@ export const ListOfNewItems = () => {
         </ViewportBox>
         <ViewportBox $version={'mobile'}>
           <Swiper
-            modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+            modules={[
+              Navigation,
+              Mousewheel,
+              Keyboard,
+              Autoplay,
+              EffectCreative,
+            ]}
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
@@ -163,6 +171,16 @@ export const ListOfNewItems = () => {
               disableOnInteraction: false,
             }}
             speed={800}
+            effect={'creative'}
+            creativeEffect={{
+              prev: {
+                shadow: true,
+                translate: [0, 0, -400],
+              },
+              next: {
+                translate: ['100%', 0, 0],
+              },
+            }}
           >
             <SwiperSlide>
               <ProductCard />

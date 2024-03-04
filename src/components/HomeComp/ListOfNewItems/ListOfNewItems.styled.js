@@ -13,6 +13,13 @@ export const SectionTitleWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0px 30px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    padding: 0px 30px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 0px 40px;
+  }
 `;
 export const SectionTitle = styled.h1`
   color: ${theme.colors.brown2};

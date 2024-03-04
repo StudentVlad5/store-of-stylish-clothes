@@ -40,6 +40,8 @@ const theme = {
     grey1: '#656970',
     greyOpacity: 'rgba(113, 113, 113, 0.1)',
     white: '#ffffff', // білий
+    text: '#f0eadc', // текст футера
+    black: '#000', // текст футера
   },
   fonts: ['Playfair Display, serif', 'Playfair Display, semibold'],
   fontSizes: {

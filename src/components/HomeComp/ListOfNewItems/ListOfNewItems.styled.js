@@ -7,6 +7,7 @@ export const CardContainerSection = styled(Section)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 0;
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;

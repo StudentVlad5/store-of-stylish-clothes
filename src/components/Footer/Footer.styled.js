@@ -1,5 +1,6 @@
 import { Container } from 'components/baseStyles/CommonStyle.styled';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { ReactComponent as facebook } from 'images/svg/facebook.svg';
 import { ReactComponent as twiter } from 'images/svg/twiter.svg';
 import { ReactComponent as instagram } from 'images/svg/instagram.svg';
@@ -10,7 +11,20 @@ import { ReactComponent as arrowDown } from 'images/svg/arrowDown.svg';
 import theme from 'components/baseStyles/Variables.styled';
 import { Text } from 'components/Header/Elements/logo/Logo.styled';
 
-export const FooterSection = styled.footer``;
+export const FooterSection = styled.footer`
+  background-color: ${theme.colors.brown4};
+  color: ${theme.colors.text};
+`;
+export const LinkBrand = styled(Link)`
+  text-decoration: none;
+  color: ${theme.colors.text};
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    text-decoration: none;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    text-decoration: none;
+  }
+`;
 
 export const FooterContainer = styled(Container)`
   margin: 0 auto;
@@ -24,13 +38,20 @@ export const FooterContainer = styled(Container)`
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: flex;
     justify-content: space-between;
-    padding: 120px;
+    padding: 10px 30px;
     max-width: ${theme.breakpoints.desktop};
   }
 `;
 
+export const FooterContainerBrand = styled(FooterContainer)`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const FooterFaqList = styled.ul`
   display: block;
+  justify-content: space-between;
+
   &:nth-child(1) {
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
       display: none;
@@ -43,7 +64,18 @@ export const FooterFaqList = styled.ul`
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
       display: flex;
       gap: 20px;
+      width: 100%;
+      padding-right: 80px;
     }
+  }
+`;
+
+export const FooterFaqListBrand = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    border-top: 1px solid ${theme.colors.text};
   }
 `;
 
@@ -56,7 +88,7 @@ export const FooterFaqListItem = styled.li`
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.text};
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -78,24 +110,24 @@ export const FaqListBoxText = styled.div`
 
 export const FooterFaqListTitle = styled.h3`
   padding: 13px 0;
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.text};
   font-family: ${theme.fonts[0]};
-  font-size: 14px;
+  font-size: ${theme.fontSizes.medium};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    color: ${theme.colors.green};
     padding: 0;
+    font-size: ${theme.fontSizes.large};
   }
 `;
 
 export const FaqListOptionsBox = styled.div``;
 
 export const FaqListOptions = styled.p`
-  color: ${theme.colors.green};
+  color: ${theme.colors.text};
   font-family: ${theme.fonts[0]};
   font-size: 13px;
   font-style: normal;
@@ -106,12 +138,12 @@ export const FaqListOptions = styled.p`
 
   &:hover,
   &:focus {
-    color: rgb(154, 184, 121);
+    color: rgb(200, 200, 200);
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    color: ${theme.colors.brown2};
-    font-size: 14px;
+    color: ${theme.colors.text};
+    font-size: ${theme.fontSizes.medium};
 
     &:not(:last-child) {
       margin-bottom: 16px;
@@ -122,7 +154,7 @@ export const FaqListOptions = styled.p`
 
 export const FooterSubscribtion = styled.h2`
   display: block;
-  color: ${theme.colors.green};
+  color: ${theme.colors.text};
   font-family: ${theme.fonts[1]};
   font-size: 18px;
   font-style: normal;
@@ -152,9 +184,9 @@ export const FooterSubscribtion = styled.h2`
 
 export const FooterSubscribtionDiscr = styled.p`
   display: block;
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.text};
   font-family: ${theme.fonts[0]};
-  font-size: 14px;
+  font-size: ${theme.fontSizes.medium};
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 19.6px */
@@ -170,7 +202,7 @@ export const FooterSubscribtionDiscr1 = styled(FooterSubscribtionDiscr)`
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: block;
     width: 437px;
-    font-size: 16px;
+    font-size: ${theme.fontSizes.large};
     line-height: 166%; /* 26.56px */
   }
 `;
@@ -186,7 +218,7 @@ export const FooterInputForm = styled.form`
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.text};
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -203,7 +235,7 @@ export const FooterInput = styled.input`
   max-width: 437px;
   padding: 12px;
 
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.black};
   font-family: ${theme.fonts[0]};
   font-size: 14px;
   font-style: normal;
@@ -211,7 +243,7 @@ export const FooterInput = styled.input`
   line-height: normal;
   text-transform: uppercase;
 
-  background: #ebebeb;
+  background: ${theme.colors.text};
   border-color: transparent;
   cursor: pointer;
 
@@ -221,28 +253,30 @@ export const FooterInput = styled.input`
 `;
 
 export const FooterInputFormBtn = styled.button`
-  display: none;
+  display: block;
   border-radius: 10px;
   border-color: transparent;
-  background: ${theme.colors.green};
+  background: ${theme.colors.grey};
   padding: 10px 0;
-  width: 100%;
+  max-width: 437px;
   margin-top: 16px;
   margin-bottom: 24px;
-
-  color: ${theme.colors.fon};
+  width: 100%;
+  color: ${theme.colors.text};
   text-align: center;
   font-family: ${theme.fonts[0]};
-  font-size: 14px;
+  font-size: ${theme.fontSizes.medium};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+  letter-spacing: 2px;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: rgb(154, 184, 121);
+    background-color: rgb(200, 200, 200);
+    color: ${theme.colors.black};
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: block;
@@ -267,7 +301,7 @@ export const FooterContacts = styled.div`
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.text};
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -284,6 +318,7 @@ export const FooterLogo = styled(Text)`
   font-size: 24px;
   font-weight: 600;
   line-height: normal;
+  color: ${theme.colors.text};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: none;
@@ -306,71 +341,31 @@ export const FooterContactsListItem = styled.li`
   cursor: pointer;
 `;
 
-// Team
-export const Copyright = styled.p`
-  margin-bottom: 6px;
-  font-family: 'Manrope';
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.375;
-  color: ${props => props.theme.blackText};
-
-  @media screen and (min-width: 320px) {
-    margin-bottom: 0;
-    margin-right: 4px;
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-export const Team = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const Description = styled.p`
-  margin-right: 5px;
-  font-family: 'Manrope';
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.375;
-  color: ${props => props.theme.blackText};
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-export const TeamModalBtn = styled.button`
-  padding: 0;
-  text-decoration: underline;
-  color: ${props => props.theme.blackText};
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-  animation: 1.5s ease-in-out 0s infinite normal both running heartbeat;
-
-  &:hover,
-  &:focus > svg {
-    transform: scale(1.2);
-    color: ${props => props.theme.orange};
-  }
-`;
-
 // ICONS
-export const ArrowDown = styled(arrowDown)``;
+export const ArrowDown = styled(arrowDown)`
+  fill: ${theme.colors.text};
+`;
 
-export const Facebook = styled(facebook)``;
+export const Facebook = styled(facebook)`
+  fill: ${theme.colors.text};
+`;
 
-export const Twiter = styled(twiter)``;
+export const Twiter = styled(twiter)`
+  fill: ${theme.colors.text};
+`;
 
-export const Instagram = styled(instagram)``;
+export const Instagram = styled(instagram)`
+  fill: ${theme.colors.text};
+`;
 
-export const Tiktok = styled(tiktok)``;
+export const Tiktok = styled(tiktok)`
+  fill: ${theme.colors.text};
+`;
 
-export const YouTube = styled(youtube)``;
+export const YouTube = styled(youtube)`
+  fill: ${theme.colors.text};
+`;
 
-export const Pinterest = styled(pinterest)``;
+export const Pinterest = styled(pinterest)`
+  fill: ${theme.colors.text};
+`;

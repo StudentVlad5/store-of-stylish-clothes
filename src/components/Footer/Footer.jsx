@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import {
   FooterSection,
   FooterContainer,
+  FooterContainerBrand,
+  FooterFaqListBrand,
   Facebook,
   Twiter,
   Instagram,
@@ -27,55 +29,40 @@ import {
   FooterContactsListItem,
   FooterSubscribtionDiscr1,
   FooterInputFormBtn,
+  LinkBrand,
 } from './Footer.styled';
-import { Link } from 'react-router-dom';
+import theme from 'components/baseStyles/Variables.styled';
 
 export const Footer = () => {
   const faqItems = [
     {
-      title: 'Customer Service',
-      options: ['FAQ', 'Shipping & Handling', '30-Day guarantee', 'Contact Us'],
-      links: [
-        `/addition/faq`,
-        `/addition/shipping`,
-        `/addition/guarantee`,
-        `/addition/contact`,
-      ],
-    },
-    {
-      title: 'Resources',
+      title: 'Catalog',
       options: [
-        'Find Your Plant 🌿',
-        'Plant Care Library',
-        'Blog',
-        'Free Online Course',
+        'Discounts',
+        'Novelty',
+        'Clothes',
+        'Footwear',
+        'Backpacks and Bags',
+        'Accessories',
       ],
       links: [
-        `/catalog?perPage=12&page=1`,
-        `/care`,
-        `/addition/blogs`,
-        `/addition/course`,
+        `/catalog`,
+        `/catalog`,
+        `/catalog`,
+        `/catalog`,
+        `/catalog`,
+        `/catalog`,
       ],
     },
     {
-      title: 'my homeforest 🌿',
-      options: ['My Account', 'Workshops', 'Rewards Program', 'Track My Order'],
-      links: [
-        `/user/profile`,
-        `/addition`,
-        `/addition/rewards_program`,
-        `/user/orders`,
-      ],
+      title: 'EXPLORE',
+      options: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
+      links: [`/`, `/`, `/`],
     },
     {
-      title: 'explore',
-      options: ['Our Story', 'Locations', 'Careers', 'Corporate Gifting'],
-      links: [
-        `/addition/about_company`,
-        `/addition/location`,
-        `/addition/careers`,
-        `/gifts`,
-      ],
+      title: 'CONTACTS',
+      options: ['+380111111111', 'support@quillis.com'],
+      links: [`tel:380111111111`, `mailto:support@quillis.com`],
     },
   ];
 
@@ -142,8 +129,8 @@ export const Footer = () => {
           </FooterSubscribtionDiscr>
 
           <FooterSubscribtionDiscr1>
-            Join our community of plant lovers and receive exclusive updates on
-            new arrivals, care tips, and promotions.
+            Join our community and receive exclusive updates on new arrivals,
+            care tips, and promotions.
           </FooterSubscribtionDiscr1>
 
           <FooterInputForm>
@@ -160,7 +147,7 @@ export const Footer = () => {
           </FooterInputForm>
 
           <FooterContacts>
-            <FooterLogo>homeforest</FooterLogo>
+            <FooterLogo>Quillis</FooterLogo>
 
             <FooterContactsList>
               <FooterContactsListItem>
@@ -190,6 +177,27 @@ export const Footer = () => {
           </FooterContacts>
         </div>
       </FooterContainer>
+      <FooterContainerBrand>
+        <FooterFaqListBrand>
+          <FooterFaqListItem
+            style={{
+              padding: '20px 0',
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <span>© Quillis 2024 - {new Date().getFullYear()}</span>
+            <span>
+              <FooterFaqListItem>
+                <LinkBrand to="">
+                  Designed and Developed by Brand Maze
+                </LinkBrand>
+              </FooterFaqListItem>
+            </span>
+          </FooterFaqListItem>
+        </FooterFaqListBrand>
+      </FooterContainerBrand>
     </FooterSection>
   );
 };

@@ -101,8 +101,8 @@ export const ListOfNewItems = () => {
             spaceBetween={30}
             slidesPerView={2}
             navigation={{
-              prevEl: '.swiper-btn-prev',
-              nextEl: '.swiper-btn-next',
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
             }}
             pagination={{ clickable: false }}
             keyboard={true}
@@ -148,8 +148,8 @@ export const ListOfNewItems = () => {
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
-              prevEl: '.swiper-btn-prev',
-              nextEl: '.swiper-btn-next',
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
             }}
             pagination={{ clickable: true }}
             keyboard={true}

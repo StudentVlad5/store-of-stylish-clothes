@@ -22,12 +22,12 @@ export const SectionTitleWrap = styled.div`
     padding: 0px 200px;
   }
   &:first-of-type {
-    padding: 30px 50px 0px;
+    padding: 0px 50px 0px;
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      padding: 30px 100px 0px;
+      padding: 0px 100px 0px;
     }
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      padding: 30px 200px 0px;
+      padding: 0px 200px 0px;
     }
   }
 `;

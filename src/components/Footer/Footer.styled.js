@@ -14,6 +14,7 @@ import { Text } from 'components/Header/Elements/logo/Logo.styled';
 export const FooterSection = styled.footer`
   background-color: ${theme.colors.brown4};
   color: ${theme.colors.text};
+  padding-top: 30px;
 `;
 export const LinkBrand = styled(Link)`
   text-decoration: none;

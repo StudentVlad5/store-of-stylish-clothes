@@ -14,12 +14,21 @@ export const SectionTitleWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0px 30px;
+  padding: 0px 50px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    padding: 0px 30px;
+    padding: 0px 100px;
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    padding: 0px 40px;
+    padding: 0px 200px;
+  }
+  &:first-of-type {
+    padding: 30px 50px 0px;
+    @media screen and (min-width: ${theme.breakpoints.tablet}) {
+      padding: 30px 100px 0px;
+    }
+    @media screen and (min-width: ${theme.breakpoints.desktop}) {
+      padding: 30px 200px 0px;
+    }
   }
 `;
 export const SectionTitle = styled.h1`

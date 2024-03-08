@@ -1,22 +1,28 @@
-import { NavLink } from 'react-router-dom';
+import theme from 'components/baseStyles/Variables.styled';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../baseStyles/Variables.styled';
-import { ReactComponent as arrowDown } from 'images/svg/arrowDownNav.svg';
+import { MobileNavList } from '../Nav.styled';
 
-const MobileNavList = styled.nav`
+export const MobileNavListModalFirst = styled(MobileNavList)`
+  margin: 0;
+`;
+
+export const ModalFirstOpen = styled.div`
+  position: fixed;
+  top: 192px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: ${theme.fonts[0]};
-  font-size: ${theme.medium};
-  text-decoration: none;
-  white-space: nowrap;
-  text-transform: capitalize;
-  margin-top: 60px;
+  background-color: ${theme.colors.white};
+  overflow: hidden;
 
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    margin-top: 88px;
+  &.is-modal-open {
+    transform: translateX(0);
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -24,19 +30,14 @@ const MobileNavList = styled.nav`
   }
 `;
 
-const NavList = styled(MobileNavList)`
-  display: none;
-  white-space: nowrap;
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    gap: 40px;
-    margin: 0px;
-  }
+export const ModalFirstBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 `;
 
-const NavItem = styled(NavLink)`
+export const ModalFirstListItem = styled(Link)`
   cursor: pointer;
   font-family: ${theme.fonts[0]};
   font-style: normal;
@@ -129,49 +130,3 @@ const NavItem = styled(NavLink)`
     background-color: ${theme.colors.fon};
   }
 `;
-const NavSubContainerUp = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  transform: translateY(-30px);
-`;
-const NavSubContainerDown = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  transform: translate(-30px, 30px);
-`;
-
-const IconArrow = styled(arrowDown)`
-  position: absolute;
-  left: 135px;
-  width: 24px;
-  height: 24px;
-`;
-
-const MobileNavBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-`;
-
-const NavItemBoxModal = styled.div`
-  display: flex;
-  position: relative;
-  margin-top: 40px;
-  
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    margin-top: 60px;
-  }
-`;
-
-export {
-  MobileNavList,
-  NavList,
-  NavItem,
-  NavSubContainerUp,
-  NavSubContainerDown,
-  IconArrow,
-  MobileNavBox,
-  NavItemBoxModal,
-};

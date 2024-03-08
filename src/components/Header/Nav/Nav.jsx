@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   MobileNavList,
@@ -6,9 +6,15 @@ import {
   NavItem,
   NavSubContainerUp,
   NavSubContainerDown,
+  IconArrow,
+  MobileNavBox,
+  NavItemBoxModal,
 } from './Nav.styled';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ModalFirst } from './ModalFirst/ModalFirst';
+import { MobileMenuSection } from '../Elements/menu/menu.styled';
+import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
 
 export const MobileNav = ({ toggleMenu }) => {
   const [searchParams] = useSearchParams();
@@ -16,6 +22,12 @@ export const MobileNav = ({ toggleMenu }) => {
   searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <MobileNavList>
@@ -39,21 +51,39 @@ export const MobileNav = ({ toggleMenu }) => {
           {t('Women')}
         </NavItem>
       </NavSubContainerUp>
-      <NavItem to={`/`} onClick={toggleMenu}>
-        {t('About Us')}
-      </NavItem>
-      <NavItem to={`/catalog`} onClick={toggleMenu}>
-        {t('Shop')}
-      </NavItem>
-      <NavItem to={`/gifts`} onClick={toggleMenu}>
-        {t('Gifts')}
-      </NavItem>
-      <NavItem to="/discounts" onClick={toggleMenu}>
-        {t('Discounts')}
-      </NavItem>
-      <NavItem to="/novetly" onClick={toggleMenu}>
-        {t('Novetly')}
-      </NavItem>
+      <MobileNavBox>
+        <NavItem to={`/`} onClick={toggleMenu}>
+          {t('About Us')}
+        </NavItem>
+
+        <NavItemBoxModal>
+          <NavItem to={`/catalog`} onClick={toggleMenu}>
+            {t('Shop')}
+          </NavItem>
+          <IconArrow onClick={toggleModal} />
+        </NavItemBoxModal>
+
+        {isModalOpen && (
+          <ModalFirstOpen
+            className={`collapsed ${isModalOpen ? 'is-modal-open' : ''}`}
+          >
+            <ModalFirst
+            toggleModal={toggleModal}
+              // onClose={() => setIsModalOpen(false)}
+            />
+          </ModalFirstOpen>
+        )}
+
+        <NavItem to={`/gifts`} onClick={toggleMenu}>
+          {t('Gifts')}
+        </NavItem>
+        <NavItem to="/discounts" onClick={toggleMenu}>
+          {t('Discounts')}
+        </NavItem>
+        <NavItem to="/novetly" onClick={toggleMenu}>
+          {t('Novetly')}
+        </NavItem>
+      </MobileNavBox>
     </MobileNavList>
   );
 };

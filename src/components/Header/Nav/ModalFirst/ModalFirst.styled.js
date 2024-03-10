@@ -2,6 +2,7 @@ import theme from 'components/baseStyles/Variables.styled';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { MobileNavList } from '../Nav.styled';
+import { ReactComponent as arrowBack } from 'images/svg/arrowBack.svg';
 
 export const MobileNavListModalFirst = styled(MobileNavList)`
   margin: 0;
@@ -9,7 +10,7 @@ export const MobileNavListModalFirst = styled(MobileNavList)`
 
 export const ModalFirstOpen = styled.div`
   position: fixed;
-  top: 192px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -129,4 +130,23 @@ export const ModalFirstListItem = styled(Link)`
     letter-spacing: 0;
     background-color: ${theme.colors.fon};
   }
+`;
+
+export const BackLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  color: ${theme.colors.brown4};
+  font-size: 20px;
+  font-style: normal;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+`;
+
+export const IconArrowBack = styled(arrowBack)`
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+  margin-right: 5px;
 `;

@@ -147,6 +147,7 @@ const IconArrow = styled(arrowDown)`
   left: 135px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;
 
 const MobileNavBox = styled.div`

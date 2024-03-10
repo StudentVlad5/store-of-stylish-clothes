@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  BackLink,
+  IconArrowBack,
   MobileNavListModalFirst,
   ModalFirstBox,
   ModalFirstListItem,
 } from './ModalFirst.styled';
-import { Link } from 'react-router-dom';
 import { MobileNavBox } from '../Nav.styled';
 
 export const ModalFirst = ({ toggleModal }) => {
   return (
     <MobileNavListModalFirst>
       <ModalFirstBox>
-        <Link onClick={toggleModal}>Back</Link>
+        <BackLink onClick={toggleModal}>
+          <IconArrowBack /> Back
+        </BackLink>
         <MobileNavBox>
           <ModalFirstListItem>Clothes</ModalFirstListItem>
           <ModalFirstListItem>Footwear</ModalFirstListItem>

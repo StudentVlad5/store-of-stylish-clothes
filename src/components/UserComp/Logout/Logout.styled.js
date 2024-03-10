@@ -11,10 +11,10 @@ export const LogoutBtn = styled.button`
   width: 110px;
   padding: 12px 0;
 
-  border-radius: 5px;
-  border: 1px solid ${theme.colors.green4};
-  color: ${theme.colors.brown1};
-  background-color: ${theme.colors.green4};
+  border-radius: 12px;
+  border: 1px solid ${theme.colors.brown4};
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.brown4};
 
   cursor: pointer;
   transition: ${theme.transition[1]};
@@ -29,15 +29,17 @@ export const LogoutBtn = styled.button`
   }
 
   &:hover,
-  &:focus,
+  &:focus {
+    border: 1px solid ${theme.colors.brown4};
+    color: ${theme.colors.brown4};
+    background-color: transparent;
+
+    transition: ${theme.transition[1]};
+  }
   &:hover > svg,
   &:focus > svg {
-    border: 1px solid ${theme.colors.green};
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
-
-    fill: ${theme.colors.white};
-    stroke: ${theme.colors.white};
+    fill: ${theme.colors.brown4};
+    stroke: ${theme.colors.brown4};
     transition: ${theme.transition[1]};
   }
 `;
@@ -45,7 +47,7 @@ export const LogoutBtn = styled.button`
 export const LogoutIconStyled = styled(LogoutIcon)`
   width: 10px;
   height: 10px;
-  stroke: ${theme.colors.brown1};
+  stroke: ${theme.colors.white};
   transition: ${theme.transition[1]};
 
   &:hover,

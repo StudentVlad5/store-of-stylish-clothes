@@ -24,16 +24,16 @@ const ProfileLabel = styled.label`
 
 const ProfileName = styled.span`
   margin-bottom: 8px;
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[0]};
-  font-size: 12px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 18px;
   }
 `;
 
@@ -47,12 +47,11 @@ const ProfileInput = styled(Field)`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown2};
 
-  border: 1px solid #c6cdd3;
-  border-color: transparent;
-  border-radius: 10px;
-  background: ${theme.colors.blue3};
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
+  background: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;
@@ -65,12 +64,12 @@ const ProfileInput = styled(Field)`
   }
 
   &:focus-visible {
-    border: 0.5px solid ${theme.colors.green};
+    border: 0.5px solid ${theme.colors.brown4};
     outline: none;
   }
 
   &::placeholder {
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown2};
     font-family: ${theme.fonts[1]};
     font-size: 12px;
     font-style: normal;

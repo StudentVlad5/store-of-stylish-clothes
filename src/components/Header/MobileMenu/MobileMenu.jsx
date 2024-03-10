@@ -21,12 +21,12 @@ export const MobileMenu = ({ toggleMenu }) => {
         </Text>
       </MobileHeader>
 
-      {/* {isLoggedIn ? (
+      {isLoggedIn ? (
         <MobileUserNav toggleMenu={toggleMenu} />
       ) : (
         <MobileAuthNav toggleMenu={toggleMenu} />
-      )} */}
-      {/* <MobileNavigation toggleMobileMenu={toggleMenu} /> */}
+      )}
+      <MobileNavigation toggleMobileMenu={toggleMenu} />
       <MobileNav toggleMenu={toggleMenu} />
     </>
   );

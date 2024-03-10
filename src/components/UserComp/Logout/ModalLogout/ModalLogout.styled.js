@@ -61,7 +61,7 @@ export const CloseIcon = styled(Close)`
 `;
 
 export const ModalDescription = styled.p`
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.brown2};
   font-size: 16px;
   font-weight: 500;
   text-align: center;
@@ -94,15 +94,15 @@ export const ModalButton = styled(Button)`
   text-align: center;
   text-transform: uppercase;
   line-height: normal;
-  border-radius: 5px;
-  border: 1px solid ${theme.colors.brown};
-  color: ${theme.colors.brown};
+  border-radius: 12px;
+  border: 1px solid ${theme.colors.brown4};
+  color: ${theme.colors.brown4};
   background-color: transparent;
   cursor: pointer;
   &:hover,
   &:focus {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.brown4};
   }
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {

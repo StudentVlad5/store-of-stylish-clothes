@@ -269,9 +269,6 @@ const RegisterForm = () => {
             )}
             {!isShown && (
               <BtnContainer>
-                <Btn type="submit" aria-label="submit registration">
-                  {isLoading ? 'Loading' : 'Register'}
-                </Btn>
                 <BackButton
                   type="button"
                   aria-label="back button"
@@ -279,6 +276,11 @@ const RegisterForm = () => {
                 >
                   {'Back'}
                 </BackButton>
+
+                <Btn type="submit" aria-label="submit registration">
+                  {isLoading ? 'Loading' : 'Register'}
+                </Btn>
+
                 <BoxText>
                   <span>{'Already have an account?'}</span>{' '}
                   <StyledLink to="/signin">{'Sign In'}</StyledLink>

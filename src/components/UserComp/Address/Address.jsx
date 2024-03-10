@@ -57,7 +57,9 @@ export const Address = ({ onClose }) => {
           onChange={handleChange}
         >
           <ProfileLabel htmlFor="userName">
-            <ProfileName>First name*</ProfileName>
+            <ProfileName>
+              First name <span style={{ color: 'red' }}>*</span>
+            </ProfileName>
             <ProfileInput
               type="text"
               name="userName"
@@ -70,7 +72,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="surname">
-            <ProfileName>Last name*</ProfileName>
+            <ProfileName>Last name <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="surname"
@@ -94,7 +96,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="address1">
-            <ProfileName>Address 1</ProfileName>
+            <ProfileName>Address 1 <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="address1"
               name="address1"
@@ -118,7 +120,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="city">
-            <ProfileName>City*</ProfileName>
+            <ProfileName>City <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="city"
@@ -128,7 +130,7 @@ export const Address = ({ onClose }) => {
             {errors.city && touched.city ? <Error>{errors.city}</Error> : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="state">
-            <ProfileName>State*</ProfileName>
+            <ProfileName>State <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="state"
@@ -140,7 +142,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="zipCode">
-            <ProfileName>Zip code*</ProfileName>
+            <ProfileName>Zip code <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="zipCode"
@@ -152,7 +154,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="phone">
-            <ProfileName>Phone*</ProfileName>
+            <ProfileName>Phone <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="tel"
               name="phone"
@@ -164,7 +166,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="email">
-            <ProfileName>Email*</ProfileName>
+            <ProfileName>Email <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="email"
               name="email"

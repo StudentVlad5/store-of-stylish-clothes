@@ -13,10 +13,16 @@ export const BackButton = styled(Button)`
   align-items: center;
   width: 125px;
 
-  color: ${theme.colors.brown1};
-  background: ${theme.colors.green4};
+  color: ${theme.colors.white};
+  background: ${theme.colors.brown4};
+  font-family: ${theme.fonts[0]};
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   transform: scale(1);
 
   cursor: pointer;
@@ -29,8 +35,9 @@ export const BackButton = styled(Button)`
   &:focus {
     transform: scale(1.05);
     transition: transform 0.5s;
-    color: ${theme.colors.white};
-    background: ${theme.colors.brown2};
+    border: 2px solid ${theme.colors.brown4};
+    color: ${theme.colors.brown4};
+    background: transparent;
   }
 
   &:disabled {

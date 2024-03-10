@@ -388,43 +388,43 @@ input::-webkit-calendar-picker-indicator:hover {
 
 .linkFolder.active{
   background-color: ${theme.colors.darkGreen};
-  color: ${theme.colors.white}
+  color: ${theme.colors.brown3}
 }
 
 .linkFolder.sideBar_menu{
    position: relative;
   padding-left: 10px;
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.brown2};
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 20px;
   }
 
   &:hover,
   &:focus {
-    color: ${theme.colors.green2};
+    color: ${theme.colors.brown3};
   }
 
   &::before {
     content: '';
     position: absolute;
-    top: 18px;
+    top: 25px;
     left: 0;
     width: 110%;
     height: 0.5px;
-    background: ${theme.colors.beige};
+    background: ${theme.colors.brown3};
 
     @media (min-width: ${theme.breakpoints.tablet}) {
       width: 150px;
@@ -438,7 +438,7 @@ input::-webkit-calendar-picker-indicator:hover {
   &.active {
     margin-left: 5px;
     font-weight: 500;
-    color: ${theme.colors.darkGreen};
+    color: ${theme.colors.brown3};
     transform: ${theme.scale[0]};
     transition: ${theme.transition[0]};
     background-color: transparent;

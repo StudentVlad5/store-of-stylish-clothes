@@ -46,10 +46,10 @@ export const Navigation = () => {
           {isLoggedIn ? <UserNav /> : <AuthNav />}
 
           {isLoggedIn ? (
-            <Link to={'/user/bookmark'}>
+            <Link to={'/user/favorites'}>
               <IconWrapper>
                 <IconBookmark aria-label="Bookmark" />
-                {bookmark.length > 0 && <Count>{favorites.length}</Count>}
+                {favorites.length > 0 && <Count>{favorites.length}</Count>}
               </IconWrapper>
             </Link>
           ) : (
@@ -94,7 +94,7 @@ export const MobileNavigation = ({ toggleMobileMenu }) => {
           <Link to={'/user/favorites'} onClick={toggleMobileMenu}>
             <IconWrapper>
               <IconBookmark aria-label="Bookmark" />
-              {bookmark.length > 0 && <Count>{bookmark.length}</Count>}
+              {favorites.length > 0 && <Count>{favorites.length}</Count>}
             </IconWrapper>
           </Link>
         ) : (

@@ -33,12 +33,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: ${theme.fonts[0]}; //Raisonne pro
+  color: ${theme.colors.brown2};
+  font-family: ${theme.fonts[0]};
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: ${theme.colors.green};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 42px;
@@ -50,7 +50,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  font-family: ${theme.fonts[0]}; //Raisonne pro
+  font-family: ${theme.fonts[0]};
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

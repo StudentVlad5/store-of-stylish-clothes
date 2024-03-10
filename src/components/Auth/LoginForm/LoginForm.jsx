@@ -24,7 +24,7 @@ import {
 } from '../AuthForm.styled';
 
 export const LoginForm = () => {
-  const [isShown, setIsShown] = useState(true); //
+  const [isShown, setIsShown] = useState(true); 
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -70,14 +70,14 @@ export const LoginForm = () => {
       ? null
       : isValide
       ? `${theme.colors.red}`
-      : `${theme.colors.darkGreen}`;
+      : `${theme.colors.brown4}`;
   };
   return (
     <FormSection>
       <FormContainer>
         <Formik validationSchema={schemas.schemasLogin}>
           <FormLogin onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleLogin>{'Login Page'}</TitleLogin>
+            <TitleLogin>{'Login'}</TitleLogin>
             {isShown && (
               <div>
                 <Input

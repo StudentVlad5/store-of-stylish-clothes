@@ -5,11 +5,12 @@ import { IconBtn } from '../UserData/UserData.styled';
 
 const ProfileInputSelect = styled(ProfileInput)`
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
+  border-radius: 12px;
 `;
 
 const Label = styled.div`
@@ -29,12 +30,11 @@ const Input = styled.p`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
 
-  border: 1px solid #c6cdd3;
-  border-color: transparent;
-  border-radius: 10px;
-  background: ${theme.colors.blue3};
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
+  background: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 12px;

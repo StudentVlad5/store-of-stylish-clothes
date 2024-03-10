@@ -144,11 +144,11 @@ const BtnLight = styled(Button)`
   font-weight: 300;
   line-height: normal;
   text-transform: uppercase;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
 
   background-color: transparent;
   border-radius: 10px;
-  border: 1px solid ${theme.colors.brown1};
+  border: 1px solid ${theme.colors.brown4};
 
   cursor: pointer;
 
@@ -161,7 +161,7 @@ const BtnLight = styled(Button)`
   &:hover,
   &:focus {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.brown4};
   }
 `;
 
@@ -178,11 +178,11 @@ const BtnGreen = styled(Button)`
   font-weight: 300;
   line-height: normal;
   text-transform: uppercase;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.white};
 
-  background-color: ${theme.colors.green4};
+  background-color: ${theme.colors.brown4};
   border-radius: 10px;
-  border: 1px solid ${theme.colors.green4};
+  border: 1px solid ${theme.colors.brown4};
 
   cursor: pointer;
 
@@ -198,8 +198,8 @@ const BtnGreen = styled(Button)`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    color: ${theme.colors.brown4};
+    background-color: transparent;
   }
 
   & :disabled {
@@ -220,8 +220,9 @@ const ProfileContainer = styled.div`
 
   width: 100%;
   padding: 20px;
-
-  background-color: ${theme.colors.blue3};
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
+  background-color: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     gap: 10px;
@@ -239,32 +240,32 @@ const BtnContainer = styled.div`
 
 const ProfileSpanName = styled.span`
   font-family: ${theme.fonts[1]};
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: 0.32px;
-  color: ${theme.colors.green};
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
-  }
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 16px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 18px;
   }
 `;
 
 const ProfileSpanValues = styled.span`
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
   color: ${theme.colors.brown1};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 12px;
+    font-size: 18px;
   }
 `;
 
@@ -328,7 +329,7 @@ const TitleArticle = styled.h2`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 18px;

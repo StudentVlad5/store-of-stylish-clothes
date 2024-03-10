@@ -80,15 +80,17 @@ const Input = styled(Field)`
   font-weight: 300;
   line-height: normal;
   color: ${theme.colors.brown2};
-  background: ${theme.colors.blue1};
+  background-color: transparent;
 
-  border: none;
+
+  border: 2px solid ${theme.colors.brown4};
+  border-radius: 16px;
   transition: ${theme.transition[0]};
 
   &:focus,
   &:hover {
-    border-color: ${theme.colors.darkGreen};
-    color: ${theme.colors.darkGreen};
+    border-color: ${theme.colors.brown4};
+    color: ${theme.colors.brown2};
     outline: none;
   }
 
@@ -139,7 +141,7 @@ const Span = styled.span`
   position: absolute;
   left: 20px;
   top: 13px;
-
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: ${theme.fontSizes.small};
   text-transform: uppercase;
@@ -192,11 +194,11 @@ const Btn = styled(Button)`
   font-weight: 300;
   line-height: normal;
   text-transform: uppercase;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.white};
 
   border: none;
-  border-radius: 4px;
-  background: ${theme.colors.green3};
+  border-radius: 12px;
+  background: ${theme.colors.brown4};
 
   cursor: pointer;
   position: relative;
@@ -206,8 +208,9 @@ const Btn = styled(Button)`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.white};
-    background: ${theme.colors.brown2};
+    border: 2px solid ${theme.colors.brown4};
+    color: ${theme.colors.brown4};
+    background: transparent;
   }
 
   &:disabled {
@@ -260,7 +263,7 @@ const StyledLink = styled(Link)`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.brown3};
+    color: ${theme.colors.brown4};
   }
 `;
 

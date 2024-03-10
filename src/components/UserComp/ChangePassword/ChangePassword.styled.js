@@ -35,12 +35,11 @@ const Input = styled.input`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
 
-  border: 1px solid #c6cdd3;
-  border-color: transparent;
-  border-radius: 10px;
-  background: ${theme.colors.blue3};
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
+  background: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 12px;
@@ -53,12 +52,12 @@ const Input = styled.input`
   }
 
   &:focus-visible {
-    border: 0.5px solid ${theme.colors.green};
+    border: 0.5px solid ${theme.colors.brown4};
     outline: none;
   }
 
   &::placeholder {
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown1};
     font-family: ${theme.fonts[1]};
     font-size: 10px;
     font-style: normal;
@@ -88,16 +87,15 @@ const EditBtn = styled(IconBtn)`
 
 const ShowIcon = styled(ShowPassword)`
   right: 10px;
-  top: 45px;
+  top: 55px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     right: 15px;
-    top: 50px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     right: 20px;
-    top: 55px;
+    top: 63px;
   }
 
   & > svg {

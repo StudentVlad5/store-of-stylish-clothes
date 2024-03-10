@@ -24,46 +24,47 @@ let perPage = 12;
 
 export const Catalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterState = {
-    typeOfPlants:
-      searchParams.getAll('typeOfPlants') !== undefined
-        ? searchParams.getAll('typeOfPlants')
-        : [],
-    rare:
-      searchParams.getAll('rare') !== undefined
-        ? searchParams.getAll('rare')
-        : [],
-    light:
-      searchParams.getAll('light') !== undefined
-        ? searchParams.getAll('light')
-        : [],
-    petFriendly:
-      searchParams.getAll('petFriendly') !== undefined
-        ? searchParams.getAll('petFriendly')
-        : [],
-    minPrice:
-      searchParams.get('minPrice') !== undefined &&
-      searchParams.get('minPrice') !== null
-        ? searchParams.get('minPrice')
-        : '',
-    maxPrice:
-      searchParams.get('maxPrice') !== undefined &&
-      searchParams.get('maxPrice') !== null
-        ? searchParams.get('maxPrice')
-        : '',
-    hardToKill:
-      searchParams.getAll('hardToKill') !== undefined
-        ? searchParams.getAll('hardToKill')
-        : [],
-    potSize:
-      searchParams.getAll('potSize') !== undefined
-        ? searchParams.getAll('potSize')
-        : [],
-    waterSchedule:
-      searchParams.getAll('waterSchedule') !== undefined
-        ? searchParams.getAll('waterSchedule')
-        : [],
-  };
+  const filterState = {};
+  // const filterState = {
+  //   typeOfPlants:
+  //     searchParams.getAll('typeOfPlants') !== undefined
+  //       ? searchParams.getAll('typeOfPlants')
+  //       : [],
+  //   rare:
+  //     searchParams.getAll('rare') !== undefined
+  //       ? searchParams.getAll('rare')
+  //       : [],
+  //   light:
+  //     searchParams.getAll('light') !== undefined
+  //       ? searchParams.getAll('light')
+  //       : [],
+  //   petFriendly:
+  //     searchParams.getAll('petFriendly') !== undefined
+  //       ? searchParams.getAll('petFriendly')
+  //       : [],
+  //   minPrice:
+  //     searchParams.get('minPrice') !== undefined &&
+  //     searchParams.get('minPrice') !== null
+  //       ? searchParams.get('minPrice')
+  //       : '',
+  //   maxPrice:
+  //     searchParams.get('maxPrice') !== undefined &&
+  //     searchParams.get('maxPrice') !== null
+  //       ? searchParams.get('maxPrice')
+  //       : '',
+  //   hardToKill:
+  //     searchParams.getAll('hardToKill') !== undefined
+  //       ? searchParams.getAll('hardToKill')
+  //       : [],
+  //   potSize:
+  //     searchParams.getAll('potSize') !== undefined
+  //       ? searchParams.getAll('potSize')
+  //       : [],
+  //   waterSchedule:
+  //     searchParams.getAll('waterSchedule') !== undefined
+  //       ? searchParams.getAll('waterSchedule')
+  //       : [],
+  // };
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -73,10 +74,13 @@ export const Catalog = () => {
   );
   const routeParams = useParams();
   const [category, setCategory] = useState(
-    routeParams.category ? routeParams.category : 'plants',
+    routeParams.category ? routeParams.category : 'clothes',
   );
   const [selectedFilter, setSelectedFilter] = useState([]);
-  const [filters, setFilters] = useState(filterState);
+  const [filters, setFilters] = useState(
+    '',
+    // filterState
+  );
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState(
     getFromStorage('sort') ? getFromStorage('sort') : '',
@@ -265,7 +269,7 @@ export const Catalog = () => {
               <SC.HeadlineShop $primary>{category}</SC.HeadlineShop>
             </a>
           </div>
-          {category === 'plants' && (
+          {category === 'clothes' && (
             <SC.HeadingBtnBox>
               <SC.SortBox>
                 <SC.Accord onClick={toggleSort}>
@@ -313,7 +317,7 @@ export const Catalog = () => {
           </SC.SearchResults>
         )}
         <SC.SelectedFilters>
-          {selectedFilter.map((filter, i) => {
+          {/* {selectedFilter.map((filter, i) => {
             return (
               <label key={i} data-key={filter}>
                 <span>{filter}</span>
@@ -323,11 +327,11 @@ export const Catalog = () => {
                 />
               </label>
             );
-          })}
+          })} */}
         </SC.SelectedFilters>
         <SC.GridContainer onClick={handleClick}>
           <SC.FiltersContainer>
-            {category === 'plants' && <CatalogFilter />}
+            {category === 'clothes' && <CatalogFilter />}
           </SC.FiltersContainer>
           <SC.GridWrapper>
             {isLoading ? onLoading() : onLoaded()}

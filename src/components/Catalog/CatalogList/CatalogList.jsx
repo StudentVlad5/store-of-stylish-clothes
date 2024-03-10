@@ -49,34 +49,34 @@ export const CatalogList = ({ products }) => {
     <SC.Grid>
       {products.map(card => {
         return (
-          <SC.Card key={card._id}>
-            <SC.BtnForFavorite onClick={handleFavoriteBtnClick(card.article)}>
-              {favorites.includes(card.article) ? (
+          <SC.Card key={card.uuid}>
+            <SC.BtnForFavorite onClick={handleFavoriteBtnClick(card.uuid)}>
+              {favorites.includes(card.uuid) ? (
                 <SC.IconFav size={30} fill={theme.colors.darkGreen} />
               ) : (
                 <SC.IconFav size={30} color={theme.colors.beige} />
               )}
             </SC.BtnForFavorite>
-            <NavLink to={`/catalog/byid/${card._id}`}>
+            <NavLink to={`/catalog/byid/${card.uuid}`}>
               <SC.CardImage
-                src={BASE_URL_IMG + card.images[0]}
-                alt={card.name}
+                src={card.mainImage}
+                alt={card.title}
                 width="285"
                 height="460"
                 loading="lazy"
               />
               <SC.CardDescription>
                 <SC.CardTitle>
-                  <SC.CardName>{card.name}</SC.CardName>
+                  <SC.CardName>{card.title}</SC.CardName>
                   {card.discount !== 0 ? (
                     <SC.CardPrices>
-                      {card.currentPrice && (
+                      {card.price && (
                         <SC.CardDiscount>
-                          {card.currentPrice}
-                          {card.currency}
+                          {card.price}
+                          {card?.currency ? card?.currency : '₴'}
                         </SC.CardDiscount>
                       )}
-                      {card.oldPrice && (
+                      {card?.oldPrice && (
                         <SC.CardPrice>
                           {card.oldPrice}
                           {card.currency}
@@ -85,7 +85,7 @@ export const CatalogList = ({ products }) => {
                     </SC.CardPrices>
                   ) : (
                     <SC.CardPrices>
-                      {card.currentPrice && (
+                      {card?.currentPrice && (
                         <SC.CardDiscount>
                           {card.currentPrice}
                           {card.currency}
@@ -97,13 +97,13 @@ export const CatalogList = ({ products }) => {
                 <SC.CardSize>
                   <span>Size</span>
                   <div>
-                    {card.options.map(option => {
+                    {/* {card.options.map(option => {
                       return (
                         option.total != 0 && (
                           <span key={option._id}>{option.title}</span>
                         )
                       );
-                    })}
+                    })} */}
                   </div>
                 </SC.CardSize>
               </SC.CardDescription>

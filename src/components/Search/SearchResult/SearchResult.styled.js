@@ -8,7 +8,7 @@ import {
   CardName,
   CardPrice,
   CardPrices,
-  CardSize,
+  CardInfo,
   CardTitle,
 } from 'components/Catalog/CatalogList/CatalogList.styled';
 
@@ -188,7 +188,7 @@ const CardPriceSearch = styled(CardPrice)`
   font-size: 10px;
 `;
 
-const CardSizeSearch = styled(CardSize)`
+const CardSizeSearch = styled(CardInfo)`
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;

@@ -96,13 +96,17 @@ const CardTitle = styled.div`
 `;
 
 const CardName = styled.span`
-  font-family: ${theme.fonts[1]}; //Nib Pro
-  font-size: 12px;
+  color: ${theme.colors.brown2};
+  font-size: ${theme.fontSizes.extra};
   font-style: normal;
-  font-weight: 400;
+  margin-top: 0;
+  text-align: left;
+  font-family: ${theme.fonts[0]};
+  font-weight: 600;
   line-height: normal;
-  letter-spacing: 0.32px;
-  color: ${theme.colors.green};
+  margin-bottom: 0;
+  letter-spacing: 0;
+  text-transform: none;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 16px;
@@ -120,22 +124,23 @@ const CardPrices = styled.div`
 `;
 
 const CardDiscount = styled.span`
-  font-family: ${theme.fonts[1]}; //Nib Pro
-  font-size: 12px;
+  font-size: ${theme.fontSizes.medium};
   font-style: normal;
+  font-family: ${theme.fonts[0]};
   font-weight: 400;
   line-height: normal;
-  letter-spacing: 0.32px;
+  letter-spacing: 0;
+  text-transform: none;
 
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: ${theme.fontSizes.large};
   }
 `;
 
-const CardPrice = styled.span`
-  font-family: ${theme.fonts[1]}; //Nib Pro
+const CardPrice = styled(CardDiscount)`
+  font-family: ${theme.fonts[1]};
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -150,7 +155,7 @@ const CardPrice = styled.span`
   }
 `;
 
-const CardSize = styled.div`
+const CardInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -159,14 +164,14 @@ const CardSize = styled.div`
 
   & span {
     font-family: ${theme.fonts[0]}; //Raisonne Pro
-    font-size: 8px;
+    font-size: ${theme.fontSizes.medium};
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 16.8px */
     color: ${theme.colors.brown2};
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      font-size: 12px;
+      font-size: ${theme.fontSizes.large};
     }
   }
 
@@ -177,10 +182,6 @@ const CardSize = styled.div`
 `;
 
 const BtnForFavorite = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,6 +191,31 @@ const BtnForFavorite = styled.button`
 
   border: none;
   background: transparent;
+`;
+const CardStatus = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  font-family: ${theme.fonts[1]};
+  font-size: ${theme.fontSizes.extra};
+  color: ${theme.colors.brown2};
+  &:first-of-type {
+    position: absolute;
+    width: auto;
+    top: -10px;
+    right: -10px;
+    padding: 10px 22px;
+    text-transform: lowercase;
+    font-family: ${theme.fonts[0]};
+    color: ${theme.colors.white};
+    border-radius: 16px;
+    background-color: ${theme.colors.brown4};
+    z-index: 10;
+  }
+  &:last-of-type {
+    justify-content: space-between;
+  }
 `;
 
 export {
@@ -202,7 +228,8 @@ export {
   CardPrices,
   CardDiscount,
   CardPrice,
-  CardSize,
+  CardInfo,
   BtnForFavorite,
   IconFav,
+  CardStatus,
 };

@@ -12,65 +12,35 @@ import * as SC from './CatalogFilter.styled';
 
 import { ReactComponent as Open } from 'images/svg/open.svg';
 
-const initialState = {
-  typeOfPlants: [],
-  rare: [],
-  light: [],
-  petFriendly: [],
-  minPrice: '',
-  maxPrice: '',
-  hardToKill: [],
-  potSize: [],
-  waterSchedule: [],
-};
+// const initialState = {
+//   sizes: [],
+//   minPrice: '',
+//   maxPrice: '',
+// };
 
-export const CatalogFilter = () => {
+export const CatalogFilter = ({ filterState }) => {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('plants');
+  const [category, setCategory] = useState('clothes');
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterState = {
-    typeOfPlants:
-      searchParams.getAll('typeOfPlants') !== undefined
-        ? searchParams.getAll('typeOfPlants')
-        : [],
-    rare:
-      searchParams.getAll('rare') !== undefined
-        ? searchParams.getAll('rare')
-        : [],
-    light:
-      searchParams.getAll('light') !== undefined
-        ? searchParams.getAll('light')
-        : [],
-    petFriendly:
-      searchParams.getAll('petFriendly') !== undefined
-        ? searchParams.getAll('petFriendly')
-        : [],
-    minPrice:
-      searchParams.get('minPrice') !== undefined &&
-      searchParams.get('minPrice') !== null
-        ? searchParams.get('minPrice')
-        : '',
-    maxPrice:
-      searchParams.get('maxPrice') !== undefined &&
-      searchParams.get('maxPrice') !== null
-        ? searchParams.get('maxPrice')
-        : '',
-    hardToKill:
-      searchParams.getAll('hardToKill') !== undefined
-        ? searchParams.getAll('hardToKill')
-        : [],
-    potSize:
-      searchParams.getAll('potSize') !== undefined
-        ? searchParams.getAll('potSize')
-        : [],
-    waterSchedule:
-      searchParams.getAll('waterSchedule') !== undefined
-        ? searchParams.getAll('waterSchedule')
-        : [],
-  };
+  // const filterState = {
+  //   sizes:
+  //     searchParams.getAll('sizes') !== undefined
+  //       ? searchParams.getAll('sizes')
+  //       : [],
+  //   minPrice:
+  //     searchParams.get('minPrice') !== undefined &&
+  //     searchParams.get('minPrice') !== null
+  //       ? searchParams.get('minPrice')
+  //       : '',
+  //   maxPrice:
+  //     searchParams.get('maxPrice') !== undefined &&
+  //     searchParams.get('maxPrice') !== null
+  //       ? searchParams.get('maxPrice')
+  //       : '',
+  // };
   const [filters, setFilters] = useState(
-    getFromStorage('filters') ? getFromStorage('filters') : initialState,
-    // filterState,
+    getFromStorage('filters') ? getFromStorage('filters') : filterState,
+    // initialState,
   );
   const routeParams = useParams();
   const [error, setError] = useState(null);
@@ -86,21 +56,21 @@ export const CatalogFilter = () => {
   );
 
   // get all filter elements
-  useEffect(() => {
-    (async function getData() {
-      try {
-        const { data } = await fetchData(`/catalog/${category}`);
-        getActiveLabel();
-        setCategory(routeParams.category);
-        if (!data) {
-          return onFetchError(t('Whoops, something went wrong'));
-        }
-        setProducts(data.catalog);
-      } catch (error) {
-        setError(error);
-      }
-    })();
-  }, [t]);
+  // useEffect(() => {
+  //   (async function getData() {
+  //     try {
+  //       const { data } = await fetchData(`/catalog/${category}`);
+  //       getActiveLabel();
+  //       setCategory(routeParams.category);
+  //       if (!data) {
+  //         return onFetchError(t('Whoops, something went wrong'));
+  //       }
+  //       setProducts(data.catalog);
+  //     } catch (error) {
+  //       setError(error);
+  //     }
+  //   })();
+  // }, [t]);
 
   // save to local stor selected filter elements
   useEffect(() => {
@@ -276,12 +246,12 @@ export const CatalogFilter = () => {
       <SC.Filters>
         <SC.Filter>
           <SC.FilterHeading
-            data-key="typeOfPlants"
+            data-key="MAN&WOMAN"
             onClick={e => {
               toggleFilterItem(e);
             }}
           >
-            <span>{t('TYPE OF PLANTS')}</span>
+            <span>{t('MAN OR WOMAN')}</span>
             <SC.IconBtn
               type="button"
               aria-label="switch to open filter"
@@ -291,15 +261,15 @@ export const CatalogFilter = () => {
             </SC.IconBtn>
           </SC.FilterHeading>
           <SC.FilterInnerList>
-            {getUniqueOptions('typeOfPlants').map((card, i) => {
+            {filterState[0]?.level_1.map((card, i) => {
               return (
                 <label key={i} data-key={card}>
                   <SC.FilterInnerListItem
                     type="checkbox"
-                    name="typeOfPlants"
+                    name="man&woman"
                     value={card}
                     data-input={card}
-                    defaultChecked={filters['typeOfPlants'].includes(card)}
+                    // defaultChecked={filters['typeOfPlants'].includes(card)}
                     onChange={e => {
                       handleChange(e);
                     }}
@@ -312,12 +282,12 @@ export const CatalogFilter = () => {
         </SC.Filter>
         <SC.Filter>
           <SC.FilterHeading
-            data-key="rare"
+            data-key="category"
             onClick={e => {
               toggleFilterItem(e);
             }}
           >
-            <span>{t('RARE')}</span>
+            <span>{t('CATEGORY')}</span>
             <SC.IconBtn
               type="button"
               aria-label="switch to open filter"
@@ -327,15 +297,15 @@ export const CatalogFilter = () => {
             </SC.IconBtn>
           </SC.FilterHeading>
           <SC.FilterInnerList>
-            {getUniqueOptions('rare').map((card, i) => {
+            {filterState[0]?.level_2.map((card, i) => {
               return (
                 <label key={i} data-key={card}>
                   <SC.FilterInnerListItem
                     type="checkbox"
-                    name="rare"
+                    name="category"
                     value={card}
                     data-input={card}
-                    defaultChecked={filters['rare'].includes(card)}
+                    // defaultChecked={filters['rare'].includes(card)}
                     onChange={e => {
                       handleChange(e);
                     }}
@@ -348,12 +318,12 @@ export const CatalogFilter = () => {
         </SC.Filter>
         <SC.Filter>
           <SC.FilterHeading
-            data-key="petFriendly"
+            data-key="product"
             onClick={e => {
               toggleFilterItem(e);
             }}
           >
-            <span>{t('PET FRIENDLY')}</span>
+            <span>{t('PRODUCT NAME')}</span>
             <SC.IconBtn
               type="button"
               aria-label="switch to open filter"
@@ -363,166 +333,20 @@ export const CatalogFilter = () => {
             </SC.IconBtn>
           </SC.FilterHeading>
           <SC.FilterInnerList>
-            {getUniqueOptions('petFriendly').map((card, i) => {
+            {filterState[0]?.level_3.map((card, i) => {
               return (
                 <label key={i} data-key={card}>
                   <SC.FilterInnerListItem
                     type="checkbox"
-                    name="petFriendly"
+                    name="product"
                     value={card}
                     data-input={card}
-                    defaultChecked={filters['petFriendly'].includes(card)}
+                    // defaultChecked={filters['petFriendly'].includes(card)}
                     onChange={e => {
                       handleChange(e);
                     }}
                   />
                   <span>{card}</span>
-                </label>
-              );
-            })}
-          </SC.FilterInnerList>
-        </SC.Filter>
-        <SC.Filter>
-          <SC.FilterHeading
-            data-key="hardToKill"
-            onClick={e => {
-              toggleFilterItem(e);
-            }}
-          >
-            <span>{t('HARD TO KILL')}</span>
-            <SC.IconBtn
-              type="button"
-              aria-label="switch to open filter"
-              aria-expanded="false"
-            >
-              <Open />
-            </SC.IconBtn>
-          </SC.FilterHeading>
-          <SC.FilterInnerList>
-            {getUniqueOptions('hardToKill').map((card, i) => {
-              return (
-                <label key={i} data-key={card}>
-                  <SC.FilterInnerListItem
-                    type="checkbox"
-                    name="hardToKill"
-                    value={card}
-                    data-input={card}
-                    defaultChecked={filters['hardToKill'].includes(card)}
-                    onChange={e => {
-                      handleChange(e);
-                    }}
-                  />
-                  <span>{card}</span>
-                </label>
-              );
-            })}
-          </SC.FilterInnerList>
-        </SC.Filter>
-        <SC.Filter>
-          <SC.FilterHeading
-            data-key="light"
-            onClick={e => {
-              toggleFilterItem(e);
-            }}
-          >
-            <span>{t('LIGHT')}</span>
-            <SC.IconBtn
-              type="button"
-              aria-label="switch to open filter"
-              aria-expanded="false"
-            >
-              <Open />
-            </SC.IconBtn>
-          </SC.FilterHeading>
-          <SC.FilterInnerList>
-            {getUniqueOptions('light').map((card, i) => {
-              return (
-                <label key={i} data-key={card}>
-                  <SC.FilterInnerListItem
-                    type="checkbox"
-                    name="light"
-                    value={card}
-                    data-input={card}
-                    defaultChecked={filters['light'].includes(card)}
-                    onChange={e => {
-                      handleChange(e);
-                    }}
-                  />
-                  <span>{card}</span>
-                </label>
-              );
-            })}
-          </SC.FilterInnerList>
-        </SC.Filter>
-        <SC.Filter>
-          <SC.FilterHeading
-            data-key="waterSchedule"
-            onClick={e => {
-              toggleFilterItem(e);
-            }}
-          >
-            <span>{t('WATER SCHEDULE')}</span>
-            <SC.IconBtn
-              type="button"
-              aria-label="switch to open filter"
-              aria-expanded="false"
-            >
-              <Open />
-            </SC.IconBtn>
-          </SC.FilterHeading>
-          <SC.FilterInnerList>
-            {getUniqueOptions('waterSchedule').map((card, i) => {
-              return (
-                <label key={i} data-key={card}>
-                  <SC.FilterInnerListItem
-                    type="checkbox"
-                    name="waterSchedule"
-                    value={card}
-                    data-input={card}
-                    defaultChecked={filters['waterSchedule'].includes(card)}
-                    onChange={e => {
-                      handleChange(e);
-                    }}
-                  />
-                  <span>{card}</span>
-                </label>
-              );
-            })}
-          </SC.FilterInnerList>
-        </SC.Filter>
-        <SC.Filter>
-          <SC.FilterHeading
-            data-key="potSize"
-            onClick={e => {
-              toggleFilterItem(e);
-            }}
-          >
-            <span>{t('POT SIZE')}</span>
-            <SC.IconBtn
-              type="button"
-              aria-label="switch to open filter"
-              aria-expanded="false"
-            >
-              <Open />
-            </SC.IconBtn>
-          </SC.FilterHeading>
-          <SC.FilterInnerList>
-            {getUniqueOptions('potSize').map((card, i) => {
-              return (
-                <label key={i} data-key={card.size}>
-                  <SC.FilterInnerListItem
-                    type="checkbox"
-                    name="potSize"
-                    value={card.size}
-                    data-input={card.size}
-                    defaultChecked={filters['potSize'].includes(card.size)}
-                    onChange={e => {
-                      handleChange(e);
-                    }}
-                  />
-                  <span>
-                    {card.size} {card.unit}
-                  </span>
                 </label>
               );
             })}

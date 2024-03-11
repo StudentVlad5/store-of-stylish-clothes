@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,10 +7,11 @@ import { addReload } from 'redux/reload/slice';
 import { addFavorite, removeFavorite } from 'redux/auth/operations';
 import { getUser, selectId, selectIsLoggedIn } from 'redux/auth/selectors';
 import { onSuccess, onInfo } from 'components/helpers/Messages/NotifyMessages';
-import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
 
 import theme from 'components/baseStyles/Variables.styled';
 import * as SC from './CatalogList.styled';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 export const CatalogList = ({ products }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -21,6 +22,8 @@ export const CatalogList = ({ products }) => {
 
   const routeParams = useParams();
   const dispatch = useDispatch();
+
+  const { currency } = useContext(StatusContext);
 
   const toggleFavorite = async id => {
     let isInFavorite = false;
@@ -50,30 +53,38 @@ export const CatalogList = ({ products }) => {
       {products.map(card => {
         return (
           <SC.Card key={card.uuid}>
-            <SC.BtnForFavorite onClick={handleFavoriteBtnClick(card.uuid)}>
-              {favorites.includes(card.uuid) ? (
-                <SC.IconFav size={30} fill={theme.colors.darkGreen} />
-              ) : (
-                <SC.IconFav size={30} color={theme.colors.beige} />
-              )}
-            </SC.BtnForFavorite>
             <NavLink to={`/catalog/byid/${card.uuid}`}>
-              <SC.CardImage
-                src={card.mainImage}
-                alt={card.title}
-                width="285"
-                height="460"
-                loading="lazy"
-              />
-              <SC.CardDescription>
-                <SC.CardTitle>
-                  <SC.CardName>{card.title}</SC.CardName>
+              <div
+                style={{
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  flexDirection: 'column',
+                }}
+              >
+                <SC.CardStatus>
+                  {card.status ? card.status : 'new'}
+                </SC.CardStatus>
+                <SC.CardImage
+                  src={card.mainImage}
+                  alt={card.title}
+                  width="285"
+                  height="460"
+                  loading="lazy"
+                />
+                <SC.CardDescription>
+                  <SC.CardTitle>
+                    <SC.CardName>{card.title}</SC.CardName>
+                  </SC.CardTitle>
+                </SC.CardDescription>
+                <SC.CardInfo>
                   {card.discount !== 0 ? (
                     <SC.CardPrices>
                       {card.price && (
                         <SC.CardDiscount>
+                          <span>Price: </span>
                           {card.price}
-                          {card?.currency ? card?.currency : '₴'}
+                          {card?.currency ? card?.currency : currency}
                         </SC.CardDiscount>
                       )}
                       {card?.oldPrice && (
@@ -93,20 +104,27 @@ export const CatalogList = ({ products }) => {
                       )}
                     </SC.CardPrices>
                   )}
-                </SC.CardTitle>
-                <SC.CardSize>
-                  <span>Size</span>
-                  <div>
-                    {/* {card.options.map(option => {
+                  <SC.BtnForFavorite
+                    onClick={handleFavoriteBtnClick(card.uuid)}
+                  >
+                    {favorites.includes(card.uuid) ? (
+                      <SC.IconFav size={30} fill={theme.colors.darkGreen} />
+                    ) : (
+                      <SC.IconFav size={30} color={theme.colors.beige} />
+                    )}
+                  </SC.BtnForFavorite>
+                  {/* <span>Size</span>
+                  <div> */}
+                  {/* {card.options.map(option => {
                       return (
                         option.total != 0 && (
                           <span key={option._id}>{option.title}</span>
                         )
                       );
                     })} */}
-                  </div>
-                </SC.CardSize>
-              </SC.CardDescription>
+                  {/* </div> */}
+                </SC.CardInfo>
+              </div>
             </NavLink>
           </SC.Card>
         );

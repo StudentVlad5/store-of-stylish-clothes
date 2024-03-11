@@ -24,7 +24,8 @@ let perPage = 12;
 
 export const Catalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterState = {};
+  const [filterState, setFilterState] = useState({});
+
   // const filterState = {
   //   typeOfPlants:
   //     searchParams.getAll('typeOfPlants') !== undefined
@@ -125,6 +126,24 @@ export const Catalog = () => {
       }
     })();
   }, [t, page, perPage, searchParams, sort]);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData(`/category`);
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        setFilterState(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
+  console.log('filterState', filterState);
 
   useEffect(() => {
     setFilters(getFromStorage('filters'));
@@ -254,21 +273,8 @@ export const Catalog = () => {
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>
+        <SC.HeadlineShop $primary>SHOP</SC.HeadlineShop>
         <SC.Heading>
-          <div>
-            <a
-              href={`/catalog?perPage=12&page=1`}
-              onClick={() => removeLocalStor()}
-            >
-              <SC.HeadlineShop>Shop / </SC.HeadlineShop>
-            </a>
-            <a
-              href={`/catalog/${category}?perPage=12&page=1`}
-              onClick={() => removeLocalStor()}
-            >
-              <SC.HeadlineShop $primary>{category}</SC.HeadlineShop>
-            </a>
-          </div>
           {category === 'clothes' && (
             <SC.HeadingBtnBox>
               <SC.SortBox>
@@ -284,23 +290,6 @@ export const Catalog = () => {
                 </SC.Accord>
                 {showSort && <CatalogSort />}
               </SC.SortBox>
-              <SC.FiltersBox>
-                <SC.Accord onClick={toggleFilter}>
-                  <span>FILTER BY</span>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open filter list"
-                    aria-expanded="false"
-                  >
-                    <Open />
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showFilter && (
-                  <SC.FiltersWrapper>
-                    <CatalogFilter />
-                  </SC.FiltersWrapper>
-                )}
-              </SC.FiltersBox>
             </SC.HeadingBtnBox>
           )}
         </SC.Heading>
@@ -331,7 +320,9 @@ export const Catalog = () => {
         </SC.SelectedFilters>
         <SC.GridContainer onClick={handleClick}>
           <SC.FiltersContainer>
-            {category === 'clothes' && <CatalogFilter />}
+            {category === 'clothes' && (
+              <CatalogFilter filterState={filterState} />
+            )}
           </SC.FiltersContainer>
           <SC.GridWrapper>
             {isLoading ? onLoading() : onLoaded()}

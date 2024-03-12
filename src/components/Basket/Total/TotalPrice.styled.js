@@ -24,14 +24,15 @@ export const PaymentTotal = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 8px 8px 8px 26px;
-  background-color: ${theme.colors.green6};
+  padding: 15px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.60);
 `;
 
 export const PaymentTotalTitle = styled.h4`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
-  font-size: 12px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -39,11 +40,11 @@ export const PaymentTotalTitle = styled.h4`
   margin-bottom: 11px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 20px;
   }
 `;
 
@@ -66,27 +67,27 @@ export const PaymentTotalListItem = styled.tr`
 `;
 
 export const PaymentTotalListItemTitle = styled.th`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
 export const PaymentTotalListItemDiscr = styled.td`
-  width: 90px;
+  /* width: 90px; */
 
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[1]};
   font-size: 10px;
   font-style: normal;

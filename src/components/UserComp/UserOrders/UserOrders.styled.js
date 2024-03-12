@@ -34,30 +34,31 @@ const OrderItem = styled.li`
   justify-content: start;
   align-items: start;
   gap: 24px;
+  /* position: relative; */
 
   width: 100%;
   padding: 12px;
 
-  color: ${theme.colors.brown1};
-  font-family: ${theme.fonts[1]};
-  font-size: ${theme.fontSizes.extrasmall};
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.32px;
-
-  background-color: ${theme.colors.green6};
-  border-radius: 10px;
+  background-color: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: ${theme.fontSizes.small};
+    /* font-size: ${theme.fontSizes.small}; */
     gap: 36px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: ${theme.fontSizes.medium};
+    /* font-size: ${theme.fontSizes.medium}; */
     gap: 42px;
   }
+
+  /* &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: ${theme.colors.brown4};
+  } */
 `;
 
 const OrderItemHeadlineList = styled.ul`
@@ -87,7 +88,7 @@ const OrderItemHeadlineList = styled.ul`
     bottom: -10px;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.brown4};
   }
 `;
 
@@ -144,7 +145,23 @@ const OrderItemDetails = styled.li`
   display: flex;
   gap: 10px;
 
+  color: ${theme.colors.brown2};
+  font-size: 12;
+  font-style: normal;
+  margin-top: 0;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  letter-spacing: 0;
+
   width: ${props => (props.$width ? '100%' : 'auto')};
+
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 20px;
+  }
 `;
 
 const ImgItem = styled.img`
@@ -159,7 +176,7 @@ const PaymentBox = styled.div`
   }
 
   & > div {
-    padding: 0;
+    /* padding: 0; */
 
     & h4 {
       margin-bottom: 5px;
@@ -179,6 +196,7 @@ const DeliveryPayBox = styled.div`
   gap: 12px;
 
   width: 100%;
+  position: relative;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     flex-direction: row;
@@ -186,21 +204,31 @@ const DeliveryPayBox = styled.div`
   }
 
   & p {
-    color: ${theme.colors.brown1};
+    color: ${theme.colors.brown4};
     font-family: ${theme.fonts[0]};
-    font-size: 10px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.28px;
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      font-size: 14px;
+      font-size: 16px;
     }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 1px;
+    background: ${theme.colors.brown4};
   }
 `;
 
@@ -222,7 +250,34 @@ const PayBox = styled.div`
   }
 `;
 
+const ShopBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ShopBoxTitle = styled.h2`
+  color: ${theme.colors.brown2};
+  font-size: 16px;
+  font-style: normal;
+  font-family: ${theme.fonts[0]};
+  font-weight: 600;
+  margin-bottom: 15px;
+  
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 36px;
+    margin-bottom: 45px;
+  }
+`;
+
 export {
+  ShopBox,
+  ShopBoxTitle,
   ListContainer,
   OrderItem,
   OrderItemList,

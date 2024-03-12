@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../baseStyles/Variables.styled';
 import { ReactComponent as arrowDown } from 'images/svg/arrowDownNav.svg';
+import { ReactComponent as feather } from 'images/svg/feather.svg';
 
 const MobileNavList = styled.nav`
   display: flex;
@@ -48,6 +49,7 @@ const NavItem = styled(NavLink)`
   text-decoration: none;
   white-space: nowrap;
   color: ${theme.colors.brown1};
+  position: relative;
 
   &:after {
     content: '';
@@ -160,10 +162,17 @@ const NavItemBoxModal = styled.div`
   display: flex;
   position: relative;
   margin-top: 40px;
-  
+
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     margin-top: 60px;
   }
+`;
+
+const IconFeather = styled(feather)`
+  height: 65px;
+  position: absolute;
+  top: -33px;
+  left: -9px;
 `;
 
 export {
@@ -175,4 +184,5 @@ export {
   IconArrow,
   MobileNavBox,
   NavItemBoxModal,
+  IconFeather,
 };

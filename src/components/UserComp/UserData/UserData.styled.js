@@ -151,6 +151,7 @@ const BtnLight = styled(Button)`
   border: 1px solid ${theme.colors.brown4};
 
   cursor: pointer;
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 180px;
@@ -162,10 +163,11 @@ const BtnLight = styled(Button)`
   &:focus {
     color: ${theme.colors.white};
     background-color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 `;
 
-const BtnGreen = styled(Button)`
+const BtnBrown = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,6 +187,7 @@ const BtnGreen = styled(Button)`
   border: 1px solid ${theme.colors.brown4};
 
   cursor: pointer;
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 12px;
@@ -200,6 +203,7 @@ const BtnGreen = styled(Button)`
   &:focus {
     color: ${theme.colors.brown4};
     background-color: transparent;
+    transition: ${theme.transition[1]};
   }
 
   & :disabled {
@@ -345,7 +349,7 @@ export {
   UserDataImgWrapper,
   UserDataList,
   BtnLight,
-  BtnGreen,
+  BtnBrown,
   UserDataSection,
   UserPasswordList,
   ProfileContainer,

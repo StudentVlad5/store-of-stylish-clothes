@@ -24,7 +24,7 @@ import {
   UserDataSection,
   UserPasswordList,
   PensilStyle,
-  BtnGreen,
+  BtnBrown,
   TitleArticle,
   BtnContainer,
   IconBtn,

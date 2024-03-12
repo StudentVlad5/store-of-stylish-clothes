@@ -14,7 +14,7 @@ import {
 } from '../Profile/Profile.styled';
 import {
   BtnContainer,
-  BtnGreen,
+  BtnBrown,
   BtnLight,
   PensilStyle,
 } from '../UserData/UserData.styled';
@@ -121,13 +121,13 @@ export const ChangePassword = () => {
                 >
                   CANCEL
                 </BtnLight>
-                <BtnGreen
+                <BtnBrown
                   type="submit"
                   disabled={isSubmitting}
                   aria-label="Submit"
                 >
                   SAVE
-                </BtnGreen>
+                </BtnBrown>
               </BtnContainer>
             </ProfileList>
           )}

@@ -6,7 +6,7 @@ import { selectId } from 'redux/auth/selectors';
 import { update } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import schemas from 'utils/schemas';
-import { BtnContainer, BtnGreen, BtnLight } from '../UserData/UserData.styled';
+import { BtnContainer, BtnBrown, BtnLight } from '../UserData/UserData.styled';
 import {
   Error,
   ProfileInput,
@@ -138,9 +138,9 @@ export const Profile = ({ onClose }) => {
             >
               CANCEL
             </BtnLight>
-            <BtnGreen type="submit" disabled={isSubmitting} aria-label="Submit">
+            <BtnBrown type="submit" disabled={isSubmitting} aria-label="Submit">
               SAVE
-            </BtnGreen>
+            </BtnBrown>
           </BtnContainer>
         </ProfileList>
       )}

@@ -9,6 +9,7 @@ import {
   IconArrow,
   MobileNavBox,
   NavItemBoxModal,
+  IconFeather,
 } from './Nav.styled';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -68,7 +69,7 @@ export const MobileNav = ({ toggleMenu }) => {
             className={`collapsed ${isModalOpen ? 'is-modal-open' : ''}`}
           >
             <ModalFirst
-            toggleModal={toggleModal}
+              toggleModal={toggleModal}
               // onClose={() => setIsModalOpen(false)}
             />
           </ModalFirstOpen>
@@ -116,7 +117,11 @@ export const Nav = () => {
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
-        <NavItem to={`/?${searchParams}`}>{t('About Us')}</NavItem>
+        <NavItem to={`/?${searchParams}`}>
+          {' '}
+          <IconFeather />
+          {t('About Us')}
+        </NavItem>
         <NavItem to={`/catalog?${searchParams}`}>{t('Shop')}</NavItem>
         <NavItem to={`/gifts?${searchParams}`}>{t('Gifts')}</NavItem>
         <NavItem to="/discounts">{t('Discounts')}</NavItem>

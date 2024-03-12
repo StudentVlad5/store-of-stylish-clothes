@@ -16,7 +16,7 @@ const CarePage = () => {
 
   return (
     <>
-      <SEO title="HomeForest Care" description="Care of your plants" />
+      <SEO title="Care" description="Care of your plants" />
       <Care />
     </>
   );

@@ -19,7 +19,7 @@ const FavoritePage = () => {
 
   return (
     <>
-      <SEO title="HomeForest Favorite" description="Favorite of goods" />
+      <SEO title="Favorite" description="Favorite of goods" />
       <Favorites />
     </>
   );

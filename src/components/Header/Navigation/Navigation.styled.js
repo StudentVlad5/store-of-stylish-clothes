@@ -64,6 +64,7 @@ const View = styled.div`
 const IconSearch = styled(iconSearch)`
   width: 32px;
   height: 32px;
+  cursor: pointer;
 `;
 const IconBookmark = styled(iconBookmark)`
   width: 32px;

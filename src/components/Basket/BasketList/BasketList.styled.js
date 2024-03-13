@@ -62,9 +62,9 @@ export const DiscrDataListItem = styled.div`
 `;
 
 export const DiscrDataListItemTitle = styled.h4`
-  color: ${theme.colors.brown1};
-  font-family: ${theme.fonts[1]};
-  font-size: 12px;
+  color: ${theme.colors.brown2};
+  font-family: ${theme.fonts[0]};
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -72,11 +72,11 @@ export const DiscrDataListItemTitle = styled.h4`
   margin-top: 1px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
@@ -107,7 +107,7 @@ export const DiscrDataListItemTitlePrice = styled.span`
 
 export const DiscrDataListItemPrice = styled.p`
   color: ${props =>
-    props.$red ? `${theme.colors.red}` : `${theme.colors.brown1}`};
+    props.$red ? `${theme.colors.red}` : `${theme.colors.brown4}`};
   font-family: ${theme.fonts[1]};
   font-size: 10px;
   font-style: normal;
@@ -145,20 +145,20 @@ export const DiscrDataTableLine = styled.tr`
 export const DiscrDataTableHead = styled.th`
   width: 50%;
 
-  color: ${theme.colors.brown1};
-  font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  color: ${theme.colors.brown4};
+  font-family: ${theme.fonts[1]};
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
@@ -168,20 +168,20 @@ export const DiscrDataTableData = styled.td`
 
   width: 50%;
 
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[1]};
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     gap: 10px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 

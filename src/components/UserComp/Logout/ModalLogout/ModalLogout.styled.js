@@ -98,11 +98,14 @@ export const ModalButton = styled(Button)`
   border: 1px solid ${theme.colors.brown4};
   color: ${theme.colors.brown4};
   background-color: transparent;
+  transition: ${theme.transition[1]};
+
   cursor: pointer;
   &:hover,
   &:focus {
     color: ${theme.colors.white};
     background-color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {

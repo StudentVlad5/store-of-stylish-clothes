@@ -27,7 +27,7 @@ const NotFoundPage = () => {
   }, []);
   return (
     <ErrorContainer>
-      <SEO title="HomeForest NotFoundPage" description="Not Found Page" />
+      <SEO title="Quillis NotFoundPage" description="Not Found Page" />
       <picture style={{ height: '100%', width: '100%' }}>
         <source
           media="(min-width:1440px)"

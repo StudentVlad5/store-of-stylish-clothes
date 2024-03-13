@@ -49,7 +49,7 @@ const ProductCardPage = ({ addToBasket }) => {
   return (
     <>
       <SEO
-        title={t('HomeForest Product card')}
+        title={t('Product card')}
         description="Product Card Page"
       />
       {isLoading ? onLoading() : onLoaded()}

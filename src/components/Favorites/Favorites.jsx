@@ -12,6 +12,8 @@ import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import * as SC from './Favorites.styled';
 import { useSelector } from 'react-redux';
 import { selectId } from 'redux/auth/selectors';
+import { ShopBox, ShopBoxTitle } from 'components/UserComp/UserOrders/UserOrders.styled';
+import { BtnBrown } from 'components/UserComp/UserData/UserData.styled';
 
 let perPage = 12;
 
@@ -73,6 +75,12 @@ export const Favorites = () => {
             {products.length > 0 && !error && (
               <CatalogList products={products} />
             )}
+
+            <ShopBox>
+              <ShopBoxTitle>{"You don't have favorite products"}</ShopBoxTitle>
+              <BtnBrown>Shop</BtnBrown>
+            </ShopBox>
+
             <Pagination
               totalPage={totalPage}
               changePage={setPage}

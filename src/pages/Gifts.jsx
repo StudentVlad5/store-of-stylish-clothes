@@ -15,7 +15,7 @@ const GiftsPage = () => {
   }, []);
   return (
     <>
-      <SEO title="HomeForest Gifts" description="Gifts" />
+      <SEO title="Gifts" description="Gifts" />
       <Gifts />
     </>
   );

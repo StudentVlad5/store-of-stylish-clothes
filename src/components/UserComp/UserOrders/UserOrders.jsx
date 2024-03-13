@@ -20,6 +20,8 @@ import {
   DeliveryPayBox,
   DeliveryBox,
   PayBox,
+  ShopBox,
+  ShopBoxTitle,
 } from './UserOrders.styled';
 import {
   DiscrDataList,
@@ -42,6 +44,7 @@ import {
   PaymentTotalTitlePrice,
   PaymentTotalTitlePriceDiscr,
 } from 'components/Basket/Total/TotalPrice.styled';
+import { BtnBrown, BtnLight } from '../UserData/UserData.styled';
 
 export const UserOrders = () => {
   const [orderList, setOrderList] = useState([]);
@@ -113,12 +116,12 @@ export const UserOrders = () => {
 
   return (
     <ListContainer>
-      {orderList &&
+      {orderList ? (
         orderList.map((order, idx) => (
           <OrderItem key={order._id}>
             <OrderItemHeadlineList>
               <OrderItemDetails>
-                <span>Order Number:</span> <span>{order._id}</span>
+                <span>Order ID:</span> <span>{order._id}</span>
               </OrderItemDetails>
               <OrderItemDetails>
                 <span>Order Date:</span>
@@ -137,16 +140,16 @@ export const UserOrders = () => {
                   {order?.basket[0]?.currency}
                 </span>
               </OrderItemDetails>
-              <OrderItemDetails>
+              {/* <OrderItemDetails>
                 <ArrowDown
                   onClick={() => {
                     toggleVisibility(idx);
                   }}
                 />
-              </OrderItemDetails>
+              </OrderItemDetails> */}
             </OrderItemHeadlineList>
-            {!isShowDetails[idx] && (
-              <OrderListDetails $row>
+            {/* {!isShowDetails[idx] && ( */}
+            {/* <OrderListDetails $row>
                 {order?.basket?.optionData.map(item => (
                   <OrderItemDetails key={item?._id}>
                     <ImgItem
@@ -156,149 +159,151 @@ export const UserOrders = () => {
                     />
                   </OrderItemDetails>
                 ))}
-              </OrderListDetails>
-            )}
-            {isShowDetails[idx] && (
-              <>
-                <OrderItemList>
-                  <OrderListDetails $halfWidth>
-                    {order?.basket?.optionData.map(item => (
-                      <OrderItemDetails $width key={item._id}>
-                        <ImgItem
-                          src={BASE_URL_IMG + item?.images[0]}
-                          alt="Product image"
-                          loading="lazy"
-                        />
-                        <DiscrDataList style={{ width: 'calc(100% - 100px)' }}>
-                          <DiscrDataListItem>
-                            <DiscrDataListItemHeading>
-                              <DiscrDataListItemTitle>
-                                {item?.name}
-                              </DiscrDataListItemTitle>
-                            </DiscrDataListItemHeading>
-                          </DiscrDataListItem>
-                          <table>
-                            <DiscrDataTable style={{ gap: '5px' }}>
-                              <DiscrDataTableLine>
-                                <DiscrDataTableHead>Size</DiscrDataTableHead>
-                                {item?.title === null ? (
-                                  <DiscrDataTableData>-</DiscrDataTableData>
-                                ) : (
-                                  <DiscrDataTableData>
-                                    {item?.title}
-                                  </DiscrDataTableData>
-                                )}
-                              </DiscrDataTableLine>
-
-                              <DiscrDataTableLine>
-                                <DiscrDataTableHead>Price</DiscrDataTableHead>
-                                {item?.discount !== 0 ? (
-                                  <DiscrDataTableData>
-                                    <DiscrDataListItemPrice $red>
-                                      {item?.currency}
-                                      {item?.currentPrice}
-                                    </DiscrDataListItemPrice>
-                                    <DiscrDataListItemPrice>
-                                      {item?.currency}
-                                      {item?.oldPrice}
-                                    </DiscrDataListItemPrice>
-                                  </DiscrDataTableData>
-                                ) : (
-                                  <DiscrDataTableData>
-                                    <DiscrDataListItemPrice $current>
-                                      {item?.currency}
-                                      {item?.currentPrice}
-                                    </DiscrDataListItemPrice>
-                                  </DiscrDataTableData>
-                                )}
-                              </DiscrDataTableLine>
-                              <DiscrDataTableLine>
-                                <DiscrDataTableHead>
-                                  Quantity
-                                </DiscrDataTableHead>
+              </OrderListDetails> */}
+            {/* )} */}
+            {/* {isShowDetails[idx] && ( */}
+            <>
+              <OrderItemList>
+                <OrderListDetails $halfWidth>
+                  {order?.basket?.optionData.map(item => (
+                    <OrderItemDetails $width key={item._id}>
+                      <ImgItem
+                        src={BASE_URL_IMG + item?.images[0]}
+                        alt="Product image"
+                        loading="lazy"
+                      />
+                      <DiscrDataList style={{ width: 'calc(100% - 100px)' }}>
+                        <DiscrDataListItem>
+                          <DiscrDataListItemHeading>
+                            <DiscrDataListItemTitle>
+                              {item?.name}
+                            </DiscrDataListItemTitle>
+                          </DiscrDataListItemHeading>
+                        </DiscrDataListItem>
+                        <table>
+                          <DiscrDataTable style={{ gap: '5px' }}>
+                            <DiscrDataTableLine>
+                              <DiscrDataTableHead>Size</DiscrDataTableHead>
+                              {item?.title === null ? (
+                                <DiscrDataTableData>-</DiscrDataTableData>
+                              ) : (
                                 <DiscrDataTableData>
-                                  <span>{item?.quantity}</span>
+                                  {item?.title}
                                 </DiscrDataTableData>
-                              </DiscrDataTableLine>
-                            </DiscrDataTable>
-                          </table>
-                        </DiscrDataList>
-                      </OrderItemDetails>
-                    ))}
-                  </OrderListDetails>
-                  <PaymentBox>
-                    <PaymentTotal>
-                      <PaymentTotalTitle>Total</PaymentTotalTitle>
-                      <table>
-                        <PaymentTotalList>
-                          <PaymentTotalListItem>
-                            <PaymentTotalListItemTitle>
-                              Amount for the product
-                            </PaymentTotalListItemTitle>
+                              )}
+                            </DiscrDataTableLine>
+
+                            <DiscrDataTableLine>
+                              <DiscrDataTableHead>Price</DiscrDataTableHead>
+                              {item?.discount !== 0 ? (
+                                <DiscrDataTableData>
+                                  <DiscrDataListItemPrice $red>
+                                    {item?.currency}
+                                    {item?.currentPrice}
+                                  </DiscrDataListItemPrice>
+                                  <DiscrDataListItemPrice>
+                                    {item?.currency}
+                                    {item?.oldPrice}
+                                  </DiscrDataListItemPrice>
+                                </DiscrDataTableData>
+                              ) : (
+                                <DiscrDataTableData>
+                                  <DiscrDataListItemPrice $current>
+                                    {item?.currency}
+                                    {item?.currentPrice}
+                                  </DiscrDataListItemPrice>
+                                </DiscrDataTableData>
+                              )}
+                            </DiscrDataTableLine>
+                            <DiscrDataTableLine>
+                              <DiscrDataTableHead>Quantity</DiscrDataTableHead>
+                              <DiscrDataTableData>
+                                <span>{item?.quantity}</span>
+                              </DiscrDataTableData>
+                            </DiscrDataTableLine>
+                          </DiscrDataTable>
+                        </table>
+                      </DiscrDataList>
+                    </OrderItemDetails>
+                  ))}
+                </OrderListDetails>
+                <PaymentBox>
+                  <PaymentTotal>
+                    <PaymentTotalTitle>Total</PaymentTotalTitle>
+                    <table>
+                      <PaymentTotalList>
+                        <PaymentTotalListItem>
+                          <PaymentTotalListItemTitle>
+                            Amount for the product
+                          </PaymentTotalListItemTitle>
+                          <PaymentTotalListItemDiscr>
+                            {order?.currency}
+                            {order?.totalAmount}
+                          </PaymentTotalListItemDiscr>
+                        </PaymentTotalListItem>
+
+                        <PaymentTotalListItem>
+                          <PaymentTotalListItemTitle>
+                            Discount amount
+                          </PaymentTotalListItemTitle>
+                          <PaymentTotalListItemDiscr>
+                            {order?.currency}
+                            {order?.totalDiscount}
+                          </PaymentTotalListItemDiscr>
+                        </PaymentTotalListItem>
+
+                        <PaymentTotalListItem>
+                          <PaymentTotalListItemTitle>
+                            Delivery
+                          </PaymentTotalListItemTitle>
+                          {order?.totalAmount < 150 ? (
                             <PaymentTotalListItemDiscr>
                               {order?.currency}
-                              {order?.totalAmount}
+                              {150 - order?.totalAmount}
                             </PaymentTotalListItemDiscr>
-                          </PaymentTotalListItem>
-
-                          <PaymentTotalListItem>
-                            <PaymentTotalListItemTitle>
-                              Discount amount
-                            </PaymentTotalListItemTitle>
+                          ) : (
                             <PaymentTotalListItemDiscr>
-                              {order?.currency}
-                              {order?.totalDiscount}
+                              Free
                             </PaymentTotalListItemDiscr>
-                          </PaymentTotalListItem>
+                          )}
+                        </PaymentTotalListItem>
 
-                          <PaymentTotalListItem>
-                            <PaymentTotalListItemTitle>
-                              Delivery
-                            </PaymentTotalListItemTitle>
-                            {order?.totalAmount < 150 ? (
-                              <PaymentTotalListItemDiscr>
-                                {order?.currency}
-                                {150 - order?.totalAmount}
-                              </PaymentTotalListItemDiscr>
-                            ) : (
-                              <PaymentTotalListItemDiscr>
-                                Free
-                              </PaymentTotalListItemDiscr>
-                            )}
-                          </PaymentTotalListItem>
-
-                          <PaymentTotalListItem>
-                            <PaymentTotalTitlePrice>
-                              Payment
-                            </PaymentTotalTitlePrice>
-                            <PaymentTotalTitlePriceDiscr>
-                              {order?.currency}
-                              {order?.totalPayment}
-                            </PaymentTotalTitlePriceDiscr>
-                          </PaymentTotalListItem>
-                        </PaymentTotalList>
-                      </table>
-                    </PaymentTotal>
-                  </PaymentBox>
-                </OrderItemList>
-                <DeliveryPayBox>
-                  <DeliveryBox>
-                    <PaymentTotalTitle>Delivery</PaymentTotalTitle>
-                    <div>
-                      <p>{order?.deliveryOrder?.delivery}</p>
-                      <p> {order?.deliveryOrder?.cityDelivery}</p>
-                      <p>{order?.deliveryOrder?.departmentDelivery}</p>
-                    </div>
-                  </DeliveryBox>
-                  <PayBox>
-                    <PaymentTotalTitle>Payment</PaymentTotalTitle>
-                    <p>{order?.selectedPaymentOption}</p>
-                  </PayBox>
-                </DeliveryPayBox>
-              </>
-            )}
+                        <PaymentTotalListItem>
+                          <PaymentTotalTitle>Payment</PaymentTotalTitle>
+                          <PaymentTotalTitle>
+                            {order?.currency}
+                            {order?.totalPayment}
+                          </PaymentTotalTitle>
+                        </PaymentTotalListItem>
+                      </PaymentTotalList>
+                    </table>
+                  </PaymentTotal>
+                </PaymentBox>
+              </OrderItemList>
+              <DeliveryPayBox>
+                <DeliveryBox>
+                  <PaymentTotalTitle>Delivery</PaymentTotalTitle>
+                  <div>
+                    <p>{order?.deliveryOrder?.delivery}</p>
+                    <p> {order?.deliveryOrder?.cityDelivery}</p>
+                    <p>{order?.deliveryOrder?.departmentDelivery}</p>
+                  </div>
+                </DeliveryBox>
+                <PayBox>
+                  <PaymentTotalTitle>Payment</PaymentTotalTitle>
+                  <p>{order?.selectedPaymentOption}</p>
+                </PayBox>
+              </DeliveryPayBox>
+            </>
+            {/* )} */}
           </OrderItem>
-        ))}
+        ))
+      ) : (
+        <ShopBox>
+          <ShopBoxTitle>{"You don't have orders"}</ShopBoxTitle>
+          <BtnBrown>Shop</BtnBrown>
+        </ShopBox>
+      )}
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError('Whoops, something went wrong')}
       <Pagination totalPage={totalPage} changePage={setPage} page={page} />

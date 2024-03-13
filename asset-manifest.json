@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/store-of-stylish-clothes/static/css/main.17654e45.css",
-    "main.js": "/store-of-stylish-clothes/static/js/main.ecfb59ee.js",
+    "main.js": "/store-of-stylish-clothes/static/js/main.8999f866.js",
     "static/css/491.c1e369f8.chunk.css": "/store-of-stylish-clothes/static/css/491.c1e369f8.chunk.css",
     "static/js/491.1e6d3177.chunk.js": "/store-of-stylish-clothes/static/js/491.1e6d3177.chunk.js",
     "static/js/865.7314c017.chunk.js": "/store-of-stylish-clothes/static/js/865.7314c017.chunk.js",
     "static/css/103.2b8800d7.chunk.css": "/store-of-stylish-clothes/static/css/103.2b8800d7.chunk.css",
-    "static/js/103.4ddbf99a.chunk.js": "/store-of-stylish-clothes/static/js/103.4ddbf99a.chunk.js",
+    "static/js/103.79271ddf.chunk.js": "/store-of-stylish-clothes/static/js/103.79271ddf.chunk.js",
     "static/js/81.724a08b3.chunk.js": "/store-of-stylish-clothes/static/js/81.724a08b3.chunk.js",
     "static/js/978.257452dd.chunk.js": "/store-of-stylish-clothes/static/js/978.257452dd.chunk.js",
     "static/js/904.91b316d6.chunk.js": "/store-of-stylish-clothes/static/js/904.91b316d6.chunk.js",
@@ -125,12 +125,12 @@
     "static/media/arrowDown.svg": "/store-of-stylish-clothes/static/media/arrowDown.2124174c7a9aa922cb88bb1aa1569382.svg",
     "static/media/done_light.svg": "/store-of-stylish-clothes/static/media/done_light.2b616f9c56944b89a5ba7b5814f2240a.svg",
     "main.17654e45.css.map": "/store-of-stylish-clothes/static/css/main.17654e45.css.map",
-    "main.ecfb59ee.js.map": "/store-of-stylish-clothes/static/js/main.ecfb59ee.js.map",
+    "main.8999f866.js.map": "/store-of-stylish-clothes/static/js/main.8999f866.js.map",
     "491.c1e369f8.chunk.css.map": "/store-of-stylish-clothes/static/css/491.c1e369f8.chunk.css.map",
     "491.1e6d3177.chunk.js.map": "/store-of-stylish-clothes/static/js/491.1e6d3177.chunk.js.map",
     "865.7314c017.chunk.js.map": "/store-of-stylish-clothes/static/js/865.7314c017.chunk.js.map",
     "103.2b8800d7.chunk.css.map": "/store-of-stylish-clothes/static/css/103.2b8800d7.chunk.css.map",
-    "103.4ddbf99a.chunk.js.map": "/store-of-stylish-clothes/static/js/103.4ddbf99a.chunk.js.map",
+    "103.79271ddf.chunk.js.map": "/store-of-stylish-clothes/static/js/103.79271ddf.chunk.js.map",
     "81.724a08b3.chunk.js.map": "/store-of-stylish-clothes/static/js/81.724a08b3.chunk.js.map",
     "978.257452dd.chunk.js.map": "/store-of-stylish-clothes/static/js/978.257452dd.chunk.js.map",
     "904.91b316d6.chunk.js.map": "/store-of-stylish-clothes/static/js/904.91b316d6.chunk.js.map",
@@ -147,6 +147,6 @@
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.ecfb59ee.js"
+    "static/js/main.8999f866.js"
   ]
 }

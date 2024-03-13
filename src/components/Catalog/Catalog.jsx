@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CatalogSort } from './CatalogSort/CatalogSort';
 import { CatalogFilter } from './CatalogFilter/CatalogFilter';
@@ -25,47 +25,6 @@ let perPage = 12;
 export const Catalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterState, setFilterState] = useState({});
-
-  // const filterState = {
-  //   typeOfPlants:
-  //     searchParams.getAll('typeOfPlants') !== undefined
-  //       ? searchParams.getAll('typeOfPlants')
-  //       : [],
-  //   rare:
-  //     searchParams.getAll('rare') !== undefined
-  //       ? searchParams.getAll('rare')
-  //       : [],
-  //   light:
-  //     searchParams.getAll('light') !== undefined
-  //       ? searchParams.getAll('light')
-  //       : [],
-  //   petFriendly:
-  //     searchParams.getAll('petFriendly') !== undefined
-  //       ? searchParams.getAll('petFriendly')
-  //       : [],
-  //   minPrice:
-  //     searchParams.get('minPrice') !== undefined &&
-  //     searchParams.get('minPrice') !== null
-  //       ? searchParams.get('minPrice')
-  //       : '',
-  //   maxPrice:
-  //     searchParams.get('maxPrice') !== undefined &&
-  //     searchParams.get('maxPrice') !== null
-  //       ? searchParams.get('maxPrice')
-  //       : '',
-  //   hardToKill:
-  //     searchParams.getAll('hardToKill') !== undefined
-  //       ? searchParams.getAll('hardToKill')
-  //       : [],
-  //   potSize:
-  //     searchParams.getAll('potSize') !== undefined
-  //       ? searchParams.getAll('potSize')
-  //       : [],
-  //   waterSchedule:
-  //     searchParams.getAll('waterSchedule') !== undefined
-  //       ? searchParams.getAll('waterSchedule')
-  //       : [],
-  // };
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -73,15 +32,22 @@ export const Catalog = () => {
   const [page, setPages] = useState(
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
-  const routeParams = useParams();
-  const [category, setCategory] = useState(
-    routeParams.category ? routeParams.category : 'clothes',
-  );
+  // const routeParams = useParams();
+  const initialState = {
+    man_woman: [],
+    category: [],
+    maxPrice: '',
+    minPrice: '',
+    product: [],
+    sizes: [],
+    page: page,
+    perPage: perPage,
+  };
+
   const [selectedFilter, setSelectedFilter] = useState([]);
-  const [filters, setFilters] = useState(
-    '',
-    // filterState
-  );
+  const [filters, setFilters] = useState(initialState);
+
+  // const [filters, setFilters] = useState('');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState(
     getFromStorage('sort') ? getFromStorage('sort') : '',
@@ -92,27 +58,70 @@ export const Catalog = () => {
     searchParams.set('page', toPage);
     saveToStorage('page', toPage);
     setPages(toPage);
-    setSearchParams(searchParams);
+
+    // setSearchParams(searchParams);
   };
 
+  // useEffect(() => {
+  //   setParams();
+  //   saveToStorage('filters', filterState);
+  // }, []);
+
   useEffect(() => {
-    setParams();
-    saveToStorage('filters', filterState);
+    const checkFilter = getFromStorage('filters');
+    const param = {};
+    searchParams.getAll('man_woman')
+      ? (param.man_woman = searchParams.getAll('man_woman'))
+      : checkFilter.man_woman
+      ? (param.man_woman = checkFilter.man_woman)
+      : (param.man_woman = []);
+    searchParams.getAll('category')
+      ? (param.category = searchParams.getAll('category'))
+      : checkFilter?.category
+      ? (param.category = checkFilter?.category)
+      : (param.category = []);
+    searchParams.getAll('product')
+      ? (param.product = searchParams.get('product'))
+      : checkFilter?.product
+      ? (param.product = checkFilter?.product)
+      : (param.product = []);
+    searchParams.getAll('sizes')
+      ? (param.sizes = searchParams.getAll('sizes'))
+      : checkFilter?.sizes
+      ? (param.sizes = checkFilter?.sizes)
+      : (param.sizes = []);
+    searchParams.get('minPrice')
+      ? (param.minPrice = searchParams.get('minPrice'))
+      : checkFilter?.minPrice
+      ? (param.minPrice = checkFilter?.minPrice)
+      : (param.minPrice = '');
+    searchParams.get('maxPrice')
+      ? (param.maxPrice = searchParams.get('maxPrice'))
+      : checkFilter?.maxPrice
+      ? (param.maxPrice = checkFilter?.maxPrice)
+      : (param.maxPrice = '');
+    searchParams.get('page')
+      ? (param.page = searchParams.get('page'))
+      : getFromStorage('page')
+      ? (param.page = getFromStorage('page'))
+      : (param.page = page);
+    searchParams.get('perPage')
+      ? (param.perPage = searchParams.get('perPage'))
+      : (param.perPage = perPage);
+    setSearchParams(param);
   }, []);
 
   useEffect(() => {
-    if (!page || !perPage) {
-      const params = { page, perPage };
-      setPages(1);
-      setSearchParams(params);
-    }
+    // if (!page || !perPage) {
+    //   const params = { page, perPage };
+    //   setPages(1);
+    //   setSearchParams(params);
+    // }
 
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(
-          `/catalog/${category}?${searchParams}`,
-        );
+        const { data } = await fetchData(`/catalog?${searchParams}`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -143,18 +152,17 @@ export const Catalog = () => {
       }
     })();
   }, []);
-  console.log('filterState', filterState);
 
-  useEffect(() => {
-    setFilters(getFromStorage('filters'));
-    setSearch(searchParams.get('search'));
-    setSort(searchParams.get('sort'));
-    setParams();
+  // useEffect(() => {
+  //   setFilters(getFromStorage('filters'));
+  //   setSearch(searchParams.get('search'));
+  //   setSort(searchParams.get('sort'));
+  //   setParams();
 
-    if (selectedFilter.length === 0) {
-      setParams();
-    }
-  }, [selectedFilter, search, sort]);
+  //   if (selectedFilter.length === 0) {
+  //     setParams();
+  //   }
+  // }, [selectedFilter, search, sort]);
 
   useEffect(() => {
     window.addEventListener('unload', removeLocalStor);
@@ -181,7 +189,7 @@ export const Catalog = () => {
   };
 
   const removeLocalStor = () => {
-    removeItem('category');
+    // removeItem('category');
     removeItem('filters');
   };
 
@@ -239,17 +247,17 @@ export const Catalog = () => {
   const setParams = () => {
     let params = Object.fromEntries(searchParams);
 
-    if (filters.typeOfPlants !== '') {
-      params.typeOfPlants = filters.typeOfPlants;
+    if (filters.man_woman !== '') {
+      params.man_woman = filters.man_woman;
     }
-    if (filters.rare !== '') {
-      params.rare = filters.rare;
+    if (filters.category !== '') {
+      params.category = filters.category;
     }
-    if (filters.light !== '') {
-      params.light = filters.light;
+    if (filters.product !== '') {
+      params.product = filters.product;
     }
-    if (filters.petFriendly !== '') {
-      params.petFriendly = filters.petFriendly;
+    if (filters.sizes !== '') {
+      params.size = filters.sizes;
     }
     if (filters.minPrice !== '') {
       params.minPrice = filters.minPrice;
@@ -257,16 +265,12 @@ export const Catalog = () => {
     if (filters.maxPrice !== '') {
       params.maxPrice = filters.maxPrice;
     }
-    if (filters.hardToKill !== '') {
-      params.hardToKill = filters.hardToKill;
+    if (filters.page !== '') {
+      params.page = page;
     }
-    if (filters.potSize !== '') {
-      params.potSize = filters.potSize;
+    if (filters.perPage !== '') {
+      params.perPage = perPage;
     }
-    if (filters.waterSchedule !== '') {
-      params.waterSchedule = filters.waterSchedule;
-    }
-
     setSearchParams(params);
   };
 
@@ -275,23 +279,21 @@ export const Catalog = () => {
       <SC.CatalogSection>
         <SC.HeadlineShop $primary>SHOP</SC.HeadlineShop>
         <SC.Heading>
-          {category === 'clothes' && (
-            <SC.HeadingBtnBox>
-              <SC.SortBox>
-                <SC.Accord onClick={toggleSort}>
-                  <span>SORT BY</span>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open sort list"
-                    aria-expanded="false"
-                  >
-                    <Open />
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showSort && <CatalogSort />}
-              </SC.SortBox>
-            </SC.HeadingBtnBox>
-          )}
+          <SC.HeadingBtnBox>
+            <SC.SortBox>
+              <SC.Accord onClick={toggleSort}>
+                <span>SORT BY</span>
+                <SC.IconBtn
+                  type="button"
+                  aria-label="switch to open sort list"
+                  aria-expanded="false"
+                >
+                  <Open />
+                </SC.IconBtn>
+              </SC.Accord>
+              {showSort && <CatalogSort />}
+            </SC.SortBox>
+          </SC.HeadingBtnBox>
         </SC.Heading>
         {search && (
           <SC.SearchResults>
@@ -320,9 +322,13 @@ export const Catalog = () => {
         </SC.SelectedFilters>
         <SC.GridContainer onClick={handleClick}>
           <SC.FiltersContainer>
-            {category === 'clothes' && (
-              <CatalogFilter filterState={filterState} />
-            )}
+            <CatalogFilter
+              filterState={filterState}
+              setParams={setParams}
+              filters={filters}
+              initialState={initialState}
+              setFilters={setFilters}
+            />
           </SC.FiltersContainer>
           <SC.GridWrapper>
             {isLoading ? onLoading() : onLoaded()}

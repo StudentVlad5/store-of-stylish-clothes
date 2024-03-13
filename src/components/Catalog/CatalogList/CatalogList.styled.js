@@ -63,13 +63,16 @@ const Card = styled.li`
 
 const CardImage = styled.img`
   width: 150px;
-  /* height: 300px; */
-  height: auto;
+  height: 200px;
   margin: 0 auto;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    width: 265px;
+    height: 280px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 285px;
-    /* height: 460px; */
+    height: 380px;
   }
 `;
 

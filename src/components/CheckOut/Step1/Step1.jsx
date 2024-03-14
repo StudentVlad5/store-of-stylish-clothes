@@ -15,6 +15,7 @@ import {
   DeliveryBlockOptionsTitleDiscr,
   DeliveryBlockOptionsLableBox,
   DeliveryBlockOptionsTitle,
+  DeliveryBlockOptionsBoxLableLast,
 } from '../Order/Order.styled';
 import { NovaPoshta } from 'components/Delivery/NovaPoshta/NovaPoshta';
 import { UkrPoshta } from 'components/Delivery/UkrPoshta/UkrPoshta';
@@ -182,7 +183,7 @@ const Step1 = () => {
         )}
       </DeliveryBlockOptionsBoxLable>
 
-      <DeliveryBlockOptionsBoxLable>
+      <DeliveryBlockOptionsBoxLableLast>
         <DeliveryBlockOptionsLable>
           <DeliveryBlockOptionsInput
             type="radio"
@@ -200,7 +201,7 @@ const Step1 = () => {
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
-      </DeliveryBlockOptionsBoxLable>
+      </DeliveryBlockOptionsBoxLableLast>
       <CheckoutBtn disabled={isDisabled} type="button" onClick={nextStep}>
         Next
       </CheckoutBtn>

@@ -8,7 +8,7 @@ import { update } from 'redux/auth/operations';
 import { Error, ProfileLabel, ProfileList } from '../Profile/Profile.styled';
 import {
   BtnContainer,
-  BtnGreen,
+  BtnBrown,
   BtnLight,
   PensilStyle,
 } from '../UserData/UserData.styled';
@@ -87,13 +87,13 @@ export const DefaultDelivery = () => {
                 >
                   CANCEL
                 </BtnLight>
-                <BtnGreen
+                <BtnBrown
                   type="submit"
                   disabled={isSubmitting}
                   aria-label="Submit"
                 >
                   SAVE
-                </BtnGreen>
+                </BtnBrown>
               </BtnContainer>
             </ProfileList>
           )}

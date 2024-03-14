@@ -34,9 +34,9 @@ export const Box = styled.div`
 `;
 
 export const SelectInput = styled(Select)`
-  background-color: transparent;
+  /* background-color: transparent;
   border-radius: 10px;
-  border: 0.5px solid ${theme.colors.brown2};
+  border: 0.5px solid ${theme.colors.brown4};
 
   &:nth-child(2) {
     margin-right: 22px;
@@ -47,5 +47,16 @@ export const SelectInput = styled(Select)`
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 285px;
+  } */
+
+  .Select-control {
+    border: 1px solid #754F23;
+    cursor: pointer;
+    &:hover {
+      border: 2px solid #754F23;
+    }
+  }
+  .is-focused .Select-control {
+    border: 2px solid #754F23;
   }
 `;

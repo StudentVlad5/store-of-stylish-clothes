@@ -16,7 +16,7 @@ const HomePage = () => {
   return (
     <>
       <SEO
-        title="HomeForest Shop"
+        title="Quillis"
         description="Take good care of your your plant. You can buy the best plants for your house or apartment. Get advice and help with plant care and maintenance"
       />
       <HomeComp />

@@ -163,6 +163,7 @@ const BtnLight = styled(Button)`
   &:focus {
     color: ${theme.colors.white};
     background-color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 `;
 
@@ -202,6 +203,7 @@ const BtnBrown = styled(Button)`
   &:focus {
     color: ${theme.colors.brown4};
     background-color: transparent;
+    transition: ${theme.transition[1]};
   }
 
   & :disabled {

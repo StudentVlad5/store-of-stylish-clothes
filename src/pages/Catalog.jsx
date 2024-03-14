@@ -15,7 +15,7 @@ const CatalogPage = () => {
   }, []);
   return (
     <>
-      <SEO title="HomeForest Catalog" description="Catalog of goods" />
+      <SEO title="Catalog" description="Catalog of goods" />
       <Catalog />
     </>
   );

@@ -17,7 +17,7 @@ const AdditionPage = () => {
   return (
     <>
       <SEO
-        title="HomeForest Addition"
+        title="Addition"
         description="Addition Blogs Deliveries"
       />
       <Addition />

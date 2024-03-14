@@ -300,7 +300,7 @@ const IconBtn = styled.button`
 
   &:disabled {
     svg {
-      fill: ${theme.colors.grey1};
+      fill: ${theme.colors.brown4};
     }
   }
 

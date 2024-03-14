@@ -6,6 +6,30 @@ import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { PoshtaTitle } from 'components/CheckOut/Order/Order.styled';
 import { getFromStorage } from 'services/localStorService';
 
+const customStyles = {
+  control: (base, state) => ({
+    ...base,
+    backgroundColor: 'transparent',
+    color:'#2F2F2F',
+    border: state.isFocused ? '2px solid  #754F23' : '1px solid  #754F23',
+    boxShadow: state.isFocused ? 'none' : 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      border: '2px solid #754F23'
+    }
+  }),
+  option: (base, state) => ({
+    ...base,
+    cursor: 'pointer',
+    backgroundColor: state.isSelected ? '#754F23' : '#FCF9F2',
+    color: state.isSelected ? '#FCF9F2' : '#2F2F2F',
+    '&:hover': {
+      backgroundColor: '#754F23',
+      color: '#FCF9F2'
+    }
+  })
+};
+
 export const UkrPoshta = ({
   setSelectedCity_UP_NAME,
   setSelectedCity,
@@ -151,7 +175,7 @@ export const UkrPoshta = ({
           name="cityNameUP"
           type="text"
           className="basic-single"
-          classNamePrefix="select"
+          // classNamePrefix="select"
           onInputChange={e => setCityNameUP(e)}
           onChange={e => {
             if (e?.value) {
@@ -170,6 +194,8 @@ export const UkrPoshta = ({
               ? 'Select city please...'
               : selectedCity_UP_NAME
           }
+          styles={customStyles}
+          classNamePrefix="custom-select"
         />
       </Box>
 
@@ -179,7 +205,7 @@ export const UkrPoshta = ({
           name="departmentNameUP"
           type="text"
           className="basic-single"
-          classNamePrefix="select"
+          // classNamePrefix="select"
           onInputChange={e => setDepartmentNameUP(e)}
           defaultValue={departmentNameUP}
           isDisabled={typeof +checkCityNameUP !== 'number'}
@@ -197,6 +223,8 @@ export const UkrPoshta = ({
               setSelectedDepartment(e.value);
             }
           }}
+          styles={customStyles}
+          classNamePrefix="custom-select"
         />
       </Box>
       {isLoading ? onLoading() : onLoaded()}

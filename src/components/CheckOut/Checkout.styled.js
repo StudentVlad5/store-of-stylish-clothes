@@ -5,14 +5,14 @@ import theme from 'components/baseStyles/Variables.styled';
 import { Container, Section } from 'components/baseStyles/CommonStyle.styled';
 
 export const FormSection = styled(Section)`
-  padding: 130px 0;
+  padding: 130px 0 80px 0;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     max-width: ${theme.breakpoints.tablet};
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    padding: 140px 0 0 0;
+    padding: 140px 0 120px 0;
     max-width: ${theme.breakpoints.desktop};
   }
 `;
@@ -106,30 +106,30 @@ export const LinkFolder = styled(NavLink)`
   text-transform: uppercase;
   line-height: normal;
   text-decoration: none;
-  color: ${theme.colors.brown};
+  color: ${theme.colors.brown4};
 
   border-radius: 50%;
-  border: 1px solid ${theme.colors.brown};
+  border: 1px solid ${theme.colors.brown4};
   background-color: transparent;
 
   cursor: pointer;
-  transition: ${theme.transition};
+  transition: ${theme.transition[1]};
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     width: 40px;
     height: 40px;
-    font-size: ${theme.fontSizes.small};
+    font-size: ${theme.fontSizes.medium};
   }
 
   &:hover,
   &:focus {
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    color: ${theme.colors.fon};
+    background-color: ${theme.colors.brown4};
   }
 
   &.active {
-    color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    color: ${theme.colors.fon};
+    background-color: ${theme.colors.brown4};
   }
 `;
 
@@ -145,7 +145,7 @@ export const LinkFolderTitle = styled.span`
   text-transform: uppercase;
   line-height: normal;
   text-decoration: none;
-  color: ${theme.colors.brown};
+  color: ${theme.colors.brown2};
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     top: 45px;
@@ -158,7 +158,7 @@ export const Liner = styled.div`
 
   & > span {
     display: block;
-    border-bottom: 2px solid ${theme.colors.brown};
+    border-bottom: 2px solid ${theme.colors.brown4};
   }
 `;
 
@@ -172,7 +172,7 @@ export const CheckoutBtn = styled.button`
   padding-bottom: 10px;
   margin-top: 16px;
 
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: 12px;
   font-style: normal;
@@ -180,10 +180,12 @@ export const CheckoutBtn = styled.button`
   line-height: normal;
   text-transform: uppercase;
 
+
+ background-color: transparent;
   border-radius: 10px;
-  border: 1px solid ${theme.colors.brown2};
-  background-color: transparent;
+  border: 1px solid ${theme.colors.brown4};
   cursor: pointer;
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     width: 500px;
@@ -199,8 +201,7 @@ export const CheckoutBtn = styled.button`
   &:hover,
   &:focus {
     color: ${theme.colors.white};
-    background: ${theme.colors.green};
-    border: 1px solid ${theme.colors.green};
+    background: ${theme.colors.brown4};
   }
   &:disabled {
     cursor: none;

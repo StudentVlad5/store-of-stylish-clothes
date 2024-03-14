@@ -11,11 +11,12 @@ import { IconBtn } from 'components/Catalog/Catalog.styled';
 
 export const DataContainer = styled(ProfileContainer)`
   /* width: 590px; */
-  background-color: ${theme.colors.green6};
+  border: 1px solid ${theme.colors.brown4};
+  background-color: transparent;
 `;
 
 export const DataContainerText = styled.p`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
   font-size: 14px;
   font-style: normal;
@@ -24,6 +25,8 @@ export const DataContainerText = styled.p`
 
   &:first-child {
     color: ${theme.colors.green};
+    font-size: 15px;
+    font-weight: 500;
   }
 `;
 
@@ -100,14 +103,48 @@ export const DeliveryBlockOptions = styled.div`
 `;
 
 export const DeliveryBlockOptionsBoxLable = styled.div`
-  background-color: ${theme.colors.green6};
+  background-color: transparent;
   width: 100%;
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-  }
+  position: relative;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 1200px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.brown4};
+  }
+
+  &:last-child {
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${theme.colors.brown4};
+    }
+  }
+`;
+
+export const DeliveryBlockOptionsBoxLableLast = styled(
+  DeliveryBlockOptionsBoxLable,
+)`
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.brown4};
   }
 `;
 
@@ -123,7 +160,7 @@ export const DeliveryBlockOptionsLable = styled.label`
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: 2px solid #6f8d4c;
+    border: 2px solid ${theme.colors.brown4};
     display: inline-block;
   }
 `;
@@ -133,7 +170,7 @@ export const DeliveryBlockOptionsInput = styled.input`
 
   &:checked::before {
     content: '';
-    background-color: #6f8d4c;
+    background-color: ${theme.colors.brown4};
     width: 1px;
     height: 1px;
     display: inline-block;
@@ -162,27 +199,26 @@ export const DeliveryBlockOptionsLableBox = styled.div`
 `;
 
 export const DeliveryBlockOptionsTitle = styled.span`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
 
-  /* margin-bottom: 14px; */
-  font-family: ${theme.fonts[1]};
-  font-size: 12px;
+  font-family: ${theme.fonts[0]};
+  font-size: 13px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   letter-spacing: 0.32px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 20px;
   }
 `;
 
 export const DeliveryBlockOptionsTitleDiscr = styled.span`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
 
   font-family: ${theme.fonts[0]};
   font-size: 10px;
@@ -232,7 +268,7 @@ export const DeliveryFormLable = styled.label`
 
 export const DeliveryFormLableText = styled.span`
   margin-bottom: 8px;
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: 12px;
   font-style: normal;
@@ -254,7 +290,7 @@ export const DeliveryFormInput = styled.input`
   width: 100%;
   padding: 8px 30px 8px 20px;
 
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
   font-size: 12px;
   font-style: normal;
@@ -262,10 +298,9 @@ export const DeliveryFormInput = styled.input`
   line-height: normal;
   letter-spacing: 0.32px;
 
-  border: 1px solid #c6cdd3;
-  border-color: transparent;
+  border: 1px solid ${theme.colors.brown4};
   border-radius: 10px;
-  background: ${theme.colors.blue3};
+  background: transparent;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;
@@ -278,14 +313,12 @@ export const DeliveryFormInput = styled.input`
   }
 
   &:hover,
-  &:focus,
-  &:visited,
-  &:focus-visible {
-    border: 1px solid ${theme.colors.green};
+  &:focus {
+    border: 1px solid ${theme.colors.brown4};
   }
 
   &::placeholder {
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown2};
     font-family: ${theme.fonts[1]};
     font-size: 12px;
     font-style: normal;
@@ -318,7 +351,7 @@ export const DeliveryFormBtn = styled.button`
   width: 150px;
   height: 35px;
 
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: 10px;
   font-style: normal;
@@ -327,9 +360,11 @@ export const DeliveryFormBtn = styled.button`
   text-transform: uppercase;
 
   border-radius: 10px;
-  border: 1px solid ${theme.colors.brown1};
+  border: 1px solid ${theme.colors.brown4};
   background-color: transparent;
+
   cursor: pointer;
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 12px;
@@ -344,20 +379,27 @@ export const DeliveryFormBtn = styled.button`
   &:hover,
   &:focus {
     color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.green};
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.brown4};
   }
 `;
 
 export const DeliveryFormBtnFinish = styled(DeliveryFormBtn)`
-  background: ${theme.colors.green4};
-  border: 1px solid ${theme.colors.green4};
+  background: ${theme.colors.brown4};
+  color: ${theme.colors.white};
   &:disabled {
     cursor: none;
     pointer-events: none;
     opacity: 0.5;
   }
+
+  &:hover,
+  &:focus {
+    color: ${theme.colors.brown4};
+    border: 1px solid ${theme.colors.brown4};
+    background-color: transparent;
+  }
 `;
+
 export const BoxPost = styled.div`
   position: relative;
   display: flex;
@@ -389,7 +431,7 @@ export const PoshtaBox = styled.div`
 export const PoshtaBoxTitle = styled.p`
   display: inline-block;
 
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
   font-size: 12px;
   font-style: normal;
@@ -412,18 +454,18 @@ export const PoshtaTitle = styled.p`
 
   color: ${theme.colors.darkGreen};
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
@@ -462,8 +504,16 @@ export const PaymentFormBtn = styled(DeliveryFormBtn)`
 `;
 
 export const PaymentFormBtnFinish = styled(PaymentFormBtn)`
-  background: ${theme.colors.green4};
-  border: 1px solid ${theme.colors.green4};
+  color: ${theme.colors.white};
+  background: ${theme.colors.brown4};
+
+  &:hover,
+  &:focus {
+    color: ${theme.colors.brown4};
+    background: transparent;
+    border: 1px solid ${theme.colors.brown4};
+  }
+
   &:disabled {
     cursor: none;
     pointer-events: none;

@@ -6,6 +6,30 @@ import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { PoshtaTitle } from 'components/CheckOut/Order/Order.styled';
 import { getFromStorage } from 'services/localStorService';
 
+const customStyles = {
+  control: (base, state) => ({
+    ...base,
+    backgroundColor: 'transparent',
+    color:'#2F2F2F',
+    border: state.isFocused ? '2px solid  #754F23' : '1px solid  #754F23',
+    boxShadow: state.isFocused ? 'none' : 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      border: '2px solid #754F23'
+    }
+  }),
+  option: (base, state) => ({
+    ...base,
+    cursor: 'pointer',
+    backgroundColor: state.isSelected ? '#754F23' : '#FCF9F2',
+    color: state.isSelected ? '#FCF9F2' : '#2F2F2F',
+    '&:hover': {
+      backgroundColor: '#754F23',
+      color: '#FCF9F2'
+    }
+  })
+};
+
 export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [cityName, setCityName] = useState(
@@ -131,7 +155,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           name="cityName"
           type="text"
           className="basic-single"
-          classNamePrefix="select"
+          // classNamePrefix="select"
           onInputChange={e => setCityName(e)}
           onChange={e => {
             if (e?.value) {
@@ -146,6 +170,8 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           validate={schemas.checkDepartmentNP.city}
           options={optionsNP(cityName)}
           placeholder={cityName === '' ? 'Select city please...' : cityName}
+          styles={customStyles}
+          classNamePrefix="custom-select"
         />
       </Box>
       <Box>
@@ -155,7 +181,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           name="departmentName"
           type="text"
           className="basic-single"
-          classNamePrefix="select"
+          // classNamePrefix="select"
           onInputChange={e => setDepartmentName(e)}
           defaultValue={departmentName}
           isDisabled={!checkCityRef}
@@ -173,6 +199,8 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
               setSelectedDepartment(e.value);
             }
           }}
+          styles={customStyles}
+          classNamePrefix="custom-select"
         />
       </Box>
 

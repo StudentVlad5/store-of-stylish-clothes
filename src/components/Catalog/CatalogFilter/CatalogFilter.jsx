@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSearchParams, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Range from 'rc-slider';
@@ -11,58 +11,40 @@ import { getFromStorage, saveToStorage } from 'services/localStorService';
 import * as SC from './CatalogFilter.styled';
 
 import { ReactComponent as Open } from 'images/svg/open.svg';
+import debounce from 'lodash.debounce';
 
 export const CatalogFilter = ({
   filterState,
   setParams,
   filters,
-  initialState,
   setFilters,
 }) => {
-  const [products, setProducts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   // const routeParams = useParams();
   // const [error, setError] = useState(null);
   const { t } = useTranslation();
 
-  const min = Math.min.apply(
-    Math,
-    products.flatMap(product => product.currentPrice),
-  );
-  const max = Math.max.apply(
-    Math,
-    products.flatMap(product => product.currentPrice),
-  );
+  const min = 0;
+  const max = 5000;
+
+  // debounce
+  const onChange = e => {
+    setFilters({
+      ...filters,
+      ['minPrice']: e[0],
+      ['maxPrice']: e[1],
+    });
+    setParams();
+  };
+
+  const debouncedOnChange = debounce(onChange, 500);
 
   // save to local stor selected filter elements
   useEffect(() => {
     saveToStorage('filters', filters);
     setParams();
   }, [filters]);
-
-  // get selected filter elements after refresh
-  const handleActiveLabel = key => {
-    const filtersFromLS = getFromStorage('filters');
-    const selectedFilters = filtersFromLS[key];
-    if (selectedFilters) {
-      selectedFilters.forEach(item => {
-        const checkboxes = document.querySelectorAll(
-          `label[data-key="${item}"]`,
-        );
-        checkboxes?.forEach(checkbox => checkbox.classList.add('active_label'));
-      });
-    }
-  };
-
-  const getActiveLabel = () => {
-    handleActiveLabel('man_woman');
-    handleActiveLabel('category');
-    handleActiveLabel('product');
-    handleActiveLabel('size');
-    handleActiveLabel('minPrice');
-    handleActiveLabel('maxPrice');
-  };
 
   const toggleFilterItem = e => {
     e.stopPropagation();
@@ -85,39 +67,19 @@ export const CatalogFilter = ({
     });
   };
 
-  const handleChange = e => {
+  function handleChange(e) {
     const { name, value } = e.target;
     toggleChecked(e);
-    if (name === 'man_woman') {
-      const selectedFilters = {
-        ...filters,
-        [name]: value,
-      };
-      setFilters(selectedFilters);
-      saveToStorage('filters', selectedFilters);
-      setParams();
-    }
-    if (name === 'minPrice') {
-      const selectedFilters = {
-        ...filters,
-        [name]: value,
-      };
-      setFilters(selectedFilters);
-      saveToStorage('filters', selectedFilters);
-      setParams();
-    }
-    if (name === 'maxPrice') {
-      const selectedFilters = {
-        ...filters,
-        [name]: value,
-      };
-      setFilters(selectedFilters);
-      saveToStorage('filters', selectedFilters);
-      setParams();
-    }
-
+    // if (name === 'man_woman') {
+    const selectedFilters = {
+      ...filters,
+      [name]: value,
+    };
+    setFilters(selectedFilters);
+    saveToStorage('filters', selectedFilters);
+    setParams();
     const selectedFilter = filters[name];
-    if (selectedFilter.includes(value)) {
+    if (selectedFilter && selectedFilter.includes(value)) {
       const removeDuplicate = selectedFilter.filter(item => item !== value);
       const selectedFilters = {
         ...filters,
@@ -135,17 +97,35 @@ export const CatalogFilter = ({
       saveToStorage('filters', selectedFilters);
       setParams();
     }
-  };
+  }
 
   const handleClearAllFilters = () => {
-    setFilters(initialState);
-    saveToStorage('filters', initialState);
+    setFilters({
+      man_woman: [],
+      category: [],
+      maxPrice: '5000',
+      minPrice: '0',
+      product: [],
+      sizes: [],
+      page: 1,
+      perPage: 12,
+    });
+    saveToStorage('filters', {
+      man_woman: [],
+      category: [],
+      maxPrice: '5000',
+      minPrice: '0',
+      product: [],
+      sizes: [],
+      page: 1,
+      perPage: 12,
+    });
     setSearchParams({ page: 1, perPage: 12 });
 
     const listOfLabel = document.querySelectorAll('.active_label');
     listOfLabel.forEach(item => item.classList.remove('active_label'));
   };
-
+  console.log('filters', filters);
   return (
     <>
       <SC.Filters>
@@ -175,7 +155,7 @@ export const CatalogFilter = ({
                       name="man_woman"
                       value={card}
                       data-input={card}
-                      // defaultChecked={filters['man_woman'].includes(card)}
+                      defaultChecked={filters['man_woman'].includes(card)}
                       onChange={e => {
                         handleChange(e);
                       }}
@@ -214,7 +194,7 @@ export const CatalogFilter = ({
                       name="category"
                       value={card}
                       data-input={card}
-                      // defaultChecked={filters['category'].includes(card)}
+                      defaultChecked={filters['category'].includes(card)}
                       onChange={e => {
                         handleChange(e);
                       }}
@@ -227,7 +207,7 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filterState[0]?.level_3.length > 0 && (
+        {filterState[0]?.level_3.length > 0 && filters.category.length > 0 && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="product"
@@ -266,15 +246,15 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filterState[0]?.level_4.length > 0 && (
+        {filters.category.includes('Одежда') && (
           <SC.Filter>
             <SC.FilterHeading
-              data-key="size"
+              data-key="sizes"
               onClick={e => {
                 toggleFilterItem(e);
               }}
             >
-              <span>{t('SIZE')}</span>
+              <span>{t('SIZE CLOTHES')}</span>
               <SC.IconBtn
                 type="button"
                 aria-label="switch to open filter"
@@ -284,12 +264,129 @@ export const CatalogFilter = ({
               </SC.IconBtn>
             </SC.FilterHeading>
             <SC.FilterInnerList>
-              {filterState[0]?.level_4.map((card, i) => {
+              {filterState[0]?.level_4['Одежда'].map((card, i) => {
                 return (
                   <label key={i} data-key={card}>
                     <SC.FilterInnerListItem
                       type="checkbox"
-                      name="size"
+                      name="sizes"
+                      value={card}
+                      data-input={card}
+                      // defaultChecked={filters['size'].includes(card)}
+                      onChange={e => {
+                        handleChange(e);
+                      }}
+                    />
+                    <span>{card}</span>
+                  </label>
+                );
+              })}
+            </SC.FilterInnerList>
+          </SC.Filter>
+        )}
+
+        {filters.category.includes('Обувь') && (
+          <SC.Filter>
+            <SC.FilterHeading
+              data-key="sizes"
+              onClick={e => {
+                toggleFilterItem(e);
+              }}
+            >
+              <span>{t('SIZE FOOTWEARS')}</span>
+              <SC.IconBtn
+                type="button"
+                aria-label="switch to open filter"
+                aria-expanded="false"
+              >
+                <Open />
+              </SC.IconBtn>
+            </SC.FilterHeading>
+            <SC.FilterInnerList>
+              {filterState[0]?.level_4['Обувь'].map((card, i) => {
+                return (
+                  <label key={i} data-key={card}>
+                    <SC.FilterInnerListItem
+                      type="checkbox"
+                      name="sizes"
+                      value={card}
+                      data-input={card}
+                      // defaultChecked={filters['size'].includes(card)}
+                      onChange={e => {
+                        handleChange(e);
+                      }}
+                    />
+                    <span>{card}</span>
+                  </label>
+                );
+              })}
+            </SC.FilterInnerList>
+          </SC.Filter>
+        )}
+
+        {filters.category.includes('Аксессуары') && (
+          <SC.Filter>
+            <SC.FilterHeading
+              data-key="sizes"
+              onClick={e => {
+                toggleFilterItem(e);
+              }}
+            >
+              <span>{t('SIZE ACCESSORIES')}</span>
+              <SC.IconBtn
+                type="button"
+                aria-label="switch to open filter"
+                aria-expanded="false"
+              >
+                <Open />
+              </SC.IconBtn>
+            </SC.FilterHeading>
+            <SC.FilterInnerList>
+              {filterState[0]?.level_4['Аксессуары'].map((card, i) => {
+                return (
+                  <label key={i} data-key={card}>
+                    <SC.FilterInnerListItem
+                      type="checkbox"
+                      name="sizes"
+                      value={card}
+                      data-input={card}
+                      // defaultChecked={filters['size'].includes(card)}
+                      onChange={e => {
+                        handleChange(e);
+                      }}
+                    />
+                    <span>{card}</span>
+                  </label>
+                );
+              })}
+            </SC.FilterInnerList>
+          </SC.Filter>
+        )}
+
+        {filters.category.includes('Staff Tactical') && (
+          <SC.Filter>
+            <SC.FilterHeading
+              data-key="sizes"
+              onClick={e => {
+                toggleFilterItem(e);
+              }}
+            >
+              <span>{t('SIZE Staff Tactical')}</span>
+              <SC.IconBtn
+                type="button"
+                aria-label="switch to open filter"
+                aria-expanded="false"
+              >
+                <Open />
+              </SC.IconBtn>
+            </SC.FilterHeading>
+            <SC.FilterInnerList>
+              {filterState[0]?.level_4['Staff Tactical'].map((card, i) => {
+                return (
+                  <label key={i} data-key={card}>
+                    <SC.FilterInnerListItem
+                      type="checkbox"
+                      name="sizes"
                       value={card}
                       data-input={card}
                       // defaultChecked={filters['size'].includes(card)}
@@ -329,7 +426,7 @@ export const CatalogFilter = ({
                   type="number"
                   name="minPrice"
                   value={filters.minPrice}
-                  disabled={filters.minPrice === 0}
+                  // disabled={filters.minPrice}
                   placeholder={min}
                   onChange={e => {
                     setFilters({ ...filters, ['minPrice']: e.target.value });
@@ -343,8 +440,8 @@ export const CatalogFilter = ({
                 <SC.FilterInnerListItem
                   type="number"
                   name="maxPrice"
-                  value={filters.maxPrice === 3000}
-                  disabled={filters.maxPrice === 0}
+                  value={filters.maxPrice}
+                  // disabled={filters.maxPrice}
                   placeholder={max}
                   onChange={e => {
                     setFilters({ ...filters, ['maxPrice']: e.target.value });
@@ -364,15 +461,8 @@ export const CatalogFilter = ({
                 defaultValue={[min, max]}
                 step={1}
                 pushable={(true, 1)}
-                disabled={filters.minPrice === 0}
-                onChange={value => {
-                  setFilters({
-                    ...filters,
-                    ['minPrice']: value[0],
-                    ['maxPrice']: value[1],
-                  });
-                  setParams();
-                }}
+                // disabled={filters.minPrice === 0}
+                onChange={debouncedOnChange}
               />
             </SC.RangeLabel>
           </SC.FilterInnerList>

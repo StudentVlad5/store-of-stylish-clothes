@@ -33,16 +33,19 @@ export const Catalog = () => {
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
   // const routeParams = useParams();
-  const initialState = {
-    man_woman: [],
-    category: [],
-    maxPrice: '',
-    minPrice: '',
-    product: [],
-    sizes: [],
-    page: page,
-    perPage: perPage,
-  };
+  let initialState;
+  getFromStorage('filters')
+    ? (initialState = getFromStorage('filters'))
+    : (initialState = {
+        man_woman: [],
+        category: [],
+        maxPrice: '5000',
+        minPrice: '0',
+        product: [],
+        sizes: [],
+        page: page,
+        perPage: perPage,
+      });
 
   const [selectedFilter, setSelectedFilter] = useState([]);
   const [filters, setFilters] = useState(initialState);
@@ -66,6 +69,31 @@ export const Catalog = () => {
   //   setParams();
   //   saveToStorage('filters', filterState);
   // }, []);
+
+  // get selected filter elements after refresh
+  const handleActiveLabel = key => {
+    const filtersFromLS = getFromStorage('filters');
+    const selectedFilters = filtersFromLS[key];
+    if (selectedFilters) {
+      selectedFilters.forEach(item => {
+        const checkboxes = document.querySelectorAll(
+          `label[data-key="${item}"]`,
+        );
+        checkboxes?.forEach(checkbox => checkbox.classList.add('active_label'));
+      });
+    }
+  };
+
+  const getActiveLabel = () => {
+    handleActiveLabel('man_woman');
+    handleActiveLabel('category');
+    handleActiveLabel('product');
+    handleActiveLabel('sizes');
+    // handleActiveLabel('minPrice');
+    // handleActiveLabel('maxPrice');
+  };
+
+  // =================================================>
 
   useEffect(() => {
     const checkFilter = getFromStorage('filters');
@@ -109,14 +137,14 @@ export const Catalog = () => {
       ? (param.perPage = searchParams.get('perPage'))
       : (param.perPage = perPage);
     setSearchParams(param);
-  }, []);
+  }, [page]);
 
   useEffect(() => {
-    // if (!page || !perPage) {
-    //   const params = { page, perPage };
-    //   setPages(1);
-    //   setSearchParams(params);
-    // }
+    if (!page || !perPage) {
+      const params = { page, perPage };
+      setPages(1);
+      setSearchParams(params);
+    }
 
     (async function getData() {
       setIsLoading(true);
@@ -127,7 +155,11 @@ export const Catalog = () => {
         }
         setProducts(data.catalog);
         setTotalPage(Math.ceil(data.total / perPage));
+        if (data.total / (perPage * page) < 1) {
+          setPage(1);
+        }
         getSelectedFilter();
+        getActiveLabel();
       } catch (error) {
         setError(error);
       } finally {
@@ -164,12 +196,12 @@ export const Catalog = () => {
   //   }
   // }, [selectedFilter, search, sort]);
 
-  useEffect(() => {
-    window.addEventListener('unload', removeLocalStor);
-    return () => {
-      window.removeEventListener('unload', removeLocalStor);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('unload', removeLocalStor);
+  //   return () => {
+  //     window.removeEventListener('unload', removeLocalStor);
+  //   };
+  // }, []);
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
@@ -225,13 +257,13 @@ export const Catalog = () => {
         }
         if (!Array.isArray(arr[1])) {
           if (arr[0] == 'minPrice') {
-            saveToStorage('filters', { ...LS, ['minPrice']: '' });
-            setFilters(prevState => ({ ...prevState, ['minPrice']: '' }));
+            saveToStorage('filters', { ...LS, ['minPrice']: '0' });
+            setFilters(prevState => ({ ...prevState, ['minPrice']: '0' }));
             setParams();
           }
           if (arr[0] == 'maxPrice') {
-            saveToStorage('filters', { ...LS, ['maxPrice']: '' });
-            setFilters(prevState => ({ ...prevState, ['maxPrice']: '' }));
+            saveToStorage('filters', { ...LS, ['maxPrice']: '5000' });
+            setFilters(prevState => ({ ...prevState, ['maxPrice']: '5000' }));
             setParams();
           }
         }
@@ -257,7 +289,7 @@ export const Catalog = () => {
       params.product = filters.product;
     }
     if (filters.sizes !== '') {
-      params.size = filters.sizes;
+      params.sizes = filters.sizes;
     }
     if (filters.minPrice !== '') {
       params.minPrice = filters.minPrice;
@@ -326,7 +358,6 @@ export const Catalog = () => {
               filterState={filterState}
               setParams={setParams}
               filters={filters}
-              initialState={initialState}
               setFilters={setFilters}
             />
           </SC.FiltersContainer>

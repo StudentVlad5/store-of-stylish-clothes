@@ -104,9 +104,7 @@ const FilterHeading = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-
   cursor: pointer;
 
   &.active ~ div {
@@ -125,7 +123,7 @@ const FilterInnerList = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 4px;
-
+  padding-top: 10px;
   width: 100%;
 
   & label {
@@ -148,7 +146,7 @@ const FilterInnerList = styled.div`
         height: 12px;
         margin-right: 4px;
 
-        border: 1px solid ${theme.colors.green};
+        border: 1px solid ${theme.colors.brown2};
         border-radius: 0.25em;
       }
     }

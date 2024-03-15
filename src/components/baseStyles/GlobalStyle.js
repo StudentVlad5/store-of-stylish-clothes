@@ -311,7 +311,7 @@ input::-webkit-calendar-picker-indicator:hover {
   }
 }
 .active_label > span::before {
-  border-color: ${theme.colors.green};
+  border-color: ${theme.colors.brown1};
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='64' height='64' viewBox='0 0 64 64'%0Astyle='fill:%235a6b47;'%3E%3Cpath d='M27 55L6 33 9 29 26 41 55 12 59 16z'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;

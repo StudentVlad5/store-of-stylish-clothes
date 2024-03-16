@@ -192,7 +192,7 @@ export const ShoppingBag = () => {
 
       <BasketBox open={isOpen}>
         <BasketBoxTitle>
-          <BasketTitle>Your card</BasketTitle>
+          <BasketTitle>Cart</BasketTitle>
           <BasketIconClose onClick={() => handlecheckout()} />
         </BasketBoxTitle>
 

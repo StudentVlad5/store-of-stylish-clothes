@@ -387,8 +387,8 @@ input::-webkit-calendar-picker-indicator:hover {
 }
 
 .linkFolder.active{
-  background-color: ${theme.colors.darkGreen};
-  color: ${theme.colors.brown3}
+  background-color: ${theme.colors.brown4};
+  color: ${theme.colors.fon}
 }
 
 .linkFolder.sideBar_menu{

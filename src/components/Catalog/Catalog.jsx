@@ -99,12 +99,12 @@ export const Catalog = () => {
     const checkFilter = getFromStorage('filters');
     const param = {};
     searchParams.getAll('man_woman')
-      ? (param.man_woman = searchParams.getAll('man_woman'))
+      ? (param.man_woman = searchParams.get('man_woman'))
       : checkFilter.man_woman
       ? (param.man_woman = checkFilter.man_woman)
       : (param.man_woman = []);
     searchParams.getAll('category')
-      ? (param.category = searchParams.getAll('category'))
+      ? (param.category = searchParams.get('category'))
       : checkFilter?.category
       ? (param.category = checkFilter?.category)
       : (param.category = []);
@@ -114,7 +114,7 @@ export const Catalog = () => {
       ? (param.product = checkFilter?.product)
       : (param.product = []);
     searchParams.getAll('sizes')
-      ? (param.sizes = searchParams.getAll('sizes'))
+      ? (param.sizes = searchParams.get('sizes'))
       : checkFilter?.sizes
       ? (param.sizes = checkFilter?.sizes)
       : (param.sizes = []);
@@ -136,15 +136,64 @@ export const Catalog = () => {
     searchParams.get('perPage')
       ? (param.perPage = searchParams.get('perPage'))
       : (param.perPage = perPage);
+    searchParams.get('sort')
+      ? (param.sort = searchParams.get('sort'))
+      : (param.sort = '');
     setSearchParams(param);
   }, [page]);
+  useEffect(() => {
+    const checkFilter = getFromStorage('filters');
+    const param = {};
+    searchParams.getAll('man_woman')
+      ? (param.man_woman = searchParams.get('man_woman'))
+      : checkFilter.man_woman
+      ? (param.man_woman = checkFilter.man_woman)
+      : (param.man_woman = []);
+    searchParams.getAll('category')
+      ? (param.category = searchParams.get('category'))
+      : checkFilter?.category
+      ? (param.category = checkFilter?.category)
+      : (param.category = []);
+    searchParams.getAll('product')
+      ? (param.product = searchParams.get('product'))
+      : checkFilter?.product
+      ? (param.product = checkFilter?.product)
+      : (param.product = []);
+    searchParams.getAll('sizes')
+      ? (param.sizes = searchParams.get('sizes'))
+      : checkFilter?.sizes
+      ? (param.sizes = checkFilter?.sizes)
+      : (param.sizes = []);
+    searchParams.get('minPrice')
+      ? (param.minPrice = searchParams.get('minPrice'))
+      : checkFilter?.minPrice
+      ? (param.minPrice = checkFilter?.minPrice)
+      : (param.minPrice = '');
+    searchParams.get('maxPrice')
+      ? (param.maxPrice = searchParams.get('maxPrice'))
+      : checkFilter?.maxPrice
+      ? (param.maxPrice = checkFilter?.maxPrice)
+      : (param.maxPrice = '');
+    searchParams.get('page')
+      ? (param.page = searchParams.get('page'))
+      : getFromStorage('page')
+      ? (param.page = getFromStorage('page'))
+      : (param.page = page);
+    searchParams.get('perPage')
+      ? (param.perPage = searchParams.get('perPage'))
+      : (param.perPage = perPage);
+    searchParams.get('sort')
+      ? (param.sort = searchParams.get('sort'))
+      : (param.sort = '');
+    setSearchParams(param);
+  }, []);
 
   useEffect(() => {
-    if (!page || !perPage) {
-      const params = { page, perPage };
-      setPages(1);
-      setSearchParams(params);
-    }
+    // if (!page || !perPage) {
+    //   const params = { page, perPage };
+    //   setPages(1);
+    //   setSearchParams(params);
+    // }
 
     (async function getData() {
       setIsLoading(true);
@@ -227,11 +276,13 @@ export const Catalog = () => {
 
   const getSelectedFilter = () => {
     const LS = getFromStorage('filters');
-    const LSvalues = Object.values(LS);
-    const concat = (...arrays) =>
-      [].concat(...arrays).filter(item => item !== '');
-    const concated = concat(...LSvalues);
-    setSelectedFilter(concated);
+    setSelectedFilter([
+      ...LS.category,
+      ...LS.man_woman,
+      ...LS.product,
+      ...LS.sizes,
+    ]);
+    console.log('selectedFilter', selectedFilter);
   };
 
   const removeSelectedFilter = e => {
@@ -309,24 +360,32 @@ export const Catalog = () => {
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>
-        <SC.HeadlineShop $primary>SHOP</SC.HeadlineShop>
-        <SC.Heading>
-          <SC.HeadingBtnBox>
-            <SC.SortBox>
-              <SC.Accord onClick={toggleSort}>
-                <span>SORT BY</span>
-                <SC.IconBtn
-                  type="button"
-                  aria-label="switch to open sort list"
-                  aria-expanded="false"
-                >
-                  <Open />
-                </SC.IconBtn>
-              </SC.Accord>
-              {showSort && <CatalogSort />}
-            </SC.SortBox>
-          </SC.HeadingBtnBox>
-        </SC.Heading>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <SC.HeadlineShop $primary>SHOP</SC.HeadlineShop>
+          <SC.Heading>
+            <SC.HeadingBtnBox>
+              <SC.SortBox>
+                <SC.Accord onClick={toggleSort}>
+                  <span>SORT BY</span>
+                  <SC.IconBtn
+                    type="button"
+                    aria-label="switch to open sort list"
+                    aria-expanded="false"
+                  >
+                    <Open />
+                  </SC.IconBtn>
+                </SC.Accord>
+                {showSort && <CatalogSort />}
+              </SC.SortBox>
+            </SC.HeadingBtnBox>
+          </SC.Heading>
+        </div>
         {search && (
           <SC.SearchResults>
             <span>Search results:</span> {search}
@@ -340,17 +399,18 @@ export const Catalog = () => {
           </SC.SearchResults>
         )}
         <SC.SelectedFilters>
-          {/* {selectedFilter.map((filter, i) => {
-            return (
-              <label key={i} data-key={filter}>
-                <span>{filter}</span>
-                <Close
-                  data-key={filter}
-                  onClick={e => removeSelectedFilter(e)}
-                />
-              </label>
-            );
-          })} */}
+          {selectedFilter &&
+            selectedFilter.map((filter, i) => {
+              return (
+                <label key={i} data-key={filter}>
+                  <span>{filter}</span>
+                  <Close
+                    data-key={filter}
+                    onClick={e => removeSelectedFilter(e)}
+                  />
+                </label>
+              );
+            })}
         </SC.SelectedFilters>
         <SC.GridContainer onClick={handleClick}>
           <SC.FiltersContainer>

@@ -12,54 +12,41 @@ import * as SC from './SearchResult.styled';
 import { Subtitle } from 'components/baseStyles/CommonStyle.styled';
 
 import { MdEast } from 'react-icons/md';
-import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
 
-export const SearchResult = ({ onClose, toggleMobileMenu }) => {
+export const SearchResult = ({
+  onClose,
+  toggleMobileMenu,
+  searchQuery,
+  searchParams,
+}) => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [total, setTotal] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [searchParams] = useSearchParams(); //, setSearchParams
+  // const [searchParams] = useSearchParams(); //, setSearchParams
   const { t } = useTranslation();
 
+  console.log('products', products);
   useEffect(() => {
-    if (searchParams.get('search') !== null) {
-      (async function getData() {
-        setIsLoading(true);
-        try {
-          const { data } = await fetchData(`/catalog?${searchParams}`);
-          setProducts(data.catalog);
-          setCategory(data.group);
-          setTotal(data.total);
-          if (!data) {
-            return onFetchError(t('Whoops, something went wrong'));
-          }
-        } catch (error) {
-          setError(error);
-        } finally {
-          setIsLoading(false);
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData(`/catalog?${searchParams}`);
+        setProducts(data.catalog);
+        // setCategory(data.group);
+        setTotal(data.total);
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
         }
-      })();
-    } else {
-      (async function getData() {
-        setIsLoading(true);
-        try {
-          const { data } = await fetchData(`/catalog/plants?perPage=12&page=1`);
-          setProducts(data.catalog);
-          setCategory(data.catalog);
-          setTotal(data.length);
-          if (!data) {
-            return onFetchError(t('Whoops, something went wrong'));
-          }
-        } catch (error) {
-          setError(error);
-        } finally {
-          setIsLoading(false);
-        }
-      })();
-    }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   }, [t, searchParams]);
 
   const getUniqueOptions = key => {
@@ -88,37 +75,31 @@ export const SearchResult = ({ onClose, toggleMobileMenu }) => {
                   <SC.CardSearch key={card._id} onClick={onClose}>
                     <NavLink to={`/catalog/byid/${card._id}`}>
                       <SC.CardImageSearch
-                        src={BASE_URL_IMG + card.images[0]}
-                        alt={card.name}
+                        src={card.mainImage}
+                        alt={card.title_ua}
                         width="93"
                         height="150"
                         loading="lazy"
                       />
                       <SC.CardTitleSearch>
-                        <SC.CardNameSearch>{card.name}</SC.CardNameSearch>
+                        <SC.CardNameSearch>{card.title_ua}</SC.CardNameSearch>
                         <SC.CardPricesSearch>
-                          {card.currentPrice && (
+                          {card?.price && (
                             <SC.CardDiscountSearch>
-                              {card.currentPrice}
-                              {card.currency}
+                              {card.price}
+                              {/* {card.currency} */}
                             </SC.CardDiscountSearch>
                           )}
-                          {card.oldPrice && (
+                          {card?.oldPrice && (
                             <SC.CardPriceSearch>
                               {card.oldPrice}
-                              {card.currency}
+                              {/* {card.currency} */}
                             </SC.CardPriceSearch>
                           )}
                         </SC.CardPricesSearch>
                         <SC.CardSizeSearch>
                           <div>
-                            {card.options.map(option => {
-                              return (
-                                option.total != 0 && (
-                                  <span key={option._id}>{option.title}</span>
-                                )
-                              );
-                            })}
+                            <span>{card?.sizes}</span>
                           </div>
                         </SC.CardSizeSearch>
                       </SC.CardTitleSearch>

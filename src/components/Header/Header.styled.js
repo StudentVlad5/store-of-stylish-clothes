@@ -10,11 +10,10 @@ const HeaderSectionWrap = styled.header`
   margin: 0 auto;
   width: 100%;
   position: fixed;
-  z-index: 100;
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0%);
-  z-index: 100;
+  z-index: 300;
   transition: background-color 0.3s ease-in-out;
   ${({ isScrolled }) => isScrolled && `background-color: rgb(252, 249, 242);`};
 `;
@@ -27,7 +26,7 @@ const HeaderSection = styled(Section)`
   padding: 40px 30px 0px 30px;
   margin: 0 auto;
   width: 100%;
-  z-index: 100;
+  z-index: 300;
   transition: background-color 0.3s ease-in-out;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {

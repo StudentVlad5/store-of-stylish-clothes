@@ -25,7 +25,7 @@ const ProductCardPage = ({ addToBasket }) => {
     async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/catalog/byid/${routeParams.id}`);
+        const { data } = await fetchData(`/shop/byid/${routeParams.id}`);
         setProduct(data);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
@@ -48,10 +48,7 @@ const ProductCardPage = ({ addToBasket }) => {
 
   return (
     <>
-      <SEO
-        title={t('Product card')}
-        description="Product Card Page"
-      />
+      <SEO title={t('Product card')} description="Product Card Page" />
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError(t('Whoops, something went wrong'))}
       {Object.keys(product).length > 0 && !error && (

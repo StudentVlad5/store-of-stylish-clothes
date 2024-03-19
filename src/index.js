@@ -12,20 +12,20 @@ import i18n from './utils/i18n';
 import { getTemporaryToken } from 'token';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={'Loading'} persistor={persistor}>
-        <BrowserRouter basename="/store-of-stylish-clothes">
-          <StatusProvider>
-            <I18nextProvider i18n={i18n}>
-              <GlobalStyle />
-              <App />
-            </I18nextProvider>
-          </StatusProvider>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={'Loading'} persistor={persistor}>
+      <BrowserRouter basename="/store-of-stylish-clothes">
+        <StatusProvider>
+          <I18nextProvider i18n={i18n}>
+            <GlobalStyle />
+            <App />
+          </I18nextProvider>
+        </StatusProvider>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>,
+  // </React.StrictMode>,
 );
 
 const storedToken = getTemporaryToken();

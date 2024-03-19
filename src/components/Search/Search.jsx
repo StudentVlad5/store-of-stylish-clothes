@@ -1,10 +1,11 @@
-import React, { useState } from 'react'; //, useEffect
+import React, { useMemo, useState } from 'react'; //, useEffect
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { SearchResult } from './SearchResult/SearchResult';
 import * as SC from './Search.styled';
+import debounce from 'lodash.debounce';
 
 export const Search = ({ onClose, toggleMobileMenu }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,6 +13,17 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
     searchParams.get('search') ? searchParams.get('search') : '',
   );
   const { t } = useTranslation();
+  const debounceFn = useMemo(() => debounce(handleDebounceFn, 1000), []);
+
+  function handleDebounceFn(e) {
+    setParams(e);
+  }
+
+  function handleChange(e) {
+    e.preventDefault();
+    setSearchQuery(e.target.value);
+    debounceFn(e.target.value);
+  }
 
   const setParams = search => {
     const params = getParams();
@@ -35,11 +47,7 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
       <SC.FormContainer
         name="form-search"
         autoComplete="off"
-        onSubmit={e => {
-          e.preventDefault();
-          setParams(e.target.value);
-          setSearchQuery(e.target.value);
-        }}
+        onSubmit={handleChange}
       >
         <SC.Label aria-label="Search">
           <SC.Input
@@ -48,14 +56,7 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
             name="search"
             placeholder={t('Search')}
             value={searchQuery}
-            onChange={e => {
-              setParams(e.target.value);
-              setSearchQuery(e.target.value);
-              if (e.target.value === '') {
-                setParams('');
-                setSearchQuery('');
-              }
-            }}
+            onChange={handleChange}
           />
         </SC.Label>
         <SC.ButtonSearch>
@@ -77,6 +78,7 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
           onClose={onClose}
           searchQuery={searchQuery}
           toggleMobileMenu={toggleMobileMenu}
+          searchParams={searchParams}
         />
       </SC.FormContainer>
     </>

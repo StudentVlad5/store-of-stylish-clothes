@@ -197,14 +197,12 @@ export const ProductCard = ({ product }) => {
         <SC.ProductNav>
           <SC.ProductNavList>
             <SC.ProductNavItem>
-              <SC.ProductNavLink href="/catalog?perPage=12&page=1">
+              <SC.ProductNavLink href="/shop?perPage=12&page=1">
                 Shop
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
-              <SC.ProductNavLink
-                href={`/catalog/${category}?perPage=12&page=1&`}
-              >
+              <SC.ProductNavLink href={`/shop/${category}?perPage=12&page=1&`}>
                 {category}
               </SC.ProductNavLink>
             </SC.ProductNavItem>
@@ -212,7 +210,7 @@ export const ProductCard = ({ product }) => {
               <>
                 <SC.ProductNavItem>
                   <SC.ProductNavLink
-                    href={`/catalog/plants?perPage=12&page=1&typeOfPlants=${typeOfPlants}`}
+                    href={`/shop/plants?perPage=12&page=1&typeOfPlants=${typeOfPlants}`}
                     onClick={() =>
                       saveToStorage('filters', {
                         ...getFromStorage('filters'),
@@ -224,14 +222,14 @@ export const ProductCard = ({ product }) => {
                   </SC.ProductNavLink>
                 </SC.ProductNavItem>
                 <SC.ProductNavItem>
-                  <SC.ProductNavLink href={`/catalog/byid/${_id}`} $primary>
+                  <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
                     {name}
                   </SC.ProductNavLink>
                 </SC.ProductNavItem>
               </>
             ) : (
               <SC.ProductNavItem>
-                <SC.ProductNavLink href={`/catalog/byid/${_id}`} $primary>
+                <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
                   {name}
                 </SC.ProductNavLink>
               </SC.ProductNavItem>

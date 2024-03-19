@@ -134,17 +134,17 @@ export const ShoppingBag = () => {
     {
       imageUrl: plantGrayPot,
       title: 'Pet - friendly plants',
-      link: '/catalog?perPage=12&page=1&petFriendly=pet+friendly',
+      link: '/shop?perPage=12&page=1&petFriendly=pet+friendly',
     },
     {
       imageUrl: peaceLily,
       title: 'Rare plants',
-      link: '/catalog?perPage=12&page=1&rare=rare',
+      link: '/shop?perPage=12&page=1&rare=rare',
     },
     {
       imageUrl: philodendron,
       title: 'Hard to kill plants',
-      link: '/catalog?perPage=12&page=1&hardToKill=easy+to+care',
+      link: '/shop?perPage=12&page=1&hardToKill=easy+to+care',
     },
     {
       imageUrl: groupPlants,

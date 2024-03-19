@@ -27,7 +27,7 @@ export const CatalogSort = () => {
 
   return (
     <SC.SortList>
-      <SC.SortItem>
+      {/* <SC.SortItem>
         <input
           id="rating"
           type="radio"
@@ -52,7 +52,7 @@ export const CatalogSort = () => {
           }}
         />
         <label htmlFor="name">Name</label>
-      </SC.SortItem>
+      </SC.SortItem> */}
       <SC.SortItem>
         <input
           id="minMaxPrice"
@@ -79,7 +79,7 @@ export const CatalogSort = () => {
         />
         <label htmlFor="maxMinPrice">Highest Price</label>
       </SC.SortItem>
-      <SC.SortItem>
+      {/* <SC.SortItem>
         <input
           id="discount"
           type="radio"
@@ -91,7 +91,7 @@ export const CatalogSort = () => {
           }}
         />
         <label htmlFor="discount">% Off</label>
-      </SC.SortItem>
+      </SC.SortItem> */}
     </SC.SortList>
   );
 };

@@ -20,8 +20,6 @@ export const CatalogFilter = ({
   setFilters,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log('filters', filters);
-  console.log('filterState', filterState);
   const { t } = useTranslation();
 
   const min = 0;

@@ -20,27 +20,42 @@ import { ReactComponent as Evenodd } from 'images/svg/evenodd.svg';
 import { ReactComponent as Oil } from 'images/svg/oil.svg';
 import { ReactComponent as Sun } from 'images/svg/sun.svg';
 import noImg from 'images/No-image-available.webp';
-import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ item }) => {
   const {
-    _id,
-    name,
-    typeOfPlants,
-    oldPrice,
-    currentPrice,
-    discount,
-    currency,
-    description,
-    options,
-    totalQuantity,
-    images,
-    light,
-    petFriendly,
-    hardToKill,
-    waterDescribe,
+    article,
     category,
-  } = product;
+    description_de,
+    description_en,
+    description_ru,
+    description_ua,
+    images,
+    mainImage,
+    man_women,
+    price,
+    product,
+    sizes,
+    title_de,
+    title_en,
+    title_ru,
+    title_ua,
+    uuid,
+    _id,
+    discount = 0,
+    currency = 'UAH',
+  } = item[0];
+
+  let imageArray = [];
+  if (images) {
+    imageArray = images.split(',');
+    imageArray.unshift(mainImage);
+  }
+  let options = [];
+  if (sizes) {
+    options = sizes.split(',');
+  }
+
+  let description = description_ua;
 
   const dispatch = useDispatch();
 
@@ -65,10 +80,10 @@ export const ProductCard = ({ product }) => {
 
   const init = {
     title: null,
-    oldPrice: oldPrice ? oldPrice : currentPrice || 0,
-    currentPrice: currentPrice ? currentPrice : oldPrice || 0,
-    currency: currency ? currency : '$',
-    total: totalQuantity || 0,
+    price: price ? price : price || 0,
+    currentPrice: price ? price : price || 0,
+    currency: '$',
+    total: 100,
     quantity: 1,
   };
 
@@ -104,9 +119,7 @@ export const ProductCard = ({ product }) => {
     };
     addItem(updateBackEndBasket);
     useCheck(
-      options.map(it =>
-        isChekedArray.push({ title: it.title, isActive: false }),
-      ),
+      options.map(it => isChekedArray.push({ title: it, isActive: false })),
     );
     onSuccess('Added');
   };
@@ -116,7 +129,7 @@ export const ProductCard = ({ product }) => {
 
   let isChekedArray = [];
   if (options?.length !== 0) {
-    options.map(it => isChekedArray.push({ title: it.title, isActive: false }));
+    options.map(it => isChekedArray.push({ title: it, isActive: false }));
   }
   const [check, useCheck] = useState(isChekedArray);
 
@@ -136,9 +149,7 @@ export const ProductCard = ({ product }) => {
     e.preventDefault();
     changeActiveStyleInput(e);
     const selectedOption = e.currentTarget.value;
-    const selectedData = options.find(
-      option => option.title === selectedOption,
-    );
+    const selectedData = options.find(option => option === selectedOption);
     selectedData.quantity = optionData.quantity;
     selectedData.title = selectedOption;
     setOptionData(selectedData);
@@ -156,9 +167,9 @@ export const ProductCard = ({ product }) => {
   //change images
   const [indxImg, setIndxImg] = useState(0);
 
-  const slides = 6;
+  const slides = imageArray.length;
   const [indxSlideImg, setIndxSlideImg] = useState(0);
-  const [slideImages, setSlideImg] = useState(images.slice(0, slides));
+  const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
 
   const handleChangeImg = e => {
     const currentIndx = e.target.id;
@@ -170,15 +181,19 @@ export const ProductCard = ({ product }) => {
     switch (type) {
       case 'up':
         setIndxSlideImg(prevState =>
-          prevState - slides < 0 ? images.length - slides : prevState - slides,
+          prevState - slides < 0
+            ? imageArray.length - slides
+            : prevState - slides,
         );
-        setSlideImg(images.slice(0, slides));
+        setSlideImg(imageArray.slice(0, slides));
         break;
       case 'down':
         setIndxSlideImg(prevState =>
-          prevState + slides >= images.length ? 0 : prevState + slides,
+          prevState + slides >= imageArray.length ? 0 : prevState + slides,
         );
-        setSlideImg(images.slice(images.length - slides, images.length));
+        setSlideImg(
+          imageArray.slice(imageArray.length - slides, imageArray.length),
+        );
         break;
       default:
         break;
@@ -223,14 +238,14 @@ export const ProductCard = ({ product }) => {
                 </SC.ProductNavItem>
                 <SC.ProductNavItem>
                   <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
-                    {name}
+                    {title_ua}
                   </SC.ProductNavLink>
                 </SC.ProductNavItem>
               </>
             ) : (
               <SC.ProductNavItem>
                 <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
-                  {name}
+                  {title_ua}
                 </SC.ProductNavLink>
               </SC.ProductNavItem>
             )}
@@ -256,12 +271,7 @@ export const ProductCard = ({ product }) => {
                       handleChangeImg(e);
                     }}
                   >
-                    <img
-                      src={BASE_URL_IMG + img}
-                      alt="Image"
-                      loading="lazy"
-                      id={i}
-                    />
+                    <img src={img} alt="Image" loading="lazy" id={i} />
                   </SC.ControlsItem>
                 );
               })}
@@ -277,11 +287,11 @@ export const ProductCard = ({ product }) => {
                 )}
             </SC.ControlsList>
             <SC.ProductImageWrapper>
-              {images.length !== 0 ? (
+              {slideImages.length !== 0 ? (
                 <SC.ProductImage
                   width={347}
                   height={600}
-                  src={BASE_URL_IMG + images[indxImg]}
+                  src={slideImages[indxImg]}
                   alt="Product image"
                   loading="lazy"
                 />
@@ -314,7 +324,7 @@ export const ProductCard = ({ product }) => {
           <SC.ProductInfo>
             <div>
               <SC.Heading>
-                <SC.Name> {name}</SC.Name>
+                <SC.Name> {title_ua}</SC.Name>
                 {discount !== 0 ? (
                   <SC.Prices>
                     <SC.Discount>
@@ -322,7 +332,7 @@ export const ProductCard = ({ product }) => {
                       {currency}
                     </SC.Discount>
                     <SC.Price>
-                      {optionData.oldPrice}
+                      {optionData.price}
                       {currency}
                     </SC.Price>
                   </SC.Prices>
@@ -335,7 +345,9 @@ export const ProductCard = ({ product }) => {
                   </SC.Prices>
                 )}
               </SC.Heading>
-              <SC.Description>{description}</SC.Description>
+              <SC.Description
+                dangerouslySetInnerHTML={{ __html: description }}
+              ></SC.Description>
             </div>
             {options.length !== 0 && (
               <SC.Options>
@@ -354,15 +366,15 @@ export const ProductCard = ({ product }) => {
                       >
                         <input
                           type="radio"
-                          id={option.title}
+                          id={option}
                           name="option"
-                          aria-label={option.title}
-                          disabled={0 == option.total}
+                          aria-label={option}
+                          disabled={0 == option}
                           onChange={e => getOptionData(e)}
-                          value={option.title}
-                          defaultChecked={optionData.title === option.title}
+                          value={option}
+                          defaultChecked={optionData.title === option}
                         ></input>
-                        <span>{option.title}</span>
+                        <span>{option}</span>
                       </SC.Option>
                     );
                   })}
@@ -605,14 +617,14 @@ ProductCard.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      oldPrice: PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
       currentPrice: PropTypes.number.isRequired,
       currency: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       options: PropTypes.arrayOf(
         PropTypes.shape({
           title: PropTypes.string,
-          oldPrice: PropTypes.number,
+          price: PropTypes.number,
           currentPrice: PropTypes.number,
           total: PropTypes.number,
         }),

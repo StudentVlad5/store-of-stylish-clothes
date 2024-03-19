@@ -52,7 +52,7 @@ const ProductCardPage = ({ addToBasket }) => {
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError(t('Whoops, something went wrong'))}
       {Object.keys(product).length > 0 && !error && (
-        <ProductCard product={product} addToBasket={addToBasket} />
+        <ProductCard item={product} addToBasket={addToBasket} />
       )}
     </>
   );

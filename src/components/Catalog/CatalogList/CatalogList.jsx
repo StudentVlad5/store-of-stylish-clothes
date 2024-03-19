@@ -53,7 +53,7 @@ export const CatalogList = ({ products }) => {
       {products.map(card => {
         return (
           <SC.Card key={card.uuid}>
-            <NavLink to={`/shop/byid/${card.uuid}`}>
+            <NavLink to={`/shop/byid/${card.article}`}>
               <div
                 style={{
                   height: '100%',
@@ -105,9 +105,9 @@ export const CatalogList = ({ products }) => {
                     </SC.CardPrices>
                   )}
                   <SC.BtnForFavorite
-                    onClick={handleFavoriteBtnClick(card.uuid)}
+                    onClick={handleFavoriteBtnClick(card.article)}
                   >
-                    {favorites.includes(card.uuid) ? (
+                    {favorites.includes(card.article) ? (
                       <SC.IconFav size={30} fill={theme.colors.darkGreen} />
                     ) : (
                       <SC.IconFav size={30} color={theme.colors.beige} />

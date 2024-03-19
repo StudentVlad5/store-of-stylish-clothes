@@ -34,19 +34,19 @@ export const MobileNav = ({ toggleMenu }) => {
     <MobileNavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/catalog/men`}
+          to={`/shop/men`}
           onClick={toggleMenu}
           className={
-            path.includes(`/catalog/men`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/catalog/women`}
+          to={`/shop/women`}
           onClick={toggleMenu}
           className={
-            path.includes(`/catalog/women`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Women')}
@@ -58,7 +58,7 @@ export const MobileNav = ({ toggleMenu }) => {
         </NavItem>
 
         <NavItemBoxModal>
-          <NavItem to={`/catalog`} onClick={toggleMenu}>
+          <NavItem to={`/shop`} onClick={toggleMenu}>
             {t('Shop')}
           </NavItem>
           <IconArrow onClick={toggleModal} />
@@ -100,17 +100,17 @@ export const Nav = () => {
     <NavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/catalog/men`}
+          to={`/shop/men`}
           className={
-            path.includes(`/catalog/men`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/catalog/women`}
+          to={`/shop/women`}
           className={
-            path.includes(`/catalog/women`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Women')}
@@ -122,7 +122,7 @@ export const Nav = () => {
           <IconFeather />
           {t('About Us')}
         </NavItem>
-        <NavItem to={`/catalog`}>{t('Shop')}</NavItem>
+        <NavItem to={`/shop`}>{t('Shop')}</NavItem>
         <NavItem to={`/gifts`}>{t('Gifts')}</NavItem>
         <NavItem to="/discounts">{t('Discounts')}</NavItem>
         <NavItem to="/novetly">{t('Novetly')}</NavItem>

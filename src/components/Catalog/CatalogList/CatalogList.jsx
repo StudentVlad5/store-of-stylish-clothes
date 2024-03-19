@@ -53,7 +53,7 @@ export const CatalogList = ({ products }) => {
       {products.map(card => {
         return (
           <SC.Card key={card.uuid}>
-            <NavLink to={`/catalog/byid/${card.uuid}`}>
+            <NavLink to={`/shop/byid/${card.uuid}`}>
               <div
                 style={{
                   height: '100%',
@@ -63,18 +63,18 @@ export const CatalogList = ({ products }) => {
                 }}
               >
                 <SC.CardStatus>
-                  {card.status ? card.status : 'new'}
+                  {card?.status ? card.status : 'new'}
                 </SC.CardStatus>
                 <SC.CardImage
                   src={card.mainImage}
-                  alt={card.title}
+                  alt={card.title_ua}
                   width="285"
                   height="460"
                   loading="lazy"
                 />
                 <SC.CardDescription>
                   <SC.CardTitle>
-                    <SC.CardName>{card.title}</SC.CardName>
+                    <SC.CardName>{card.title_ua}</SC.CardName>
                   </SC.CardTitle>
                 </SC.CardDescription>
                 <SC.CardInfo>
@@ -89,8 +89,8 @@ export const CatalogList = ({ products }) => {
                       )}
                       {card?.oldPrice && (
                         <SC.CardPrice>
-                          {card.oldPrice}
-                          {card.currency}
+                          {card?.oldPrice}
+                          {card?.currency}
                         </SC.CardPrice>
                       )}
                     </SC.CardPrices>
@@ -98,8 +98,8 @@ export const CatalogList = ({ products }) => {
                     <SC.CardPrices>
                       {card?.currentPrice && (
                         <SC.CardDiscount>
-                          {card.currentPrice}
-                          {card.currency}
+                          {card?.currentPrice}
+                          {card?.currency}
                         </SC.CardDiscount>
                       )}
                     </SC.CardPrices>

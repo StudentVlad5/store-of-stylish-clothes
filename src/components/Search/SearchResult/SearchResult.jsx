@@ -34,7 +34,7 @@ export const SearchResult = ({
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/catalog?${searchParams}`);
+        const { data } = await fetchData(`/shop?${searchParams}`);
         setProducts(data.catalog);
         // setCategory(data.group);
         setTotal(data.total);
@@ -73,7 +73,7 @@ export const SearchResult = ({
               {products.slice(0, 4).map(card => {
                 return (
                   <SC.CardSearch key={card._id} onClick={onClose}>
-                    <NavLink to={`/catalog/byid/${card._id}`}>
+                    <NavLink to={`/shop/byid/${card._id}`}>
                       <SC.CardImageSearch
                         src={card.mainImage}
                         alt={card.title_ua}
@@ -110,10 +110,7 @@ export const SearchResult = ({
             </SC.Products>
           )}
           {total > 4 && (
-            <SC.LinkToCatalog
-              to={`/catalog?page=1&perPage=12`}
-              onClick={onClose}
-            >
+            <SC.LinkToCatalog to={`/shop?page=1&perPage=12`} onClick={onClose}>
               See more
             </SC.LinkToCatalog>
           )}
@@ -124,11 +121,11 @@ export const SearchResult = ({
             {getUniqueOptions('typeOfPlants').map((card, i) => {
               return (
                 <div key={i} onClick={onClose}>
-                  <NavLink to={`/catalog?page=1&perPage=12&category=plants`}>
+                  <NavLink to={`/shop?page=1&perPage=12&category=plants`}>
                     Indoor Plants /
                   </NavLink>
                   <NavLink
-                    to={`/catalog?page=1&perPage=12&typeOfPlants=${card}`}
+                    to={`/shop?page=1&perPage=12&typeOfPlants=${card}`}
                     onClick={e => {
                       saveToStorage('typeOfPlants', card);
                     }}

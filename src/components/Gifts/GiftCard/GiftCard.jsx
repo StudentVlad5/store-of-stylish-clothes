@@ -28,7 +28,7 @@ export const GiftCard = () => {
             possibilities to your friends and loved ones. Buy now and make
             someone`s day!
           </Description>
-          <LinkBtn to={`/catalog/cards`}>Shop gift card</LinkBtn>
+          <LinkBtn to={`/shop/cards`}>Shop gift card</LinkBtn>
         </SC.InnerLeft>
         <SC.InnerRight>
           <picture>

@@ -41,7 +41,7 @@ export const GiftsHeading = () => {
         </picture>
         <SC.Background>
           <Title>Gifts</Title>
-          <LinkBtn to={`/catalog/plants?page=1&perPage=12`}>Shop now</LinkBtn>
+          <LinkBtn to={`/shop/plants?page=1&perPage=12`}>Shop now</LinkBtn>
         </SC.Background>
       </SC.ImageContainer>
     </SC.HeadingSection>

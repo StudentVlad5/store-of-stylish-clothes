@@ -282,7 +282,7 @@ export const Catalog = () => {
       ...LS.product,
       ...LS.sizes,
     ]);
-    console.log('selectedFilter', selectedFilter);
+    // console.log('selectedFilter', selectedFilter);
   };
 
   const removeSelectedFilter = e => {

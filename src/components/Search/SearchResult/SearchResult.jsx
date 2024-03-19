@@ -29,7 +29,6 @@ export const SearchResult = ({
   // const [searchParams] = useSearchParams(); //, setSearchParams
   const { t } = useTranslation();
 
-  console.log('products', products);
   useEffect(() => {
     (async function getData() {
       setIsLoading(true);

@@ -119,7 +119,7 @@ export const ProductCard = ({ item }) => {
           currency: product.currency,
           name: product.name,
           _id: product.optionData._id,
-          images: [...product.images],
+          images: product.images,
         },
       ],
     };
@@ -140,7 +140,6 @@ export const ProductCard = ({ item }) => {
   const [check, useCheck] = useState(isChekedArray);
 
   const changeActiveStyleInput = e => {
-    console.log('isChekedArray', isChekedArray);
     isChekedArray.map(it => {
       if (it.title === e.target.value) {
         it.isActive = true;
@@ -162,8 +161,7 @@ export const ProductCard = ({ item }) => {
     selectedData.options = options.find(option => option === selectedOption);
     selectedData.quantity = optionData.quantity;
     selectedData.title = selectedOption;
-    setOptionData(selectedData);
-    console.log('selectedData', selectedData);
+    setOptionData(prev => ({ ...prev, ...selectedData }));
   };
 
   //get selected value
@@ -376,7 +374,7 @@ export const ProductCard = ({ item }) => {
                         key={i}
                         className={
                           check &&
-                          check.find(it => it?.title === option).isActive
+                          check.find(it => it?.title === option)?.isActive
                             ? 'isActive isImportant real'
                             : 'notActive'
                         }
@@ -428,6 +426,9 @@ export const ProductCard = ({ item }) => {
                 >
                   <Plus />
                 </SC.IconBtn>
+              </SC.Quantity>
+              <SC.Quantity>
+                {optionData?.newPrice * optionData?.quantity}
               </SC.Quantity>
             </SC.Options>
             {optionData.title ? (

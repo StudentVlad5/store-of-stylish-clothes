@@ -14,8 +14,8 @@ export const StatusProvider = ({ children }) => {
     saveToStorage('userAnonimusID', userAnonimusID);
   }
   const [contextBasket, setContextBasket] = useState([]);
-  const [currency, setCurrency] = useState('₴');
-  const [language, setLanguage] = useState('ua');
+  const [selectedCurrency, setSelectedCurrency] = useState('₴');
+  const [selectedLanguage, setSelectedLanguage] = useState('ua');
   return (
     <StatusContext.Provider
       value={{
@@ -23,10 +23,10 @@ export const StatusProvider = ({ children }) => {
         setUserAnonimusID,
         contextBasket,
         setContextBasket,
-        currency,
-        setCurrency,
-        language,
-        setLanguage,
+        selectedCurrency,
+        setSelectedCurrency,
+        selectedLanguage,
+        setSelectedLanguage,
       }}
     >
       {children}

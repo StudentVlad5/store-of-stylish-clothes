@@ -43,6 +43,10 @@ export const ProductCard = ({ item }) => {
     _id,
     discount = 0,
     currency = 'UAH',
+    newPrice,
+    oldPrice,
+    status,
+    rate,
   } = item[0];
 
   let imageArray = [];
@@ -80,8 +84,10 @@ export const ProductCard = ({ item }) => {
 
   const init = {
     title: null,
-    price: price ? price : price || 0,
-    currentPrice: price ? price : price || 0,
+    oldPrice: oldPrice ? oldPrice : price,
+    newPrice: newPrice ? newPrice : newPrice,
+    status: status ? status : '',
+    rate: rate ? rate : '',
     currency: '$',
     total: 100,
     quantity: 1,
@@ -134,6 +140,7 @@ export const ProductCard = ({ item }) => {
   const [check, useCheck] = useState(isChekedArray);
 
   const changeActiveStyleInput = e => {
+    console.log('isChekedArray', isChekedArray);
     isChekedArray.map(it => {
       if (it.title === e.target.value) {
         it.isActive = true;
@@ -149,10 +156,14 @@ export const ProductCard = ({ item }) => {
     e.preventDefault();
     changeActiveStyleInput(e);
     const selectedOption = e.currentTarget.value;
-    const selectedData = options.find(option => option === selectedOption);
+
+    let selectedData = {};
+    selectedData.options = [];
+    selectedData.options = options.find(option => option === selectedOption);
     selectedData.quantity = optionData.quantity;
     selectedData.title = selectedOption;
     setOptionData(selectedData);
+    console.log('selectedData', selectedData);
   };
 
   //get selected value
@@ -325,21 +336,27 @@ export const ProductCard = ({ item }) => {
             <div>
               <SC.Heading>
                 <SC.Name> {title_ua}</SC.Name>
+                <SC.Prices>
+                  <SC.Discount>
+                    {optionData.rate}
+                    {optionData.status}
+                  </SC.Discount>
+                </SC.Prices>
                 {discount !== 0 ? (
                   <SC.Prices>
                     <SC.Discount>
-                      {optionData.currentPrice}
+                      {optionData.newPrice}
                       {currency}
                     </SC.Discount>
                     <SC.Price>
-                      {optionData.price}
+                      {optionData.oldPrice}
                       {currency}
                     </SC.Price>
                   </SC.Prices>
                 ) : (
                   <SC.Prices>
                     <SC.Discount>
-                      {optionData.currentPrice}
+                      {optionData.newPrice}
                       {currency}
                     </SC.Discount>
                   </SC.Prices>
@@ -359,7 +376,7 @@ export const ProductCard = ({ item }) => {
                         key={i}
                         className={
                           check &&
-                          check.find(it => it?.title === option.title)?.isActive
+                          check.find(it => it?.title === option).isActive
                             ? 'isActive isImportant real'
                             : 'notActive'
                         }
@@ -421,7 +438,7 @@ export const ProductCard = ({ item }) => {
                 onClick={() => {
                   const productToAdd = {
                     _id,
-                    name,
+                    title_ua,
                     currency,
                     optionData,
                     quantity,

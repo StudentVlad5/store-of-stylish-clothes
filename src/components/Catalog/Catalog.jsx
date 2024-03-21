@@ -49,8 +49,6 @@ export const Catalog = () => {
 
   const [selectedFilter, setSelectedFilter] = useState([]);
   const [filters, setFilters] = useState(initialState);
-
-  // const [filters, setFilters] = useState('');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState(
     getFromStorage('sort') ? getFromStorage('sort') : '',
@@ -61,14 +59,8 @@ export const Catalog = () => {
     searchParams.set('page', toPage);
     saveToStorage('page', toPage);
     setPages(toPage);
-
     // setSearchParams(searchParams);
   };
-
-  // useEffect(() => {
-  //   setParams();
-  //   saveToStorage('filters', filterState);
-  // }, []);
 
   // get selected filter elements after refresh
   const handleActiveLabel = key => {
@@ -96,104 +88,7 @@ export const Catalog = () => {
   // =================================================>
 
   useEffect(() => {
-    const checkFilter = getFromStorage('filters');
-    const param = {};
-    searchParams.getAll('man_woman')
-      ? (param.man_woman = searchParams.get('man_woman'))
-      : checkFilter.man_woman
-      ? (param.man_woman = checkFilter.man_woman)
-      : (param.man_woman = []);
-    searchParams.getAll('category')
-      ? (param.category = searchParams.get('category'))
-      : checkFilter?.category
-      ? (param.category = checkFilter?.category)
-      : (param.category = []);
-    searchParams.getAll('product')
-      ? (param.product = searchParams.get('product'))
-      : checkFilter?.product
-      ? (param.product = checkFilter?.product)
-      : (param.product = []);
-    searchParams.getAll('sizes')
-      ? (param.sizes = searchParams.get('sizes'))
-      : checkFilter?.sizes
-      ? (param.sizes = checkFilter?.sizes)
-      : (param.sizes = []);
-    searchParams.get('minPrice')
-      ? (param.minPrice = searchParams.get('minPrice'))
-      : checkFilter?.minPrice
-      ? (param.minPrice = checkFilter?.minPrice)
-      : (param.minPrice = '');
-    searchParams.get('maxPrice')
-      ? (param.maxPrice = searchParams.get('maxPrice'))
-      : checkFilter?.maxPrice
-      ? (param.maxPrice = checkFilter?.maxPrice)
-      : (param.maxPrice = '');
-    searchParams.get('page')
-      ? (param.page = searchParams.get('page'))
-      : getFromStorage('page')
-      ? (param.page = getFromStorage('page'))
-      : (param.page = page);
-    searchParams.get('perPage')
-      ? (param.perPage = searchParams.get('perPage'))
-      : (param.perPage = perPage);
-    searchParams.get('sort')
-      ? (param.sort = searchParams.get('sort'))
-      : (param.sort = '');
-    setSearchParams(param);
-  }, [page]);
-  useEffect(() => {
-    const checkFilter = getFromStorage('filters');
-    const param = {};
-    searchParams.getAll('man_woman')
-      ? (param.man_woman = searchParams.get('man_woman'))
-      : checkFilter.man_woman
-      ? (param.man_woman = checkFilter.man_woman)
-      : (param.man_woman = []);
-    searchParams.getAll('category')
-      ? (param.category = searchParams.get('category'))
-      : checkFilter?.category
-      ? (param.category = checkFilter?.category)
-      : (param.category = []);
-    searchParams.getAll('product')
-      ? (param.product = searchParams.get('product'))
-      : checkFilter?.product
-      ? (param.product = checkFilter?.product)
-      : (param.product = []);
-    searchParams.getAll('sizes')
-      ? (param.sizes = searchParams.get('sizes'))
-      : checkFilter?.sizes
-      ? (param.sizes = checkFilter?.sizes)
-      : (param.sizes = []);
-    searchParams.get('minPrice')
-      ? (param.minPrice = searchParams.get('minPrice'))
-      : checkFilter?.minPrice
-      ? (param.minPrice = checkFilter?.minPrice)
-      : (param.minPrice = '');
-    searchParams.get('maxPrice')
-      ? (param.maxPrice = searchParams.get('maxPrice'))
-      : checkFilter?.maxPrice
-      ? (param.maxPrice = checkFilter?.maxPrice)
-      : (param.maxPrice = '');
-    searchParams.get('page')
-      ? (param.page = searchParams.get('page'))
-      : getFromStorage('page')
-      ? (param.page = getFromStorage('page'))
-      : (param.page = page);
-    searchParams.get('perPage')
-      ? (param.perPage = searchParams.get('perPage'))
-      : (param.perPage = perPage);
-    searchParams.get('sort')
-      ? (param.sort = searchParams.get('sort'))
-      : (param.sort = '');
-    setSearchParams(param);
-  }, []);
-
-  useEffect(() => {
-    // if (!page || !perPage) {
-    //   const params = { page, perPage };
-    //   setPages(1);
-    //   setSearchParams(params);
-    // }
+    setParams();
 
     (async function getData() {
       setIsLoading(true);
@@ -215,7 +110,7 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [t, page, perPage, searchParams, sort]);
+  }, [t, page, perPage, sort, searchParams]);
 
   useEffect(() => {
     (async function getData() {
@@ -234,23 +129,60 @@ export const Catalog = () => {
     })();
   }, []);
 
-  // useEffect(() => {
-  //   setFilters(getFromStorage('filters'));
-  //   setSearch(searchParams.get('search'));
-  //   setSort(searchParams.get('sort'));
-  //   setParams();
-
-  //   if (selectedFilter.length === 0) {
-  //     setParams();
-  //   }
-  // }, [selectedFilter, search, sort]);
-
-  // useEffect(() => {
-  //   window.addEventListener('unload', removeLocalStor);
-  //   return () => {
-  //     window.removeEventListener('unload', removeLocalStor);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const checkFilter = getFromStorage('filters');
+    const param = {};
+    searchParams.getAll('man_woman') &&
+    searchParams.getAll('man_woman') != 'null' &&
+    searchParams.getAll('man_woman') !== undefined
+      ? (param.man_woman = searchParams.get('man_woman'))
+      : checkFilter.man_woman
+      ? (param.man_woman = checkFilter.man_woman)
+      : (param.man_woman = []);
+    searchParams.getAll('category') &&
+    searchParams.getAll('category') != 'null' &&
+    searchParams.getAll('category') !== undefined
+      ? (param.category = searchParams.get('category'))
+      : checkFilter?.category
+      ? (param.category = checkFilter?.category)
+      : (param.category = []);
+    searchParams.getAll('product') &&
+    searchParams.getAll('product') != 'null' &&
+    searchParams.getAll('product') !== undefined
+      ? (param.product = searchParams.get('product'))
+      : checkFilter?.product
+      ? (param.product = checkFilter?.product)
+      : (param.product = []);
+    searchParams.getAll('sizes') &&
+    searchParams.getAll('sizes') != 'null' &&
+    searchParams.getAll('sizes') !== undefined
+      ? (param.sizes = searchParams.get('sizes'))
+      : checkFilter?.sizes
+      ? (param.sizes = checkFilter?.sizes)
+      : (param.sizes = []);
+    searchParams.get('minPrice')
+      ? (param.minPrice = searchParams.get('minPrice'))
+      : checkFilter?.minPrice
+      ? (param.minPrice = checkFilter?.minPrice)
+      : (param.minPrice = '');
+    searchParams.get('maxPrice')
+      ? (param.maxPrice = searchParams.get('maxPrice'))
+      : checkFilter?.maxPrice
+      ? (param.maxPrice = checkFilter?.maxPrice)
+      : (param.maxPrice = '');
+    searchParams.get('page')
+      ? (param.page = searchParams.get('page'))
+      : getFromStorage('page')
+      ? (param.page = getFromStorage('page'))
+      : (param.page = page);
+    searchParams.get('perPage')
+      ? (param.perPage = searchParams.get('perPage'))
+      : (param.perPage = perPage);
+    searchParams.get('sort')
+      ? (param.sort = searchParams.get('sort'))
+      : (param.sort = '');
+    setSearchParams(param);
+  }, []);
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
@@ -381,7 +313,7 @@ export const Catalog = () => {
                     <Open />
                   </SC.IconBtn>
                 </SC.Accord>
-                {showSort && <CatalogSort />}
+                {showSort && <CatalogSort sort={sort} setSort={setSort} />}
               </SC.SortBox>
             </SC.HeadingBtnBox>
           </SC.Heading>
@@ -419,6 +351,7 @@ export const Catalog = () => {
               setParams={setParams}
               filters={filters}
               setFilters={setFilters}
+              setSearchParams={setSearchParams}
             />
           </SC.FiltersContainer>
           <SC.GridWrapper>

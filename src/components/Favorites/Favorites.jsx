@@ -12,7 +12,10 @@ import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import * as SC from './Favorites.styled';
 import { useSelector } from 'react-redux';
 import { selectId } from 'redux/auth/selectors';
-import { ShopBox, ShopBoxTitle } from 'components/UserComp/UserOrders/UserOrders.styled';
+import {
+  ShopBox,
+  ShopBoxTitle,
+} from 'components/UserComp/UserOrders/UserOrders.styled';
 import { BtnBrown } from 'components/UserComp/UserData/UserData.styled';
 
 let perPage = 12;
@@ -49,9 +52,7 @@ export const Favorites = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await getFavorites(
-          `/auth/catalog/${id}?${searchParams}`,
-        );
+        const { data } = await getFavorites(`/auth/shop/${id}?${searchParams}`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }

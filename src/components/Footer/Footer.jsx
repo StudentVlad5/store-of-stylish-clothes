@@ -45,14 +45,7 @@ export const Footer = () => {
         'Backpacks and Bags',
         'Accessories',
       ],
-      links: [
-        `/catalog`,
-        `/catalog`,
-        `/catalog`,
-        `/catalog`,
-        `/catalog`,
-        `/catalog`,
-      ],
+      links: [`/shop`, `/shop`, `/shop`, `/shop`, `/shop`, `/shop`],
     },
     {
       title: 'EXPLORE',

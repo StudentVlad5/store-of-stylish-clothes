@@ -52,7 +52,7 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
             <TitleCheckOut>YOUR Basket is empty</TitleCheckOut>
             <TextCheckOut>Please add an item to checkout</TextCheckOut>
             <Link
-              to="/catalog?perPage=12&page=1"
+              to="/shop?perPage=12&page=1"
               style={{ textDecoration: 'none' }}
             >
               <Btn>SHOP</Btn>
@@ -80,7 +80,7 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
                     <TitleCheckOut>YOUR Basket is empty</TitleCheckOut>
                     <TextCheckOut>Please add an item to checkout</TextCheckOut>
                     <Link
-                      to="/catalog?perPage=12&page=1"
+                      to="/shop?perPage=12&page=1"
                       style={{ textDecoration: 'none' }}
                     >
                       <Btn>SHOP</Btn>

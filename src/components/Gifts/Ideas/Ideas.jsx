@@ -41,7 +41,7 @@ export const Ideas = () => {
             />
           </picture>
           <SC.Link
-            to={`/catalog/plants?page=1&perPage=12&rare=rare`}
+            to={`/shop/plants?page=1&perPage=12&rare=rare`}
             onClick={() => {
               saveToStorage('rare', 'rare');
             }}
@@ -65,7 +65,7 @@ export const Ideas = () => {
             />
           </picture>
           <SC.Link
-            to={`/catalog/plants?page=1&perPage=12&light=low+to+bright+indirect+light`}
+            to={`/shop/plants?page=1&perPage=12&light=low+to+bright+indirect+light`}
             onClick={() => {
               saveToStorage('light', 'low to bright indirect light');
             }}
@@ -89,7 +89,7 @@ export const Ideas = () => {
             />
           </picture>
           <SC.Link
-            to={`/catalog/plants?page=1&perPage=12&petFriendly=pet+friendly`}
+            to={`/shop/plants?page=1&perPage=12&petFriendly=pet+friendly`}
             onClick={() => {
               saveToStorage('petFriendly', 'pet friendly');
             }}
@@ -113,7 +113,7 @@ export const Ideas = () => {
             />
           </picture>
           <SC.Link
-            to={`/catalog/plants?page=1&perPage=12&hardToKill=easy+to+care`}
+            to={`/shop/plants?page=1&perPage=12&hardToKill=easy+to+care`}
             onClick={() => {
               saveToStorage('hardToKill', 'easy to care');
             }}

@@ -65,7 +65,7 @@ export const App = () => {
               path="register"
               element={
                 <RestrictedRoute
-                  redirectTo={basket.length > 0 ? '/basket' : '/catalog'}
+                  redirectTo={basket.length > 0 ? '/basket' : '/shop'}
                   component={<RegisterPage />}
                 />
               }
@@ -75,7 +75,7 @@ export const App = () => {
               path="signin"
               element={
                 <RestrictedRoute
-                  redirectTo={basket.length > 0 ? '/basket' : '/catalog'}
+                  redirectTo={basket.length > 0 ? '/basket' : '/shop'}
                   component={<LoginPage />}
                 />
               }
@@ -91,11 +91,11 @@ export const App = () => {
               }
             />
 
-            <Route path="catalog" element={<CatalogPage />} />
-            <Route path="catalog/:category" element={<CatalogPage />} />
-            <Route path="catalog/byid/:id" element={<ProductCardPage />} />
+            <Route path="shop" element={<CatalogPage />} />
+            <Route path="shop/:category" element={<CatalogPage />} />
+            <Route path="shop/byid/:id" element={<ProductCardPage />} />
             <Route
-              path="catalog/favorite"
+              path="shop/favorite"
               element={
                 <PrivateRoute
                   redirectTo="/signin"
@@ -109,7 +109,7 @@ export const App = () => {
             <Route
               path="basket"
               element={
-                <BasketRoute redirectTo="/catalog" component={<BasketPage />} />
+                <BasketRoute redirectTo="/shop" component={<BasketPage />} />
               }
             ></Route>
 
@@ -117,7 +117,7 @@ export const App = () => {
               path="checkout"
               element={
                 <BasketRoute
-                  redirectTo="/catalog"
+                  redirectTo="/shop"
                   component={<CheckOutPage />}
                   // <CheckOutPage />
                 />

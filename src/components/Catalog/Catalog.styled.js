@@ -19,7 +19,6 @@ const Heading = styled.div`
   display: inline-flex;
   justify-content: space-between;
   align-items: baseline;
-  width: 100%;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     align-items: center;
@@ -70,6 +69,7 @@ const SearchResults = styled.div`
 
 const HeadlineShop = styled.h2`
   font-family: ${theme.fonts[1]}; //Nib pro
+  display: inline-block;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -88,8 +88,9 @@ const HeadlineShop = styled.h2`
 `;
 
 const HeadingBtnBox = styled.div`
-  display: flex;
+  display: inline-block;
   gap: 8px;
+  width: auto;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     gap: 18px;
@@ -101,6 +102,7 @@ const SortBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 200;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     min-width: 150px;

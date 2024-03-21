@@ -11,16 +11,16 @@ import {
   NavItemBoxModal,
   IconFeather,
 } from './Nav.styled';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModalFirst } from './ModalFirst/ModalFirst';
 import { MobileMenuSection } from '../Elements/menu/menu.styled';
 import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
 
 export const MobileNav = ({ toggleMenu }) => {
-  const [searchParams] = useSearchParams();
-  searchParams.set('perPage', 12);
-  searchParams.set('page', 1);
+  // const [searchParams] = useSearchParams();
+  // searchParams.set('perPage', 12);
+  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
 
@@ -34,19 +34,19 @@ export const MobileNav = ({ toggleMenu }) => {
     <MobileNavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/catalog/men`}
+          to={`/shop/men`}
           onClick={toggleMenu}
           className={
-            path.includes(`/catalog/men`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/catalog/women`}
+          to={`/shop/women`}
           onClick={toggleMenu}
           className={
-            path.includes(`/catalog/women`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Women')}
@@ -58,7 +58,7 @@ export const MobileNav = ({ toggleMenu }) => {
         </NavItem>
 
         <NavItemBoxModal>
-          <NavItem to={`/catalog`} onClick={toggleMenu}>
+          <NavItem to={`/shop`} onClick={toggleMenu}>
             {t('Shop')}
           </NavItem>
           <IconArrow onClick={toggleModal} />
@@ -70,7 +70,7 @@ export const MobileNav = ({ toggleMenu }) => {
           >
             <ModalFirst
               toggleModal={toggleModal}
-              // onClose={() => setIsModalOpen(false)}
+              onClose={() => setIsModalOpen(false)}
             />
           </ModalFirstOpen>
         )}
@@ -90,9 +90,9 @@ export const MobileNav = ({ toggleMenu }) => {
 };
 
 export const Nav = () => {
-  const [searchParams] = useSearchParams();
-  searchParams.set('perPage', 12);
-  searchParams.set('page', 1);
+  // const [searchParams] = useSearchParams();
+  // searchParams.set('perPage', 12);
+  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
 
@@ -100,30 +100,30 @@ export const Nav = () => {
     <NavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/catalog/men`}
+          to={`/shop/men`}
           className={
-            path.includes(`/catalog/men`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/catalog/women`}
+          to={`/shop/women`}
           className={
-            path.includes(`/catalog/women`) ? 'changeStyle' : ' not-changeStyle'
+            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
           }
         >
           {t('Women')}
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
-        <NavItem to={`/?${searchParams}`}>
+        <NavItem to={`/`}>
           {' '}
           <IconFeather />
           {t('About Us')}
         </NavItem>
-        <NavItem to={`/catalog?${searchParams}`}>{t('Shop')}</NavItem>
-        <NavItem to={`/gifts?${searchParams}`}>{t('Gifts')}</NavItem>
+        <NavItem to={`/shop`}>{t('Shop')}</NavItem>
+        <NavItem to={`/gifts`}>{t('Gifts')}</NavItem>
         <NavItem to="/discounts">{t('Discounts')}</NavItem>
         <NavItem to="/novetly">{t('Novetly')}</NavItem>
       </NavSubContainerDown>

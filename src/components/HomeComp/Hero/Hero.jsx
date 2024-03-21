@@ -33,7 +33,7 @@ export const Hero = () => {
   //   (async function getData() {
   //     setIsLoading(true);
   //     try {
-  //       const { data } = await fetchData(`/catalog/plants`);
+  //       const { data } = await fetchData(`/shop/plants`);
   //       setProducts(data.catalog);
   //       if (!data) {
   //         return onFetchError(t('Whoops, something went wrong'));
@@ -50,12 +50,12 @@ export const Hero = () => {
     <>
       <HeroSection>
         <HeroContainer>
-          <LinkCategory to={'/catalog/men'}>
+          <LinkCategory to={'/shop/men'}>
             <HeroItem props={`url(${photoManCategory})`}>
               <ImgTitle>Men</ImgTitle>
             </HeroItem>
           </LinkCategory>
-          <LinkCategory to={'/catalog/women'}>
+          <LinkCategory to={'/shop/women'}>
             <HeroItem props={`url(${photoWomanCategory})`}>
               <ImgTitle>Women</ImgTitle>
             </HeroItem>
@@ -65,22 +65,22 @@ export const Hero = () => {
 
       <CategorySection>
         <HeroContainer>
-          <LinkCategory to={'/catalog/jacets'}>
+          <LinkCategory to={'/shop/jacets'}>
             <CategoryItem props={`url(${photoJacetsCategory})`}>
               <CategoryTitle>Jacets</CategoryTitle>
             </CategoryItem>
           </LinkCategory>
-          <LinkCategory to={'/catalog/jacets'}>
+          <LinkCategory to={'/shop/jacets'}>
             <CategoryItem props={`url(${photoPantsCategory})`}>
               <CategoryTitle>Pants</CategoryTitle>
             </CategoryItem>
           </LinkCategory>
-          <LinkCategory to={'/catalog/jacets'}>
+          <LinkCategory to={'/shop/jacets'}>
             <CategoryItem props={`url(${photoHoodiesSweatshirtsCategory})`}>
               <CategoryTitle>Hoodies & Sweatshirts</CategoryTitle>
             </CategoryItem>
           </LinkCategory>
-          <LinkCategory to={'/catalog/jacets'}>
+          <LinkCategory to={'/shop/jacets'}>
             <CategoryItem props={`url(${photoFootwearCategory})`}>
               <CategoryTitle>Footwear</CategoryTitle>
             </CategoryItem>

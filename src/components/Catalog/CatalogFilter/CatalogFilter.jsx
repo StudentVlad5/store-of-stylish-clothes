@@ -6,7 +6,7 @@ import Range from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 // import { fetchData } from 'services/APIservice';
-import { getFromStorage, saveToStorage } from 'services/localStorService';
+import { saveToStorage } from 'services/localStorService';
 // import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import * as SC from './CatalogFilter.styled';
 
@@ -20,9 +20,6 @@ export const CatalogFilter = ({
   setFilters,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // const routeParams = useParams();
-  // const [error, setError] = useState(null);
   const { t } = useTranslation();
 
   const min = 0;
@@ -77,7 +74,7 @@ export const CatalogFilter = ({
     };
     setFilters(selectedFilters);
     saveToStorage('filters', selectedFilters);
-    setParams();
+    // setParams();
     const selectedFilter = filters[name];
     if (selectedFilter && selectedFilter.includes(value)) {
       const removeDuplicate = selectedFilter.filter(item => item !== value);
@@ -87,7 +84,7 @@ export const CatalogFilter = ({
       };
       setFilters(selectedFilters);
       saveToStorage('filters', selectedFilters);
-      setParams();
+      // setParams();
     } else {
       const selectedFilters = {
         ...filters,
@@ -95,7 +92,7 @@ export const CatalogFilter = ({
       };
       setFilters(selectedFilters);
       saveToStorage('filters', selectedFilters);
-      setParams();
+      // setParams();
     }
   }
 
@@ -120,12 +117,21 @@ export const CatalogFilter = ({
       page: 1,
       perPage: 12,
     });
-    setSearchParams({ page: 1, perPage: 12 });
+    setSearchParams({
+      man_woman: [],
+      category: [],
+      maxPrice: '5000',
+      minPrice: '0',
+      product: [],
+      sizes: [],
+      page: 1,
+      perPage: 12,
+    });
 
     const listOfLabel = document.querySelectorAll('.active_label');
     listOfLabel.forEach(item => item.classList.remove('active_label'));
   };
-  console.log('filters', filters);
+
   return (
     <>
       <SC.Filters>
@@ -155,7 +161,7 @@ export const CatalogFilter = ({
                       name="man_woman"
                       value={card}
                       data-input={card}
-                      defaultChecked={filters['man_woman'].includes(card)}
+                      // defaultChecked={filters['man_woman'].includes(card)}
                       onChange={e => {
                         handleChange(e);
                       }}
@@ -194,7 +200,6 @@ export const CatalogFilter = ({
                       name="category"
                       value={card}
                       data-input={card}
-                      defaultChecked={filters['category'].includes(card)}
                       onChange={e => {
                         handleChange(e);
                       }}
@@ -207,46 +212,86 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filterState[0]?.level_3.length > 0 && filters.category.length > 0 && (
-          <SC.Filter>
-            <SC.FilterHeading
-              data-key="product"
-              onClick={e => {
-                toggleFilterItem(e);
-              }}
-            >
-              <span>{t('PRODUCT NAME')}</span>
-              <SC.IconBtn
-                type="button"
-                aria-label="switch to open filter"
-                aria-expanded="false"
+        {filters &&
+          (filters?.category.includes('Одежда') ||
+            filters?.category.includes('Обувь') ||
+            filters?.category.includes('Аксессуары')) && (
+            <SC.Filter>
+              <SC.FilterHeading
+                data-key="product"
+                onClick={e => {
+                  toggleFilterItem(e);
+                }}
               >
-                <Open />
-              </SC.IconBtn>
-            </SC.FilterHeading>
-            <SC.FilterInnerList>
-              {filterState[0]?.level_3.map((card, i) => {
-                return (
-                  <label key={i} data-key={card}>
-                    <SC.FilterInnerListItem
-                      type="checkbox"
-                      name="product"
-                      value={card}
-                      data-input={card}
-                      // defaultChecked={filters['product'].includes(card)}
-                      onChange={e => {
-                        handleChange(e);
-                      }}
-                    />
-                    <span>{card}</span>
-                  </label>
-                );
-              })}
-            </SC.FilterInnerList>
-          </SC.Filter>
-        )}
+                <span>{t('PRODUCT NAME')}</span>
+                <SC.IconBtn
+                  type="button"
+                  aria-label="switch to open filter"
+                  aria-expanded="false"
+                >
+                  <Open />
+                </SC.IconBtn>
+              </SC.FilterHeading>
+              <SC.FilterInnerList>
+                {filters?.category.includes('Одежда') &&
+                  filterState[0]?.level_3['Одежда'].map((card, i) => {
+                    return (
+                      <label key={i} data-key={card}>
+                        <SC.FilterInnerListItem
+                          type="checkbox"
+                          name="product"
+                          value={card}
+                          data-input={card}
+                          // defaultChecked={filters['size'].includes(card)}
+                          onChange={e => {
+                            handleChange(e);
+                          }}
+                        />
+                        <span>{card}</span>
+                      </label>
+                    );
+                  })}
+                {filters?.category.includes('Обувь') &&
+                  filterState[0]?.level_3['Обувь'].map((card, i) => {
+                    return (
+                      <label key={i} data-key={card}>
+                        <SC.FilterInnerListItem
+                          type="checkbox"
+                          name="product"
+                          value={card}
+                          data-input={card}
+                          // defaultChecked={filters['size'].includes(card)}
+                          onChange={e => {
+                            handleChange(e);
+                          }}
+                        />
+                        <span>{card}</span>
+                      </label>
+                    );
+                  })}
+                {filters?.category.includes('Аксессуары') &&
+                  filterState[0]?.level_3['Аксессуары'].map((card, i) => {
+                    return (
+                      <label key={i} data-key={card}>
+                        <SC.FilterInnerListItem
+                          type="checkbox"
+                          name="product"
+                          value={card}
+                          data-input={card}
+                          // defaultChecked={filters['size'].includes(card)}
+                          onChange={e => {
+                            handleChange(e);
+                          }}
+                        />
+                        <span>{card}</span>
+                      </label>
+                    );
+                  })}
+              </SC.FilterInnerList>
+            </SC.Filter>
+          )}
 
-        {filters.category.includes('Одежда') && (
+        {filters && filters?.category.includes('Одежда') && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="sizes"
@@ -285,7 +330,7 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filters.category.includes('Обувь') && (
+        {filters && filters?.category.includes('Обувь') && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="sizes"
@@ -324,7 +369,7 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filters.category.includes('Аксессуары') && (
+        {filters && filters?.category.includes('Аксессуары') && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="sizes"
@@ -363,7 +408,7 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filters.category.includes('Staff Tactical') && (
+        {filters && filters?.category.includes('Staff Tactical') && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="sizes"

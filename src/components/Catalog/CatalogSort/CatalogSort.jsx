@@ -3,10 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getFromStorage, saveToStorage } from 'services/localStorService';
 import * as SC from './CatalogSort.styled';
 
-export const CatalogSort = () => {
-  const [sort, setSort] = useState(
-    getFromStorage('sort') ? getFromStorage('sort') : [],
-  );
+export const CatalogSort = ({ sort, setSort }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {

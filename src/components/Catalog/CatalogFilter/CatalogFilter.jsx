@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -12,6 +12,7 @@ import * as SC from './CatalogFilter.styled';
 
 import { ReactComponent as Open } from 'images/svg/open.svg';
 import debounce from 'lodash.debounce';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 export const CatalogFilter = ({
   filterState,
@@ -22,6 +23,7 @@ export const CatalogFilter = ({
 }) => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
+  const { selectedCurrency } = useContext(StatusContext);
 
   const min = 0;
   const max = 5000;
@@ -479,7 +481,9 @@ export const CatalogFilter = ({
                     setParams();
                   }}
                 />
-                <>$</>
+                {selectedCurrency === 'ua' && '₴'}
+                {selectedCurrency === 'usd' && '$'}
+                {selectedCurrency === 'euro' && '€'}
               </label>
               <label>
                 To
@@ -494,7 +498,9 @@ export const CatalogFilter = ({
                     setParams();
                   }}
                 />
-                <>$</>
+                {selectedCurrency === 'ua' && '₴'}
+                {selectedCurrency === 'usd' && '$'}
+                {selectedCurrency === 'euro' && '€'}
               </label>
             </SC.RangeWrapper>
             <SC.RangeLabel>

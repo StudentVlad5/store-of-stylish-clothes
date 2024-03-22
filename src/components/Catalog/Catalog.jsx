@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CatalogSort } from './CatalogSort/CatalogSort';
@@ -19,6 +19,7 @@ import * as SC from './Catalog.styled';
 import { ReactComponent as Open } from 'images/svg/open.svg';
 import { ReactComponent as Close } from 'images/svg/icon_close.svg';
 import { Headline } from 'components/baseStyles/CommonStyle.styled';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 let perPage = 12;
 
@@ -32,6 +33,8 @@ export const Catalog = () => {
   const [page, setPages] = useState(
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  console.log(selectedCurrency);
   // const routeParams = useParams();
   let initialState;
   getFromStorage('filters')
@@ -45,6 +48,7 @@ export const Catalog = () => {
         sizes: [],
         page: page,
         perPage: perPage,
+        currency: selectedCurrency,
       });
 
   const [selectedFilter, setSelectedFilter] = useState([]);
@@ -93,7 +97,9 @@ export const Catalog = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/shop?${searchParams}`);
+        const { data } = await fetchData(
+          `/shop/${selectedLanguage}?${searchParams}`,
+        );
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -110,13 +116,21 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [t, page, perPage, sort, searchParams]);
+  }, [
+    t,
+    page,
+    perPage,
+    sort,
+    searchParams,
+    selectedCurrency,
+    selectedLanguage,
+  ]);
 
   useEffect(() => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/category`);
+        const { data } = await fetchData(`/category/${selectedLanguage}`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -127,62 +141,65 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [selectedLanguage]);
 
-  useEffect(() => {
-    const checkFilter = getFromStorage('filters');
-    const param = {};
-    searchParams.getAll('man_woman') &&
-    searchParams.getAll('man_woman') != 'null' &&
-    searchParams.getAll('man_woman') !== undefined
-      ? (param.man_woman = searchParams.get('man_woman'))
-      : checkFilter.man_woman
-      ? (param.man_woman = checkFilter.man_woman)
-      : (param.man_woman = []);
-    searchParams.getAll('category') &&
-    searchParams.getAll('category') != 'null' &&
-    searchParams.getAll('category') !== undefined
-      ? (param.category = searchParams.get('category'))
-      : checkFilter?.category
-      ? (param.category = checkFilter?.category)
-      : (param.category = []);
-    searchParams.getAll('product') &&
-    searchParams.getAll('product') != 'null' &&
-    searchParams.getAll('product') !== undefined
-      ? (param.product = searchParams.get('product'))
-      : checkFilter?.product
-      ? (param.product = checkFilter?.product)
-      : (param.product = []);
-    searchParams.getAll('sizes') &&
-    searchParams.getAll('sizes') != 'null' &&
-    searchParams.getAll('sizes') !== undefined
-      ? (param.sizes = searchParams.get('sizes'))
-      : checkFilter?.sizes
-      ? (param.sizes = checkFilter?.sizes)
-      : (param.sizes = []);
-    searchParams.get('minPrice')
-      ? (param.minPrice = searchParams.get('minPrice'))
-      : checkFilter?.minPrice
-      ? (param.minPrice = checkFilter?.minPrice)
-      : (param.minPrice = '');
-    searchParams.get('maxPrice')
-      ? (param.maxPrice = searchParams.get('maxPrice'))
-      : checkFilter?.maxPrice
-      ? (param.maxPrice = checkFilter?.maxPrice)
-      : (param.maxPrice = '');
-    searchParams.get('page')
-      ? (param.page = searchParams.get('page'))
-      : getFromStorage('page')
-      ? (param.page = getFromStorage('page'))
-      : (param.page = page);
-    searchParams.get('perPage')
-      ? (param.perPage = searchParams.get('perPage'))
-      : (param.perPage = perPage);
-    searchParams.get('sort')
-      ? (param.sort = searchParams.get('sort'))
-      : (param.sort = '');
-    setSearchParams(param);
-  }, []);
+  // useEffect(() => {
+  //   const checkFilter = getFromStorage('filters');
+  //   const param = {};
+  //   searchParams.getAll('man_woman') &&
+  //   searchParams.getAll('man_woman') != 'null' &&
+  //   searchParams.getAll('man_woman') !== undefined
+  //     ? (param.man_woman = searchParams.get('man_woman'))
+  //     : checkFilter.man_woman
+  //     ? (param.man_woman = checkFilter.man_woman)
+  //     : (param.man_woman = []);
+  //   searchParams.getAll('category') &&
+  //   searchParams.getAll('category') != 'null' &&
+  //   searchParams.getAll('category') !== undefined
+  //     ? (param.category = searchParams.get('category'))
+  //     : checkFilter?.category
+  //     ? (param.category = checkFilter?.category)
+  //     : (param.category = []);
+  //   searchParams.getAll('product') &&
+  //   searchParams.getAll('product') != 'null' &&
+  //   searchParams.getAll('product') !== undefined
+  //     ? (param.product = searchParams.get('product'))
+  //     : checkFilter?.product
+  //     ? (param.product = checkFilter?.product)
+  //     : (param.product = []);
+  //   searchParams.getAll('sizes') &&
+  //   searchParams.getAll('sizes') != 'null' &&
+  //   searchParams.getAll('sizes') !== undefined
+  //     ? (param.sizes = searchParams.get('sizes'))
+  //     : checkFilter?.sizes
+  //     ? (param.sizes = checkFilter?.sizes)
+  //     : (param.sizes = []);
+  //   searchParams.get('minPrice')
+  //     ? (param.minPrice = searchParams.get('minPrice'))
+  //     : checkFilter?.minPrice
+  //     ? (param.minPrice = checkFilter?.minPrice)
+  //     : (param.minPrice = '');
+  //   searchParams.get('maxPrice')
+  //     ? (param.maxPrice = searchParams.get('maxPrice'))
+  //     : checkFilter?.maxPrice
+  //     ? (param.maxPrice = checkFilter?.maxPrice)
+  //     : (param.maxPrice = '');
+  //   searchParams.get('page')
+  //     ? (param.page = searchParams.get('page'))
+  //     : getFromStorage('page')
+  //     ? (param.page = getFromStorage('page'))
+  //     : (param.page = page);
+  //   searchParams.get('perPage')
+  //     ? (param.perPage = searchParams.get('perPage'))
+  //     : (param.perPage = perPage);
+  //   searchParams.get('currency')
+  //     ? (param.currency = searchParams.get('currency'))
+  //     : (param.currency = selectedCurrency);
+  //   searchParams.get('sort')
+  //     ? (param.sort = searchParams.get('sort'))
+  //     : (param.sort = '');
+  //   setSearchParams(param);
+  // }, []);
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
@@ -285,6 +302,9 @@ export const Catalog = () => {
     }
     if (filters.perPage !== '') {
       params.perPage = perPage;
+    }
+    if (filters.currency !== '') {
+      params.currency = selectedCurrency;
     }
     setSearchParams(params);
   };

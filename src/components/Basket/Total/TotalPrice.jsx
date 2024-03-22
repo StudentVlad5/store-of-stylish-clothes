@@ -23,7 +23,7 @@ export const TotalPrice = basket => {
 
   const totalPayment = basket.contextBasket
     .reduce((payment, item) => {
-      return payment + item.currentPrice * item.quantity;
+      return payment + item.newPrice * item.quantity;
     }, 0)
     .toFixed(2);
   const totalAmount = basket.contextBasket
@@ -31,11 +31,11 @@ export const TotalPrice = basket => {
       return payment + item.oldPrice * item.quantity;
     }, 0)
     .toFixed(2);
-  const totalDiscount = basket.contextBasket
-    .reduce((payment, item) => {
-      return payment + item.discount * item.quantity;
-    }, 0)
-    .toFixed(2);
+  // const totalDiscount = basket.contextBasket
+  //   .reduce((payment, item) => {
+  //     return payment + item.discount * item.quantity;
+  //   }, 0)
+  //   .toFixed(2);
 
   const currency = basket?.contextBasket[0]?.currency;
 
@@ -50,12 +50,12 @@ export const TotalPrice = basket => {
                 Amount for the product
               </PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
-                {currency}
                 {totalAmount}
+                {currency}
               </PaymentTotalListItemDiscr>
             </PaymentTotalListItem>
 
-            <PaymentTotalListItem>
+            {/* <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
                 Discount amount
               </PaymentTotalListItemTitle>
@@ -63,26 +63,26 @@ export const TotalPrice = basket => {
                 {currency}
                 {totalDiscount}
               </PaymentTotalListItemDiscr>
-            </PaymentTotalListItem>
+            </PaymentTotalListItem> */}
 
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>Delivery</PaymentTotalListItemTitle>
-              {totalPayment < 150 ? (
+              {/* {totalPayment < 150 ? (
                 <PaymentTotalListItemDiscr>
                   {currency}
                   {150 - totalPayment}
                 </PaymentTotalListItemDiscr>
-              ) : (
-                <PaymentTotalListItemDiscr>Free</PaymentTotalListItemDiscr>
-              )}
+              ) : ( */}
+                <PaymentTotalListItemDiscr>13</PaymentTotalListItemDiscr>
+              {/* )} */}
             </PaymentTotalListItem>
 
             <PaymentTotalListItem>
-              <PaymentTotalTitlePrice>Payment</PaymentTotalTitlePrice>
-              <PaymentTotalTitlePriceDiscr>
-                {currency}
+              <PaymentTotalTitle>Payment</PaymentTotalTitle>
+              <PaymentTotalTitle>
                 {totalPayment}
-              </PaymentTotalTitlePriceDiscr>
+                {currency}
+              </PaymentTotalTitle>
             </PaymentTotalListItem>
           </PaymentTotalList>
         </table>

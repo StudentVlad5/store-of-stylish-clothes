@@ -40,29 +40,29 @@ export const DiscrBoxTitle = styled.div`
 `;
 
 export const DiscrTitle = styled.p`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
 export const DiscrBoxSize = styled.p`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 16.8px */
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 12px;
+    font-size: 16px;
   }
 `;
 
@@ -82,7 +82,7 @@ export const Quantity = styled.div`
   width: 65px;
 
   border-radius: 10px;
-  border: 0.5px solid ${theme.colors.fon};
+  border: 0.5px solid ${theme.colors.brown4};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     gap: 19px;
@@ -91,14 +91,14 @@ export const Quantity = styled.div`
 
   & span {
     font-family: ${theme.fonts[0]};
-    font-size: 10px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
-    color: ${theme.colors.fon};
+    color: ${theme.colors.brown2};
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 `;
@@ -122,8 +122,8 @@ export const IconQuantityBtn = styled.button`
     }
 
     & > path {
-      stroke: ${theme.colors.fon};
-      fill: ${theme.colors.fon};
+      stroke: ${theme.colors.brown4};
+      fill: ${theme.colors.brown4};
     }
   }
 
@@ -145,7 +145,7 @@ export const RemoveBtn = styled.button`
   line-height: 140%; /* 16.8px */
   text-transform: uppercase;
 
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown4};
   text-align: center;
 
   background-color: transparent;
@@ -156,5 +156,15 @@ export const RemoveBtn = styled.button`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 12px;
+  }
+`;
+
+export const ShoppingBagImg = styled.img`
+  width: 95px;
+  height: 105px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    width: 97px;
+    height: 125px;
   }
 `;

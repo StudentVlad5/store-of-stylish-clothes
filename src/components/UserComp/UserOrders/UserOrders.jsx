@@ -168,7 +168,7 @@ export const UserOrders = () => {
                   {order?.basket?.optionData.map(item => (
                     <OrderItemDetails $width key={item._id}>
                       <ImgItem
-                        src={BASE_URL_IMG + item?.images[0]}
+                        src={item?.mainImage}
                         alt="Product image"
                         loading="lazy"
                       />
@@ -176,7 +176,7 @@ export const UserOrders = () => {
                         <DiscrDataListItem>
                           <DiscrDataListItemHeading>
                             <DiscrDataListItemTitle>
-                              {item?.name}
+                              {item?.title_ua}
                             </DiscrDataListItemTitle>
                           </DiscrDataListItemHeading>
                         </DiscrDataListItem>
@@ -184,36 +184,32 @@ export const UserOrders = () => {
                           <DiscrDataTable style={{ gap: '5px' }}>
                             <DiscrDataTableLine>
                               <DiscrDataTableHead>Size</DiscrDataTableHead>
-                              {item?.title === null ? (
-                                <DiscrDataTableData>-</DiscrDataTableData>
-                              ) : (
-                                <DiscrDataTableData>
-                                  {item?.title}
-                                </DiscrDataTableData>
-                              )}
+                              <DiscrDataTableData>
+                                {item?.title}
+                              </DiscrDataTableData>
                             </DiscrDataTableLine>
 
                             <DiscrDataTableLine>
                               <DiscrDataTableHead>Price</DiscrDataTableHead>
-                              {item?.discount !== 0 ? (
+                              {/* {item?.discount !== 0 ? ( */}
                                 <DiscrDataTableData>
                                   <DiscrDataListItemPrice $red>
+                                    {item?.newPrice}
                                     {item?.currency}
-                                    {item?.currentPrice}
                                   </DiscrDataListItemPrice>
                                   <DiscrDataListItemPrice>
-                                    {item?.currency}
                                     {item?.oldPrice}
-                                  </DiscrDataListItemPrice>
-                                </DiscrDataTableData>
-                              ) : (
-                                <DiscrDataTableData>
-                                  <DiscrDataListItemPrice $current>
                                     {item?.currency}
-                                    {item?.currentPrice}
                                   </DiscrDataListItemPrice>
                                 </DiscrDataTableData>
-                              )}
+                              {/* // ) : (
+                              //   <DiscrDataTableData>
+                              //     <DiscrDataListItemPrice $current>
+                              //       {item?.newPrice}
+                              //       {item?.currency}
+                              //     </DiscrDataListItemPrice>
+                              //   </DiscrDataTableData>
+                              // )} */}
                             </DiscrDataTableLine>
                             <DiscrDataTableLine>
                               <DiscrDataTableHead>Quantity</DiscrDataTableHead>
@@ -242,7 +238,7 @@ export const UserOrders = () => {
                           </PaymentTotalListItemDiscr>
                         </PaymentTotalListItem>
 
-                        <PaymentTotalListItem>
+                        {/* <PaymentTotalListItem>
                           <PaymentTotalListItemTitle>
                             Discount amount
                           </PaymentTotalListItemTitle>
@@ -250,7 +246,7 @@ export const UserOrders = () => {
                             {order?.currency}
                             {order?.totalDiscount}
                           </PaymentTotalListItemDiscr>
-                        </PaymentTotalListItem>
+                        </PaymentTotalListItem> */}
 
                         <PaymentTotalListItem>
                           <PaymentTotalListItemTitle>

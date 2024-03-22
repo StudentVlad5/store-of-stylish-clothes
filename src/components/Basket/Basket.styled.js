@@ -138,7 +138,7 @@ export const BasketCompList = styled.ul`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   height: 100%;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -147,7 +147,6 @@ export const BasketCompList = styled.ul`
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    gap: 24px;
     width: 600px;
   }
 `;

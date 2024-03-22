@@ -18,6 +18,7 @@ import {
   Quantity,
   QuantityBox,
   IconQuantityBtn,
+  ShoppingBagImg,
 } from './ShoppingBagList.styled';
 import {
   BasketCompIconClose,
@@ -50,10 +51,14 @@ export const ShoppingBagList = ({
   const {
     _id,
     currency,
-    currentPrice,
+    newPrice,
     discount,
     images,
-    name,
+    mainImage,
+    title_de,
+    title_en,
+    title_ru,
+    title_ua,
     oldPrice,
     quantity,
     title,
@@ -63,6 +68,7 @@ export const ShoppingBagList = ({
     statusBasket = false;
   }
   // ----------------------------------------->
+  console.log(optionData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userAnonimusID] = useState(
@@ -96,15 +102,15 @@ export const ShoppingBagList = ({
     dispatch(addReload(true));
   };
 
-  const initialPrice = currentPrice * quantity;
+  const initialPrice = newPrice * quantity;
   const [price, setPrice] = useState(initialPrice);
   let newData = [];
 
   const handleDecrease = () => {
     if (quantity > 1) {
       const newValue = quantity - 1;
-      const newPrice = newValue * currentPrice;
-      setPrice(newPrice);
+      const newPriceV = newValue * newPrice;
+      setPrice(newPriceV);
       newData = { ...datas[0].optionData[idx] };
       newData.quantity = newValue;
 
@@ -124,8 +130,8 @@ export const ShoppingBagList = ({
   const handleIncrease = () => {
     if (quantity < total) {
       const newValue = quantity + 1;
-      const newPrice = newValue * currentPrice;
-      setPrice(newPrice);
+      const newPricev = newValue * newPrice;
+      setPrice(newPricev);
       newData = { ...datas[0].optionData[idx] };
       newData.quantity = newValue;
 
@@ -145,7 +151,8 @@ export const ShoppingBagList = ({
   return statusBasket ? (
     <BasketCompItem>
       <BasketCompImg
-        src={BASE_URL_IMG + images[0]}
+        // src={BASE_URL_IMG + images[0]}
+        src={mainImage}
         width={107}
         height={140}
         alt="Image"
@@ -156,10 +163,10 @@ export const ShoppingBagList = ({
         <DiscrDataList>
           <DiscrDataListItem>
             <DiscrDataListItemHeading>
-              <DiscrDataListItemTitle>{name}</DiscrDataListItemTitle>
+              <DiscrDataListItemTitle>{title_ua}</DiscrDataListItemTitle>
               <DiscrDataListItemTitlePrice>
-                {currency}
                 {price}
+                {currency}
               </DiscrDataListItemTitlePrice>
             </DiscrDataListItemHeading>
           </DiscrDataListItem>
@@ -176,25 +183,25 @@ export const ShoppingBagList = ({
 
               <DiscrDataTableLine>
                 <DiscrDataTableHead>Price</DiscrDataTableHead>
-                {discount !== 0 ? (
+                {/* {discount !== 0 ? ( */}
                   <DiscrDataTableData>
                     <DiscrDataListItemPrice $red>
+                      {newPrice}
                       {currency}
-                      {currentPrice}
                     </DiscrDataListItemPrice>
                     <DiscrDataListItemPrice>
-                      {currency}
                       {oldPrice}
+                      {currency}
                     </DiscrDataListItemPrice>
                   </DiscrDataTableData>
-                ) : (
+                {/* ) : (
                   <DiscrDataTableData>
                     <DiscrDataListItemPrice $current>
+                      {newPrice}
                       {currency}
-                      {currentPrice}
                     </DiscrDataListItemPrice>
                   </DiscrDataTableData>
-                )}
+                )} */}
               </DiscrDataTableLine>
 
               <DiscrDataTableLine>
@@ -237,8 +244,9 @@ export const ShoppingBagList = ({
     <>
       <OrderItem>
         {images && (
-          <ListImage
-            src={BASE_URL_IMG + images[0]}
+          <ShoppingBagImg
+            // src={BASE_URL_IMG + images[0]}
+            src={mainImage}
             alt="Image"
             loading="lazy"
           />
@@ -247,10 +255,10 @@ export const ShoppingBagList = ({
           <DiscrBox>
             <DiscrBoxForText>
               <DiscrBoxTitle>
-                <DiscrTitle>{name}</DiscrTitle>
+                <DiscrTitle style={{width: 170}}>{title_ua}</DiscrTitle>
                 <DiscrTitle>
+                  {newPrice}
                   {currency}
-                  {currentPrice}
                 </DiscrTitle>
               </DiscrBoxTitle>
               <DiscrBoxSize>{title}</DiscrBoxSize>

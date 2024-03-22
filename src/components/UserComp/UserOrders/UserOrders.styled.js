@@ -168,6 +168,7 @@ const ImgItem = styled.img`
   width: 80px;
   height: 115px;
   object-fit: contain;
+  border-radius: 12px;
 `;
 
 const PaymentBox = styled.div`

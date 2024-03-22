@@ -37,10 +37,10 @@ import {
   IconWrapper,
 } from 'components/Header/Navigation/Navigation.styled';
 
-import groupPlants from 'images/basket/group-plants.png';
-import peaceLily from 'images/basket/peace-lily.png';
-import philodendron from 'images/basket/philodendron.png';
-import plantGrayPot from 'images/basket/plant-gray-pot.png';
+import photoJacetsCategory from 'images/hero/category/jacket_2x.webp';
+import photoPantsCategory from 'images/hero/category/pants_2x.webp';
+import photoFootwearCategory from 'images/hero/category/footwear_2x.webp';
+import photoHoodiesSweatshirtsCategory from 'images/hero/category/hoodies_2x.webp';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
@@ -132,22 +132,22 @@ export const ShoppingBag = () => {
 
   const dataArr = [
     {
-      imageUrl: plantGrayPot,
-      title: 'Pet - friendly plants',
-      link: '/shop?perPage=12&page=1&petFriendly=pet+friendly',
+      imageUrl: photoJacetsCategory,
+      title: 'Jacets',
+      link: '/',
     },
     {
-      imageUrl: peaceLily,
-      title: 'Rare plants',
-      link: '/shop?perPage=12&page=1&rare=rare',
+      imageUrl: photoPantsCategory,
+      title: 'Pants',
+      link: '/',
     },
     {
-      imageUrl: philodendron,
-      title: 'Hard to kill plants',
-      link: '/shop?perPage=12&page=1&hardToKill=easy+to+care',
+      imageUrl: photoHoodiesSweatshirtsCategory,
+      title: 'Hoodies & Sweatshirts',
+      link: '/',
     },
     {
-      imageUrl: groupPlants,
+      imageUrl: photoFootwearCategory,
       title: 'Gifts',
       link: '/gifts',
     },
@@ -159,7 +159,7 @@ export const ShoppingBag = () => {
     let total = 0;
     if (datas) {
       datas[0]?.optionData?.map(
-        product => (total += product.quantity * product.currentPrice),
+        product => (total += product.quantity * product.newPrice),
       );
     }
     setTotalPayment(total);
@@ -192,7 +192,7 @@ export const ShoppingBag = () => {
 
       <BasketBox open={isOpen}>
         <BasketBoxTitle>
-          <BasketTitle>Your card</BasketTitle>
+          <BasketTitle>Cart</BasketTitle>
           <BasketIconClose onClick={() => handlecheckout()} />
         </BasketBoxTitle>
 
@@ -201,27 +201,7 @@ export const ShoppingBag = () => {
           datas[0]?.optionData?.length !== 0 &&
           datas[0]?.optionData?.length !== undefined ? (
             <OrderBox>
-              <div>
-                {totalPayment < 150 ? (
-                  <>
-                    <ProgressBarTitle>
-                      You’re ${(150 - totalPayment).toFixed(2)} away from Free
-                      Shipping!
-                    </ProgressBarTitle>
-                    <ProgressBarBox>
-                      <ProgressBar
-                        style={{
-                          width: `${(totalPayment / 150) * 100}%`,
-                        }}
-                      ></ProgressBar>
-                    </ProgressBarBox>
-                  </>
-                ) : (
-                  <ProgressBarTitle>
-                    Great! You have free shipping!
-                  </ProgressBarTitle>
-                )}
-
+              <div style={{paddingBottom: 25}}>
                 <OrderList>
                   {datas[0]?.optionData?.map((product, idx) => (
                     <ShoppingBagList
@@ -235,27 +215,31 @@ export const ShoppingBag = () => {
                 </OrderList>
               </div>
               <TotalTitleBox>
-                <div>
-                  <TotalTitle>Total</TotalTitle>
+                {/* <div> */}
+                  {/* <TotalTitle>Total</TotalTitle>
                   <TotalTitlePrice>
-                    {currency}
                     {totalPayment}
-                  </TotalTitlePrice>
-                </div>
+                    {currency}
+                  </TotalTitlePrice> */}
+                {/* </div> */}
 
-                <TotalDiscr>
+                {/* <TotalDiscr>
                   Separate shipping is applicable to the majority of items. Once
                   an order is placed, it cannot be cancelled.
-                </TotalDiscr>
+                </TotalDiscr> */}
 
                 <OrderBtn to="/basket" onClick={() => handlecheckout()}>
                   checkout
+                  <span style={{ marginLeft: 30 }}>
+                    {totalPayment}
+                    {currency}
+                  </span>
                 </OrderBtn>
               </TotalTitleBox>
             </OrderBox>
           ) : (
             <Box>
-              <BasketBoxListTitle>Oh! your card is empty</BasketBoxListTitle>
+              <BasketBoxListTitle>Your cart is empty</BasketBoxListTitle>
               <BasketBoxListDiscr>
                 We recommend checking out:
               </BasketBoxListDiscr>

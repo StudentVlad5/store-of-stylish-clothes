@@ -54,7 +54,7 @@ const HeaderContainer = styled(Container)`
   padding: 40px 30px 0px 30px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    padding: 50px 120px 0px 120px;
+    padding: 40px 40px 0px 40px;
   }
 `;
 

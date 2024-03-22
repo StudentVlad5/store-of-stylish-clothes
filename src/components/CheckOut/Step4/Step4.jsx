@@ -110,7 +110,7 @@ const Step4 = () => {
 
   const totalPayment = contextBasket[0]?.optionData
     .reduce((payment, item) => {
-      return payment + item.currentPrice * item.quantity;
+      return payment + item.newPrice * item.quantity;
     }, 0)
     .toFixed(2);
   const totalAmount = contextBasket[0]?.optionData
@@ -118,18 +118,18 @@ const Step4 = () => {
       return payment + item.oldPrice * item.quantity;
     }, 0)
     .toFixed(2);
-  const totalDiscount = contextBasket[0]?.optionData
-    .reduce((payment, item) => {
-      return payment + item.discount * item.quantity;
-    }, 0)
-    .toFixed(2);
+  // const totalDiscount = contextBasket[0]?.optionData
+  //   .reduce((payment, item) => {
+  //     return payment + item.discount * item.quantity;
+  //   }, 0)
+  //   .toFixed(2);
 
   const currency = contextBasket[0]?.optionData[0].currency;
 
   const newOrder = {
     basket: { ...contextBasket[0] },
     totalAmount: Math.round(+totalAmount * 100) / 100,
-    totalDiscount: Math.round(+totalDiscount * 100) / 100,
+    // totalDiscount: Math.round(+totalDiscount * 100) / 100,
     totalPayment: Math.round(+totalPayment * 100) / 100,
     currency,
     deliveryOrder: { delivery, cityDelivery, departmentDelivery },

@@ -109,6 +109,7 @@ export const ProductCard = ({ item }) => {
         _id: product.optionData._id,
       },
     };
+    console.log(updatedProduct);
     // dispatch(addToBasket(updatedProduct));
     const updateBackEndBasket = {
       _id: updatedProduct.userAnonimusID,
@@ -120,6 +121,11 @@ export const ProductCard = ({ item }) => {
           name: product.name,
           _id: product.optionData._id,
           images: product.images,
+          title_de,
+          title_en,
+          title_ru,
+          title_ua,
+          mainImage,
         },
       ],
     };

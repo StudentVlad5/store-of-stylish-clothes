@@ -14,8 +14,8 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100vh;
 
-  background-color: ${theme.colors.grey};
-  opacity: 0.4;
+  background-color: ${theme.colors.brown4};
+  opacity: 0.3;
 `;
 
 export const BasketBox = styled.div`
@@ -30,7 +30,7 @@ export const BasketBox = styled.div`
   height: 100vh;
   padding: 20px;
 
-  background: ${theme.colors.darkGreen};
+  background: ${theme.colors.fon};
   z-index: 11;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -58,15 +58,11 @@ export const Box = styled.div`
 export const BasketBoxTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 18px;
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    margin-bottom: 52px;
-  }
+  margin-bottom: 25px;
 `;
 
 export const BasketTitle = styled.h3`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown2};
   text-align: center;
   font-family: ${theme.fonts[1]};
   font-size: 14px;
@@ -84,7 +80,7 @@ export const BasketBoxList = styled.div`
 `;
 
 export const BasketBoxListTitle = styled.h2`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown2};
   text-align: center;
   font-family: ${theme.fonts[1]};
   font-size: 14px;
@@ -98,7 +94,7 @@ export const BasketBoxListTitle = styled.h2`
 `;
 
 export const BasketBoxListDiscr = styled.p`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown2};
   text-align: center;
   font-family: ${theme.fonts[0]};
   font-size: 10px;
@@ -123,7 +119,7 @@ export const List = styled.ul`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     justify-content: space-between;
-    padding: 0 64px;
+    padding: 0 51px;
   }
 `;
 
@@ -139,7 +135,7 @@ export const ListImage = styled.img`
   height: 105px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    width: 110px;
+    width: 131px;
     height: 125px;
   }
 `;
@@ -152,17 +148,17 @@ export const ListTitleBox = styled.div`
 `;
 
 export const ListTitle = styled.span`
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown2};
   text-align: center;
-  font-family: ${theme.fonts[1]};
-  font-size: 10px;
+  font-family: ${theme.fonts[0]};
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  text-decoration-line: underline;
+  text-decoration-line: none;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
@@ -170,8 +166,8 @@ export const BasketIconClose = styled(IconClose)`
   cursor: pointer;
 
   & > path {
-    stroke: ${theme.colors.fon};
-    fill: ${theme.colors.fon};
+    stroke: ${theme.colors.brown2};
+    fill: ${theme.colors.brown2};
   }
 `;
 
@@ -183,7 +179,7 @@ export const OrderBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  height: calc(100% - 52px);
+  height: calc(100% - 18px);
 `;
 
 export const OrderBtn = styled(Link)`
@@ -191,9 +187,9 @@ export const OrderBtn = styled(Link)`
   padding: 12px;
   width: 100%;
 
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.fon};
   font-family: ${theme.fonts[0]};
-  font-size: 10px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -202,10 +198,19 @@ export const OrderBtn = styled(Link)`
   text-align: center;
 
   border-radius: 10px;
-  background-color: ${theme.colors.fon};
+  background-color: ${theme.colors.brown4};
+  transition: ${theme.transition[1]};
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 1px solid ${theme.colors.brown4};
+    color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
+  }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 18px;
   }
 `;
 
@@ -215,8 +220,8 @@ export const OrderList = styled.ul`
   flex-direction: column;
   gap: 10px;
 
-  max-height: calc(100vh - 275px);
-  padding-top: 10px;
+  max-height: calc(100vh - 200px);
+  padding-top: 20px;
 
   overflow-y: auto;
 
@@ -226,24 +231,24 @@ export const OrderList = styled.ul`
     top: 0;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.brown4};
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     gap: 20px;
-    max-height: 425px;
+    max-height: 530px;
   }
 `;
 
 export const TotalTitleBox = styled.div`
   position: relative;
-  margin-top: 24px;
-
+  padding-top: 25px;
+  /* 
   & > div {
     display: flex;
     justify-content: space-between;
     padding-top: 24px;
-  }
+  } */
 
   &::before {
     content: '';
@@ -251,7 +256,7 @@ export const TotalTitleBox = styled.div`
     top: 0;
     width: 100%;
     height: 1px;
-    background: ${theme.colors.brown2};
+    background: ${theme.colors.brown4};
   }
 `;
 

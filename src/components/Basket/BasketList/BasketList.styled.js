@@ -4,18 +4,39 @@ import { ReactComponent as IconClose } from 'images/svg/icon_close.svg';
 
 export const BasketCompItem = styled.li`
   display: flex;
+  position: relative;
   gap: 20px;
-
   width: 100%;
   /* height: 100%; */
-  padding: 5px;
+  padding-top: 25px;
 
-  background-color: ${theme.colors.green6};
+  background-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: ${theme.colors.brown4};
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: ${theme.colors.brown4};
+  }
 `;
 
 export const BasketCompImg = styled.img`
-  width: 107px;
-  height: 140px;
+  width: 124px;
+  height: 158px;
+  border-radius: 12px;
 `;
 
 export const BoxForDiscrData = styled.div`
@@ -77,6 +98,7 @@ export const DiscrDataListItemTitle = styled.h4`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: 18px;
+    width: 331px;
   }
 `;
 
@@ -87,9 +109,9 @@ export const DiscrDataListItemHeading = styled.div`
 `;
 
 export const DiscrDataListItemTitlePrice = styled.span`
-  color: ${theme.colors.brown1};
-  font-family: ${theme.fonts[1]};
-  font-size: 10px;
+  color: ${theme.colors.brown2};
+  font-family: ${theme.fonts[0]};
+  font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -97,11 +119,11 @@ export const DiscrDataListItemTitlePrice = styled.span`
   margin-top: 1px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 14px;
+    font-size: 18px;
   }
 `;
 

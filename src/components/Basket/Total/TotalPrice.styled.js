@@ -140,7 +140,7 @@ export const PaymentBtn = styled(Link)`
   width: 100%;
   padding: 15px;
 
-  color: ${theme.colors.brown2};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: 10px;
   font-style: normal;
@@ -151,9 +151,10 @@ export const PaymentBtn = styled(Link)`
   text-align: center;
 
   border-radius: 10px;
-  border: 1px solid ${theme.colors.brown2};
+  border: 1px solid ${theme.colors.brown4};
   background-color: transparent;
   cursor: pointer;
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 12px;
@@ -165,9 +166,9 @@ export const PaymentBtn = styled(Link)`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.white};
-    background: ${theme.colors.green};
-    border: 1px solid ${theme.colors.green};
+    color: ${theme.colors.fon};
+    background: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
 
     /* border-radius: 10px;
     border: 1px solid ${theme.colors.green2};

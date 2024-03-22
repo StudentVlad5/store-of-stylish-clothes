@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -79,7 +79,9 @@ export const Favorites = () => {
 
             <ShopBox>
               <ShopBoxTitle>{"You don't have favorite products"}</ShopBoxTitle>
+              <Link to='/shop' style={{textDecoration: 'none'}}>
               <BtnBrown>Shop</BtnBrown>
+              </Link>
             </ShopBox>
 
             <Pagination

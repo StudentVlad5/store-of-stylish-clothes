@@ -23,7 +23,7 @@ export const CatalogList = ({ products }) => {
   const routeParams = useParams();
   const dispatch = useDispatch();
 
-  const { currency } = useContext(StatusContext);
+  const { selectedCurrency } = useContext(StatusContext);
 
   const toggleFavorite = async id => {
     let isInFavorite = false;
@@ -67,39 +67,47 @@ export const CatalogList = ({ products }) => {
                 </SC.CardStatus>
                 <SC.CardImage
                   src={card.mainImage}
-                  alt={card.title_ua}
+                  alt={card.title}
                   width="285"
                   height="460"
                   loading="lazy"
                 />
                 <SC.CardDescription>
                   <SC.CardTitle>
-                    <SC.CardName>{card.title_ua}</SC.CardName>
+                    <SC.CardName>{card.title}</SC.CardName>
                   </SC.CardTitle>
                 </SC.CardDescription>
                 <SC.CardInfo>
-                  {card.discount !== 0 ? (
+                  {card.discount_ua !== 0 ? (
                     <SC.CardPrices>
-                      {card.price && (
+                      {card.price_ua && (
                         <SC.CardDiscount>
                           <span>Price: </span>
-                          {card.price}
-                          {card?.currency ? card?.currency : currency}
+                          {selectedCurrency === 'ua' && card.newPrice_ua}
+                          {selectedCurrency === 'usd' && card.newPrice_usd}
+                          {selectedCurrency === 'euro' && card.newPrice_euro}
+                          {selectedCurrency === 'ua' && '₴'}
+                          {selectedCurrency === 'usd' && '$'}
+                          {selectedCurrency === 'euro' && '€'}
                         </SC.CardDiscount>
                       )}
-                      {card?.oldPrice && (
+                      {card?.oldPrice_ua && (
                         <SC.CardPrice>
-                          {card?.oldPrice}
-                          {card?.currency}
+                          {selectedCurrency === 'ua' && card.oldPrice_ua}
+                          {selectedCurrency === 'usd' && card.oldPrice_usd}
+                          {selectedCurrency === 'euro' && card.oldPrice_euro}
+                          {selectedCurrency === 'ua' && '₴'}
+                          {selectedCurrency === 'usd' && '$'}
+                          {selectedCurrency === 'euro' && '€'}
                         </SC.CardPrice>
                       )}
                     </SC.CardPrices>
                   ) : (
                     <SC.CardPrices>
-                      {card?.currentPrice && (
+                      {card?.price_ua && (
                         <SC.CardDiscount>
-                          {card?.currentPrice}
-                          {card?.currency}
+                          {card?.price_ua}
+                          {selectedCurrency}
                         </SC.CardDiscount>
                       )}
                     </SC.CardPrices>

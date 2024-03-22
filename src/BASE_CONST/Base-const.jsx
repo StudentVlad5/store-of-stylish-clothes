@@ -9,7 +9,7 @@ export const language = [
 ];
 
 export const currency = [
-  { value: 'uah', option: '₴', name: 'Гривні' },
+  { value: 'ua', option: '₴', name: 'Гривні' },
   { value: 'euro', option: '€', name: 'Евро' },
   { value: 'usd', option: '$', name: 'Доларів США' },
 ];

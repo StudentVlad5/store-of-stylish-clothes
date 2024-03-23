@@ -27,7 +27,7 @@ export const CatalogFilter = ({
 
   const min = 0;
   const max = 5000;
-  console.log('filterState', filterState);
+
   // debounce
   const onChange = e => {
     setFilters({
@@ -138,7 +138,7 @@ export const CatalogFilter = ({
   return (
     <>
       <SC.Filters>
-        {filterState?.level_1 && filterState?.level_1.length > 0 && (
+        {filterState[0]?.level_1 && filterState[0]?.level_1.length > 0 && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="man_woman"
@@ -156,8 +156,8 @@ export const CatalogFilter = ({
               </SC.IconBtn>
             </SC.FilterHeading>
             <SC.FilterInnerList>
-              {filterState?.level_1 &&
-                filterState?.level_1.map((card, i) => {
+              {filterState[0]?.level_1 &&
+                filterState[0]?.level_1.map((card, i) => {
                   return (
                     <label key={i} data-key={card}>
                       <SC.FilterInnerListItem
@@ -178,7 +178,7 @@ export const CatalogFilter = ({
           </SC.Filter>
         )}
 
-        {filterState?.level_2 && filterState?.level_2.length > 0 && (
+        {filterState[0]?.level_2 && filterState[0]?.level_2.length > 0 && (
           <SC.Filter>
             <SC.FilterHeading
               data-key="category"
@@ -196,8 +196,8 @@ export const CatalogFilter = ({
               </SC.IconBtn>
             </SC.FilterHeading>
             <SC.FilterInnerList>
-              {filterState?.level_2 &&
-                filterState?.level_2.map((card, i) => {
+              {filterState[0]?.level_2 &&
+                filterState[0]?.level_2.map((card, i) => {
                   return (
                     <label key={i} data-key={card}>
                       <SC.FilterInnerListItem
@@ -218,8 +218,8 @@ export const CatalogFilter = ({
         )}
 
         {filters &&
-          filterState?.level_2 &&
-          filterState?.level_2.map((card, i) => {
+          filterState[0]?.level_2 &&
+          filterState[0]?.level_2.map((card, i) => {
             if (filters?.category.includes(card))
               return (
                 <div style={{ width: '100%' }} key={i}>
@@ -241,8 +241,8 @@ export const CatalogFilter = ({
                     </SC.FilterHeading>
                     <SC.FilterInnerList>
                       {filters?.category.includes(card) &&
-                        filterState?.level_3 &&
-                        filterState?.level_3[card].map((card, i) => {
+                        filterState[0]?.level_3 &&
+                        filterState[0]?.level_3[card].map((card, i) => {
                           return (
                             <label key={i} data-key={card}>
                               <SC.FilterInnerListItem
@@ -278,9 +278,9 @@ export const CatalogFilter = ({
                       </SC.IconBtn>
                     </SC.FilterHeading>
                     <SC.FilterInnerList>
-                      {filterState?.level_4 &&
-                        filterState?.level_4[card].length > 0 &&
-                        filterState?.level_4[card].map((card, i) => {
+                      {filterState[0]?.level_4 &&
+                        filterState[0]?.level_4[card].length > 0 &&
+                        filterState[0]?.level_4[card].map((card, i) => {
                           return (
                             <label key={i} data-key={card}>
                               <SC.FilterInnerListItem

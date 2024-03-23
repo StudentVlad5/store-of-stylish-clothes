@@ -34,7 +34,7 @@ export const Catalog = () => {
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
-  console.log(selectedCurrency);
+
   // const routeParams = useParams();
   let initialState;
   getFromStorage('filters')
@@ -305,6 +305,9 @@ export const Catalog = () => {
     }
     if (filters.currency !== '') {
       params.currency = selectedCurrency;
+    }
+    if (filters.sort !== '') {
+      params.sort = sort;
     }
     setSearchParams(params);
   };

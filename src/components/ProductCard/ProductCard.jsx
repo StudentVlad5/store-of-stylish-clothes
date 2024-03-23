@@ -99,6 +99,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     currency: selectedCurrency,
     total: 100,
     quantity: 1,
+    options: '',
   };
 
   const [userAnonimusID] = useState(
@@ -117,7 +118,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         _id: product.optionData._id,
       },
     };
-    console.log(updatedProduct);
+
     // dispatch(addToBasket(updatedProduct));
     const updateBackEndBasket = {
       _id: updatedProduct.userAnonimusID,
@@ -171,7 +172,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     selectedData.options = [];
     selectedData.options = options.find(option => option === selectedOption);
     selectedData.quantity = optionData.quantity;
-    selectedData.title = selectedOption;
+    // selectedData.title = selectedOption;
     setOptionData(prev => ({ ...prev, ...selectedData }));
   };
 
@@ -432,7 +433,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
               <SC.TextBtn
                 type="button"
                 aria-label="Add to card"
-                disabled={+optionData.quantity <= 0}
+                disabled={
+                  +optionData?.quantity <= 0 ||
+                  optionData?.options == '' ||
+                  optionData?.options == undefined
+                }
                 onClick={() => {
                   const productToAdd = {
                     _id,

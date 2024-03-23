@@ -20,34 +20,43 @@ import { ReactComponent as Evenodd } from 'images/svg/evenodd.svg';
 import { ReactComponent as Oil } from 'images/svg/oil.svg';
 import { ReactComponent as Sun } from 'images/svg/sun.svg';
 import noImg from 'images/No-image-available.webp';
+import {
+  selectCurrency,
+  selectNewPrice,
+  selectOldPrice,
+} from 'services/selectCurrency';
 
-export const ProductCard = ({ item }) => {
+export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const {
     article,
     category,
-    description_de,
-    description_en,
-    description_ru,
-    description_ua,
+    description,
+    title,
+    discount_euro,
+    discount_ua,
+    discount_usd,
     images,
     mainImage,
     man_women,
-    price,
+    newPrice_euro,
+    newPrice_ua,
+    newPrice_usd,
+    oldPrice_euro,
+    oldPrice_ua,
+    oldPrice_usd,
+    price_euro,
+    price_ua,
+    price_usd,
     product,
-    sizes,
-    title_de,
-    title_en,
-    title_ru,
-    title_ua,
-    uuid,
-    _id,
-    discount = 0,
-    currency = 'UAH',
-    newPrice,
-    oldPrice,
-    status,
     rate,
+    sizes,
+    status,
   } = item[0];
+
+  const oldPrice = selectOldPrice(selectedCurrency, item[0]);
+  const newPrice = selectNewPrice(selectedCurrency, item[0]);
+  const discount = oldPrice - newPrice;
+  const _id = article;
 
   let imageArray = [];
   if (images) {
@@ -58,8 +67,6 @@ export const ProductCard = ({ item }) => {
   if (sizes) {
     options = sizes.split(',');
   }
-
-  let description = description_ua;
 
   const dispatch = useDispatch();
 
@@ -83,12 +90,13 @@ export const ProductCard = ({ item }) => {
   }
 
   const init = {
-    title: null,
+    title: title,
+    article: article,
     oldPrice: oldPrice ? oldPrice : price,
     newPrice: newPrice ? newPrice : newPrice,
     status: status ? status : '',
     rate: rate ? rate : '',
-    currency: '$',
+    currency: selectedCurrency,
     total: 100,
     quantity: 1,
   };
@@ -121,10 +129,7 @@ export const ProductCard = ({ item }) => {
           name: product.name,
           _id: product.optionData._id,
           images: product.images,
-          title_de,
-          title_en,
-          title_ru,
-          title_ua,
+          title,
           mainImage,
         },
       ],
@@ -220,50 +225,25 @@ export const ProductCard = ({ item }) => {
   const toggleCareDetails = () => setCareShowDetails(state => !state);
   const [showIncludedDetails, setShowIncludedDetails] = useState(false);
   const toggleIncludedDetails = () => setShowIncludedDetails(state => !state);
-
+  console.log(optionData);
   return (
     <SC.ProductCardContainer>
       <SC.ProductCardSection>
         <SC.ProductNav>
           <SC.ProductNavList>
             <SC.ProductNavItem>
-              <SC.ProductNavLink href="/shop?perPage=12&page=1">
+              <SC.ProductNavLink href={`/shop/?perPage=12&page=1`}>
                 Shop
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
-              <SC.ProductNavLink href={`/shop/${category}?perPage=12&page=1&`}>
+              <SC.ProductNavLink
+                href={`/shop/?perPage=12&page=1&category=${category}`}
+              >
                 {category}
               </SC.ProductNavLink>
             </SC.ProductNavItem>
-            {category === 'plants' ? (
-              <>
-                <SC.ProductNavItem>
-                  <SC.ProductNavLink
-                    href={`/shop/plants?perPage=12&page=1&typeOfPlants=${typeOfPlants}`}
-                    onClick={() =>
-                      saveToStorage('filters', {
-                        ...getFromStorage('filters'),
-                        ['typeOfPlants']: [typeOfPlants],
-                      })
-                    }
-                  >
-                    {typeOfPlants}
-                  </SC.ProductNavLink>
-                </SC.ProductNavItem>
-                <SC.ProductNavItem>
-                  <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
-                    {title_ua}
-                  </SC.ProductNavLink>
-                </SC.ProductNavItem>
-              </>
-            ) : (
-              <SC.ProductNavItem>
-                <SC.ProductNavLink href={`/shop/byid/${_id}`} $primary>
-                  {title_ua}
-                </SC.ProductNavLink>
-              </SC.ProductNavItem>
-            )}
+            <SC.ProductNavItem>{title}</SC.ProductNavItem>
           </SC.ProductNavList>
         </SC.ProductNav>
         <SC.ProductContent>
@@ -339,32 +319,42 @@ export const ProductCard = ({ item }) => {
           <SC.ProductInfo>
             <div>
               <SC.Heading>
-                <SC.Name> {title_ua}</SC.Name>
-                <SC.Prices>
-                  <SC.Discount>
-                    {optionData.rate}
-                    {optionData.status}
-                  </SC.Discount>
-                </SC.Prices>
-                {discount !== 0 ? (
+                <SC.Name> {title}</SC.Name>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                  }}
+                >
+                  {discount !== 0 ? (
+                    <SC.Prices>
+                      <SC.Discount
+                        style={{ width: '100%', textAlign: 'right' }}
+                      >
+                        Price: {optionData.newPrice}
+                        {selectCurrency(selectedCurrency)}
+                      </SC.Discount>
+                      <SC.Price style={{ width: '100%', textAlign: 'right' }}>
+                        {optionData.oldPrice}
+                        {selectCurrency(selectedCurrency)}
+                      </SC.Price>
+                    </SC.Prices>
+                  ) : (
+                    <SC.Prices>
+                      <SC.Discount>
+                        {optionData.newPrice}
+                        {selectedCurrency}
+                      </SC.Discount>
+                    </SC.Prices>
+                  )}
                   <SC.Prices>
-                    <SC.Discount>
-                      {optionData.newPrice}
-                      {currency}
-                    </SC.Discount>
-                    <SC.Price>
-                      {optionData.oldPrice}
-                      {currency}
-                    </SC.Price>
-                  </SC.Prices>
-                ) : (
-                  <SC.Prices>
-                    <SC.Discount>
-                      {optionData.newPrice}
-                      {currency}
+                    <SC.Discount style={{ width: '100%', textAlign: 'right' }}>
+                      Rate: {optionData.rate}
+                      {/* Status: {optionData.status} */}
                     </SC.Discount>
                   </SC.Prices>
-                )}
+                </div>
               </SC.Heading>
               <SC.Description
                 dangerouslySetInnerHTML={{ __html: description }}
@@ -433,20 +423,21 @@ export const ProductCard = ({ item }) => {
                   <Plus />
                 </SC.IconBtn>
               </SC.Quantity>
-              <SC.Quantity>
-                {optionData?.newPrice * optionData?.quantity}
+              <SC.Quantity style={{ marginTop: '10px', padding: '6px' }}>
+                {(optionData?.newPrice * optionData?.quantity).toFixed(2) + ' '}
+                {selectCurrency(selectedCurrency)}
               </SC.Quantity>
             </SC.Options>
             {optionData.title ? (
               <SC.TextBtn
                 type="button"
                 aria-label="Add to card"
-                disabled={optionData.quantity === 0}
+                disabled={+optionData.quantity <= 0}
                 onClick={() => {
                   const productToAdd = {
                     _id,
-                    title_ua,
-                    currency,
+                    title,
+                    currency: selectedCurrency,
                     optionData,
                     quantity,
                     images,

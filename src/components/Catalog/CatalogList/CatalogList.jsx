@@ -12,6 +12,11 @@ import { onSuccess, onInfo } from 'components/helpers/Messages/NotifyMessages';
 import theme from 'components/baseStyles/Variables.styled';
 import * as SC from './CatalogList.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import {
+  selectCurrency,
+  selectNewPrice,
+  selectOldPrice,
+} from 'services/selectCurrency';
 
 export const CatalogList = ({ products }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -83,22 +88,14 @@ export const CatalogList = ({ products }) => {
                       {card.price_ua && (
                         <SC.CardDiscount>
                           <span>Price: </span>
-                          {selectedCurrency === 'ua' && card.newPrice_ua}
-                          {selectedCurrency === 'usd' && card.newPrice_usd}
-                          {selectedCurrency === 'euro' && card.newPrice_euro}
-                          {selectedCurrency === 'ua' && '₴'}
-                          {selectedCurrency === 'usd' && '$'}
-                          {selectedCurrency === 'euro' && '€'}
+                          {selectNewPrice(selectedCurrency, card)}
+                          {selectCurrency(selectedCurrency)}
                         </SC.CardDiscount>
                       )}
                       {card?.oldPrice_ua && (
                         <SC.CardPrice>
-                          {selectedCurrency === 'ua' && card.oldPrice_ua}
-                          {selectedCurrency === 'usd' && card.oldPrice_usd}
-                          {selectedCurrency === 'euro' && card.oldPrice_euro}
-                          {selectedCurrency === 'ua' && '₴'}
-                          {selectedCurrency === 'usd' && '$'}
-                          {selectedCurrency === 'euro' && '€'}
+                          {selectOldPrice(selectedCurrency, card)}
+                          {selectCurrency(selectedCurrency)}
                         </SC.CardPrice>
                       )}
                     </SC.CardPrices>
@@ -106,8 +103,8 @@ export const CatalogList = ({ products }) => {
                     <SC.CardPrices>
                       {card?.price_ua && (
                         <SC.CardDiscount>
-                          {card?.price_ua}
-                          {selectedCurrency}
+                          {selectNewPrice(selectedCurrency, card)}
+                          {selectCurrency(selectedCurrency)}
                         </SC.CardDiscount>
                       )}
                     </SC.CardPrices>
@@ -121,16 +118,6 @@ export const CatalogList = ({ products }) => {
                       <SC.IconFav size={30} color={theme.colors.beige} />
                     )}
                   </SC.BtnForFavorite>
-                  {/* <span>Size</span>
-                  <div> */}
-                  {/* {card.options.map(option => {
-                      return (
-                        option.total != 0 && (
-                          <span key={option._id}>{option.title}</span>
-                        )
-                      );
-                    })} */}
-                  {/* </div> */}
                 </SC.CardInfo>
               </div>
             </NavLink>

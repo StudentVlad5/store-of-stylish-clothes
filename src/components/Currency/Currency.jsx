@@ -13,6 +13,9 @@ const Currency = () => {
     const saveCurrency = localStorage.getItem('chosenCurrency');
     if (saveCurrency) {
       setSelectedCurrency(saveCurrency);
+    } else {
+      localStorage.setItem('chosenCurrency', 'ua');
+      setSelectedCurrency('ua');
     }
   }, []);
 

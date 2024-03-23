@@ -386,7 +386,14 @@ export const Catalog = () => {
               page={page}
             />
             {products.length === 0 && !isLoading && !error && (
-              <Headline>Nothing found for these parameters...</Headline>
+              <>
+                <Headline style={{ textAlign: 'center' }}>
+                  Nothing found for these parameters...
+                </Headline>
+                <Headline style={{ textAlign: 'center' }}>
+                  Please, try to clear filter
+                </Headline>
+              </>
             )}
           </SC.GridWrapper>
         </SC.GridContainer>

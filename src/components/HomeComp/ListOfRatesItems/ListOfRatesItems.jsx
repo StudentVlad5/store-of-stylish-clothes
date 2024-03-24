@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   CardContainer,
   CardContainerSection,
@@ -8,7 +8,7 @@ import {
   SectionTitle,
   SectionTitleWrap,
   SectionSubTitle,
-} from './ListOfDiscountItems.styled';
+} from './ListOfRatesItems.styled';
 import { ProductCard } from 'components/helpers/ProductCard/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
@@ -22,12 +22,37 @@ import 'swiper/css';
 import 'swiper/css/effect-creative';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { fetchData } from 'services/APIservice';
+import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
-export const ListOfDiscountItems = () => {
+export const ListOfRatesItems = () => {
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const [listOfDiscountItems, setListOfDiscountItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData(`/shop/${selectedLanguage}/rate`);
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        setListOfDiscountItems(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [selectedLanguage]);
+
   return (
     <CardContainerSection>
+      {isLoading ? onLoading() : onLoaded()}
       <SectionTitleWrap>
-        <SectionTitle>Discounts</SectionTitle>
+        <SectionTitle>Rates</SectionTitle>
         <Link to="" style={{ textDecoration: 'none' }}>
           <SectionSubTitle>See all</SectionSubTitle>
         </Link>
@@ -35,6 +60,8 @@ export const ListOfDiscountItems = () => {
       <CardContainer>
         <ViewportBox $version={'desktop'}>
           <Swiper
+            key={listOfDiscountItems}
+            className="swiperUpdate"
             modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
             // spaceBetween={30}
             slidesPerView={3}
@@ -50,30 +77,34 @@ export const ListOfDiscountItems = () => {
             grabCursor={true}
             centeredSlides={true}
             speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <ViewportBox $version={'tablet'}>
           <Swiper
+            key={listOfDiscountItems}
             modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
             // spaceBetween={30}
             slidesPerView={2}
@@ -81,38 +112,42 @@ export const ListOfDiscountItems = () => {
               prevEl: '.swiper-btn-prev',
               nextEl: '.swiper-btn-next',
             }}
-            pagination={{ clickable: false }}
+            pagination={{ clickable: true }}
             keyboard={true}
             loop={true}
             loopPreventsSliding={true}
             loopedslides={1}
             grabCursor={true}
             centeredSlides={true}
+            speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            speed={800}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <ViewportBox $version={'mobile'}>
           <Swiper
+            key={listOfDiscountItems}
             modules={[
               Navigation,
               Mousewheel,
@@ -133,11 +168,14 @@ export const ListOfDiscountItems = () => {
             loopedslides={1}
             grabCursor={true}
             centeredSlides={true}
+            speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            speed={800}
             effect={'creative'}
             creativeEffect={{
               prev: {
@@ -149,21 +187,21 @@ export const ListOfDiscountItems = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <Pagination>

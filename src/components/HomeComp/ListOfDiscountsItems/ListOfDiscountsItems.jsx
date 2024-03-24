@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   CardContainer,
   CardContainerSection,
@@ -8,7 +8,7 @@ import {
   SectionTitle,
   SectionTitleWrap,
   SectionSubTitle,
-} from './ListOfNewItems.styled';
+} from '../ListOfRatesItems/ListOfRatesItems.styled';
 import { ProductCard } from 'components/helpers/ProductCard/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
@@ -23,23 +23,48 @@ import 'swiper/css';
 import 'swiper/css/effect-creative';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { fetchData } from 'services/APIservice';
+import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 
-export const ListOfNewItems = () => {
+export const ListOfDiscountsItems = () => {
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const [listOfDiscountItems, setListOfDiscountItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData(`/shop/${selectedLanguage}/discount`);
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        setListOfDiscountItems(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [selectedLanguage]);
+
   return (
     <CardContainerSection>
+      {isLoading ? onLoading() : onLoaded()}
       <SectionTitleWrap>
-        <SectionTitle>Novelty</SectionTitle>
+        <SectionTitle>Discounts</SectionTitle>
         <Link to="" style={{ textDecoration: 'none' }}>
           <SectionSubTitle>See all</SectionSubTitle>
         </Link>
       </SectionTitleWrap>
       <SectionTitleWrap>
-        <SectionSubTitle>Have a look on what’s new!</SectionSubTitle>
-        <div> </div>
+        <SectionSubTitle>Have a look on huge discounts!</SectionSubTitle>
       </SectionTitleWrap>
       <CardContainer>
         <ViewportBox $version={'desktop'}>
           <Swiper
+            key={listOfDiscountItems}
             modules={[
               Navigation,
               Mousewheel,
@@ -58,41 +83,46 @@ export const ListOfNewItems = () => {
             loop={true}
             loopPreventsSliding={true}
             loopedslides={1}
-            effect={'coverflow'}
             grabCursor={true}
             centeredSlides={true}
             speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            // coverflowEffect={{
-            //   rotate: 50,
-            //   stretch: 0,
-            //   depth: 100,
-            //   modifier: 1,
-            //   slideShadows: true,
-            // }}
+            effect={'coverflow'}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                      status={true}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <ViewportBox $version={'tablet'}>
           <Swiper
+            key={listOfDiscountItems}
             modules={[
               Navigation,
               Mousewheel,
@@ -106,19 +136,22 @@ export const ListOfNewItems = () => {
               prevEl: '.swiper-button-prev',
               nextEl: '.swiper-button-next',
             }}
-            pagination={{ clickable: false }}
+            pagination={{ clickable: true }}
             keyboard={true}
             loop={true}
             loopPreventsSliding={true}
             loopedslides={1}
-            effect={'coverflow'}
             grabCursor={true}
             centeredSlides={true}
+            speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            speed={800}
+            effect={'coverflow'}
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
@@ -127,25 +160,27 @@ export const ListOfNewItems = () => {
               slideShadows: true,
             }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                      status={true}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <ViewportBox $version={'mobile'}>
           <Swiper
+            key={listOfDiscountItems}
             modules={[
               Navigation,
               Mousewheel,
@@ -166,11 +201,14 @@ export const ListOfNewItems = () => {
             loopedslides={1}
             grabCursor={true}
             centeredSlides={true}
+            speed={800}
+            observer={true}
+            observeParents={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            speed={800}
             effect={'creative'}
             creativeEffect={{
               prev: {
@@ -182,21 +220,22 @@ export const ListOfNewItems = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ProductCard />
-            </SwiperSlide>
+            {listOfDiscountItems &&
+              listOfDiscountItems.length > 0 &&
+              listOfDiscountItems.map(it => (
+                <SwiperSlide key={it.article}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    to={`shop/byid/${it.article}`}
+                  >
+                    <ProductCard
+                      item={it}
+                      selectedCurrency={selectedCurrency}
+                      status={true}
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </ViewportBox>
         <Pagination>

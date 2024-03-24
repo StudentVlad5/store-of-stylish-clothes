@@ -8,6 +8,7 @@ export const CardContainerSection = styled(Section)`
   align-items: center;
   flex-direction: column;
   padding-top: 0;
+  margin-top: 30px;
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;
@@ -63,7 +64,7 @@ export const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 60px;
+  gap: 10px;
   width: 100%;
   padding-top: 30px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -92,8 +93,13 @@ export const Pagination = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-
-  margin-top: 25px;
+  margin-top: 0px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    margin-top: 25px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    margin-top: 25px;
+  }
 `;
 
 export const BtnPagination = styled.div`

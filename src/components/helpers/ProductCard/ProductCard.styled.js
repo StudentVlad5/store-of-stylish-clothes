@@ -6,23 +6,33 @@ import { ReactComponent as iconBasket } from 'images/svg/basket.svg';
 export const CardContainer = styled.ul`
   position: relative;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 340px;
-  height: 513px;
+  width: 300px;
+  height: 500px;
   border-radius: 16px;
   border: 1px solid ${theme.colors.brown4};
   padding: 22px 19px 19px 22px;
-  gap: 34px;
+  gap: 12px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    gap: 34px;
+    width: 320px;
+    height: 550px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    gap: 34px;
+    width: 320px;
+    height: 550px;
+  }
 `;
 export const CardLi = styled.li`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
   width: 100%;
   font-family: ${theme.fonts[1]};
-  font-size: ${theme.fontSizes.extra};
+  font-size: ${theme.fontSizes.medium};
   color: ${theme.colors.brown2};
   &:first-of-type {
     position: absolute;
@@ -39,6 +49,14 @@ export const CardLi = styled.li`
   }
   &:last-of-type {
     justify-content: space-between;
+  }
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    justify-content: start;
+    font-size: ${theme.fontSizes.extra};
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    justify-content: start;
+    font-size: ${theme.fontSizes.extra};
   }
 `;
 export const IconBookmark = styled(iconBookmark)`
@@ -60,11 +78,19 @@ export const ImgItem = styled.div`
   align-items: center;
   padding: 0;
   position: relative;
-  width: 294px;
-  height: 349px;
+  width: 274px;
+  height: 340px;
   background-image: ${props => props.props};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 16px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    width: 294px;
+    height: 349px;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    width: 294px;
+    height: 349px;
+  }
 `;

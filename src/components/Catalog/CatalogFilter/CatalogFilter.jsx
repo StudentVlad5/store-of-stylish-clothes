@@ -1,15 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import Range from 'rc-slider';
 import 'rc-slider/assets/index.css';
-
-// import { fetchData } from 'services/APIservice';
 import { saveToStorage } from 'services/localStorService';
-// import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import * as SC from './CatalogFilter.styled';
-
 import { ReactComponent as Open } from 'images/svg/open.svg';
 import debounce from 'lodash.debounce';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';

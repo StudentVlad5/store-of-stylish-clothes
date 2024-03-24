@@ -105,7 +105,7 @@ export const Catalog = () => {
         }
         setProducts(data.catalog);
         setTotalPage(Math.ceil(data.total / perPage));
-        if (data.total / (perPage * page) < 1) {
+        if ((data.total + perPage) / (perPage * page) < 1) {
           setPage(1);
         }
         getSelectedFilter();
@@ -116,15 +116,7 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [
-    t,
-    page,
-    perPage,
-    sort,
-    searchParams,
-    selectedCurrency,
-    selectedLanguage,
-  ]);
+  }, [t, page, perPage, searchParams, selectedCurrency, selectedLanguage]);
 
   useEffect(() => {
     (async function getData() {

@@ -5,6 +5,7 @@ import {
   Section,
   Subtitle,
 } from 'components/baseStyles/CommonStyle.styled';
+import { Link } from 'react-router-dom';
 
 const ProductCardSection = styled(Section)`
   padding-top: 122px;
@@ -47,7 +48,7 @@ const ProductNavItem = styled.li`
   }
 `;
 
-const ProductNavLink = styled.a`
+const ProductNavLink = styled(Link)`
   font-family: ${theme.fonts[1]}; //'Nib Pro'
   font-size: 12px;
   font-style: normal;

@@ -116,7 +116,15 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [t, page, perPage, searchParams, selectedCurrency, selectedLanguage]);
+  }, [
+    t,
+    page,
+    perPage,
+    // sort,
+    searchParams,
+    selectedCurrency,
+    selectedLanguage,
+  ]);
 
   useEffect(() => {
     (async function getData() {

@@ -1,12 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react'; //, useEffect
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { onSuccess } from 'components/helpers/Messages/NotifyMessages';
-import { saveToStorage, getFromStorage } from 'services/localStorService';
+import { getFromStorage } from 'services/localStorService';
 import { addItemInBasket } from 'services/APIservice';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
-
 import * as SC from './ProductCard.styled';
 
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
@@ -226,20 +225,19 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const toggleCareDetails = () => setCareShowDetails(state => !state);
   const [showIncludedDetails, setShowIncludedDetails] = useState(false);
   const toggleIncludedDetails = () => setShowIncludedDetails(state => !state);
-  console.log(optionData);
   return (
     <SC.ProductCardContainer>
       <SC.ProductCardSection>
         <SC.ProductNav>
           <SC.ProductNavList>
             <SC.ProductNavItem>
-              <SC.ProductNavLink href={`/shop/?perPage=12&page=1`}>
+              <SC.ProductNavLink to={`/shop/?perPage=12&page=1`}>
                 Shop
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
               <SC.ProductNavLink
-                href={`/shop/?perPage=12&page=1&category=${category}`}
+                to={`/shop/?perPage=12&page=1&category=${category}`}
               >
                 {category}
               </SC.ProductNavLink>

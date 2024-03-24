@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { onSuccess } from 'components/helpers/Messages/NotifyMessages';
@@ -52,9 +52,17 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     status,
   } = item[0];
 
-  const oldPrice = selectOldPrice(selectedCurrency, item[0]);
-  const newPrice = selectNewPrice(selectedCurrency, item[0]);
-  const discount = oldPrice - newPrice;
+  let oldPrice = selectOldPrice(selectedCurrency, item[0]);
+  let newPrice = selectNewPrice(selectedCurrency, item[0]);
+
+  useEffect(() => {
+    setOptionData(prev => ({
+      ...prev,
+      oldPrice: selectOldPrice(selectedCurrency, item[0]),
+      newPrice: selectNewPrice(selectedCurrency, item[0]),
+    }));
+  }, [selectedCurrency]);
+
   const _id = article;
 
   let imageArray = [];
@@ -91,8 +99,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const init = {
     title: title,
     article: article,
-    oldPrice: oldPrice ? oldPrice : price,
-    newPrice: newPrice ? newPrice : newPrice,
+    oldPrice: oldPrice,
+    newPrice: newPrice,
     status: status ? status : '',
     rate: rate ? rate : '',
     currency: selectedCurrency,
@@ -326,7 +334,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                     width: '100%',
                   }}
                 >
-                  {discount !== 0 ? (
+                  {discount_ua !== 0 ? (
                     <SC.Prices>
                       <SC.Discount
                         style={{ width: '100%', textAlign: 'right' }}

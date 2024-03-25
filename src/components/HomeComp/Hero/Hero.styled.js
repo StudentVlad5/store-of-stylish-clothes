@@ -65,6 +65,30 @@ export const HeroItem = styled.div`
 export const LinkCategory = styled(Link)`
   text-decoration: none;
 `;
+export const SideBarTitle = styled.h2`
+  width: 100%;
+  max-width: 489px;
+  margin-top: 0;
+  min-height: 158px;
+  margin-bottom: 0;
+  color: ${theme.colors.brown2};
+  font-size: 64px;
+  font-style: normal;
+  margin-top: 0;
+  text-align: center;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  line-height: 84px;
+  margin-bottom: 0;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    text-align: left;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    text-align: left;
+  }
+`;
 export const ImgTitle = styled.h3`
   position: absolute;
   display: block;
@@ -100,4 +124,46 @@ export const CategoryTitle = styled(ImgTitle)`
   font-weight: 400;
   letter-spacing: 0;
   text-transform: uppercase;
+`;
+export const ButtonForReadyStyle = styled.button`
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 222px;
+  border-radius: 16px;
+  background-color: ${theme.colors.brown4};
+  color: ${theme.colors.white};
+  border: none;
+  padding: 16px 36px;
+  gap: 20px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    margin: 0;
+  }
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    margin: 0;
+  }
+`;
+export const TitleForBtnReadyStyle = styled.span`
+  width: 100%;
+  max-width: 84px;
+  min-height: 30px;
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSizes.extra};
+  font-style: normal;
+  font-family: ${theme.fonts[0]};
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+`;
+export const ContainerForBtnReadyStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
 `;

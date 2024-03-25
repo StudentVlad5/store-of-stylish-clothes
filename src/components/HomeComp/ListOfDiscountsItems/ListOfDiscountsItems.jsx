@@ -56,7 +56,7 @@ export const ListOfDiscountsItems = () => {
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
           <SectionTitle>Discounts</SectionTitle>
-          <Link to="" style={{ textDecoration: 'none' }}>
+          <Link to="/discounts" style={{ textDecoration: 'none' }}>
             <SectionSubTitle>See all</SectionSubTitle>
           </Link>
         </SectionTitleWrap>

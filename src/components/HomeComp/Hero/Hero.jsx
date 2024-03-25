@@ -8,6 +8,7 @@ import photoPantsCategory from 'images/hero/category/pants_2x.webp';
 import photoFootwearCategory from 'images/hero/category/footwear_2x.webp';
 import photoHoodiesSweatshirtsCategory from 'images/hero/category/hoodies_2x.webp';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { ReactComponent as WhiteArrow } from 'images/svg/white_arrow.svg';
 
 import {
   HeroSection,
@@ -18,11 +19,16 @@ import {
   ImgTitle,
   CategoryItem,
   CategoryTitle,
+  SideBarTitle,
+  TitleForBtnReadyStyle,
+  ContainerForBtnReadyStyle,
+  ButtonForReadyStyle,
 } from './Hero.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
 import { AboutContent } from '../AboutContent/AboutContent';
 import { SectionWrapper } from 'components/baseStyles/CommonStyle.styled';
+import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -69,6 +75,21 @@ export const Hero = () => {
               <ImgTitle>Women</ImgTitle>
             </HeroItem>
           </LinkCategory>
+          <ContainerForBtnReadyStyle>
+            <SideBarTitle>Choose your perfect style</SideBarTitle>
+            <Link to="/ready_style" style={{ textDecoration: 'none' }}>
+              <ButtonForReadyStyle
+                type="button"
+                title="Button for choose your perfect style"
+                aria-label="click for choose your perfect style"
+              >
+                <TitleForBtnReadyStyle TitleForBtnReadyStyle>
+                  Explore
+                </TitleForBtnReadyStyle>
+                <WhiteArrow />
+              </ButtonForReadyStyle>
+            </Link>
+          </ContainerForBtnReadyStyle>
         </HeroContainer>
       </HeroSection>
 

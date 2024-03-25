@@ -143,9 +143,9 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       ],
     };
     addItem(updateBackEndBasket);
-    useCheck(
-      options.map(it => isChekedArray.push({ title: it, isActive: false })),
-    );
+    // useCheck(
+    //   options.map(it => isChekedArray.push({ title: it, isActive: false })),
+    // );
     onSuccess('Added');
   };
 
@@ -159,6 +159,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const [check, useCheck] = useState(isChekedArray);
 
   const changeActiveStyleInput = e => {
+    console.log('BLA');
     isChekedArray.map(it => {
       if (it.title === e.target.value) {
         it.isActive = true;

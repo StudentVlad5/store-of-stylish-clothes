@@ -68,7 +68,7 @@ export const ShoppingBagList = ({
     statusBasket = false;
   }
   // ----------------------------------------->
-  console.log(optionData);
+  // console.log(optionData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userAnonimusID] = useState(
@@ -184,16 +184,16 @@ export const ShoppingBagList = ({
               <DiscrDataTableLine>
                 <DiscrDataTableHead>Price</DiscrDataTableHead>
                 {/* {discount !== 0 ? ( */}
-                  <DiscrDataTableData>
-                    <DiscrDataListItemPrice $red>
-                      {newPrice}
-                      {currency}
-                    </DiscrDataListItemPrice>
-                    <DiscrDataListItemPrice>
-                      {oldPrice}
-                      {currency}
-                    </DiscrDataListItemPrice>
-                  </DiscrDataTableData>
+                <DiscrDataTableData>
+                  <DiscrDataListItemPrice $red>
+                    {newPrice}
+                    {currency}
+                  </DiscrDataListItemPrice>
+                  <DiscrDataListItemPrice>
+                    {oldPrice}
+                    {currency}
+                  </DiscrDataListItemPrice>
+                </DiscrDataTableData>
                 {/* ) : (
                   <DiscrDataTableData>
                     <DiscrDataListItemPrice $current>
@@ -255,7 +255,7 @@ export const ShoppingBagList = ({
           <DiscrBox>
             <DiscrBoxForText>
               <DiscrBoxTitle>
-                <DiscrTitle style={{width: 170}}>{title_ua}</DiscrTitle>
+                <DiscrTitle style={{ width: 170 }}>{title_ua}</DiscrTitle>
                 <DiscrTitle>
                   {newPrice}
                   {currency}

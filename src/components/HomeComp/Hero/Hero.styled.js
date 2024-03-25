@@ -15,6 +15,7 @@ export const CategorySection = styled(Section)`
   justify-content: center;
   align-items: center;
   padding: 0;
+  background-color: ${theme.colors.fonPrimary};
 `;
 
 export const HeroContainer = styled.div`
@@ -28,11 +29,14 @@ export const HeroContainer = styled.div`
   padding: 0;
   width: 100%;
   gap: 40px;
+  padding: 20px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
+    padding: 30px;
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     flex-direction: row;
+    padding: 40px;
   }
 `;
 export const HeroItem = styled.div`

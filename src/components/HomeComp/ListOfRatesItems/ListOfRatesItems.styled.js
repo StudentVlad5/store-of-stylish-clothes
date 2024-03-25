@@ -8,7 +8,7 @@ export const CardContainerSection = styled(Section)`
   align-items: center;
   flex-direction: column;
   padding-top: 0;
-  margin-top: 30px;
+  background-color: ${theme.colors.fonPrimary};
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;
@@ -67,6 +67,7 @@ export const CardContainer = styled.div`
   gap: 10px;
   width: 100%;
   padding-top: 30px;
+  background-color: ${theme.colors.fonPrimary};
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
     flex-wrap: wrap;

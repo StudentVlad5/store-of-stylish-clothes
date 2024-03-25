@@ -9,6 +9,7 @@ const theme = {
   },
   colors: {
     fon: '#FCF9F2', // фон
+    fonPrimary: '#F0EADC', // фон-відтінок
     green: '#5A6B47',
     green1: '#65784F',
     green2: '#9AB879',

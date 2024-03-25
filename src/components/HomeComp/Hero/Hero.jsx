@@ -21,6 +21,8 @@ import {
 } from './Hero.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
+import { AboutContent } from '../AboutContent/AboutContent';
+import { SectionWrapper } from 'components/baseStyles/CommonStyle.styled';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -70,63 +72,67 @@ export const Hero = () => {
         </HeroContainer>
       </HeroSection>
 
+      <AboutContent />
+
       <CategorySection>
-        <HeroContainer>
-          <LinkCategory
-            to={'/shop'}
-            onClick={() =>
-              saveToStorage('filters', {
-                ...init,
-                product: [homeProductLinks?.jacets[selectedLanguage]],
-              })
-            }
-          >
-            <CategoryItem props={`url(${photoJacetsCategory})`}>
-              <CategoryTitle>Jacets</CategoryTitle>
-            </CategoryItem>
-          </LinkCategory>
-          <LinkCategory to={'/shop'}>
-            <CategoryItem
-              props={`url(${photoPantsCategory})`}
+        <SectionWrapper>
+          <HeroContainer>
+            <LinkCategory
+              to={'/shop'}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,
-                  product: [homeProductLinks?.pants[selectedLanguage]],
+                  product: [homeProductLinks?.jacets[selectedLanguage]],
                 })
               }
             >
-              <CategoryTitle>Pants</CategoryTitle>
-            </CategoryItem>
-          </LinkCategory>
-          <LinkCategory
-            to={'/shop'}
-            onClick={() =>
-              saveToStorage('filters', {
-                ...init,
-                product: [
-                  homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage],
-                ],
-              })
-            }
-          >
-            <CategoryItem props={`url(${photoHoodiesSweatshirtsCategory})`}>
-              <CategoryTitle>Hoodies & Sweatshirts</CategoryTitle>
-            </CategoryItem>
-          </LinkCategory>
-          <LinkCategory
-            to={'/shop'}
-            onClick={() =>
-              saveToStorage('filters', {
-                ...init,
-                category: [homeProductLinks?.footwear[selectedLanguage]],
-              })
-            }
-          >
-            <CategoryItem props={`url(${photoFootwearCategory})`}>
-              <CategoryTitle>Footwear</CategoryTitle>
-            </CategoryItem>
-          </LinkCategory>
-        </HeroContainer>
+              <CategoryItem props={`url(${photoJacetsCategory})`}>
+                <CategoryTitle>Jacets</CategoryTitle>
+              </CategoryItem>
+            </LinkCategory>
+            <LinkCategory to={'/shop'}>
+              <CategoryItem
+                props={`url(${photoPantsCategory})`}
+                onClick={() =>
+                  saveToStorage('filters', {
+                    ...init,
+                    product: [homeProductLinks?.pants[selectedLanguage]],
+                  })
+                }
+              >
+                <CategoryTitle>Pants</CategoryTitle>
+              </CategoryItem>
+            </LinkCategory>
+            <LinkCategory
+              to={'/shop'}
+              onClick={() =>
+                saveToStorage('filters', {
+                  ...init,
+                  product: [
+                    homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage],
+                  ],
+                })
+              }
+            >
+              <CategoryItem props={`url(${photoHoodiesSweatshirtsCategory})`}>
+                <CategoryTitle>Hoodies & Sweatshirts</CategoryTitle>
+              </CategoryItem>
+            </LinkCategory>
+            <LinkCategory
+              to={'/shop'}
+              onClick={() =>
+                saveToStorage('filters', {
+                  ...init,
+                  category: [homeProductLinks?.footwear[selectedLanguage]],
+                })
+              }
+            >
+              <CategoryItem props={`url(${photoFootwearCategory})`}>
+                <CategoryTitle>Footwear</CategoryTitle>
+              </CategoryItem>
+            </LinkCategory>
+          </HeroContainer>
+        </SectionWrapper>
       </CategorySection>
       {/* {isLoading ? onLoading() : onLoaded()} */}
     </>

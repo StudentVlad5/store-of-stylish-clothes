@@ -168,7 +168,7 @@ img {
   height:auto !important;
   text-align: center;
   font-size: 18px;
-  background: ${theme.colors.fon};
+  background: ${theme.colors.fonPrimary};
   padding: 30px;
   border-radius: 16px;
 

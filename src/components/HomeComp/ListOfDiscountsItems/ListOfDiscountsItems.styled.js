@@ -8,6 +8,7 @@ export const CardContainerSection = styled(Section)`
   align-items: center;
   flex-direction: column;
   padding-top: 0;
+  background-color: ${theme.colors.fonPrimary};
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;

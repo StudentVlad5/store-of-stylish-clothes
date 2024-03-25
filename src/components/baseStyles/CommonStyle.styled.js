@@ -4,15 +4,26 @@ import theme from 'components/baseStyles/Variables.styled';
 const Section = styled.section`
   position: relative;
   margin: 0 auto;
-  padding: 60px 0;
   width: 100%;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    padding: 80px 0;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    padding: 120px 0;
+  }
+`;
+const SectionWrapper = styled.div`
+  position: relative;
+  margin: 0 auto;
+  padding: 60px 0 0;
+  width: 100%;
+
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    padding: 80px 0 0;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 120px 0 0;
     max-width: ${theme.breakpoints.desktop};
   }
 `;
@@ -78,4 +89,4 @@ const Headline = styled.h2`
   }
 `;
 
-export { Container, Section, Title, Headline, Subtitle };
+export { Container, Section, Title, Headline, Subtitle, SectionWrapper };

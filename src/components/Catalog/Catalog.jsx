@@ -90,6 +90,7 @@ export const Catalog = () => {
   };
 
   // =================================================>
+  useEffect(() => setParams(), []);
 
   useEffect(() => {
     setParams();

@@ -338,12 +338,12 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   {discount_ua !== 0 ? (
                     <SC.Prices>
                       <SC.Discount
-                        style={{ width: '100%', textAlign: 'right' }}
+                        style={{ width: '100%', textAlign: 'center' }}
                       >
                         Price: {optionData.newPrice}
                         {selectCurrency(selectedCurrency)}
                       </SC.Discount>
-                      <SC.Price style={{ width: '100%', textAlign: 'right' }}>
+                      <SC.Price style={{ textAlign: 'right' }}>
                         {optionData.oldPrice}
                         {selectCurrency(selectedCurrency)}
                       </SC.Price>

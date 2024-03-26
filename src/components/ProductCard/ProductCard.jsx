@@ -50,6 +50,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     rate,
     sizes,
     status,
+    size_chart,
   } = item[0];
 
   let oldPrice = selectOldPrice(selectedCurrency, item[0]);
@@ -569,68 +570,32 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 )}
               </SC.InfoSection>
             )}
-            {category === 'plants' ? (
-              <SC.InfoSection>
-                <SC.Accord>
-                  <SC.ProductSubTitle marginBottom="0">
-                    What’s included
-                  </SC.ProductSubTitle>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open description"
-                    aria-expanded="false"
-                    onClick={toggleIncludedDetails}
-                  >
-                    <Open />
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showIncludedDetails && (
-                  <SC.AccordIncludedList>
-                    <SC.AccordIncludedItem>
-                      Healthy plant pre-potted with premium soil
-                    </SC.AccordIncludedItem>
-                    <SC.AccordIncludedItem>
-                      Ecopots pot and saucer
-                    </SC.AccordIncludedItem>
-                    <SC.AccordIncludedItem>
-                      All the tips and tricks for expert-level care
-                    </SC.AccordIncludedItem>
-                  </SC.AccordIncludedList>
-                )}
-              </SC.InfoSection>
-            ) : (
-              <SC.InfoSection>
-                <SC.Accord>
-                  <SC.ProductSubTitle marginBottom="0">
-                    Details
-                  </SC.ProductSubTitle>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open description"
-                    aria-expanded="false"
-                    onClick={toggleIncludedDetails}
-                  >
-                    <Open />
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showIncludedDetails && (
-                  <SC.AccordCareList>
-                    <SC.AccordCareItem>
-                      <span>
-                        This gift card will not expire. Redeemable at any
-                        Homeforest freestanding store in Ukraine. It should be
-                        presented at the time of purchase. May not be redeemed
-                        for cash or replaced if lost or stolen, except where
-                        required by law. Treat card like cash. Homeforest is not
-                        responsible for unauthorized use of card. Use of this
-                        card constitutes acceptance of these terms and
-                        conditions.
-                      </span>
-                    </SC.AccordCareItem>
-                  </SC.AccordCareList>
-                )}
-              </SC.InfoSection>
-            )}
+            <SC.InfoSection>
+              <SC.Accord>
+                <SC.ProductSubTitle marginBottom="0">
+                  Details
+                </SC.ProductSubTitle>
+                <SC.IconBtn
+                  type="button"
+                  aria-label="switch to open description"
+                  aria-expanded="false"
+                  onClick={toggleIncludedDetails}
+                >
+                  <Open />
+                </SC.IconBtn>
+              </SC.Accord>
+              {showIncludedDetails && (
+                <SC.AccordCareList>
+                  <SC.AccordCareItem>
+                    <span>
+                      {size_chart
+                        ? size_chart
+                        : 'The size of the product is universal. Please familiarize yourself with the description of the characteristics'}
+                    </span>
+                  </SC.AccordCareItem>
+                </SC.AccordCareList>
+              )}
+            </SC.InfoSection>
           </SC.ProductInfo>
         </SC.ProductContent>
       </SC.ProductCardSection>

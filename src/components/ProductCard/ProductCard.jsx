@@ -483,7 +483,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                     aria-expanded="false"
                     onClick={toggleCareDetails}
                   >
-                    <Open />
+                    {showCareDetails ? (
+                      <Open style={{ transform: 'rotate(180deg)' }} />
+                    ) : (
+                      <Open />
+                    )}
                   </SC.IconBtn>
                 </SC.Accord>
                 {showCareDetails && (
@@ -552,7 +556,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                     aria-expanded="false"
                     onClick={toggleCareDetails}
                   >
-                    <Open />
+                    {showCareDetails ? (
+                      <Open style={{ transform: 'rotate(180deg)' }} />
+                    ) : (
+                      <Open />
+                    )}
                   </SC.IconBtn>
                 </SC.Accord>
                 {showCareDetails && (
@@ -581,7 +589,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   aria-expanded="false"
                   onClick={toggleIncludedDetails}
                 >
-                  <Open />
+                  {showIncludedDetails ? (
+                    <Open style={{ transform: 'rotate(180deg)' }} />
+                  ) : (
+                    <Open />
+                  )}
                 </SC.IconBtn>
               </SC.Accord>
               {showIncludedDetails && (

@@ -541,6 +541,7 @@ const AccordCareList = styled.ul`
   flex-direction: column;
   justify-content: center;
   gap: 12px;
+  margin-bottom: 24px;
 
   animation: fade-in-top 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   transition: all ${theme.transition};

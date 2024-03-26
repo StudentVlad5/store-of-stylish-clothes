@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ import { saveToStorage } from 'services/localStorService';
 
 import * as SC from './SearchResult.styled';
 import { Subtitle } from 'components/baseStyles/CommonStyle.styled';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 import { MdEast } from 'react-icons/md';
 // import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
@@ -28,12 +29,16 @@ export const SearchResult = ({
 
   // const [searchParams] = useSearchParams(); //, setSearchParams
   const { t } = useTranslation();
+  const { selectedLanguage } = useContext(StatusContext);
 
   useEffect(() => {
-    (async function getData() {
+    const search = searchParams.getAll('search');
+    async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/shop?${searchParams}`);
+        const { data } = await fetchData(
+          `/shop/${selectedLanguage}?${searchParams}`,
+        );
         setProducts(data.catalog);
         // setCategory(data.group);
         setTotal(data.total);
@@ -45,8 +50,11 @@ export const SearchResult = ({
       } finally {
         setIsLoading(false);
       }
-    })();
-  }, [t, searchParams]);
+    }
+    if (search && search !== '' && search !== undefined) {
+      getData();
+    }
+  }, [t, searchParams, selectedLanguage]);
 
   const getUniqueOptions = key => {
     const unique = [...new Set(category?.map(item => item[key]))];

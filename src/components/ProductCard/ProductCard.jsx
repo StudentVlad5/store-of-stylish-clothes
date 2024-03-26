@@ -159,7 +159,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const [check, useCheck] = useState(isChekedArray);
 
   const changeActiveStyleInput = e => {
-    console.log('BLA');
     isChekedArray.map(it => {
       if (it.title === e.target.value) {
         it.isActive = true;

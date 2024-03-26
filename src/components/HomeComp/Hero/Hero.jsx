@@ -50,7 +50,7 @@ export const Hero = () => {
       <HeroSection>
         <HeroContainer>
           <LinkCategory
-            to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+            to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
             onClick={() =>
               saveToStorage('filters', {
                 ...init,
@@ -63,7 +63,7 @@ export const Hero = () => {
             </HeroItem>
           </LinkCategory>
           <LinkCategory
-            to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+            to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
             onClick={() =>
               saveToStorage('filters', {
                 ...init,
@@ -99,7 +99,7 @@ export const Hero = () => {
         <SectionWrapper>
           <HeroContainer>
             <LinkCategory
-              to={`shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+              to={`shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,
@@ -113,7 +113,7 @@ export const Hero = () => {
             </LinkCategory>
 
             <LinkCategory
-              to={`shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+              to={`shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
             >
               <CategoryItem
                 props={`url(${photoPantsCategory})`}
@@ -129,7 +129,7 @@ export const Hero = () => {
             </LinkCategory>
 
             <LinkCategory
-              to={`shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+              to={`shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,
@@ -144,7 +144,7 @@ export const Hero = () => {
               </CategoryItem>
             </LinkCategory>
             <LinkCategory
-              to={`shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=ua&sort=maxMinPrice`}
+              to={`shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,

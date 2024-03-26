@@ -239,13 +239,13 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         <SC.ProductNav>
           <SC.ProductNavList>
             <SC.ProductNavItem>
-              <SC.ProductNavLink to={`/shop/?perPage=12&page=1`}>
+              <SC.ProductNavLink to={`shop/?perPage=12&page=1`}>
                 Shop
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
               <SC.ProductNavLink
-                to={`/shop/?perPage=12&page=1&category=${category}`}
+                to={`/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${category}`}
               >
                 {category}
               </SC.ProductNavLink>

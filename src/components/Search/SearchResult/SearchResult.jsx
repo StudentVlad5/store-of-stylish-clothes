@@ -14,6 +14,11 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 import { MdEast } from 'react-icons/md';
 // import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+import {
+  selectCurrency,
+  selectNewPrice,
+  selectOldPrice,
+} from 'services/selectCurrency';
 
 export const SearchResult = ({
   onClose,
@@ -29,7 +34,7 @@ export const SearchResult = ({
 
   // const [searchParams] = useSearchParams(); //, setSearchParams
   const { t } = useTranslation();
-  const { selectedLanguage } = useContext(StatusContext);
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
 
   useEffect(() => {
     const search = searchParams.getAll('search');
@@ -80,27 +85,27 @@ export const SearchResult = ({
               {products.slice(0, 4).map(card => {
                 return (
                   <SC.CardSearch key={card._id} onClick={onClose}>
-                    <NavLink to={`/shop/byid/${card._id}`}>
+                    <NavLink to={`shop/byid/${card.article}`}>
                       <SC.CardImageSearch
                         src={card.mainImage}
-                        alt={card.title_ua}
+                        alt={card.title}
                         width="93"
                         height="150"
                         loading="lazy"
                       />
                       <SC.CardTitleSearch>
-                        <SC.CardNameSearch>{card.title_ua}</SC.CardNameSearch>
+                        <SC.CardNameSearch>{card.title}</SC.CardNameSearch>
                         <SC.CardPricesSearch>
-                          {card?.price && (
+                          {card && (
                             <SC.CardDiscountSearch>
-                              {card.price}
-                              {/* {card.currency} */}
+                              {selectNewPrice(selectedCurrency, card)}
+                              {selectCurrency(selectedCurrency)}
                             </SC.CardDiscountSearch>
                           )}
                           {card?.oldPrice && (
                             <SC.CardPriceSearch>
-                              {card.oldPrice}
-                              {/* {card.currency} */}
+                              {selectOldPrice(selectedCurrency, card)}
+                              {selectCurrency(selectedCurrency)}
                             </SC.CardPriceSearch>
                           )}
                         </SC.CardPricesSearch>

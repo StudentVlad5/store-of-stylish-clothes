@@ -15,7 +15,6 @@ const ProductCardPage = ({ addToBasket }) => {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const routeParams = useParams();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -40,10 +39,7 @@ const ProductCardPage = ({ addToBasket }) => {
         setIsLoading(false);
       }
     }
-
-    if (routeParams.id !== '' && routeParams !== undefined) {
-      getData();
-    }
+    getData();
   }, [routeParams.id, t]);
 
   useEffect(() => {

@@ -37,13 +37,6 @@ const NavList = styled(MobileNavList)`
   }
 `;
 
-const IconFeather = styled(feather)`
-  height: 54px;
-  position: absolute;
-  top: -22px;
-  left: -9px;
-`;
-
 const NavItem = styled(NavLink)`
   cursor: pointer;
   font-family: ${theme.fonts[0]};
@@ -78,18 +71,17 @@ const NavItem = styled(NavLink)`
     left: 0;
     bottom: -1px;
     height: 1px; 
-    background-color: ${theme.colors
-      .brown2}; 
+    background-color: ${theme.colors.brown2}; 
     transition: width 0.5s; 
   } */
-   
+
   :hover:after,
-  &.active:after { 
+  &.active:after {
     content: '';
-    width: calc(100% + 10px); 
+    width: calc(100% + 10px);
     display: block;
     position: absolute;
-    left: -6px; 
+    left: -6px;
     bottom: -1px;
     height: 1px;
     background-color: ${theme.colors.brown2};
@@ -114,16 +106,13 @@ const NavItem = styled(NavLink)`
   :hover {
     transform: ${theme.scale[0]};
   }
-  /* &.active {
+  &.active {
     transform: ${theme.scale[0]};
     border-bottom: solid 1px ${theme.colors.brown4};
   }
   &.active > svg {
     opacity: 1;
   }
-
-    border-bottom: solid 1px ${theme.colors.brown2};
-  } */
   &.changeStyle {
     width: 100%;
     margin: 0;
@@ -157,7 +146,6 @@ const NavItem = styled(NavLink)`
     background-color: ${theme.colors.fon};
   }
 `;
-
 
 const LinkItem = styled(Link)`
   cursor: pointer;
@@ -237,7 +225,6 @@ const NavItemBoxModal = styled.div`
     margin-top: 60px;
   }
 `;
-
 
 const IconFeather = styled(feather)`
   height: 65px;

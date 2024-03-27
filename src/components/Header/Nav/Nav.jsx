@@ -20,7 +20,6 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
 import { useSearchParams } from 'react-router-dom';
 
-
 export const MobileNav = ({ toggleMenu }) => {
   const { t } = useTranslation();
   const path = window.location.pathname;
@@ -47,7 +46,7 @@ export const MobileNav = ({ toggleMenu }) => {
       <NavSubContainerUp>
         <NavItem
           className="not-changeStyle"
-          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          to={`shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
               ...init,
@@ -64,7 +63,7 @@ export const MobileNav = ({ toggleMenu }) => {
         </NavItem>
         <NavItem
           className="not-changeStyle"
-          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          to={`shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
               ...init,
@@ -84,13 +83,13 @@ export const MobileNav = ({ toggleMenu }) => {
         <NavItem to={`/`} onClick={toggleMenu}>
           <IconFeather />
           {t('About Us')}
-        </CustomNavLink>
+        </NavItem>
 
         <NavItemBoxModal>
-          <NavItem to={`/shop`} onClick={toggleMenu}>
+          <NavItem to={`shop`} onClick={toggleMenu}>
             <IconFeather />
             {t('Shop')}
-          </CustomNavLink>
+          </NavItem>
           <IconArrow onClick={toggleModal} />
         </NavItemBoxModal>
 
@@ -104,18 +103,19 @@ export const MobileNav = ({ toggleMenu }) => {
             />
           </ModalFirstOpen>
         )}
-        <NavItem to={`/gifts`} onClick={toggleMenu}>
+
+        <NavItem to={`gifts`} onClick={toggleMenu}>
           <IconFeather />
           {t('Gifts')}
         </NavItem>
-        <NavItem to="/discounts" onClick={toggleMenu}>
+        <NavItem to="discounts" onClick={toggleMenu}>
           <IconFeather />
           {t('Discounts')}
         </NavItem>
-        <NavItem to="/novetly" onClick={toggleMenu}>
+        <NavItem to="novetly" onClick={toggleMenu}>
           <IconFeather />
           {t('Novetly')}
-        </CustomNavLink>
+        </NavItem>
       </MobileNavBox>
     </MobileNavList>
   );
@@ -140,19 +140,24 @@ export const Nav = () => {
   return (
     <NavList>
       <NavSubContainerUp>
-        <NavItem to={`/shop`}>
+        <NavItem to={`/`}>
+          {' '}
+          <IconFeather />
+          {t('About Us')}
+        </NavItem>
+        <NavItem to={`shop`}>
           <IconFeather />
           {t('Shop')}
         </NavItem>
-        <NavItem to={`/gifts`}>
+        <NavItem to={`gifts`}>
           <IconFeather />
           {t('Gifts')}
         </NavItem>
-        <NavItem to="/discounts">
+        <NavItem to="discounts">
           <IconFeather />
           {t('Discounts')}
         </NavItem>
-        <NavItem to="/novetly">
+        <NavItem to="novetly">
           <IconFeather />
           {t('Novetly')}
         </NavItem>
@@ -160,7 +165,7 @@ export const Nav = () => {
       <NavSubContainerDown>
         <LinkItem
           className="not-changeStyle"
-          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          to={`shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
               ...init,
@@ -176,7 +181,7 @@ export const Nav = () => {
         </LinkItem>
         <LinkItem
           className="not-changeStyle"
-          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          to={`shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
               ...init,

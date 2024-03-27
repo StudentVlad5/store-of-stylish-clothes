@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   MobileNavList,
@@ -18,7 +19,6 @@ import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
-import { useSearchParams } from 'react-router-dom';
 
 export const MobileNav = ({ toggleMenu }) => {
   const { t } = useTranslation();
@@ -40,12 +40,17 @@ export const MobileNav = ({ toggleMenu }) => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const location = useLocation();
 
   return (
     <MobileNavList>
       <NavSubContainerUp>
         <NavItem
-          className="not-changeStyle"
+          className={
+            location.pathname.includes('shop')
+              ? 'changeStyle'
+              : 'not-changeStyle'
+          }
           to={`shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
@@ -62,7 +67,11 @@ export const MobileNav = ({ toggleMenu }) => {
           {t('Men')}
         </NavItem>
         <NavItem
-          className="not-changeStyle"
+          className={
+            location.pathname.includes('shop')
+              ? 'changeStyle'
+              : 'not-changeStyle'
+          }
           to={`shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
@@ -164,7 +173,11 @@ export const Nav = () => {
       </NavSubContainerUp>
       <NavSubContainerDown>
         <LinkItem
-          className="not-changeStyle"
+          className={
+            location.pathname.includes('shop')
+              ? 'changeStyle'
+              : 'not-changeStyle'
+          }
           to={`shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {
@@ -180,7 +193,11 @@ export const Nav = () => {
           {t('Men')}
         </LinkItem>
         <LinkItem
-          className="not-changeStyle"
+          className={
+            location.pathname.includes('shop')
+              ? 'changeStyle'
+              : 'not-changeStyle'
+          }
           to={`shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
           onClick={() => {
             saveToStorage('filters', {

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { ModalFirst } from './ModalFirst/ModalFirst';
 import { MobileMenuSection } from '../Elements/menu/menu.styled';
 import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
+import { CustomNavLink } from './CustomNavLink/CustomNavLink';
 
 export const MobileNav = ({ toggleMenu }) => {
   // const [searchParams] = useSearchParams();
@@ -53,14 +54,14 @@ export const MobileNav = ({ toggleMenu }) => {
         </NavItem>
       </NavSubContainerUp>
       <MobileNavBox>
-        <NavItem to={`/`} onClick={toggleMenu}>
+        <CustomNavLink to={`/`} onClick={toggleMenu}>
           {t('About Us')}
-        </NavItem>
+        </CustomNavLink>
 
         <NavItemBoxModal>
-          <NavItem to={`/shop`} onClick={toggleMenu}>
+          <CustomNavLink to={`/shop`} onClick={toggleMenu}>
             {t('Shop')}
-          </NavItem>
+          </CustomNavLink>
           <IconArrow onClick={toggleModal} />
         </NavItemBoxModal>
 
@@ -75,15 +76,15 @@ export const MobileNav = ({ toggleMenu }) => {
           </ModalFirstOpen>
         )}
 
-        <NavItem to={`/gifts`} onClick={toggleMenu}>
+        <CustomNavLink to={`/gifts`} onClick={toggleMenu}>
           {t('Gifts')}
-        </NavItem>
-        <NavItem to="/discounts" onClick={toggleMenu}>
+        </CustomNavLink>
+        <CustomNavLink to="/discounts" onClick={toggleMenu}>
           {t('Discounts')}
-        </NavItem>
-        <NavItem to="/novetly" onClick={toggleMenu}>
+        </CustomNavLink>
+        <CustomNavLink to="/novetly" onClick={toggleMenu}>
           {t('Novetly')}
-        </NavItem>
+        </CustomNavLink>
       </MobileNavBox>
     </MobileNavList>
   );
@@ -95,7 +96,7 @@ export const Nav = () => {
   // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
-
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <NavList>
       <NavSubContainerUp>
@@ -117,15 +118,17 @@ export const Nav = () => {
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
-        <NavItem to={`/`}>
+        <CustomNavLink
+          to={`/`}
+        >
           {' '}
-          <IconFeather />
+          {/* <IconFeather /> */}
           {t('About Us')}
-        </NavItem>
-        <NavItem to={`/shop`}>{t('Shop')}</NavItem>
-        <NavItem to={`/gifts`}>{t('Gifts')}</NavItem>
-        <NavItem to="/discounts">{t('Discounts')}</NavItem>
-        <NavItem to="/novetly">{t('Novetly')}</NavItem>
+        </CustomNavLink>
+        <CustomNavLink to={`/shop`}>{t('Shop')}</CustomNavLink>
+        <CustomNavLink to={`/gifts`}>{t('Gifts')}</CustomNavLink>
+        <CustomNavLink to="/discounts">{t('Discounts')}</CustomNavLink>
+        <CustomNavLink to="/novetly">{t('Novetly')}</CustomNavLink>
       </NavSubContainerDown>
     </NavList>
   );

@@ -52,21 +52,27 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     status,
     size_chart,
   } = item[0];
-
-  let oldPrice = selectOldPrice(selectedCurrency, item[0]);
-  let newPrice = selectNewPrice(selectedCurrency, item[0]);
+  const dispatch = useDispatch();
+  let imageArray = [];
 
   useEffect(() => {
+    if (images) {
+      imageArray = images.split(',');
+      imageArray.unshift(mainImage);
+    }
+    slides = imageArray.length;
+    setIndxSlideImg(0);
+    setSlideImg(imageArray.slice(0, slides));
     setOptionData(prev => ({
       ...prev,
       oldPrice: selectOldPrice(selectedCurrency, item[0]),
       newPrice: selectNewPrice(selectedCurrency, item[0]),
+      rate: rate,
     }));
-  }, [selectedCurrency]);
+  }, [selectedCurrency, item[0]]);
 
   const _id = article;
 
-  let imageArray = [];
   if (images) {
     imageArray = images.split(',');
     imageArray.unshift(mainImage);
@@ -75,8 +81,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   if (sizes) {
     options = sizes.split(',');
   }
-
-  const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -100,8 +104,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const init = {
     title: title,
     article: article,
-    oldPrice: oldPrice,
-    newPrice: newPrice,
+    oldPrice: selectOldPrice(selectedCurrency, item[0]),
+    newPrice: selectNewPrice(selectedCurrency, item[0]),
     status: status ? status : '',
     rate: rate ? rate : '',
     currency: selectedCurrency,
@@ -196,7 +200,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   //change images
   const [indxImg, setIndxImg] = useState(0);
 
-  const slides = imageArray.length;
+  let slides = imageArray.length;
   const [indxSlideImg, setIndxSlideImg] = useState(0);
   const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
 

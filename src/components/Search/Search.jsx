@@ -25,6 +25,11 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
     debounceFn(e.target.value);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    setParams(searchQuery);
+  }
+
   const setParams = search => {
     const params = getParams();
     if (!search) {
@@ -32,8 +37,10 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
       setSearchParams(params);
       return;
     }
-    params.search = search;
-    setSearchParams(params);
+    if (search) {
+      params.search = search;
+      setSearchParams(params);
+    }
   };
 
   const getParams = () => {
@@ -47,7 +54,7 @@ export const Search = ({ onClose, toggleMobileMenu }) => {
       <SC.FormContainer
         name="form-search"
         autoComplete="off"
-        onSubmit={handleChange}
+        onSubmit={handleSubmit}
       >
         <SC.Label aria-label="Search">
           <SC.Input

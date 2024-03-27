@@ -37,6 +37,13 @@ const NavList = styled(MobileNavList)`
   }
 `;
 
+const IconFeather = styled(feather)`
+  height: 54px;
+  position: absolute;
+  top: -22px;
+  left: -9px;
+`;
+
 const NavItem = styled(NavLink)`
   cursor: pointer;
   font-family: ${theme.fonts[0]};
@@ -48,7 +55,7 @@ const NavItem = styled(NavLink)`
   line-height: normal;
   text-decoration: none;
   white-space: nowrap;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   position: relative;
 
   &:after {
@@ -60,20 +67,33 @@ const NavItem = styled(NavLink)`
     width: 0;
     height: 1px; /* Высота линии */
     background-color: ${theme.colors
-      .brown3}; /* Цвет подчеркивания при исчезании линии*/
+      .brown2}; /* Цвет подчеркивания при исчезании линии*/
     transition: width 0.5s; /* Время эффекта */
   }
-  :hover:after {
+  /* :hover:after {
     content: '';
     width: 100%;
     display: block;
     position: absolute;
     left: 0;
     bottom: -1px;
-    height: 1px; /* Высота линии */
+    height: 1px; 
     background-color: ${theme.colors
-      .brown3}; /* Цвет подчеркивания при появлении линии*/
-    transition: width 0.5s; /* Время эффекта */
+      .brown2}; 
+    transition: width 0.5s; 
+  } */
+   
+  :hover:after,
+  &.active:after { 
+    content: '';
+    width: calc(100% + 10px); 
+    display: block;
+    position: absolute;
+    left: -6px; 
+    bottom: -1px;
+    height: 1px;
+    background-color: ${theme.colors.brown2};
+    transition: width 0.5s;
   }
   &:not(:first-child) {
     margin-top: 40px;
@@ -94,10 +114,10 @@ const NavItem = styled(NavLink)`
   :hover {
     transform: ${theme.scale[0]};
   }
-  &.active {
+  /* &.active {
     transform: ${theme.scale[0]};
-    border-bottom: solid 1px ${theme.colors.brown4};
-  }
+    border-bottom: solid 1px ${theme.colors.brown2};
+  } */
   &.changeStyle {
     width: 100%;
     margin: 0;
@@ -131,6 +151,7 @@ const NavItem = styled(NavLink)`
     background-color: ${theme.colors.fon};
   }
 `;
+
 const NavSubContainerUp = styled.div`
   display: flex;
   justify-content: center;
@@ -166,13 +187,6 @@ const NavItemBoxModal = styled.div`
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     margin-top: 60px;
   }
-`;
-
-const IconFeather = styled(feather)`
-  height: 65px;
-  position: absolute;
-  top: -33px;
-  left: -9px;
 `;
 
 export {

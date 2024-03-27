@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   MobileNavList,
@@ -10,22 +10,33 @@ import {
   MobileNavBox,
   NavItemBoxModal,
   IconFeather,
+  LinkItem,
 } from './Nav.styled';
-// import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModalFirst } from './ModalFirst/ModalFirst';
-import { MobileMenuSection } from '../Elements/menu/menu.styled';
 import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { saveToStorage } from 'services/localStorService';
+import { useSearchParams } from 'react-router-dom';
 
 export const MobileNav = ({ toggleMenu }) => {
-  // const [searchParams] = useSearchParams();
-  // searchParams.set('perPage', 12);
-  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
-
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -34,20 +45,36 @@ export const MobileNav = ({ toggleMenu }) => {
     <MobileNavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/shop/men`}
-          onClick={toggleMenu}
-          className={
-            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
-          }
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+            toggleMenu();
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+          }}
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/shop/women`}
-          onClick={toggleMenu}
-          className={
-            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
-          }
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+            toggleMenu();
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+          }}
         >
           {t('Women')}
         </NavItem>
@@ -90,33 +117,24 @@ export const MobileNav = ({ toggleMenu }) => {
 };
 
 export const Nav = () => {
-  // const [searchParams] = useSearchParams();
-  // searchParams.set('perPage', 12);
-  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
-
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <NavList>
       <NavSubContainerUp>
-        <NavItem
-          to={`/shop/men`}
-          className={
-            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
-          }
-        >
-          {t('Men')}
-        </NavItem>
-        <NavItem
-          to={`/shop/women`}
-          className={
-            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
-          }
-        >
-          {t('Women')}
-        </NavItem>
-      </NavSubContainerUp>
-      <NavSubContainerDown>
         <NavItem to={`/`}>
           {' '}
           <IconFeather />
@@ -126,6 +144,40 @@ export const Nav = () => {
         <NavItem to={`/gifts`}>{t('Gifts')}</NavItem>
         <NavItem to="/discounts">{t('Discounts')}</NavItem>
         <NavItem to="/novetly">{t('Novetly')}</NavItem>
+      </NavSubContainerUp>
+      <NavSubContainerDown>
+        <LinkItem
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+          }}
+        >
+          {t('Men')}
+        </LinkItem>
+        <LinkItem
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+          }}
+        >
+          {t('Women')}
+        </LinkItem>
       </NavSubContainerDown>
     </NavList>
   );

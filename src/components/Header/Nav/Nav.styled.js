@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../baseStyles/Variables.styled';
 import { ReactComponent as arrowDown } from 'images/svg/arrowDownNav.svg';
@@ -131,17 +131,60 @@ const NavItem = styled(NavLink)`
     background-color: ${theme.colors.fon};
   }
 `;
+
+const LinkItem = styled(Link)`
+  cursor: pointer;
+  font-family: ${theme.fonts[0]};
+  font-style: normal;
+  padding: 0 4px;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: ${theme.fontSizes.medium};
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+  color: ${theme.colors.brown1};
+  position: relative;
+  transition: ${theme.transition[0]};
+  :focus,
+  :hover {
+    transform: ${theme.scale[0]};
+  }
+  &.active {
+    transform: ${theme.scale[0]};
+  }
+  &.changeStyle {
+    display: none;
+  }
+  &.not-changeStyle {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 8px 10px;
+    border: solid 1px ${theme.colors.brown4};
+    border-radius: 9px;
+    color: ${theme.colors.brown2};
+    font-size: ${theme.fontSizes.medium};
+    font-style: normal;
+    font-family: ${theme.fonts[0]};
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0;
+    background-color: ${theme.colors.fon};
+  }
+`;
+
 const NavSubContainerUp = styled.div`
   display: flex;
   justify-content: center;
   gap: 30px;
-  transform: translateY(-30px);
+  /* transform: translateY(-30px); */
 `;
 const NavSubContainerDown = styled.div`
   display: flex;
   justify-content: center;
-  gap: 40px;
-  transform: translate(-30px, 30px);
+  top: 40px;
+  gap: 20px;
 `;
 
 const IconArrow = styled(arrowDown)`
@@ -185,4 +228,5 @@ export {
   MobileNavBox,
   NavItemBoxModal,
   IconFeather,
+  LinkItem,
 };

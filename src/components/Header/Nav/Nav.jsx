@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   MobileNavList,
@@ -10,23 +10,34 @@ import {
   MobileNavBox,
   NavItemBoxModal,
   IconFeather,
+  LinkItem,
 } from './Nav.styled';
-// import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModalFirst } from './ModalFirst/ModalFirst';
-import { MobileMenuSection } from '../Elements/menu/menu.styled';
 import { ModalFirstOpen } from './ModalFirst/ModalFirst.styled';
-import { CustomNavLink } from './CustomNavLink/CustomNavLink';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { saveToStorage } from 'services/localStorService';
+import { useSearchParams } from 'react-router-dom';
+
 
 export const MobileNav = ({ toggleMenu }) => {
-  // const [searchParams] = useSearchParams();
-  // searchParams.set('perPage', 12);
-  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
-
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -35,31 +46,49 @@ export const MobileNav = ({ toggleMenu }) => {
     <MobileNavList>
       <NavSubContainerUp>
         <NavItem
-          to={`/shop/men`}
-          onClick={toggleMenu}
-          className={
-            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
-          }
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+            toggleMenu();
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+          }}
         >
           {t('Men')}
         </NavItem>
         <NavItem
-          to={`/shop/women`}
-          onClick={toggleMenu}
-          className={
-            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
-          }
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+            toggleMenu();
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+          }}
         >
           {t('Women')}
         </NavItem>
       </NavSubContainerUp>
       <MobileNavBox>
-        <CustomNavLink to={`/`} onClick={toggleMenu}>
+        <NavItem to={`/`} onClick={toggleMenu}>
+          <IconFeather />
           {t('About Us')}
         </CustomNavLink>
 
         <NavItemBoxModal>
-          <CustomNavLink to={`/shop`} onClick={toggleMenu}>
+          <NavItem to={`/shop`} onClick={toggleMenu}>
+            <IconFeather />
             {t('Shop')}
           </CustomNavLink>
           <IconArrow onClick={toggleModal} />
@@ -75,14 +104,16 @@ export const MobileNav = ({ toggleMenu }) => {
             />
           </ModalFirstOpen>
         )}
-
-        <CustomNavLink to={`/gifts`} onClick={toggleMenu}>
+        <NavItem to={`/gifts`} onClick={toggleMenu}>
+          <IconFeather />
           {t('Gifts')}
-        </CustomNavLink>
-        <CustomNavLink to="/discounts" onClick={toggleMenu}>
+        </NavItem>
+        <NavItem to="/discounts" onClick={toggleMenu}>
+          <IconFeather />
           {t('Discounts')}
-        </CustomNavLink>
-        <CustomNavLink to="/novetly" onClick={toggleMenu}>
+        </NavItem>
+        <NavItem to="/novetly" onClick={toggleMenu}>
+          <IconFeather />
           {t('Novetly')}
         </CustomNavLink>
       </MobileNavBox>
@@ -91,44 +122,74 @@ export const MobileNav = ({ toggleMenu }) => {
 };
 
 export const Nav = () => {
-  // const [searchParams] = useSearchParams();
-  // searchParams.set('perPage', 12);
-  // searchParams.set('page', 1);
   const { t } = useTranslation();
   const path = window.location.pathname;
-  const [isHovered, setIsHovered] = useState(false);
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <NavList>
       <NavSubContainerUp>
-        <NavItem
-          to={`/shop/men`}
-          className={
-            path.includes(`/shop/men`) ? 'changeStyle' : ' not-changeStyle'
-          }
-        >
-          {t('Men')}
+        <NavItem to={`/shop`}>
+          <IconFeather />
+          {t('Shop')}
         </NavItem>
-        <NavItem
-          to={`/shop/women`}
-          className={
-            path.includes(`/shop/women`) ? 'changeStyle' : ' not-changeStyle'
-          }
-        >
-          {t('Women')}
+        <NavItem to={`/gifts`}>
+          <IconFeather />
+          {t('Gifts')}
+        </NavItem>
+        <NavItem to="/discounts">
+          <IconFeather />
+          {t('Discounts')}
+        </NavItem>
+        <NavItem to="/novetly">
+          <IconFeather />
+          {t('Novetly')}
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
-        <CustomNavLink
-          to={`/`}
+        <LinkItem
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.man[selectedLanguage]],
+            });
+          }}
         >
-          {' '}
-          {/* <IconFeather /> */}
-          {t('About Us')}
-        </CustomNavLink>
-        <CustomNavLink to={`/shop`}>{t('Shop')}</CustomNavLink>
-        <CustomNavLink to={`/gifts`}>{t('Gifts')}</CustomNavLink>
-        <CustomNavLink to="/discounts">{t('Discounts')}</CustomNavLink>
-        <CustomNavLink to="/novetly">{t('Novetly')}</CustomNavLink>
+          {t('Men')}
+        </LinkItem>
+        <LinkItem
+          className="not-changeStyle"
+          to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+          onClick={() => {
+            saveToStorage('filters', {
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+            setSearchParams({
+              ...init,
+              man_woman: [homeProductLinks?.woman[selectedLanguage]],
+            });
+          }}
+        >
+          {t('Women')}
+        </LinkItem>
       </NavSubContainerDown>
     </NavList>
   );

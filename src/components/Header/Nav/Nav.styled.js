@@ -98,6 +98,9 @@ const NavItem = styled(NavLink)`
     transform: ${theme.scale[0]};
     border-bottom: solid 1px ${theme.colors.brown4};
   }
+  &.active > svg {
+    opacity: 1;
+  }
   &.changeStyle {
     width: 100%;
     margin: 0;
@@ -215,7 +218,10 @@ const IconFeather = styled(feather)`
   height: 65px;
   position: absolute;
   top: -33px;
-  left: -9px;
+  left: -3px;
+  transform: scale(0.73) rotate(43deg);
+  opacity: 0;
+  transition: ${theme.transition[0]};
 `;
 
 export {

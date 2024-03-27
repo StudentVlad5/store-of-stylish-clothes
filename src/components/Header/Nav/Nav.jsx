@@ -81,11 +81,13 @@ export const MobileNav = ({ toggleMenu }) => {
       </NavSubContainerUp>
       <MobileNavBox>
         <NavItem to={`/`} onClick={toggleMenu}>
+          <IconFeather />
           {t('About Us')}
         </NavItem>
 
         <NavItemBoxModal>
           <NavItem to={`/shop`} onClick={toggleMenu}>
+            <IconFeather />
             {t('Shop')}
           </NavItem>
           <IconArrow onClick={toggleModal} />
@@ -103,12 +105,15 @@ export const MobileNav = ({ toggleMenu }) => {
         )}
 
         <NavItem to={`/gifts`} onClick={toggleMenu}>
+          <IconFeather />
           {t('Gifts')}
         </NavItem>
         <NavItem to="/discounts" onClick={toggleMenu}>
+          <IconFeather />
           {t('Discounts')}
         </NavItem>
         <NavItem to="/novetly" onClick={toggleMenu}>
+          <IconFeather />
           {t('Novetly')}
         </NavItem>
       </MobileNavBox>
@@ -140,10 +145,23 @@ export const Nav = () => {
           <IconFeather />
           {t('About Us')}
         </NavItem>
-        <NavItem to={`/shop`}>{t('Shop')}</NavItem>
-        <NavItem to={`/gifts`}>{t('Gifts')}</NavItem>
-        <NavItem to="/discounts">{t('Discounts')}</NavItem>
-        <NavItem to="/novetly">{t('Novetly')}</NavItem>
+        <NavItem to={`/shop`}>
+          <IconFeather />
+          <IconFeather />
+          {t('Shop')}
+        </NavItem>
+        <NavItem to={`/gifts`}>
+          <IconFeather />
+          {t('Gifts')}
+        </NavItem>
+        <NavItem to="/discounts">
+          <IconFeather />
+          {t('Discounts')}
+        </NavItem>
+        <NavItem to="/novetly">
+          <IconFeather />
+          {t('Novetly')}
+        </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
         <LinkItem

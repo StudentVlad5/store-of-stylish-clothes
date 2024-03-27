@@ -20,6 +20,7 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
 import { useSearchParams } from 'react-router-dom';
 
+
 export const MobileNav = ({ toggleMenu }) => {
   const { t } = useTranslation();
   const path = window.location.pathname;
@@ -83,13 +84,13 @@ export const MobileNav = ({ toggleMenu }) => {
         <NavItem to={`/`} onClick={toggleMenu}>
           <IconFeather />
           {t('About Us')}
-        </NavItem>
+        </CustomNavLink>
 
         <NavItemBoxModal>
           <NavItem to={`/shop`} onClick={toggleMenu}>
             <IconFeather />
             {t('Shop')}
-          </NavItem>
+          </CustomNavLink>
           <IconArrow onClick={toggleModal} />
         </NavItemBoxModal>
 
@@ -103,7 +104,6 @@ export const MobileNav = ({ toggleMenu }) => {
             />
           </ModalFirstOpen>
         )}
-
         <NavItem to={`/gifts`} onClick={toggleMenu}>
           <IconFeather />
           {t('Gifts')}
@@ -115,7 +115,7 @@ export const MobileNav = ({ toggleMenu }) => {
         <NavItem to="/novetly" onClick={toggleMenu}>
           <IconFeather />
           {t('Novetly')}
-        </NavItem>
+        </CustomNavLink>
       </MobileNavBox>
     </MobileNavList>
   );
@@ -140,13 +140,7 @@ export const Nav = () => {
   return (
     <NavList>
       <NavSubContainerUp>
-        <NavItem to={`/`}>
-          {' '}
-          <IconFeather />
-          {t('About Us')}
-        </NavItem>
         <NavItem to={`/shop`}>
-          <IconFeather />
           <IconFeather />
           {t('Shop')}
         </NavItem>

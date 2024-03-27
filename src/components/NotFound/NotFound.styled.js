@@ -59,7 +59,9 @@ export const ErrorTitle = styled.h2`
 
 export const ErrorDiscr = styled.p`
   font-family: ${theme.fonts[0]};
-  font-size: ${theme.fontSizes.medium};
+  /* font-size: ${theme.fontSizes.medium}; */
+  font-size: ${theme.fontSizes.large};
+
   font-style: normal;
   font-weight: 100;
   text-transform: uppercase;

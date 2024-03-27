@@ -15,6 +15,11 @@ export const FooterSection = styled.footer`
   background-color: ${theme.colors.brown4};
   color: ${theme.colors.text};
   padding-top: 30px;
+  margin-top: 80px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}){
+    margin-top: 120px;
+  }
 `;
 export const LinkBrand = styled(Link)`
   text-decoration: none;

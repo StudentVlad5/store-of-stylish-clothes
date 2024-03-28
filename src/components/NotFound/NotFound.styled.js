@@ -50,7 +50,7 @@ export const ErrorTitle = styled.h2`
   font-style: normal;
   text-align: center;
   line-height: normal;
-  color: ${theme.colors.darkGreen};
+  color: ${theme.colors.brown4};
 
   @media screen and (min-width: 1440px) {
     font-size: 180px;
@@ -95,7 +95,7 @@ export const ErrorBtn = styled.button`
   &:hover,
   &:focus {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.brown4};
   }
 `;
 

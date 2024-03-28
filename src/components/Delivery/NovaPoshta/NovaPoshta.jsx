@@ -10,13 +10,13 @@ const customStyles = {
   control: (base, state) => ({
     ...base,
     backgroundColor: 'transparent',
-    color:'#2F2F2F',
+    color: '#2F2F2F',
     border: state.isFocused ? '2px solid  #754F23' : '1px solid  #754F23',
     boxShadow: state.isFocused ? 'none' : 'none',
     cursor: 'pointer',
     '&:hover': {
-      border: '2px solid #754F23'
-    }
+      border: '2px solid #754F23',
+    },
   }),
   option: (base, state) => ({
     ...base,
@@ -25,9 +25,9 @@ const customStyles = {
     color: state.isSelected ? '#FCF9F2' : '#2F2F2F',
     '&:hover': {
       backgroundColor: '#754F23',
-      color: '#FCF9F2'
-    }
-  })
+      color: '#FCF9F2',
+    },
+  }),
 };
 
 export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
@@ -79,7 +79,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   if (departmentCity && departmentCity.Ref !== cityRef) {
     setCityRef(departmentCity.Ref);
   }
-
+  console.log('cityRef', cityRef);
   // get departments for Nova Poshta
   useEffect(() => {
     async function getData() {
@@ -119,7 +119,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         const obj = {};
         if (key.Description) {
           obj.value = key.Description;
-          obj.label = key.Description;
+          obj.label = key.Description + ', ' + key.AreaDescription;
           options.push(obj);
         }
       });

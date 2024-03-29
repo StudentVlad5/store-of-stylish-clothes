@@ -31,7 +31,8 @@ import {
 import novaPoshta from 'images/svg/Nova_Poshta.svg';
 import ukrPoshta from 'images/svg/ukrposhta-logo.svg';
 import curier from 'images/delivery/pngegg.png';
-import liqpay from 'images/svg/LIQPAY.svg';
+import mastercard from 'images/svg/mastercard.svg';
+import visa from 'images/svg/visa.svg';
 import wallet from 'images/svg/wallet.svg';
 
 const Step4 = () => {
@@ -270,11 +271,18 @@ const Step4 = () => {
           <DataTitle>Selected payment</DataTitle>
           <DataContainerTextBox $row>
             {selectedPaymentOption === 'Payment by bank card' ? (
-              <img
-                style={{ width: 50 }}
-                src={liqpay}
-                alt="Payment by bank card"
-              />
+              <>
+                <img
+                  style={{ width: 20 }}
+                  src={mastercard}
+                  alt="Payment by bank card"
+                />
+                <img
+                  style={{ width: 20 }}
+                  src={visa}
+                  alt="Payment by bank card"
+                />
+              </>
             ) : (
               <img
                 style={{ width: 30 }}

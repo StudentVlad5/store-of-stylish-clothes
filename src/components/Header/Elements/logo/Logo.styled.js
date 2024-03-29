@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import theme from 'components/baseStyles/Variables.styled';
+import { ReactComponent as logo } from 'images/svg/logo.svg';
 
 const Text = styled(Link)`
   font-family: ${theme.fonts[0]};
@@ -19,4 +20,6 @@ const Text = styled(Link)`
   }
 `;
 
-export { Text };
+const QuillisLogo = styled(logo)``;
+
+export { Text,QuillisLogo };

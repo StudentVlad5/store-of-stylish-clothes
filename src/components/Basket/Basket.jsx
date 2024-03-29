@@ -17,6 +17,7 @@ import {
 } from './Basket.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { ShoppingBagList } from 'components/Header/ShoppingBag/ShoppingBagList/ShoppingBagList';
+import { BtnLight } from 'components/UserComp/UserData/UserData.styled';
 
 export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
   const auth = useSelector(getUser);
@@ -71,7 +72,7 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
                 Make sure you’re signed into your account
               </TextCheckOut>
               <Link to="/signin" style={{ textDecoration: 'none' }}>
-                <Btn>SIGN IN</Btn>
+                <BtnLight>SIGN IN</BtnLight>
               </Link>
               {!contextBasket &&
                 contextBasket[0]?.optionData?.length == undefined &&
@@ -83,7 +84,7 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
                       to="/shop?perPage=12&page=1"
                       style={{ textDecoration: 'none' }}
                     >
-                      <Btn>SHOP</Btn>
+                      <BtnLight>SHOP</BtnLight>
                     </Link>
                   </>
                 )}

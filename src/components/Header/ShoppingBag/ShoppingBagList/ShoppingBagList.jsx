@@ -51,18 +51,18 @@ export const ShoppingBagList = ({
   const {
     _id,
     currency,
+    selectedCurrency,
     newPrice,
     discount,
     images,
     mainImage,
-    title_de,
-    title_en,
-    title_ru,
-    title_ua,
     oldPrice,
     quantity,
     title,
     total,
+    name,
+    options,
+    article
   } = optionData;
   if (statusBasket !== true) {
     statusBasket = false;
@@ -163,7 +163,7 @@ export const ShoppingBagList = ({
         <DiscrDataList>
           <DiscrDataListItem>
             <DiscrDataListItemHeading>
-              <DiscrDataListItemTitle>{title_ua}</DiscrDataListItemTitle>
+              <DiscrDataListItemTitle>{title}</DiscrDataListItemTitle>
               <DiscrDataListItemTitlePrice>
                 {price}
                 {currency}
@@ -174,10 +174,10 @@ export const ShoppingBagList = ({
             <DiscrDataTable>
               <DiscrDataTableLine>
                 <DiscrDataTableHead>Size</DiscrDataTableHead>
-                {title === null ? (
+                {options === null ? (
                   <DiscrDataTableData>-</DiscrDataTableData>
                 ) : (
-                  <DiscrDataTableData>{title}</DiscrDataTableData>
+                  <DiscrDataTableData>{options}</DiscrDataTableData>
                 )}
               </DiscrDataTableLine>
 
@@ -255,13 +255,13 @@ export const ShoppingBagList = ({
           <DiscrBox>
             <DiscrBoxForText>
               <DiscrBoxTitle>
-                <DiscrTitle style={{ width: 170 }}>{title_ua}</DiscrTitle>
+                <DiscrTitle style={{ width: 170 }}>{title}</DiscrTitle>
                 <DiscrTitle>
                   {newPrice}
                   {currency}
                 </DiscrTitle>
               </DiscrBoxTitle>
-              <DiscrBoxSize>{title}</DiscrBoxSize>
+              <DiscrBoxSize>{options}</DiscrBoxSize>
             </DiscrBoxForText>
             <QuantityBox>
               <Quantity>

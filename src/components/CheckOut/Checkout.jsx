@@ -54,14 +54,14 @@ export const CheckOut = () => {
             </Liner>
             <LinkFolder className="linkFolder step3Btn" to={`/checkout/step3`}>
               <span>3</span>
-              <LinkFolderTitle>Total</LinkFolderTitle>
+              <LinkFolderTitle>Payment</LinkFolderTitle>
             </LinkFolder>
             <Liner>
               <span></span>
             </Liner>
             <LinkFolder className="linkFolder step4Btn" to={`/checkout/step4`}>
               <span>4</span>
-              <LinkFolderTitle>Payment</LinkFolderTitle>
+              <LinkFolderTitle>Total</LinkFolderTitle>
             </LinkFolder>
           </FolderWrapper>
 

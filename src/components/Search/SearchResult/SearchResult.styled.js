@@ -209,7 +209,7 @@ const Category = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
-
+  height: 85%;
   width: 100%;
   margin-bottom: auto;
 

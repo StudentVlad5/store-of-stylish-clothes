@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { fetchData } from 'services/APIservice';
 import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
-import { saveToStorage } from 'services/localStorService';
 
 import * as SC from './SearchResult.styled';
 import { Subtitle } from 'components/baseStyles/CommonStyle.styled';
@@ -19,6 +18,7 @@ import {
   selectNewPrice,
   selectOldPrice,
 } from 'services/selectCurrency';
+import { Logo } from 'components/Header/Elements/logo/Logo';
 
 export const SearchResult = ({
   onClose,
@@ -27,7 +27,7 @@ export const SearchResult = ({
   searchParams,
 }) => {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
+  // const [category, setCategory] = useState([]);
   const [total, setTotal] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -61,10 +61,10 @@ export const SearchResult = ({
     }
   }, [t, searchParams, selectedLanguage]);
 
-  const getUniqueOptions = key => {
-    const unique = [...new Set(category?.map(item => item[key]))];
-    return unique.sort();
-  };
+  // const getUniqueOptions = key => {
+  //   const unique = [...new Set(category?.map(item => item[key]))];
+  //   return unique.sort();
+  // };
 
   return (
     <SC.SearchResult>
@@ -121,32 +121,31 @@ export const SearchResult = ({
               })}
             </SC.Products>
           )}
-          {total > 4 && (
+          {total > 4 ? (
             <SC.LinkToCatalog to={`/shop?page=1&perPage=12`} onClick={onClose}>
               See more
             </SC.LinkToCatalog>
+          ) : (
+            <>
+              <Logo />
+              <span> Lets find smth else</span>
+            </>
           )}
         </SC.InnerLeftWrapper>
         <SC.InnerRightWrapper onClick={toggleMobileMenu}>
-          <Subtitle>Type of plants</Subtitle>
+          <Subtitle>Goods in the shop</Subtitle>
           <SC.Category>
-            {getUniqueOptions('typeOfPlants').map((card, i) => {
-              return (
-                <div key={i} onClick={onClose}>
-                  <NavLink to={`/shop?page=1&perPage=12&category=plants`}>
-                    Indoor Plants /
-                  </NavLink>
-                  <NavLink
-                    to={`/shop?page=1&perPage=12&typeOfPlants=${card}`}
-                    onClick={e => {
-                      saveToStorage('typeOfPlants', card);
-                    }}
-                  >
-                    <span> {card}</span>
-                  </NavLink>
-                </div>
-              );
-            })}
+            {products.length > 0 && !error
+              ? products.map((card, i) => {
+                  return (
+                    <li key={i} onClick={onClose}>
+                      <NavLink to={`shop/byid/${card.article}`}>
+                        {card.title}
+                      </NavLink>
+                    </li>
+                  );
+                })
+              : 'Sorry! Nothing found'}
           </SC.Category>
           <SC.LinkToGifts to={`/gifts`} onClick={onClose}>
             <span>Our ideas for gifts</span>

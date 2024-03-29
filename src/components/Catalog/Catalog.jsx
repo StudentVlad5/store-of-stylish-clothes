@@ -212,20 +212,20 @@ export const Catalog = () => {
   };
 
   const [showFilter, setShowFilter] = useState(false);
-  const toggleFilter = () => {
-    setShowFilter(state => !state);
-    setShowSort(false);
-  };
+  // const toggleFilter = () => {
+  //   setShowFilter(state => !state);
+  //   setShowSort(false);
+  // };
 
   const handleClick = () => {
     setShowSort(false);
     setShowFilter(false);
   };
 
-  const removeLocalStor = () => {
-    // removeItem('category');
-    removeItem('filters');
-  };
+  // const removeLocalStor = () => {
+  //   // removeItem('category');
+  //   removeItem('filters');
+  // };
 
   const getSelectedFilter = () => {
     const LS = getFromStorage('filters');

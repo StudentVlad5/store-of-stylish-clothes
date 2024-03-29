@@ -78,10 +78,10 @@ export const Btn = styled(Button)`
 
   margin-bottom: 20px;
 
-  color: ${theme.colors.brown1};
-  background: ${theme.colors.green4};
-  border: none;
-  border-radius: 4px;
+  color: ${theme.colors.brown4};
+  background: transparent;
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
 
   transform: scale(1);
   cursor: pointer;

@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 import {
-  LIQPAY,
+  Mastercard,
   Wallet,
   PaymentFormBtn,
   PaymentFormBtnFinish,
   PaymentFormBtnBox,
   PaymentBlockOptionsLable,
   PaymentBlockOptionsInput,
+  PaymentBlockOptionsLableBox,
   DeliveryBlockOptionsTitle,
   DeliveryBlockOptionsLableBox,
   Payment,
+  Visa,
+  DeliveryBlockOptionsLable,
+  DeliveryBlockOptionsInput,
+  DeliveryBlockOptionsBoxLable,
 } from '../Order/Order.styled';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -45,22 +50,25 @@ const Step3 = () => {
 
   return (
     <Payment>
-      <PaymentBlockOptionsLable>
-        <PaymentBlockOptionsInput
-          type="radio"
-          name="payment"
-          value="Payment by bank card"
-          checked={selectedPaymentOption === 'Payment by bank card'}
-          onChange={handleInputChange}
-        />
-        <LIQPAY />
-        <DeliveryBlockOptionsLableBox>
-          <DeliveryBlockOptionsTitle>
-            Payment by bank card
-          </DeliveryBlockOptionsTitle>
-        </DeliveryBlockOptionsLableBox>
-      </PaymentBlockOptionsLable>
-      <PaymentBlockOptionsLable>
+      <DeliveryBlockOptionsBoxLable>
+        <DeliveryBlockOptionsLable>
+          <DeliveryBlockOptionsInput
+            type="radio"
+            name="payment"
+            value="Payment by bank card"
+            checked={selectedPaymentOption === 'Payment by bank card'}
+            onChange={handleInputChange}
+          />
+          <Mastercard />
+          <Visa />
+          <DeliveryBlockOptionsLableBox>
+            <DeliveryBlockOptionsTitle>
+              Payment by bank card
+            </DeliveryBlockOptionsTitle>
+          </DeliveryBlockOptionsLableBox>
+        </DeliveryBlockOptionsLable>
+      </DeliveryBlockOptionsBoxLable>
+      {/* <PaymentBlockOptionsLable>
         <PaymentBlockOptionsInput
           type="radio"
           name="payment"
@@ -74,22 +82,24 @@ const Step3 = () => {
             Payment on account
           </DeliveryBlockOptionsTitle>
         </DeliveryBlockOptionsLableBox>
-      </PaymentBlockOptionsLable>
-      <PaymentBlockOptionsLable>
-        <PaymentBlockOptionsInput
-          type="radio"
-          name="payment"
-          value="Cash on delivery"
-          checked={selectedPaymentOption === 'Cash on delivery'}
-          onChange={handleInputChange}
-        />
-        <Wallet style={{ width: 65 }} />
-        <DeliveryBlockOptionsLableBox>
-          <DeliveryBlockOptionsTitle>
-            Cash on delivery
-          </DeliveryBlockOptionsTitle>
-        </DeliveryBlockOptionsLableBox>
-      </PaymentBlockOptionsLable>
+      </PaymentBlockOptionsLable> */}
+      <PaymentBlockOptionsLableBox>
+        <DeliveryBlockOptionsLable>
+          <DeliveryBlockOptionsInput
+            type="radio"
+            name="payment"
+            value="Cash on delivery"
+            checked={selectedPaymentOption === 'Cash on delivery'}
+            onChange={handleInputChange}
+          />
+          <Wallet style={{ width: 65 }} />
+          <DeliveryBlockOptionsLableBox>
+            <DeliveryBlockOptionsTitle>
+              Cash on delivery
+            </DeliveryBlockOptionsTitle>
+          </DeliveryBlockOptionsLableBox>
+        </DeliveryBlockOptionsLable>
+      </PaymentBlockOptionsLableBox>
       <PaymentFormBtnBox>
         <Link to={`/checkout/step2`}>
           <PaymentFormBtn type="button">Back</PaymentFormBtn>

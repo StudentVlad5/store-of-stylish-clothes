@@ -96,7 +96,7 @@ export const TotalPrice = basket => {
           checkout
         </PaymentBtn>
       )}
-      {!confirm && (
+      {/* {!confirm && (
         <DeliverBox>
           <DeliverBoxItem>
             <ShippingFast />
@@ -107,7 +107,7 @@ export const TotalPrice = basket => {
             If your plant dies withing 30 days, we’ll replace it for free.
           </DeliverBoxItem>
         </DeliverBox>
-      )}
+      )} */}
     </PaymentBox>
   );
 };

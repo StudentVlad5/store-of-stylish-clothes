@@ -39,6 +39,7 @@ const theme = {
     redLight: '#FFE8E9',
     grey: '#717171',
     grey1: '#656970',
+    whiteOpacity: 'rgba(255, 255, 255, 0.60)',
     greyOpacity: 'rgba(113, 113, 113, 0.1)',
     white: '#ffffff', // білий
     text: '#f0eadc', // текст футера

@@ -8,7 +8,13 @@ i18n
   .init({
     resources: {
       ua: {
-        // translation: require('../src/translate/ua.json'),
+        translation: require('../translate/ua.json'),
+      },
+      ru: {
+        translation: require('../translate/ru.json'),
+      },
+      de: {
+        translation: require('../translate/de.json'),
       },
     },
     fallbackLng: 'en',

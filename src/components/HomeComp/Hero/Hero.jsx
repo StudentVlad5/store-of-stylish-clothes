@@ -59,7 +59,7 @@ export const Hero = () => {
             }
           >
             <HeroItem props={`url(${photoManCategory})`}>
-              <ImgTitle>Men</ImgTitle>
+              <ImgTitle>{t("Men")}</ImgTitle>
             </HeroItem>
           </LinkCategory>
           <LinkCategory
@@ -72,11 +72,11 @@ export const Hero = () => {
             }
           >
             <HeroItem props={`url(${photoWomanCategory})`}>
-              <ImgTitle>Women</ImgTitle>
+              <ImgTitle>{t("Women")}</ImgTitle>
             </HeroItem>
           </LinkCategory>
           <ContainerForBtnReadyStyle>
-            <SideBarTitle>Choose your perfect style</SideBarTitle>
+            <SideBarTitle>{t("Choose your perfect style")}</SideBarTitle>
             <Link to="/ready_style" style={{ textDecoration: 'none' }}>
               <ButtonForReadyStyle
                 type="button"
@@ -84,7 +84,7 @@ export const Hero = () => {
                 aria-label="click for choose your perfect style"
               >
                 <TitleForBtnReadyStyle TitleForBtnReadyStyle>
-                  Explore
+                  {t("Explore")}
                 </TitleForBtnReadyStyle>
                 <WhiteArrow />
               </ButtonForReadyStyle>
@@ -108,7 +108,7 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoJacetsCategory})`}>
-                <CategoryTitle>Jacets</CategoryTitle>
+                <CategoryTitle>{t("Jackets")}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
 
@@ -124,7 +124,7 @@ export const Hero = () => {
                   })
                 }
               >
-                <CategoryTitle>Pants</CategoryTitle>
+                <CategoryTitle>{t("Pants")}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
 
@@ -140,7 +140,7 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoHoodiesSweatshirtsCategory})`}>
-                <CategoryTitle>Hoodies & Sweatshirts</CategoryTitle>
+                <CategoryTitle>{t("Hoodies & Sweatshirts")}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
             <LinkCategory
@@ -153,7 +153,7 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoFootwearCategory})`}>
-                <CategoryTitle>Footwear</CategoryTitle>
+                <CategoryTitle>{t("Shoes")}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
           </HeroContainer>

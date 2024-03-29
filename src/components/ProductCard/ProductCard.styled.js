@@ -138,12 +138,15 @@ const ControlsList = styled.ul`
 const ControlsItem = styled.li`
   & > img {
     width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    height: 45px;
+    border-radius: 12px;
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      width: 80px;
-      height: 80px;
+      /* width: 80px;
+      height: 80px; */
+      border-radius: 12px;
+      width: 97px;
+      height: 123px;
     }
   }
 `;
@@ -166,6 +169,7 @@ const ProductImage = styled.img`
   width: 437px;
   height: auto;
   margin: auto 0;
+  border-radius: 12px;
 `;
 
 const DeliveryInfo = styled.ul`

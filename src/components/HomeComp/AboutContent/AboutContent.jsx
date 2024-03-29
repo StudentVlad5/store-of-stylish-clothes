@@ -19,19 +19,16 @@ export const AboutContent = () => {
       <AboutSection>
         <SectionWrapper>
           <AboutContainer>
-            <Title>About</Title>
+            <Title>{t('About us')}</Title>
             <AboutSubTitle>
-              We are a company that offers stylish and modern clothes, shoes and
-              accessories for a quality life. Our mission is to help our
-              customers express their uniqueness through fashion, inspiring them
-              to express themselves and choose a style that suits their needs
-              and characteristics.
+              {t(
+                'We are a company that offers stylish and modern clothes, shoes and accessories for a quality life. Our mission is to help our customers express their uniqueness through fashion, inspiring them to express themselves and choose a style that suits their needs and characteristics.',
+              )}
             </AboutSubTitle>
             <AboutSubTitle>
-              Our team is a group of passionate professionals who provide
-              personalized service and are always ready to help you choose the
-              perfect look. We strive to provide you with the highest quality
-              products and satisfaction with every purchase.
+              {t(
+                'Our team is a group of passionate professionals who provide personalized service and are always ready to help you choose the perfect look. We strive to provide you with the highest quality products and satisfaction with every purchase.',
+              )}
             </AboutSubTitle>
           </AboutContainer>
         </SectionWrapper>

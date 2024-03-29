@@ -47,7 +47,7 @@ export const DataContainerItems = styled(ProfileContainer)`
   width: 100%;
   height: auto;
 
-  background-color: ${theme.colors.green6};
+  background-color: ${theme.colors.whiteOpacity};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     max-width: calc(50% - 20px);
@@ -65,9 +65,9 @@ export const DataTitle = styled.p`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
 
-  border-bottom: 0.5px solid ${theme.colors.brown2};
+  border-bottom: 0.5px solid ${theme.colors.brown4};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;
@@ -96,7 +96,7 @@ export const DataContainerTextBox = styled.div`
 `;
 
 export const DataContainerText = styled.p`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
   font-size: 10px;
   font-style: normal;

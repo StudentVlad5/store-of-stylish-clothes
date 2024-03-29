@@ -121,6 +121,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   );
 
   const addToBasketHandler = product => {
+    console.log(product);
+
     const updatedProduct = {
       ...product,
       userAnonimusID,
@@ -128,6 +130,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         ...product.optionData,
         quantity: product.optionData.quantity,
         _id: product.optionData._id,
+        article: article,
       },
     };
 
@@ -137,13 +140,15 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       optionData: [
         {
           ...product.optionData,
-          quantity: product.optionData.quantity,
-          currency: product.currency,
-          name: product.name,
           _id: product.optionData._id,
+          // optionData,
+          quantity: product.optionData.quantity,
+          currency: selectCurrency(selectedCurrency),
+          // name: product.name,
           images: product.images,
           title,
           mainImage,
+          size: optionData.options,
         },
       ],
     };
@@ -462,7 +467,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   setOptionData(init);
                 }}
               >
-                ADD to card
+                ADD to cart
               </SC.TextBtn>
             ) : (
               <>
@@ -471,7 +476,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   aria-label="Add to card"
                   disabled={true}
                 >
-                  ADD to card
+                  ADD to cart
                 </SC.TextBtn>
               </>
             )}

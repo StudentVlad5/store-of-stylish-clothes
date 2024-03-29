@@ -3,7 +3,8 @@ import theme from 'components/baseStyles/Variables.styled';
 import { Section } from 'components/baseStyles/CommonStyle.styled';
 import { ReactComponent as novaPoshta } from 'images/svg/Nova_Poshta.svg';
 import { ReactComponent as ukrposhta } from 'images/svg/ukrposhta-logo.svg';
-import { ReactComponent as liqpay } from 'images/svg/LIQPAY.svg';
+import { ReactComponent as mastercard } from 'images/svg/mastercard.svg';
+import { ReactComponent as visa } from 'images/svg/visa.svg';
 import { ReactComponent as wallet } from 'images/svg/wallet.svg';
 import { ReactComponent as checkMark } from 'images/svg/check-mark.svg';
 import { ProfileContainer } from 'components/UserComp/UserData/UserData.styled';
@@ -472,7 +473,7 @@ export const PoshtaTitle = styled.p`
 export const Payment = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /* gap: 20px; */
   width: 100%;
 `;
 
@@ -481,7 +482,9 @@ export const PaymentOptionBox = styled.div`
   background-color: ${theme.colors.green6};
 `;
 
-export const LIQPAY = styled(liqpay)``;
+export const Mastercard = styled(mastercard)``;
+export const Visa = styled(visa)``;
+
 export const Wallet = styled(wallet)``;
 
 export const PaymentFormBtnBox = styled.div`
@@ -526,8 +529,37 @@ export const DeliveryBlockOptionsBtn = styled(PaymentFormBtn)`
   margin-right: 0;
 `;
 
-export const PaymentBlockOptionsLable = styled.label`
-  display: flex;
+export const PaymentBlockOptionsLableBox = styled.div`
+ background-color: transparent;
+  width: 100%;
+  position: relative;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    width: 1200px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.brown4};
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: ${theme.colors.brown4};
+  }
+
+
+  /* display: flex;
   align-items: center;
   gap: 10px;
   padding: 20px;
@@ -541,7 +573,7 @@ export const PaymentBlockOptionsLable = styled.label`
     border-radius: 50%;
     border: 2px solid #6f8d4c;
     display: inline-block;
-  }
+  } */
 `;
 
 export const PaymentBlockOptionsInput = styled.input`

@@ -60,7 +60,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       imageArray = images.split(',');
       imageArray.unshift(mainImage);
     }
-    slides = imageArray.length;
+    slides = imageArray?.length;
     setIndxSlideImg(0);
     setSlideImg(imageArray.slice(0, slides));
     setOptionData(prev => ({
@@ -200,7 +200,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   //change images
   const [indxImg, setIndxImg] = useState(0);
 
-  let slides = imageArray.length;
+  let slides = imageArray?.length;
   const [indxSlideImg, setIndxSlideImg] = useState(0);
   const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
 
@@ -215,17 +215,17 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       case 'up':
         setIndxSlideImg(prevState =>
           prevState - slides < 0
-            ? imageArray.length - slides
+            ? imageArray?.length - slides
             : prevState - slides,
         );
         setSlideImg(imageArray.slice(0, slides));
         break;
       case 'down':
         setIndxSlideImg(prevState =>
-          prevState + slides >= imageArray.length ? 0 : prevState + slides,
+          prevState + slides >= imageArray?.length ? 0 : prevState + slides,
         );
         setSlideImg(
-          imageArray.slice(imageArray.length - slides, imageArray.length),
+          imageArray.slice(imageArray?.length - slides, imageArray?.length),
         );
         break;
       default:
@@ -261,7 +261,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         <SC.ProductContent>
           <SC.ProductGallery>
             <SC.ControlsList>
-              {images.length > slides && indxSlideImg !== 0 && (
+              {images?.length > slides && indxSlideImg !== 0 && (
                 <FiChevronUp
                   data-controls="up"
                   size={36}
@@ -282,8 +282,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   </SC.ControlsItem>
                 );
               })}
-              {images.length > slides &&
-                indxSlideImg !== slideImages.length && (
+              {images?.length > slides &&
+                indxSlideImg !== slideImages?.length && (
                   <FiChevronDown
                     data-controls="down"
                     size={36}
@@ -294,7 +294,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 )}
             </SC.ControlsList>
             <SC.ProductImageWrapper>
-              {slideImages.length !== 0 ? (
+              {slideImages?.length !== 0 ? (
                 <SC.ProductImage
                   width={347}
                   height={600}
@@ -372,7 +372,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 dangerouslySetInnerHTML={{ __html: description }}
               ></SC.Description>
             </div>
-            {options.length !== 0 && (
+            {options?.length !== 0 && (
               <SC.Options>
                 <SC.ProductSubTitle>Option:</SC.ProductSubTitle>
                 <SC.OptionsList>
@@ -603,11 +603,14 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
               {showIncludedDetails && (
                 <SC.AccordCareList>
                   <SC.AccordCareItem>
-                    <span>
-                      {size_chart
-                        ? size_chart
-                        : 'The size of the product is universal. Please familiarize yourself with the description of the characteristics'}
-                    </span>
+                    {size_chart ? (
+                      <span dangerouslySetInnerHTML={{ __html: size_chart }} />
+                    ) : (
+                      <span>
+                        The size of the product is universal. Please familiarize
+                        yourself with the description of the characteristics
+                      </span>
+                    )}
                   </SC.AccordCareItem>
                 </SC.AccordCareList>
               )}

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
-import { removeItemInBasket } from 'services/APIservice';
-import { getFromStorage } from 'services/localStorService';
-import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
-import { ListImage } from '../ShoppingBag.styled';
+import { removeItemInBasket, updateItemInBasket } from 'services/APIservice';
+import { getFromStorage, saveToStorage } from 'services/localStorService';
+// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+// import { ListImage } from '../ShoppingBag.styled';
 import {
   DiscrBox,
   RemoveBtn,
@@ -40,6 +40,7 @@ import {
 } from 'components/Basket/BasketList/BasketList.styled';
 import { ReactComponent as Minus } from 'images/svg/minus.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
+import { addToBasket } from 'redux/basket/operations';
 
 export const ShoppingBagList = ({
   optionData,
@@ -62,12 +63,13 @@ export const ShoppingBagList = ({
     total,
     name,
     options,
-    article
+    article,
   } = optionData;
   if (statusBasket !== true) {
     statusBasket = false;
   }
   // ----------------------------------------->
+
   // console.log(optionData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -102,6 +104,34 @@ export const ShoppingBagList = ({
     dispatch(addReload(true));
   };
 
+  async function updateItem(items) {
+    console.log('items', items);
+    if (items !== undefined) {
+      setIsLoading(true);
+      const perem = { optionData: [...items] };
+      try {
+        const { data } = await updateItemInBasket(
+          `/basket/${userAnonimusID}`,
+          perem,
+        );
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        const optionData = data[0].optionData;
+        const _id = data[0]._id;
+        setDatas(prev => [{ optionData, _id }]);
+        setContextBasket(prev => [{ optionData, _id }]);
+        dispatch(addToBasket([{ optionData, _id }]));
+        dispatch(addReload(true));
+        saveToStorage('basketData', [{ optionData, _id }]);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  }
+
   const initialPrice = newPrice * quantity;
   const [price, setPrice] = useState(initialPrice);
   let newData = [];
@@ -124,6 +154,7 @@ export const ShoppingBagList = ({
       ];
 
       setDatas(prev => array);
+      updateItem(array[0].optionData);
     }
   };
 
@@ -145,6 +176,7 @@ export const ShoppingBagList = ({
       ];
 
       setDatas(prev => array);
+      updateItem(array[0].optionData);
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -17,6 +17,7 @@ import {
   ShopBoxTitle,
 } from 'components/UserComp/UserOrders/UserOrders.styled';
 import { BtnBrown } from 'components/UserComp/UserData/UserData.styled';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 let perPage = 12;
 
@@ -29,6 +30,7 @@ export const Favorites = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const id = useSelector(selectId);
   const { t } = useTranslation();
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
 
   const setPage = toPage => {
     searchParams.set('page', toPage);
@@ -52,7 +54,9 @@ export const Favorites = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await getFavorites(`/auth/shop/${id}?${searchParams}`);
+        const { data } = await getFavorites(
+          `/auth/shop/${selectedLanguage}/${id}?${searchParams}`,
+        );
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -73,22 +77,25 @@ export const Favorites = () => {
           <SC.GridWrapper>
             {isLoading ? onLoading() : onLoaded()}
             {error && onFetchError(t('Whoops, something went wrong'))}
-            {products.length > 0 && !error && (
-              <CatalogList products={products} />
+            {products.length > 0 && !error ? (
+              <>
+                <CatalogList products={products} />
+                <Pagination
+                  totalPage={totalPage}
+                  changePage={setPage}
+                  page={page}
+                />
+              </>
+            ) : (
+              <ShopBox>
+                <ShopBoxTitle>
+                  {"You don't have favorite products"}
+                </ShopBoxTitle>
+                <Link to="/shop" style={{ textDecoration: 'none' }}>
+                  <BtnBrown>Shop</BtnBrown>
+                </Link>
+              </ShopBox>
             )}
-
-            <ShopBox>
-              <ShopBoxTitle>{"You don't have favorite products"}</ShopBoxTitle>
-              <Link to='/shop' style={{textDecoration: 'none'}}>
-              <BtnBrown>Shop</BtnBrown>
-              </Link>
-            </ShopBox>
-
-            <Pagination
-              totalPage={totalPage}
-              changePage={setPage}
-              page={page}
-            />
           </SC.GridWrapper>
         </SC.GridContainer>
       </SC.CatalogSection>

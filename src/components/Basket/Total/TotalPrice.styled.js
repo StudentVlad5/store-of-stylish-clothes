@@ -26,10 +26,28 @@ export const PaymentTotal = styled.div`
 
   padding: 15px;
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.60);
+  background-color: rgba(255, 255, 255, 0.6);
 `;
 
-export const PaymentTotalTitle = styled.h4`
+export const PaymentTotalTitle = styled.td`
+  color: ${theme.colors.brown2};
+  font-family: ${theme.fonts[1]};
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  margin-bottom: 11px;
+
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 20px;
+  }
+`;
+export const PaymentTotalTitleH4 = styled.h4`
   color: ${theme.colors.brown2};
   font-family: ${theme.fonts[1]};
   font-size: 13px;

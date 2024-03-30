@@ -116,7 +116,7 @@ export const authSlice = createSlice({
       })
       .addCase(removeFavorite.fulfilled, (state, { payload }) => {
         state.user.favorites = state.user.favorites.filter(
-          _id => +_id !== payload,
+          id => id !== payload,
         );
         state.isLoading = false;
         state.isError = null;

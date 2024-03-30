@@ -31,6 +31,7 @@ export const ListOfRatesItems = () => {
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const [listOfDiscountItems, setListOfDiscountItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async function getData() {

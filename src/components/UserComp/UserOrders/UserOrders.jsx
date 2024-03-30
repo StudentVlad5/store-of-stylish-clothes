@@ -41,6 +41,7 @@ import {
   PaymentTotalListItemDiscr,
   PaymentTotalListItemTitle,
   PaymentTotalTitle,
+  PaymentTotalTitleH4,
   PaymentTotalTitlePrice,
   PaymentTotalTitlePriceDiscr,
 } from 'components/Basket/Total/TotalPrice.styled';
@@ -166,7 +167,7 @@ export const UserOrders = () => {
               <OrderItemList>
                 <OrderListDetails $halfWidth>
                   {order?.basket?.optionData.map(item => (
-                    <OrderItemDetails $width key={item._id}>
+                    <OrderItemDetails $width key={item.article}>
                       <ImgItem
                         src={item?.mainImage}
                         alt="Product image"
@@ -192,16 +193,16 @@ export const UserOrders = () => {
                             <DiscrDataTableLine>
                               <DiscrDataTableHead>Price</DiscrDataTableHead>
                               {/* {item?.discount !== 0 ? ( */}
-                                <DiscrDataTableData>
-                                  <DiscrDataListItemPrice $red>
-                                    {item?.newPrice}
-                                    {item?.currency}
-                                  </DiscrDataListItemPrice>
-                                  <DiscrDataListItemPrice>
-                                    {item?.oldPrice}
-                                    {item?.currency}
-                                  </DiscrDataListItemPrice>
-                                </DiscrDataTableData>
+                              <DiscrDataTableData>
+                                <DiscrDataListItemPrice $red>
+                                  {item?.newPrice}
+                                  {item?.currency}
+                                </DiscrDataListItemPrice>
+                                <DiscrDataListItemPrice>
+                                  {item?.oldPrice}
+                                  {item?.currency}
+                                </DiscrDataListItemPrice>
+                              </DiscrDataTableData>
                               {/* // ) : (
                               //   <DiscrDataTableData>
                               //     <DiscrDataListItemPrice $current>
@@ -225,7 +226,7 @@ export const UserOrders = () => {
                 </OrderListDetails>
                 <PaymentBox>
                   <PaymentTotal>
-                    <PaymentTotalTitle>Total</PaymentTotalTitle>
+                    <PaymentTotalTitleH4>Total</PaymentTotalTitleH4>
                     <table>
                       <PaymentTotalList>
                         <PaymentTotalListItem>
@@ -278,7 +279,7 @@ export const UserOrders = () => {
               </OrderItemList>
               <DeliveryPayBox>
                 <DeliveryBox>
-                  <PaymentTotalTitle>Delivery</PaymentTotalTitle>
+                  <PaymentTotalTitleH4>Delivery</PaymentTotalTitleH4>
                   <div>
                     <p>{order?.deliveryOrder?.delivery}</p>
                     <p> {order?.deliveryOrder?.cityDelivery}</p>
@@ -286,7 +287,7 @@ export const UserOrders = () => {
                   </div>
                 </DeliveryBox>
                 <PayBox>
-                  <PaymentTotalTitle>Payment</PaymentTotalTitle>
+                  <PaymentTotalTitleH4>Payment</PaymentTotalTitleH4>
                   <p>{order?.selectedPaymentOption}</p>
                 </PayBox>
               </DeliveryPayBox>

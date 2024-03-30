@@ -22,7 +22,7 @@ export const CatalogList = ({ products }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(getUser).favorites;
   let favorites;
-  user ? (favorites = user.map(item => +item)) : (favorites = []);
+  user ? (favorites = user.map(item => item)) : (favorites = []);
   const _id = useSelector(selectId); //isLoggedIn
 
   const routeParams = useParams();
@@ -37,11 +37,11 @@ export const CatalogList = ({ products }) => {
       : (isInFavorite = false);
     if (isInFavorite) {
       dispatch(removeFavorite(id));
-      onSuccess('You remove plant from the favorite!');
+      onSuccess('Ups, just remove from the favorite!');
       return;
     }
     dispatch(addFavorite(id));
-    onSuccess('You add plant to the favorite!');
+    onSuccess('Great, just add to the favorite!');
   };
 
   const handleFavoriteBtnClick = id => e => {
@@ -113,7 +113,7 @@ export const CatalogList = ({ products }) => {
                     onClick={handleFavoriteBtnClick(card.article)}
                   >
                     {favorites.includes(card.article) ? (
-                      <SC.IconFav size={30} fill={theme.colors.darkGreen} />
+                      <SC.IconFav size={30} fill={theme.colors.brown4} />
                     ) : (
                       <SC.IconFav size={30} color={theme.colors.beige} />
                     )}

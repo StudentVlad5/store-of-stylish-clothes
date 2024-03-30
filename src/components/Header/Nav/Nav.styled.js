@@ -34,6 +34,7 @@ const NavList = styled(MobileNavList)`
     justify-content: start;
     gap: 40px;
     margin: 0px;
+    padding-right: 20px;
   }
 `;
 

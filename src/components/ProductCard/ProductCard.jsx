@@ -153,9 +153,10 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       ],
     };
     addItem(updateBackEndBasket);
-    // useCheck(
-    //   options.map(it => isChekedArray.push({ title: it, isActive: false })),
-    // );
+    document
+      .querySelectorAll('.checkOptions')
+      .forEach(v => (v.checked = false));
+    useCheck(isChekedArray);
     onSuccess('Added');
   };
 
@@ -176,8 +177,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         it.isActive = false;
       }
     });
-
-    useCheck(prev => isChekedArray);
+    useCheck(isChekedArray);
   };
 
   const getOptionData = e => {
@@ -377,6 +377,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 dangerouslySetInnerHTML={{ __html: description }}
               ></SC.Description>
             </div>
+            {options?.length !== 0 && console.log('check', check)}
             {options?.length !== 0 && (
               <SC.Options>
                 <SC.ProductSubTitle>Option:</SC.ProductSubTitle>
@@ -393,11 +394,12 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                         }
                       >
                         <input
+                          className="checkOptions"
                           type="radio"
                           id={option}
                           name="option"
                           aria-label={option}
-                          disabled={0 == option}
+                          // disabled={0 == option}
                           onChange={e => getOptionData(e)}
                           value={option}
                           defaultChecked={optionData.title === option}

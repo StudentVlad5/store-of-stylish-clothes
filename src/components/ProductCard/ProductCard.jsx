@@ -24,6 +24,7 @@ import {
   selectNewPrice,
   selectOldPrice,
 } from 'services/selectCurrency';
+import uuid4 from 'uuid4';
 
 export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const {
@@ -71,7 +72,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     }));
   }, [selectedCurrency, item[0]]);
 
-  const _id = article;
+  const _id = uuid4();
 
   if (images) {
     imageArray = images.split(',');
@@ -112,6 +113,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     total: 100,
     quantity: 1,
     options: '',
+    _id,
   };
 
   const [userAnonimusID] = useState(
@@ -121,8 +123,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   );
 
   const addToBasketHandler = product => {
-    console.log(product);
-
     const updatedProduct = {
       ...product,
       userAnonimusID,

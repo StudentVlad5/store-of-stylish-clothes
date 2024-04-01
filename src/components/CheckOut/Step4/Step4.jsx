@@ -175,6 +175,7 @@ const Step4 = () => {
       removeItem('selectedPaymentOption');
       dispatch(clearBasket());
       dispatch(addReload(true));
+      data?.pageUrl && window.open(data?.pageUrl);
     } catch (error) {
       setError(error);
     } finally {

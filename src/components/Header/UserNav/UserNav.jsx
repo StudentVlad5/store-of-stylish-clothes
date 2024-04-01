@@ -16,9 +16,7 @@ export const MobileUserNav = ({ toggleMenu }) => {
   let avatar;
   if (userAvatar !== '' && userAvatar !== undefined) {
     avatar =
-      BASE_URL_IMG +
-      'avatars/' +
-      userAvatar.split('/')[userAvatar.split('/').length - 1];
+      BASE_URL_IMG + userAvatar.split('/')[userAvatar.split('/').length - 1];
   }
 
   return (
@@ -35,9 +33,7 @@ export const UserNav = () => {
   let avatar;
   if (userAvatar !== '' && userAvatar !== undefined) {
     avatar =
-      BASE_URL_IMG +
-      'avatars/' +
-      userAvatar.split('/')[userAvatar.split('/').length - 1];
+      BASE_URL_IMG + userAvatar.split('/')[userAvatar.split('/').length - 1];
   }
 
   return (

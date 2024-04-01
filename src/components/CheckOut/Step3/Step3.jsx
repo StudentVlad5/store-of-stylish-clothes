@@ -63,7 +63,7 @@ const Step3 = () => {
           <Visa />
           <DeliveryBlockOptionsLableBox>
             <DeliveryBlockOptionsTitle>
-              Payment by bank card
+              Payment by bank card, Apple Pay, Google Pay
             </DeliveryBlockOptionsTitle>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>

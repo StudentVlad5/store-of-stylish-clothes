@@ -50,9 +50,7 @@ export const UserData = () => {
   let avatar = NotFoundImg;
   if (userAvatar !== '' && userAvatar !== undefined) {
     avatar =
-      BASE_URL_IMG +
-      'avatars/' +
-      userAvatar.split('/')[userAvatar.split('/').length - 1];
+      BASE_URL_IMG + userAvatar.split('/')[userAvatar.split('/').length - 1];
   }
 
   const changeAvatar = e => {

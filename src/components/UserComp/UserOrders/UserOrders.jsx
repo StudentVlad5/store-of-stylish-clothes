@@ -6,7 +6,7 @@ import { selectId } from 'redux/auth/selectors';
 import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import { Pagination } from 'utils/pagination';
-import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+
 import {
   ArrowDown,
   ImgItem,
@@ -141,69 +141,47 @@ export const UserOrders = () => {
                   {order?.basket[0]?.currency}
                 </span>
               </OrderItemDetails>
-              {/* <OrderItemDetails>
-                <ArrowDown
-                  onClick={() => {
-                    toggleVisibility(idx);
-                  }}
-                />
-              </OrderItemDetails> */}
             </OrderItemHeadlineList>
-            {/* {!isShowDetails[idx] && ( */}
-            {/* <OrderListDetails $row>
+            <OrderItemList>
+              <OrderListDetails $halfWidth>
                 {order?.basket?.optionData.map(item => (
-                  <OrderItemDetails key={item?._id}>
+                  <OrderItemDetails $width key={item.article}>
                     <ImgItem
-                      src={BASE_URL_IMG + item?.images[0]}
+                      src={item?.mainImage}
                       alt="Product image"
                       loading="lazy"
                     />
-                  </OrderItemDetails>
-                ))}
-              </OrderListDetails> */}
-            {/* )} */}
-            {/* {isShowDetails[idx] && ( */}
-            <>
-              <OrderItemList>
-                <OrderListDetails $halfWidth>
-                  {order?.basket?.optionData.map(item => (
-                    <OrderItemDetails $width key={item.article}>
-                      <ImgItem
-                        src={item?.mainImage}
-                        alt="Product image"
-                        loading="lazy"
-                      />
-                      <DiscrDataList style={{ width: 'calc(100% - 100px)' }}>
-                        <DiscrDataListItem>
-                          <DiscrDataListItemHeading>
-                            <DiscrDataListItemTitle>
-                              {item?.title_ua}
-                            </DiscrDataListItemTitle>
-                          </DiscrDataListItemHeading>
-                        </DiscrDataListItem>
-                        <table>
-                          <DiscrDataTable style={{ gap: '5px' }}>
-                            <DiscrDataTableLine>
-                              <DiscrDataTableHead>Size</DiscrDataTableHead>
-                              <DiscrDataTableData>
-                                {item?.title}
-                              </DiscrDataTableData>
-                            </DiscrDataTableLine>
+                    <DiscrDataList style={{ width: 'calc(100% - 100px)' }}>
+                      <DiscrDataListItem>
+                        <DiscrDataListItemHeading>
+                          <DiscrDataListItemTitle>
+                            {item?.title_ua}
+                          </DiscrDataListItemTitle>
+                        </DiscrDataListItemHeading>
+                      </DiscrDataListItem>
+                      <table>
+                        <DiscrDataTable style={{ gap: '5px' }}>
+                          <DiscrDataTableLine>
+                            <DiscrDataTableHead>Size</DiscrDataTableHead>
+                            <DiscrDataTableData>
+                              {item?.title}
+                            </DiscrDataTableData>
+                          </DiscrDataTableLine>
 
-                            <DiscrDataTableLine>
-                              <DiscrDataTableHead>Price</DiscrDataTableHead>
-                              {/* {item?.discount !== 0 ? ( */}
-                              <DiscrDataTableData>
-                                <DiscrDataListItemPrice $red>
-                                  {item?.newPrice}
-                                  {item?.currency}
-                                </DiscrDataListItemPrice>
-                                <DiscrDataListItemPrice>
-                                  {item?.oldPrice}
-                                  {item?.currency}
-                                </DiscrDataListItemPrice>
-                              </DiscrDataTableData>
-                              {/* // ) : (
+                          <DiscrDataTableLine>
+                            <DiscrDataTableHead>Price</DiscrDataTableHead>
+                            {/* {item?.discount !== 0 ? ( */}
+                            <DiscrDataTableData>
+                              <DiscrDataListItemPrice $red>
+                                {item?.newPrice}
+                                {item?.currency}
+                              </DiscrDataListItemPrice>
+                              <DiscrDataListItemPrice>
+                                {item?.oldPrice}
+                                {item?.currency}
+                              </DiscrDataListItemPrice>
+                            </DiscrDataTableData>
+                            {/* // ) : (
                               //   <DiscrDataTableData>
                               //     <DiscrDataListItemPrice $current>
                               //       {item?.newPrice}
@@ -211,35 +189,35 @@ export const UserOrders = () => {
                               //     </DiscrDataListItemPrice>
                               //   </DiscrDataTableData>
                               // )} */}
-                            </DiscrDataTableLine>
-                            <DiscrDataTableLine>
-                              <DiscrDataTableHead>Quantity</DiscrDataTableHead>
-                              <DiscrDataTableData>
-                                <span>{item?.quantity}</span>
-                              </DiscrDataTableData>
-                            </DiscrDataTableLine>
-                          </DiscrDataTable>
-                        </table>
-                      </DiscrDataList>
-                    </OrderItemDetails>
-                  ))}
-                </OrderListDetails>
-                <PaymentBox>
-                  <PaymentTotal>
-                    <PaymentTotalTitleH4>Total</PaymentTotalTitleH4>
-                    <table>
-                      <PaymentTotalList>
-                        <PaymentTotalListItem>
-                          <PaymentTotalListItemTitle>
-                            Amount for the product
-                          </PaymentTotalListItemTitle>
-                          <PaymentTotalListItemDiscr>
-                            {order?.currency}
-                            {order?.totalAmount}
-                          </PaymentTotalListItemDiscr>
-                        </PaymentTotalListItem>
+                          </DiscrDataTableLine>
+                          <DiscrDataTableLine>
+                            <DiscrDataTableHead>Quantity</DiscrDataTableHead>
+                            <DiscrDataTableData>
+                              <span>{item?.quantity}</span>
+                            </DiscrDataTableData>
+                          </DiscrDataTableLine>
+                        </DiscrDataTable>
+                      </table>
+                    </DiscrDataList>
+                  </OrderItemDetails>
+                ))}
+              </OrderListDetails>
+              <PaymentBox>
+                <PaymentTotal>
+                  <PaymentTotalTitleH4>Total</PaymentTotalTitleH4>
+                  <table>
+                    <PaymentTotalList>
+                      <PaymentTotalListItem>
+                        <PaymentTotalListItemTitle>
+                          Amount for the product
+                        </PaymentTotalListItemTitle>
+                        <PaymentTotalListItemDiscr>
+                          {order?.currency}
+                          {order?.totalAmount}
+                        </PaymentTotalListItemDiscr>
+                      </PaymentTotalListItem>
 
-                        {/* <PaymentTotalListItem>
+                      {/* <PaymentTotalListItem>
                           <PaymentTotalListItemTitle>
                             Discount amount
                           </PaymentTotalListItemTitle>
@@ -249,50 +227,48 @@ export const UserOrders = () => {
                           </PaymentTotalListItemDiscr>
                         </PaymentTotalListItem> */}
 
-                        <PaymentTotalListItem>
-                          <PaymentTotalListItemTitle>
-                            Delivery
-                          </PaymentTotalListItemTitle>
-                          {order?.totalAmount < 150 ? (
-                            <PaymentTotalListItemDiscr>
-                              {order?.currency}
-                              {150 - order?.totalAmount}
-                            </PaymentTotalListItemDiscr>
-                          ) : (
-                            <PaymentTotalListItemDiscr>
-                              Free
-                            </PaymentTotalListItemDiscr>
-                          )}
-                        </PaymentTotalListItem>
-
-                        <PaymentTotalListItem>
-                          <PaymentTotalTitle>Payment</PaymentTotalTitle>
-                          <PaymentTotalTitle>
+                      <PaymentTotalListItem>
+                        <PaymentTotalListItemTitle>
+                          Delivery
+                        </PaymentTotalListItemTitle>
+                        {order?.totalAmount < 150 ? (
+                          <PaymentTotalListItemDiscr>
                             {order?.currency}
-                            {order?.totalPayment}
-                          </PaymentTotalTitle>
-                        </PaymentTotalListItem>
-                      </PaymentTotalList>
-                    </table>
-                  </PaymentTotal>
-                </PaymentBox>
-              </OrderItemList>
-              <DeliveryPayBox>
-                <DeliveryBox>
-                  <PaymentTotalTitleH4>Delivery</PaymentTotalTitleH4>
-                  <div>
-                    <p>{order?.deliveryOrder?.delivery}</p>
-                    <p> {order?.deliveryOrder?.cityDelivery}</p>
-                    <p>{order?.deliveryOrder?.departmentDelivery}</p>
-                  </div>
-                </DeliveryBox>
-                <PayBox>
-                  <PaymentTotalTitleH4>Payment</PaymentTotalTitleH4>
-                  <p>{order?.selectedPaymentOption}</p>
-                </PayBox>
-              </DeliveryPayBox>
-            </>
-            {/* )} */}
+                            {150 - order?.totalAmount}
+                          </PaymentTotalListItemDiscr>
+                        ) : (
+                          <PaymentTotalListItemDiscr>
+                            Free
+                          </PaymentTotalListItemDiscr>
+                        )}
+                      </PaymentTotalListItem>
+
+                      <PaymentTotalListItem>
+                        <PaymentTotalTitle>Payment</PaymentTotalTitle>
+                        <PaymentTotalTitle>
+                          {order?.currency}
+                          {order?.totalPayment}
+                        </PaymentTotalTitle>
+                      </PaymentTotalListItem>
+                    </PaymentTotalList>
+                  </table>
+                </PaymentTotal>
+              </PaymentBox>
+            </OrderItemList>
+            <DeliveryPayBox>
+              <DeliveryBox>
+                <PaymentTotalTitleH4>Delivery</PaymentTotalTitleH4>
+                <div>
+                  <p>{order?.deliveryOrder?.delivery}</p>
+                  <p> {order?.deliveryOrder?.cityDelivery}</p>
+                  <p>{order?.deliveryOrder?.departmentDelivery}</p>
+                </div>
+              </DeliveryBox>
+              <PayBox>
+                <PaymentTotalTitleH4>Payment</PaymentTotalTitleH4>
+                <p>{order?.selectedPaymentOption}</p>
+              </PayBox>
+            </DeliveryPayBox>
           </OrderItem>
         ))
       ) : (

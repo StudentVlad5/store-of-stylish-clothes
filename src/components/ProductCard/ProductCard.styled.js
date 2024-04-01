@@ -6,6 +6,7 @@ import {
   Subtitle,
 } from 'components/baseStyles/CommonStyle.styled';
 import { Link } from 'react-router-dom';
+import { ReactComponent as arrowDown } from 'images/svg/arrowDownNav.svg';
 
 const ProductCardSection = styled(Section)`
   padding-top: 122px;
@@ -55,7 +56,7 @@ const ProductNavLink = styled(Link)`
   font-weight: ${props => (props.$primary ? 500 : 400)};
   line-height: normal;
   color: ${props =>
-    props.$primary ? theme.colors.green : theme.colors.green1};
+    props.$primary ? theme.colors.brown4 : theme.colors.brown4};
 
   text-decoration: none;
   text-transform: capitalize;
@@ -70,7 +71,8 @@ const ProductNavLink = styled(Link)`
 
   &:hover,
   &:focus {
-    color: ${theme.colors.darkGreen};
+    color: ${theme.colors.brown4};
+    font-weight: 500;
   }
 `;
 
@@ -109,8 +111,8 @@ const ControlsList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-
+  gap: 15px;
+  position: relative;
   width: 30%;
   height: 100%;
   max-height: 700px;
@@ -168,7 +170,8 @@ const ProductImageWrapper = styled.div`
 const ProductImage = styled.img`
   width: 437px;
   height: auto;
-  margin: auto 0;
+  /* margin: auto 0; */
+  margin-top: 50px;
   border-radius: 12px;
 `;
 
@@ -273,7 +276,7 @@ const Name = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: ${theme.colors.green1};
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 20px;
@@ -296,7 +299,7 @@ const Discount = styled.li`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  color: ${theme.colors.green1};
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 20px;
@@ -327,7 +330,7 @@ const Price = styled.li`
 
 const Description = styled(Subtitle)`
   text-transform: lowercase;
-
+  color: ${theme.colors.brown4};
   font-size: 10px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -346,7 +349,7 @@ const Options = styled.div`
 const ProductSubTitle = styled(Subtitle)`
   margin-bottom: ${props => props.marginBottom || '16px'};
   text-transform: uppercase;
-
+  color: ${theme.colors.brown2};
   font-size: 12px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
@@ -376,13 +379,13 @@ const Option = styled.label`
     text-transform: capitalize;
     text-align: center;
 
-    color: ${theme.colors.green1};
+    color: ${theme.colors.brown4};
     background-color: transparent;
 
     border-radius: 10px;
-    border: 0.5px solid ${theme.colors.brown1};
+    border: 0.5px solid ${theme.colors.brown4};
     cursor: pointer;
-    transition: ${theme.transition};
+    transition: ${theme.transition[1]};
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
       font-size: 12px;
@@ -394,9 +397,10 @@ const Option = styled.label`
 
     &:hover,
     &:focus {
-      color: #6f8d4c;
-      background-color: ${theme.colors.green5};
-      border: 1px solid ${theme.colors.green2};
+      transition: ${theme.transition[1]};
+      color: ${theme.colors.fon};
+      background-color: ${theme.colors.brown4};
+      border: 1px solid ${theme.colors.brown4};
     }
   }
 
@@ -408,12 +412,12 @@ const Option = styled.label`
     z-index: -1;
     opacity: 0;
     cursor: pointer;
-    transition: ${theme.transition};
+    transition: ${theme.transition[1]};
 
     &:disabled + span {
-      color: ${theme.colors.brown2};
-      background-color: ${theme.colors.greyOpacity};
-      border: 1px solid ${theme.colors.brown2};
+      color: ${theme.colors.fon};
+      background-color: ${theme.colors.whiteOpacity};
+      border: 1px solid ${theme.colors.brown4};
       cursor: not-allowed;
     }
 
@@ -449,7 +453,7 @@ const Quantity = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 166%; /* 26.56px */
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown4};
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
       font-size: 14px;
@@ -478,8 +482,8 @@ const IconBtn = styled.button`
     cursor: not-allowed;
 
     & > svg > path {
-      stroke: ${theme.colors.brown2};
-      fill: ${theme.colors.brown2};
+      stroke: ${theme.colors.brown4};
+      fill: ${theme.colors.brown4};
     }
   }
 `;
@@ -494,16 +498,12 @@ const TextBtn = styled.button`
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
-
   color: ${theme.colors.fon};
-
-  background-color: ${theme.colors.green};
-
-  border: 1px solid ${theme.colors.green};
-  border-radius: 10px;
-
+  background-color: ${theme.colors.brown4};
+  border: 1px solid ${theme.colors.brown4};
+  border-radius: 12px;
   cursor: pointer;
-  transition: ${theme.transition};
+  transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 12px;
@@ -515,14 +515,15 @@ const TextBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.green2};
-    border: 1px solid ${theme.colors.green2};
+    background-color: transparent;
+    color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 
   &:disabled {
-    color: ${theme.colors.brown1};
-    background-color: ${theme.colors.green4};
-    border: 1px solid ${theme.colors.green4};
+    color: ${theme.colors.fon};
+    background-color: ${theme.colors.brown2};
+    border: 1px solid ${theme.colors.brown2};
     cursor: not-allowed;
   }
 `;
@@ -611,6 +612,28 @@ const AccordIncludedItem = styled.li`
   }
 `;
 
+const BtnProduct = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  &:last-child {
+    position: absolute;
+    bottom: 72px;
+  }
+`;
+
+const BtnArrow = styled(arrowDown)`
+  transform: rotate(-90deg);
+  width: 25px;
+  height: 25px;
+`;
+
+const BtnArrowDown = styled(arrowDown)`
+  transform: rotate(90deg);
+  width: 25px;
+  height: 25px;
+`;
+
 export {
   ProductCardSection,
   ProductCardContainer,
@@ -646,4 +669,7 @@ export {
   AccordCareItem,
   AccordIncludedList,
   AccordIncludedItem,
+  BtnArrow,
+  BtnArrowDown,
+  BtnProduct,
 };

@@ -150,9 +150,9 @@ img {
 .isActive.isImportant.real + input,
 .isActive.isImportant.real + span {
    & span {
-    color: #6f8d4c;
-    background-color: ${theme.colors.green5};
-    border: 1px solid ${theme.colors.green2};
+    color: ${theme.colors.fon};
+    background-color: rgb(119 79 35 / 81%);
+    border: 1px solid ${theme.colors.brown4};
    }
 }
 

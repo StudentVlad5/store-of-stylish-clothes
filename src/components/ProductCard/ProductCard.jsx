@@ -57,13 +57,13 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   let imageArray = [];
 
   useEffect(() => {
-    if (images) {
-      imageArray = images.split(',');
-      imageArray.unshift(mainImage);
-    }
-    slides = imageArray?.length;
-    setIndxSlideImg(0);
-    setSlideImg(imageArray.slice(0, slides));
+    // if (images) {
+    //   imageArray = images.split(',');
+    //   imageArray.unshift(mainImage);
+    // }
+    // slides = imageArray?.length;
+    // setIndxSlideImg(0);
+    // setSlideImg(imageArray.slice(0, slides));
     setOptionData(prev => ({
       ...prev,
       oldPrice: selectOldPrice(selectedCurrency, item[0]),
@@ -74,10 +74,10 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
 
   const _id = uuid4();
 
-  if (images) {
-    imageArray = images.split(',');
-    imageArray.unshift(mainImage);
-  }
+  // if (images) {
+  //   imageArray = images.split(',');
+  //   imageArray.unshift(mainImage);
+  // }
   let options = [];
   if (sizes) {
     options = sizes.split(',');
@@ -203,40 +203,76 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   });
 
   //change images
+  // const [indxImg, setIndxImg] = useState(0);
+
+  // let slides = imageArray?.length;
+  // const [indxSlideImg, setIndxSlideImg] = useState(0);
+  // const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
+
+  // const handleChangeImg = e => {
+  //   const currentIndx = e.target.id;
+  //   setIndxImg(currentIndx);
+  // };
+
+  // const handleScrollImg = e => {
+  //   const type = e.target.dataset.controls;
+  //   switch (type) {
+  //     case 'up':
+  //       setIndxSlideImg(prevState =>
+  //         prevState - slides < 0
+  //           ? imageArray?.length - slides
+  //           : prevState - slides,
+  //       );
+  //       setSlideImg(imageArray.slice(0, slides));
+  //       break;
+  //     case 'down':
+  //       setIndxSlideImg(prevState =>
+  //         prevState + slides >= imageArray?.length ? 0 : prevState + slides,
+  //       );
+  //       setSlideImg(
+  //         imageArray.slice(imageArray?.length - slides, imageArray?.length),
+  //       );
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  useEffect(() => {
+    if (images) {
+      imageArray = images.split(',');
+      imageArray.unshift(mainImage);
+    }
+    setSlideImg(imageArray);
+  }, [images, mainImage]);
+
   const [indxImg, setIndxImg] = useState(0);
+  const [slideImages, setSlideImg] = useState([]);
 
-  let slides = imageArray?.length;
-  const [indxSlideImg, setIndxSlideImg] = useState(0);
-  const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
-
-  const handleChangeImg = e => {
-    const currentIndx = e.target.id;
-    setIndxImg(currentIndx);
+  const handleChangeImg = index => {
+    setIndxImg(index);
   };
 
-  const handleScrollImg = e => {
-    const type = e.target.dataset.controls;
-    switch (type) {
-      case 'up':
-        setIndxSlideImg(prevState =>
-          prevState - slides < 0
-            ? imageArray?.length - slides
-            : prevState - slides,
-        );
-        setSlideImg(imageArray.slice(0, slides));
-        break;
-      case 'down':
-        setIndxSlideImg(prevState =>
-          prevState + slides >= imageArray?.length ? 0 : prevState + slides,
-        );
-        setSlideImg(
-          imageArray.slice(imageArray?.length - slides, imageArray?.length),
-        );
-        break;
-      default:
-        break;
+  const handleScrollImg = direction => {
+    if (direction === 'up') {
+      setIndxImg(prevIdx =>
+        prevIdx === 0 ? slideImages.length - 1 : prevIdx - 1,
+      );
+    } else if (direction === 'down') {
+      setIndxImg(prevIdx =>
+        prevIdx === slideImages.length - 1 ? 0 : prevIdx + 1,
+      );
     }
   };
+
+  useEffect(() => {
+    const startIdx = indxImg;
+    const endIdx =
+      startIdx + 4 >= slideImages.length ? slideImages.length : startIdx + 4;
+    setSlideImagesToShow(slideImages.slice(startIdx, endIdx));
+  }, [indxImg, slideImages]);
+
+  const [slideImagesToShow, setSlideImagesToShow] = useState([]);
 
   // open details for the info section
   const [showCareDetails, setCareShowDetails] = useState(false);
@@ -264,7 +300,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
           </SC.ProductNavList>
         </SC.ProductNav>
         <SC.ProductContent>
-          <SC.ProductGallery>
+          {/* <SC.ProductGallery>
             <SC.ControlsList>
               {images?.length > slides && indxSlideImg !== 0 && (
                 <FiChevronUp
@@ -332,7 +368,78 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 </SC.DeliveryInfoItem>
               </SC.DeliveryInfo>
             </SC.ProductImageWrapper>
+          </SC.ProductGallery> */}
+
+          <SC.ProductGallery>
+            <SC.ControlsList>
+              {slideImages.length > 4 && (
+                <>
+                  <SC.BtnProduct
+                    type="button"
+                    onClick={() => handleScrollImg('up')}
+                  >
+                    <SC.BtnArrow />
+                  </SC.BtnProduct>
+
+                  {slideImagesToShow.map((img, i) => (
+                    <SC.ControlsItem key={i}>
+                      <img
+                        src={img}
+                        alt={`Image ${i}`}
+                        className={i === indxImg % 4 ? 'active' : ''}
+                        onClick={() =>
+                          handleChangeImg(indxImg - (indxImg % 5) + i)
+                        }
+                      />
+                    </SC.ControlsItem>
+                  ))}
+                  <SC.BtnProduct
+                    type="button"
+                    onClick={() => handleScrollImg('down')}
+                  >
+                    <SC.BtnArrowDown />
+                  </SC.BtnProduct>
+                </>
+              )}
+              {slideImages.length <= 4 &&
+                slideImages.map((img, i) => (
+                  <SC.ControlsItem key={i}>
+                    <img
+                      src={img}
+                      alt={`Image ${i}`}
+                      className={i === indxImg ? 'active' : ''}
+                      onClick={() => handleChangeImg(i)}
+                    />
+                  </SC.ControlsItem>
+                ))}
+            </SC.ControlsList>
+            <SC.ProductImageWrapper>
+              <SC.ProductImage
+                width={347}
+                height={600}
+                src={slideImages[indxImg]}
+                alt="Product image"
+                loading="lazy"
+              />
+
+              <SC.DeliveryInfo>
+                <SC.DeliveryInfoItem>
+                  <Car width={32} height={32} />
+                  <span>Free shipping</span>
+                  <p>Get free standard shipping when you spend $150 or more.</p>
+                </SC.DeliveryInfoItem>
+                <SC.DeliveryInfoItem>
+                  <Done width={32} height={32} />
+                  <span>Guarantee</span>
+                  <p>
+                    If your plant dies withing 30 days, we’ll replace it for
+                    free.
+                  </p>
+                </SC.DeliveryInfoItem>
+              </SC.DeliveryInfo>
+            </SC.ProductImageWrapper>
           </SC.ProductGallery>
+
           <SC.ProductInfo>
             <div>
               <SC.Heading>
@@ -556,38 +663,39 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 )}
               </SC.InfoSection>
             ) : (
-              <SC.InfoSection>
-                <SC.Accord>
-                  <SC.ProductSubTitle marginBottom="0">
-                    Design
-                  </SC.ProductSubTitle>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open description"
-                    aria-expanded="false"
-                    onClick={toggleCareDetails}
-                  >
-                    {showCareDetails ? (
-                      <Open style={{ transform: 'rotate(180deg)' }} />
-                    ) : (
-                      <Open />
-                    )}
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showCareDetails && (
-                  <SC.AccordCareList>
-                    <SC.AccordCareItem>
-                      <span>
-                        The gold standard of gifting, a Homeforest gift card is
-                        a sure-fire way to make someone feel special, not to
-                        mention stylish. Just choose any amount up to $200, send
-                        by mail, and the recipient can redeem it for whatever he
-                        or she wishes.
-                      </span>
-                    </SC.AccordCareItem>
-                  </SC.AccordCareList>
-                )}
-              </SC.InfoSection>
+              // <SC.InfoSection>
+              //   <SC.Accord>
+              //     <SC.ProductSubTitle marginBottom="0">
+              //       Design
+              //     </SC.ProductSubTitle>
+              //     <SC.IconBtn
+              //       type="button"
+              //       aria-label="switch to open description"
+              //       aria-expanded="false"
+              //       onClick={toggleCareDetails}
+              //     >
+              //       {showCareDetails ? (
+              //         <Open style={{ transform: 'rotate(180deg)' }} />
+              //       ) : (
+              //         <Open />
+              //       )}
+              //     </SC.IconBtn>
+              //   </SC.Accord>
+              //   {showCareDetails && (
+              //     <SC.AccordCareList>
+              //       <SC.AccordCareItem>
+              //         <span>
+              //           The gold standard of gifting, a Homeforest gift card is
+              //           a sure-fire way to make someone feel special, not to
+              //           mention stylish. Just choose any amount up to $200, send
+              //           by mail, and the recipient can redeem it for whatever he
+              //           or she wishes.
+              //         </span>
+              //       </SC.AccordCareItem>
+              //     </SC.AccordCareList>
+              //   )}
+              // </SC.InfoSection>
+              <></>
             )}
             <SC.InfoSection>
               <SC.Accord>

@@ -31,6 +31,7 @@ export const TotalPrice = basket => {
       return payment + item.oldPrice * item.quantity;
     }, 0)
     .toFixed(2);
+  const totalDiscount = totalAmount - totalPayment;
   // const totalDiscount = basket.contextBasket
   //   .reduce((payment, item) => {
   //     return payment + item.discount * item.quantity;
@@ -50,31 +51,16 @@ export const TotalPrice = basket => {
                 Amount for the product
               </PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
-                {totalAmount}
+                <b>{totalAmount}</b>
                 {currency}
               </PaymentTotalListItemDiscr>
             </PaymentTotalListItem>
-
-            {/* <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>
-                Discount amount
-              </PaymentTotalListItemTitle>
-              <PaymentTotalListItemDiscr>
-                {currency}
-                {totalDiscount}
-              </PaymentTotalListItemDiscr>
-            </PaymentTotalListItem> */}
-
             <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>Delivery</PaymentTotalListItemTitle>
-              {/* {totalPayment < 150 ? (
-                <PaymentTotalListItemDiscr>
-                  {currency}
-                  {150 - totalPayment}
-                </PaymentTotalListItemDiscr>
-              ) : ( */}
-                <PaymentTotalListItemDiscr>13</PaymentTotalListItemDiscr>
-              {/* )} */}
+              <PaymentTotalListItemTitle>Discount</PaymentTotalListItemTitle>
+              <PaymentTotalListItemDiscr>
+                <b>{totalDiscount}</b>
+                {currency}
+              </PaymentTotalListItemDiscr>
             </PaymentTotalListItem>
 
             <PaymentTotalListItem>
@@ -83,6 +69,40 @@ export const TotalPrice = basket => {
                 {totalPayment}
                 {currency}
               </PaymentTotalTitle>
+            </PaymentTotalListItem>
+
+            <PaymentTotalListItem>
+              <PaymentTotalListItemTitle>
+                Delivery in Ukraine
+              </PaymentTotalListItemTitle>
+              {currency === '₴' && (
+                <PaymentTotalListItemDiscr>
+                  - from <b>60</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+              {currency !== '₴' && (
+                <PaymentTotalListItemDiscr>
+                  - from <b>2</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+            </PaymentTotalListItem>
+
+            <PaymentTotalListItem>
+              <PaymentTotalListItemTitle>
+                Shipping to other countries
+              </PaymentTotalListItemTitle>
+              {currency === '₴' && (
+                <PaymentTotalListItemDiscr>
+                  {' '}
+                  from <b>1000</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+              {currency !== '₴' && (
+                <PaymentTotalListItemDiscr>
+                  {' '}
+                  from <b>25</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
             </PaymentTotalListItem>
           </PaymentTotalList>
         </table>
@@ -96,18 +116,18 @@ export const TotalPrice = basket => {
           checkout
         </PaymentBtn>
       )}
-      {/* {!confirm && (
+      {!confirm && (
         <DeliverBox>
           <DeliverBoxItem>
             <ShippingFast />
-            Get free standart shipping when you spend $150 or more.
+            The delivery time in Ukraine is from 4-5 days
           </DeliverBoxItem>
           <DeliverBoxItem>
             <Done />
-            If your plant dies withing 30 days, we’ll replace it for free.
+            the delivery time in Europe is from 14 days
           </DeliverBoxItem>
         </DeliverBox>
-      )} */}
+      )}
     </PaymentBox>
   );
 };

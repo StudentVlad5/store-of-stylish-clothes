@@ -28,6 +28,9 @@ const Step1 = () => {
   }, []);
   const { userIn } = useAuth();
 
+  const [selectedCountry, setSelectedCountry] = useState(
+    getFromStorage('selectedCountry') ? getFromStorage('selectedCountry') : '',
+  );
   const [selectedCity, setSelectedCity] = useState(
     getFromStorage('selectedCity') ? getFromStorage('selectedCity') : '',
   );
@@ -95,6 +98,7 @@ const Step1 = () => {
   ]);
 
   const nextStep = () => {
+    saveToStorage('selectedCountry', selectedCountry);
     saveToStorage('selectedCity', selectedCity);
     saveToStorage('selectedCity_UP', selectedCity_UP);
     saveToStorage('selectedCity_UP_NAME', selectedCity_UP_NAME);
@@ -115,93 +119,139 @@ const Step1 = () => {
     }
   }, [userIn.delivery]);
 
+  const handleSelectCountry = e => {
+    e.preventDefault;
+    saveToStorage('selectedCountry', e.target.value);
+    setSelectedCountry(e.target.value);
+  };
+
   return (
     <DeliveryBlockOptions>
       <DeliveryBlockOptionsBoxLable>
         <DeliveryBlockOptionsLable>
           <DeliveryBlockOptionsInput
             type="radio"
-            name="delivery"
-            checked={selectedDeliveryOption === 'NovaPoshta'}
-            onChange={() => handleOptionClick(0)}
+            name="country"
+            value="Ukraine"
+            checked={selectedCountry === 'Ukraine'}
+            onChange={e => handleSelectCountry(e)}
           />
-          <NovaPoshtaIcon />
-
           <DeliveryBlockOptionsLableBox>
-            <DeliveryBlockOptionsTitle>NovaPoshta</DeliveryBlockOptionsTitle>
+            <DeliveryBlockOptionsTitle>Ukraine</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              Cash upon delivery, card payment Visa, Master Card
+              delivery within the borders of Ukraine
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
-
-        {selectedDeliveryOption === 'NovaPoshta' && (
-          <BoxPost style={{ width: '100%' }}>
-            <PoshtaBoxTitle>Select point office </PoshtaBoxTitle>
-
-            <PoshtaBox>
-              <NovaPoshta
-                setSelectedCity={setSelectedCity}
-                setSelectedDepartment={setSelectedDepartment}
-              />
-            </PoshtaBox>
-          </BoxPost>
-        )}
-      </DeliveryBlockOptionsBoxLable>
-
-      <DeliveryBlockOptionsBoxLable>
         <DeliveryBlockOptionsLable>
           <DeliveryBlockOptionsInput
             type="radio"
-            name="delivery"
-            checked={selectedDeliveryOption === 'UkrPoshta'}
-            onChange={() => handleOptionClick(1)}
+            name="country"
+            checked={selectedCountry === 'other'}
+            value="other"
+            onChange={e => handleSelectCountry(e)}
           />
-          <UkrPoshtaIcon />
-
           <DeliveryBlockOptionsLableBox>
-            <DeliveryBlockOptionsTitle>UkrPoshta</DeliveryBlockOptionsTitle>
+            <DeliveryBlockOptionsTitle>Other country</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              Cash upon delivery, card payment Visa, Master Card
+              delivery to the countries of Europe, Asia, the USA, etc
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
-
-        {selectedDeliveryOption === 'UkrPoshta' && (
-          <BoxPost>
-            <PoshtaBoxTitle>Select point office </PoshtaBoxTitle>
-
-            <PoshtaBox>
-              <UkrPoshta
-                setSelectedCity={setSelectedCity_UP}
-                setSelectedDepartment={setSelectedDepartment_UP}
-                setSelectedCity_UP_NAME={setSelectedCity_UP_NAME}
-                selectedCity_UP_NAME={selectedCity_UP_NAME}
-              />
-            </PoshtaBox>
-          </BoxPost>
-        )}
       </DeliveryBlockOptionsBoxLable>
+      {selectedCountry === 'Ukraine' && (
+        <DeliveryBlockOptionsBoxLable>
+          <DeliveryBlockOptionsLable style={{ marginLeft: '40px' }}>
+            <DeliveryBlockOptionsInput
+              type="radio"
+              name="delivery"
+              checked={selectedDeliveryOption === 'NovaPoshta'}
+              onChange={() => handleOptionClick(0)}
+            />
+            <NovaPoshtaIcon />
 
-      <DeliveryBlockOptionsBoxLableLast>
-        <DeliveryBlockOptionsLable>
-          <DeliveryBlockOptionsInput
-            type="radio"
-            name="delivery"
-            checked={selectedDeliveryOption === 'Courier delivery'}
-            onChange={() => handleOptionClick(2)}
-          />
-          <img style={{ width: 55 }} src={curier} alt="Courier delivery" />
-          <DeliveryBlockOptionsLableBox>
-            <DeliveryBlockOptionsTitle>
-              Courier delivery
-            </DeliveryBlockOptionsTitle>
-            <DeliveryBlockOptionsTitleDiscr>
-              Cash upon delivery, card payment Visa, Master Card
-            </DeliveryBlockOptionsTitleDiscr>
-          </DeliveryBlockOptionsLableBox>
-        </DeliveryBlockOptionsLable>
-      </DeliveryBlockOptionsBoxLableLast>
+            <DeliveryBlockOptionsLableBox>
+              <DeliveryBlockOptionsTitle>NovaPoshta</DeliveryBlockOptionsTitle>
+              <DeliveryBlockOptionsTitleDiscr>
+                Cash upon delivery, card payment Visa, Master Card
+              </DeliveryBlockOptionsTitleDiscr>
+            </DeliveryBlockOptionsLableBox>
+          </DeliveryBlockOptionsLable>
+
+          {selectedDeliveryOption === 'NovaPoshta' && (
+            <BoxPost style={{ width: '100%' }}>
+              <PoshtaBoxTitle>
+                Select point office (In ukrainian)
+              </PoshtaBoxTitle>
+
+              <PoshtaBox>
+                <NovaPoshta
+                  setSelectedCity={setSelectedCity}
+                  setSelectedDepartment={setSelectedDepartment}
+                />
+              </PoshtaBox>
+            </BoxPost>
+          )}
+        </DeliveryBlockOptionsBoxLable>
+      )}
+      {selectedCountry === 'Ukraine' && (
+        <DeliveryBlockOptionsBoxLable>
+          <DeliveryBlockOptionsLable style={{ marginLeft: '40px' }}>
+            <DeliveryBlockOptionsInput
+              type="radio"
+              name="delivery"
+              checked={selectedDeliveryOption === 'UkrPoshta'}
+              onChange={() => handleOptionClick(1)}
+            />
+            <UkrPoshtaIcon />
+
+            <DeliveryBlockOptionsLableBox>
+              <DeliveryBlockOptionsTitle>UkrPoshta</DeliveryBlockOptionsTitle>
+              <DeliveryBlockOptionsTitleDiscr>
+                Cash upon delivery, card payment Visa, Master Card
+              </DeliveryBlockOptionsTitleDiscr>
+            </DeliveryBlockOptionsLableBox>
+          </DeliveryBlockOptionsLable>
+
+          {selectedDeliveryOption === 'UkrPoshta' && (
+            <BoxPost>
+              <PoshtaBoxTitle>
+                Select point office (in ukrainian)
+              </PoshtaBoxTitle>
+
+              <PoshtaBox>
+                <UkrPoshta
+                  setSelectedCity={setSelectedCity_UP}
+                  setSelectedDepartment={setSelectedDepartment_UP}
+                  setSelectedCity_UP_NAME={setSelectedCity_UP_NAME}
+                  selectedCity_UP_NAME={selectedCity_UP_NAME}
+                />
+              </PoshtaBox>
+            </BoxPost>
+          )}
+        </DeliveryBlockOptionsBoxLable>
+      )}
+      {selectedCountry && (
+        <DeliveryBlockOptionsBoxLableLast>
+          <DeliveryBlockOptionsLable style={{ marginLeft: '40px' }}>
+            <DeliveryBlockOptionsInput
+              type="radio"
+              name="delivery"
+              checked={selectedDeliveryOption === 'Courier delivery'}
+              onChange={() => handleOptionClick(2)}
+            />
+            <img style={{ width: 55 }} src={curier} alt="Courier delivery" />
+            <DeliveryBlockOptionsLableBox>
+              <DeliveryBlockOptionsTitle>
+                Courier delivery
+              </DeliveryBlockOptionsTitle>
+              <DeliveryBlockOptionsTitleDiscr>
+                Cash upon delivery, card payment Visa, Master Card
+              </DeliveryBlockOptionsTitleDiscr>
+            </DeliveryBlockOptionsLableBox>
+          </DeliveryBlockOptionsLable>
+        </DeliveryBlockOptionsBoxLableLast>
+      )}
       <CheckoutBtn disabled={isDisabled} type="button" onClick={nextStep}>
         Next
       </CheckoutBtn>

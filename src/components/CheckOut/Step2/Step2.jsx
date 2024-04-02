@@ -213,7 +213,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  City {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -253,7 +253,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  State{' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -309,162 +309,22 @@ const Step2 = () => {
                   // placeholder="george.washington@gmail.com"
                 />
               </DeliveryFormLable>
-              <Btnwrapper>
-                <Link to={`/checkout/step1`}>
-                  <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
-                </Link>
-                <DeliveryFormBtnFinish
-                  type="button"
-                  onClick={nextStep}
-                  disabled={isDisabled}
-                >
-                  Next
-                </DeliveryFormBtnFinish>
-              </Btnwrapper>
             </DeliveryForm>
           )}
+          <Btnwrapper>
+            <Link to={`/checkout/step1`}>
+              <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
+            </Link>
+            <DeliveryFormBtnFinish
+              type="button"
+              onClick={nextStep}
+              disabled={isDisabled}
+            >
+              Next
+            </DeliveryFormBtnFinish>
+          </Btnwrapper>
         </>
       ) : (
-        // <DeliveryForm>
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       First name
-        //       <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="name"
-        //       name="name"
-        //       value={formData.name}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Last name <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="surname"
-        //       name="surname"
-        //       value={formData.surname}
-        //       required
-        //       // placeholder="Washington"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>Company</DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="company"
-        //       value={formData.company}
-        //       name="company"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="city"
-        //       name="city"
-        //       value={formData.city}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Address 1<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="address1"
-        //       value={formData.address1}
-        //       name="address1"
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>Address 2</DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="address2"
-        //       name="address2"
-        //       value={formData.address2}
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="state"
-        //       name="state"
-        //       value={formData.state}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Zip code <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="zipCode"
-        //       name="zipCode"
-        //       value={formData.zipCode}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="tel"
-        //       id="phone"
-        //       name="phone"
-        //       value={formData.phone}
-        //       required
-        //       // placeholder="+123456789"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="email"
-        //       id="email"
-        //       name="email"
-        //       value={formData.email}
-        //       required
-        //       // placeholder="george.washington@gmail.com"
-        //     />
-        //   </DeliveryFormLable>
-        // </DeliveryForm>
-
         <Formik
           initialValues={formData}
           onSubmit={(values, { setSubmitting }) => {
@@ -491,7 +351,7 @@ const Step2 = () => {
             >
               <DeliveryFormLable htmlFor="userName">
                 <ProfileName>
-                  First name {' '}
+                  First name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -508,7 +368,7 @@ const Step2 = () => {
               </DeliveryFormLable>
               <ProfileLabel htmlFor="surname">
                 <ProfileName>
-                  Last name  {' '}
+                  Last name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -566,7 +426,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="city">
                 <ProfileName>
-                  City {' '} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -581,7 +441,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="state">
                 <ProfileName>
-                  State  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -612,7 +472,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="phone">
                 <ProfileName>
-                  Phone  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="tel"
@@ -627,7 +487,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="email">
                 <ProfileName>
-                  Email  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="email"

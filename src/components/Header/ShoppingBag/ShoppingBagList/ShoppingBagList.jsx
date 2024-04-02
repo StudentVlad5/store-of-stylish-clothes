@@ -280,7 +280,7 @@ export const ShoppingBagList = ({
   ) : (
     <>
       <OrderItem>
-        {images && (
+        {mainImage && (
           <Link to={`${window.location.origin}/shop/byid/${article}`}>
             <ShoppingBagImg
               // src={BASE_URL_IMG + images[0]}

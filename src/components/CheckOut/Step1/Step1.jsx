@@ -139,7 +139,7 @@ const Step1 = () => {
           <DeliveryBlockOptionsLableBox>
             <DeliveryBlockOptionsTitle>Ukraine</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              delivery within the borders of Ukraine
+              Delivery in Ukraine
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
@@ -154,7 +154,7 @@ const Step1 = () => {
           <DeliveryBlockOptionsLableBox>
             <DeliveryBlockOptionsTitle>Other country</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              delivery to the countries of Europe, Asia, the USA, etc
+              Delivery to the countries of Europe, Asia, the USA, etc
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>

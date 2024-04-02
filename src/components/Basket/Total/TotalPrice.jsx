@@ -31,7 +31,7 @@ export const TotalPrice = basket => {
       return payment + item.oldPrice * item.quantity;
     }, 0)
     .toFixed(2);
-  const totalDiscount = totalAmount - totalPayment;
+  const totalDiscount = (totalAmount - totalPayment).toFixed(2);
   // const totalDiscount = basket.contextBasket
   //   .reduce((payment, item) => {
   //     return payment + item.discount * item.quantity;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
@@ -41,6 +41,7 @@ import {
 import { ReactComponent as Minus } from 'images/svg/minus.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
 import { addToBasket } from 'redux/basket/operations';
+import { Link } from 'react-router-dom';
 
 export const ShoppingBagList = ({
   optionData,
@@ -182,15 +183,19 @@ export const ShoppingBagList = ({
 
   return statusBasket ? (
     <BasketCompItem>
-      <BasketCompImg
-        // src={BASE_URL_IMG + images[0]}
-        src={mainImage}
-        width={107}
-        height={140}
-        alt="Image"
-        loading="lazy"
-      />
-
+      <Link
+        to={`${window.location.origin}/shop/byid/${article}`}
+        target="_blank"
+      >
+        <BasketCompImg
+          // src={BASE_URL_IMG + images[0]}
+          src={mainImage}
+          width={107}
+          height={140}
+          alt="Image"
+          loading="lazy"
+        />
+      </Link>
       <BoxForDiscrData>
         <DiscrDataList>
           <DiscrDataListItem>
@@ -276,12 +281,14 @@ export const ShoppingBagList = ({
     <>
       <OrderItem>
         {images && (
-          <ShoppingBagImg
-            // src={BASE_URL_IMG + images[0]}
-            src={mainImage}
-            alt="Image"
-            loading="lazy"
-          />
+          <Link to={`${window.location.origin}/shop/byid/${article}`}>
+            <ShoppingBagImg
+              // src={BASE_URL_IMG + images[0]}
+              src={mainImage}
+              alt="Image"
+              loading="lazy"
+            />
+          </Link>
         )}
         <DiscrBoxDiv>
           <DiscrBox>

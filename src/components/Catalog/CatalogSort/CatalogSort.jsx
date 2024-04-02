@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getFromStorage, saveToStorage } from 'services/localStorService';
 import * as SC from './CatalogSort.styled';
+import { useTranslation } from 'react-i18next';
 
 export const CatalogSort = ({ sort, setSort }) => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export const CatalogSort = ({ sort, setSort }) => {
             handleClick(e.target.value);
           }}
         />
-        <label htmlFor="minMaxPrice">Lowest Price</label>
+        <label htmlFor="minMaxPrice">{t("Lowest Price")}</label>
       </SC.SortItem>
       <SC.SortItem>
         <input
@@ -74,7 +76,7 @@ export const CatalogSort = ({ sort, setSort }) => {
             handleClick(e.target.value);
           }}
         />
-        <label htmlFor="maxMinPrice">Highest Price</label>
+        <label htmlFor="maxMinPrice">{t("Highest Price")}</label>
       </SC.SortItem>
       {/* <SC.SortItem>
         <input

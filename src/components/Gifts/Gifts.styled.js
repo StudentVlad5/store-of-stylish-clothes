@@ -8,6 +8,14 @@ import {
 } from 'components/baseStyles/CommonStyle.styled';
 
 const GiftsSection = styled(Section)`
+  margin-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    margin-top: 70px;
+    padding-bottom: 70px;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -94,11 +102,12 @@ const LinkBtn = styled(NavLink)`
 
   color: ${theme.colors.fon};
 
-  background-color: ${theme.colors.green};
+  background-color: transparent;
 
-  border: 0.5px solid ${theme.colors.green};
-  border-radius: 5px;
+  border: 0.5px solid ${theme.colors.brown4};
+  border-radius: 12px;
 
+  transition: ${theme.transition[1]};
   cursor: pointer;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -108,8 +117,9 @@ const LinkBtn = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.green2};
-    border: 0.5px solid ${theme.colors.green2};
+    background-color: ${theme.colors.brown4};
+    border: 0.5px solid ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 
   &:disabled {

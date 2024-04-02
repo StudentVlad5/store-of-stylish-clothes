@@ -18,7 +18,7 @@ export const GiftsHeading = () => {
   return (
     <SC.HeadingSection>
       <SC.ImageContainer>
-        <picture>
+        {/* <picture>
           <source
             media="(min-width:1440px)"
             srcSet={`${mainImage_webp} 1x, ${mainImage_webp_2x} 2x`}
@@ -38,7 +38,8 @@ export const GiftsHeading = () => {
             alt="Plants"
             loading="lazy"
           />
-        </picture>
+        </picture> */}
+        <img src={mainImage_webp_2x} width={1280} height={400} alt="" />
         <SC.Background>
           <Title>Gifts</Title>
           <LinkBtn to={`/shop/plants?page=1&perPage=12`}>Shop now</LinkBtn>

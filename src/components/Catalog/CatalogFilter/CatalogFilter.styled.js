@@ -49,11 +49,11 @@ const FilterBtn = styled.button`
   line-height: normal;
   text-transform: uppercase;
 
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown4};
 
   background-color: transparent;
 
-  border: 0.5px solid ${theme.colors.brown1};
+  border: 0.5px solid ${theme.colors.brown4};
   border-radius: 10px;
 
   cursor: pointer;
@@ -65,9 +65,9 @@ const FilterBtn = styled.button`
 
   &:hover,
   &:focus {
-    color: #6f8d4c;
-    background-color: ${theme.colors.green5};
-    border: 1px solid ${theme.colors.green2};
+    color: ${theme.colors.fon};
+    background-color: ${theme.colors.brown4};
+    border: 1px solid ${theme.colors.brown4};
   }
 
   &:disabled {
@@ -112,6 +112,12 @@ const FilterHeading = styled.div`
   }
 
   & span {
+    color: ${theme.colors.brown2};
+    font-size: 14px;
+    font-style: normal;
+    font-family: ${theme.fonts[0]};
+    font-weight: 400;
+    line-height: normal;
     text-transform: uppercase;
   }
 `;
@@ -135,7 +141,7 @@ const FilterInnerList = styled.div`
       display: inline-flex;
       align-items: center;
       user-select: none;
-
+      color: ${theme.colors.brown4};
       &::before {
         content: '';
         display: inline-block;
@@ -146,7 +152,7 @@ const FilterInnerList = styled.div`
         height: 12px;
         margin-right: 4px;
 
-        border: 1px solid ${theme.colors.brown2};
+        border: 1px solid ${theme.colors.brown4};
         border-radius: 0.25em;
       }
     }
@@ -172,11 +178,11 @@ const FilterInnerListItem = styled.input`
     font-weight: 300;
 
     background-color: transparent;
-    border: 0.5px solid ${theme.colors.brown2};
+    border: 0.5px solid ${theme.colors.brown4};
 
     &:focus-visible,
     &:focus-within {
-      outline-color: ${theme.colors.brown2};
+      outline-color: ${theme.colors.brown4};
     }
   }
 
@@ -192,7 +198,7 @@ const FilterInnerListItem = styled.input`
 
     &::-webkit-slider-runnable-track {
       height: 3px;
-      background: ${theme.colors.green5};
+      background: ${theme.colors.brown4};
     }
 
     &::-webkit-slider-thumb {
@@ -200,8 +206,8 @@ const FilterInnerListItem = styled.input`
       height: 10px;
       width: 10px;
       margin-top: -7px;
-      border: 1px solid ${theme.colors.green};
-      color: ${theme.colors.green};
+      border: 1px solid ${theme.colors.brown4};
+      color: ${theme.colors.brown4};
       border-radius: 20px;
       z-index: 1;
     }
@@ -215,6 +221,7 @@ const RangeWrapper = styled.div`
   & label {
     display: flex;
     align-items: center;
+    color: ${theme.colors.brown4};
   }
 `;
 

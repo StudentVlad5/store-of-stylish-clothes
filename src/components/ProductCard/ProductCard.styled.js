@@ -203,7 +203,7 @@ const DeliveryInfoItem = styled.li`
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown4};
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
       font-size: 12px;

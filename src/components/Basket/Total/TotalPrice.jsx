@@ -17,8 +17,10 @@ import {
   PaymentTotalTitlePriceDiscr,
   ShippingFast,
 } from './TotalPrice.styled';
+import { useTranslation } from 'react-i18next';
 
 export const TotalPrice = basket => {
+  const { t } = useTranslation();
   const { confirm, handleAddOrder } = basket;
 
   const totalPayment = basket.contextBasket
@@ -42,12 +44,12 @@ export const TotalPrice = basket => {
   return (
     <PaymentBox>
       <PaymentTotal>
-        <PaymentTotalTitle>Total</PaymentTotalTitle>
+        <PaymentTotalTitle>{t("Total")}</PaymentTotalTitle>
         <table>
           <PaymentTotalList>
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                Amount for the product
+                {t("Amount for the product")}
               </PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
                 {totalAmount}
@@ -66,7 +68,7 @@ export const TotalPrice = basket => {
             </PaymentTotalListItem> */}
 
             <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>Delivery</PaymentTotalListItemTitle>
+              <PaymentTotalListItemTitle>{t("Delivery")}</PaymentTotalListItemTitle>
               {/* {totalPayment < 150 ? (
                 <PaymentTotalListItemDiscr>
                   {currency}
@@ -78,7 +80,7 @@ export const TotalPrice = basket => {
             </PaymentTotalListItem>
 
             <PaymentTotalListItem>
-              <PaymentTotalTitle>Payment</PaymentTotalTitle>
+              <PaymentTotalTitle>{t("Payment")}</PaymentTotalTitle>
               <PaymentTotalTitle>
                 {totalPayment}
                 {currency}
@@ -89,11 +91,11 @@ export const TotalPrice = basket => {
       </PaymentTotal>
       {confirm ? (
         <PaymentBtn onClick={handleAddOrder} id="paymentBtn">
-          confirm
+          {t("confirm")}
         </PaymentBtn>
       ) : (
         <PaymentBtn to={`/checkout/step1`} id="paymentBtn">
-          checkout
+          {t("checkout")}
         </PaymentBtn>
       )}
       {/* {!confirm && (

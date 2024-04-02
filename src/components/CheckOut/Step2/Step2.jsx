@@ -29,8 +29,10 @@ import {
   ProfileName,
 } from 'components/UserComp/Profile/Profile.styled';
 import schemas from 'utils/schemas';
+import { useTranslation } from 'react-i18next';
 
 const Step2 = () => {
+  const { t } = useTranslation();
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
 
@@ -171,7 +173,7 @@ const Step2 = () => {
             <DeliveryForm>
               <DeliveryFormLable>
                 <ProfileName>
-                  First name{' '}
+                  {t("First name")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -186,7 +188,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  Last name{' '}
+                  {t("Last name")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -201,7 +203,7 @@ const Step2 = () => {
               </DeliveryFormLable>
 
               <DeliveryFormLable>
-                <ProfileName>Company</ProfileName>
+                <ProfileName>{t("Company")}</ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
                   type="text"
@@ -213,7 +215,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  City {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("City")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -227,7 +229,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  Address 1{' '}
+                  {t("Address")} 1{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -241,7 +243,7 @@ const Step2 = () => {
               </DeliveryFormLable>
 
               <DeliveryFormLable>
-                <ProfileName>Address 2</ProfileName>
+                <ProfileName>{t("Address")} 2</ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
                   type="text"
@@ -253,7 +255,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  State{' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("State")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -267,7 +269,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  Zip code{' '}
+                  {t("Zip code")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -282,7 +284,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("Phone")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -297,7 +299,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("Email")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -311,14 +313,14 @@ const Step2 = () => {
               </DeliveryFormLable>
               <Btnwrapper>
                 <Link to={`/checkout/step1`}>
-                  <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
+                  <DeliveryFormBtn type="button">{t("Back")}</DeliveryFormBtn>
                 </Link>
                 <DeliveryFormBtnFinish
                   type="button"
                   onClick={nextStep}
                   disabled={isDisabled}
                 >
-                  Next
+                  {t("Next")}
                 </DeliveryFormBtnFinish>
               </Btnwrapper>
             </DeliveryForm>
@@ -491,7 +493,7 @@ const Step2 = () => {
             >
               <DeliveryFormLable htmlFor="userName">
                 <ProfileName>
-                  First name {' '}
+                  {t("First name")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -508,7 +510,7 @@ const Step2 = () => {
               </DeliveryFormLable>
               <ProfileLabel htmlFor="surname">
                 <ProfileName>
-                  Last name  {' '}
+                  {t("Last name")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -523,7 +525,7 @@ const Step2 = () => {
                 ) : null}
               </ProfileLabel>
               <ProfileLabel htmlFor="company">
-                <ProfileName>Company</ProfileName>
+                <ProfileName>{t("Company")}</ProfileName>
                 <ProfileInput
                   type="company"
                   name="company"
@@ -537,7 +539,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="address1">
                 <ProfileName>
-                  Address 1{' '}
+                  {t({Address})} 1{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -552,7 +554,7 @@ const Step2 = () => {
                 ) : null}
               </ProfileLabel>
               <ProfileLabel htmlFor="address2">
-                <ProfileName>Address 2</ProfileName>
+                <ProfileName>{t("Address")} 2</ProfileName>
                 <ProfileInput
                   type="address2"
                   name="address2"
@@ -566,7 +568,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="city">
                 <ProfileName>
-                  City {' '} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("City")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -581,7 +583,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="state">
                 <ProfileName>
-                  State  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("State")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -596,7 +598,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="zipCode">
                 <ProfileName>
-                  Zip code{' '}
+                  {t("Zip code")}{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -612,7 +614,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="phone">
                 <ProfileName>
-                  Phone  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("Phone")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="tel"
@@ -627,7 +629,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="email">
                 <ProfileName>
-                  Email  {' '}<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  {t("Email")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="email"
@@ -643,7 +645,7 @@ const Step2 = () => {
 
               <Btnwrapper>
                 <Link to={`/checkout/step1`}>
-                  <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
+                  <DeliveryFormBtn type="button">{t("Back")}</DeliveryFormBtn>
                 </Link>
                 <DeliveryFormBtnFinish
                   type="button"
@@ -653,7 +655,7 @@ const Step2 = () => {
                   // disabled={isSubmitting}
                   aria-label="Submit"
                 >
-                  Next
+                  {t("Next")}
                 </DeliveryFormBtnFinish>
               </Btnwrapper>
             </ProfileList>

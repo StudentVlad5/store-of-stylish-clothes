@@ -34,8 +34,10 @@ import curier from 'images/delivery/pngegg.png';
 import mastercard from 'images/svg/mastercard.svg';
 import visa from 'images/svg/visa.svg';
 import wallet from 'images/svg/wallet.svg';
+import { useTranslation } from 'react-i18next';
 
 const Step4 = () => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -203,7 +205,7 @@ const Step4 = () => {
       <DataContainerItem>
         {/* Delivery */}
         <DataContainerItems>
-          <DataTitle>Selected delivery</DataTitle>
+          <DataTitle>{t('Selected delivery')}</DataTitle>
           <DataContainerTextBox $row>
             {delivery === 'NovaPoshta' && (
               <img style={{ width: 30 }} src={novaPoshta} alt="NovaPoshta" />
@@ -237,7 +239,7 @@ const Step4 = () => {
 
         {/* Reciver */}
         <DataContainerItems>
-          <DataTitle>Selected customer options</DataTitle>
+          <DataTitle>{t('Selected customer address')}</DataTitle>
 
           <DataContainerTextBox>
             <DataContainerText>
@@ -269,7 +271,7 @@ const Step4 = () => {
 
         {/* Payment */}
         <DataContainerItems>
-          <DataTitle>Selected payment</DataTitle>
+          <DataTitle>{t('Selected payment')}</DataTitle>
           <DataContainerTextBox $row>
             {selectedPaymentOption === 'Payment by bank card' ? (
               <>
@@ -302,7 +304,7 @@ const Step4 = () => {
 
         {/* Comments */}
         <DataContainerItems style={{ wordBreak: 'break-all' }}>
-          <DataTitle>Comments to order</DataTitle>
+          <DataTitle>{t('Comments to order')}</DataTitle>
           {!showComments && <DataContainerText>{comments}</DataContainerText>}
           <DataContainerPensil onClick={() => setShowComments(!showComments)}>
             {showComments ? <DataContainerCheckMark /> : <PensilStyle />}

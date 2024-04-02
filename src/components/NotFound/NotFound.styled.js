@@ -80,7 +80,7 @@ export const ErrorBtn = styled.button`
   height: 40px;
   justify-content: center;
   align-items: center;
-  font-family: 'Raisonne Pro', sans-serif;
+  font-family: ${theme.fonts[0]};
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -88,14 +88,16 @@ export const ErrorBtn = styled.button`
   text-transform: uppercase;
   line-height: normal;
   border-radius: 5px;
-  border: 1px solid ${theme.colors.brown};
-  color: ${theme.colors.brown};
+  border: 1px solid ${theme.colors.brown4};
+  color: ${theme.colors.fon};
   background-color: transparent;
+  transition: ${theme.transition[1]};
   cursor: pointer;
   &:hover,
   &:focus {
     color: ${theme.colors.white};
     background-color: ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 `;
 

@@ -44,8 +44,10 @@ import photoHoodiesSweatshirtsCategory from 'images/hero/category/hoodies_2x.web
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { useTranslation } from 'react-i18next';
 
 export const ShoppingBag = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   // ---------------------------------------------
   const [isLoading, setIsLoading] = useState(false);
@@ -133,22 +135,22 @@ export const ShoppingBag = () => {
   const dataArr = [
     {
       imageUrl: photoJacetsCategory,
-      title: 'Jacets',
+      title: t('Jackets'),
       link: '/',
     },
     {
       imageUrl: photoPantsCategory,
-      title: 'Pants',
+      title: t('Pants'),
       link: '/',
     },
     {
       imageUrl: photoHoodiesSweatshirtsCategory,
-      title: 'Hoodies & Sweatshirts',
+      title: t('Hoodies & Sweatshirts'),
       link: '/',
     },
     {
       imageUrl: photoFootwearCategory,
-      title: 'Gifts',
+      title: t('Gifts'),
       link: '/gifts',
     },
   ];
@@ -192,7 +194,7 @@ export const ShoppingBag = () => {
 
       <BasketBox open={isOpen}>
         <BasketBoxTitle>
-          <BasketTitle>Cart</BasketTitle>
+          <BasketTitle>{t("Cart")}</BasketTitle>
           <BasketIconClose onClick={() => handlecheckout()} />
         </BasketBoxTitle>
 
@@ -201,7 +203,7 @@ export const ShoppingBag = () => {
           datas[0]?.optionData?.length !== 0 &&
           datas[0]?.optionData?.length !== undefined ? (
             <OrderBox>
-              <div style={{paddingBottom: 25}}>
+              <div style={{ paddingBottom: 25 }}>
                 <OrderList>
                   {datas[0]?.optionData?.map((product, idx) => (
                     <ShoppingBagList
@@ -216,7 +218,7 @@ export const ShoppingBag = () => {
               </div>
               <TotalTitleBox>
                 {/* <div> */}
-                  {/* <TotalTitle>Total</TotalTitle>
+                {/* <TotalTitle>Total</TotalTitle>
                   <TotalTitlePrice>
                     {totalPayment}
                     {currency}
@@ -229,7 +231,7 @@ export const ShoppingBag = () => {
                 </TotalDiscr> */}
 
                 <OrderBtn to="/basket" onClick={() => handlecheckout()}>
-                  checkout
+                  {t("checkout")}
                   <span style={{ marginLeft: 30 }}>
                     {totalPayment}
                     {currency}
@@ -239,9 +241,9 @@ export const ShoppingBag = () => {
             </OrderBox>
           ) : (
             <Box>
-              <BasketBoxListTitle>Your cart is empty</BasketBoxListTitle>
+              <BasketBoxListTitle>{t("Your cart is empty")}</BasketBoxListTitle>
               <BasketBoxListDiscr>
-                We recommend checking out:
+                {t("We recommend checking out:")}
               </BasketBoxListDiscr>
               <List>
                 {dataArr.map((item, idx) => (

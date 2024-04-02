@@ -32,28 +32,30 @@ import {
   LinkBrand,
 } from './Footer.styled';
 import theme from 'components/baseStyles/Variables.styled';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const faqItems = [
     {
-      title: 'Catalog',
+      title: t('Catalog'),
       options: [
-        'Discounts',
-        'Novelty',
-        'Clothes',
-        'Footwear',
-        'Backpacks and Bags',
-        'Accessories',
+        t('Discounts'),
+        t('Novelty'),
+        t('Clothes'),
+        t('Footwear'),
+        t('Backpacks and Bags'),
+        t('Accessories'),
       ],
       links: [`/shop`, `/shop`, `/shop`, `/shop`, `/shop`, `/shop`],
     },
     {
-      title: 'EXPLORE',
-      options: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
+      title: t('Explore'),
+      options: [t('About us'), 'Delivery, Payment, Returns', 'Privacy Policy'],
       links: [`/`, `/`, `/`],
     },
     {
-      title: 'CONTACTS',
+      title: t('CONTACTS'),
       options: ['+380111111111', 'support@quillis.com'],
       links: [`tel:380111111111`, `mailto:support@quillis.com`],
     },

@@ -77,12 +77,12 @@ export const TotalPrice = basket => {
               </PaymentTotalListItemTitle>
               {currency === '₴' && (
                 <PaymentTotalListItemDiscr>
-                  - from <b>60</b> {currency}
+                  from <b>70</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
               {currency !== '₴' && (
                 <PaymentTotalListItemDiscr>
-                  - from <b>2</b> {currency}
+                  from <b>2</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
             </PaymentTotalListItem>

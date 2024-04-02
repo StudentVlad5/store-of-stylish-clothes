@@ -4,8 +4,6 @@ import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { removeItemInBasket, updateItemInBasket } from 'services/APIservice';
 import { getFromStorage, saveToStorage } from 'services/localStorService';
-// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
-// import { ListImage } from '../ShoppingBag.styled';
 import {
   DiscrBox,
   RemoveBtn,

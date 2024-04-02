@@ -726,7 +726,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                       <span dangerouslySetInnerHTML={{ __html: size_chart }} />
                     ) : (
                       <span>
-                        {t("The size of the product is universal. Please familiarize yourself with the description of the characteristics")}
+                        {t("The size of the product is universal or we have not added a size chart to the product. Oops... Please familiarize yourself with the description of the characteristics.")}
                       </span>
                     )}
                   </SC.AccordCareItem>

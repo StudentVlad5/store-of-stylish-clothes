@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { removeItemInBasket, updateItemInBasket } from 'services/APIservice';
 import { getFromStorage, saveToStorage } from 'services/localStorService';
-// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
-// import { ListImage } from '../ShoppingBag.styled';
 import {
   DiscrBox,
   RemoveBtn,
@@ -42,6 +40,7 @@ import { ReactComponent as Minus } from 'images/svg/minus.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
 import { addToBasket } from 'redux/basket/operations';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export const ShoppingBagList = ({
   optionData,
@@ -184,15 +183,19 @@ export const ShoppingBagList = ({
 
   return statusBasket ? (
     <BasketCompItem>
-      <BasketCompImg
-        // src={BASE_URL_IMG + images[0]}
-        src={mainImage}
-        width={107}
-        height={140}
-        alt="Image"
-        loading="lazy"
-      />
-
+      <Link
+        to={`${window.location.origin}/shop/byid/${article}`}
+        target="_blank"
+      >
+        <BasketCompImg
+          // src={BASE_URL_IMG + images[0]}
+          src={mainImage}
+          width={107}
+          height={140}
+          alt="Image"
+          loading="lazy"
+        />
+      </Link>
       <BoxForDiscrData>
         <DiscrDataList>
           <DiscrDataListItem>
@@ -277,13 +280,15 @@ export const ShoppingBagList = ({
   ) : (
     <>
       <OrderItem>
-        {images && (
-          <ShoppingBagImg
-            // src={BASE_URL_IMG + images[0]}
-            src={mainImage}
-            alt="Image"
-            loading="lazy"
-          />
+        {mainImage && (
+          <Link to={`${window.location.origin}/shop/byid/${article}`}>
+            <ShoppingBagImg
+              // src={BASE_URL_IMG + images[0]}
+              src={mainImage}
+              alt="Image"
+              loading="lazy"
+            />
+          </Link>
         )}
         <DiscrBoxDiv>
           <DiscrBox>

@@ -17,10 +17,8 @@ import {
   PaymentTotalTitlePriceDiscr,
   ShippingFast,
 } from './TotalPrice.styled';
-import { useTranslation } from 'react-i18next';
 
 export const TotalPrice = basket => {
-  const { t } = useTranslation();
   const { confirm, handleAddOrder } = basket;
 
   const totalPayment = basket.contextBasket
@@ -33,6 +31,7 @@ export const TotalPrice = basket => {
       return payment + item.oldPrice * item.quantity;
     }, 0)
     .toFixed(2);
+  const totalDiscount = (totalAmount - totalPayment).toFixed(2);
   // const totalDiscount = basket.contextBasket
   //   .reduce((payment, item) => {
   //     return payment + item.discount * item.quantity;
@@ -44,72 +43,91 @@ export const TotalPrice = basket => {
   return (
     <PaymentBox>
       <PaymentTotal>
-        <PaymentTotalTitle>{t("Total")}</PaymentTotalTitle>
+        <PaymentTotalTitle>Total</PaymentTotalTitle>
         <table>
           <PaymentTotalList>
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                {t("Amount for the product")}
+                Amount for the product
               </PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
-                {totalAmount}
+                <b>{totalAmount}</b>
+                {currency}
+              </PaymentTotalListItemDiscr>
+            </PaymentTotalListItem>
+            <PaymentTotalListItem>
+              <PaymentTotalListItemTitle>Discount</PaymentTotalListItemTitle>
+              <PaymentTotalListItemDiscr>
+                <b>{totalDiscount}</b>
                 {currency}
               </PaymentTotalListItemDiscr>
             </PaymentTotalListItem>
 
-            {/* <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>
-                Discount amount
-              </PaymentTotalListItemTitle>
-              <PaymentTotalListItemDiscr>
-                {currency}
-                {totalDiscount}
-              </PaymentTotalListItemDiscr>
-            </PaymentTotalListItem> */}
-
             <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>{t("Delivery")}</PaymentTotalListItemTitle>
-              {/* {totalPayment < 150 ? (
-                <PaymentTotalListItemDiscr>
-                  {currency}
-                  {150 - totalPayment}
-                </PaymentTotalListItemDiscr>
-              ) : ( */}
-                <PaymentTotalListItemDiscr>13</PaymentTotalListItemDiscr>
-              {/* )} */}
-            </PaymentTotalListItem>
-
-            <PaymentTotalListItem>
-              <PaymentTotalTitle>{t("Payment")}</PaymentTotalTitle>
+              <PaymentTotalTitle>Payment</PaymentTotalTitle>
               <PaymentTotalTitle>
                 {totalPayment}
                 {currency}
               </PaymentTotalTitle>
+            </PaymentTotalListItem>
+
+            <PaymentTotalListItem>
+              <PaymentTotalListItemTitle>
+                Delivery in Ukraine
+              </PaymentTotalListItemTitle>
+              {currency === '₴' && (
+                <PaymentTotalListItemDiscr>
+                  from <b>70</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+              {currency !== '₴' && (
+                <PaymentTotalListItemDiscr>
+                  from <b>2</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+            </PaymentTotalListItem>
+
+            <PaymentTotalListItem>
+              <PaymentTotalListItemTitle>
+                Shipping to other countries
+              </PaymentTotalListItemTitle>
+              {currency === '₴' && (
+                <PaymentTotalListItemDiscr>
+                  {' '}
+                  from <b>1000</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
+              {currency !== '₴' && (
+                <PaymentTotalListItemDiscr>
+                  {' '}
+                  from <b>25</b> {currency}
+                </PaymentTotalListItemDiscr>
+              )}
             </PaymentTotalListItem>
           </PaymentTotalList>
         </table>
       </PaymentTotal>
       {confirm ? (
         <PaymentBtn onClick={handleAddOrder} id="paymentBtn">
-          {t("confirm")}
+          confirm
         </PaymentBtn>
       ) : (
         <PaymentBtn to={`/checkout/step1`} id="paymentBtn">
-          {t("checkout")}
+          checkout
         </PaymentBtn>
       )}
-      {/* {!confirm && (
+      {!confirm && (
         <DeliverBox>
           <DeliverBoxItem>
             <ShippingFast />
-            Get free standart shipping when you spend $150 or more.
+            The delivery time in Ukraine is from 4-5 days
           </DeliverBoxItem>
           <DeliverBoxItem>
             <Done />
-            If your plant dies withing 30 days, we’ll replace it for free.
+            the delivery time in Europe is from 14 days
           </DeliverBoxItem>
         </DeliverBox>
-      )} */}
+      )}
     </PaymentBox>
   );
 };

@@ -184,7 +184,9 @@ export const Footer = () => {
           >
             <span>© Quillis 2024 - {new Date().getFullYear()}</span>
             <span>
-              <LinkBrand to="">Designed and Developed by Brand Maze</LinkBrand>
+              <LinkBrand to="https://brand-maze.vercel.app/">
+                Designed and Developed by Brand Maze
+              </LinkBrand>
             </span>
           </FooterFaqListItem>
         </FooterFaqListBrand>

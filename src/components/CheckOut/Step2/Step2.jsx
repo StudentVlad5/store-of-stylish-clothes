@@ -29,10 +29,8 @@ import {
   ProfileName,
 } from 'components/UserComp/Profile/Profile.styled';
 import schemas from 'utils/schemas';
-import { useTranslation } from 'react-i18next';
 
 const Step2 = () => {
-  const { t } = useTranslation();
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
 
@@ -173,7 +171,7 @@ const Step2 = () => {
             <DeliveryForm>
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("First name")}{' '}
+                  First name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -188,7 +186,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("Last name")}{' '}
+                  Last name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -203,7 +201,7 @@ const Step2 = () => {
               </DeliveryFormLable>
 
               <DeliveryFormLable>
-                <ProfileName>{t("Company")}</ProfileName>
+                <ProfileName>Company</ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
                   type="text"
@@ -215,7 +213,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("City")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -229,7 +227,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("Address")} 1{' '}
+                  Address 1{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -243,7 +241,7 @@ const Step2 = () => {
               </DeliveryFormLable>
 
               <DeliveryFormLable>
-                <ProfileName>{t("Address")} 2</ProfileName>
+                <ProfileName>Address 2</ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
                   type="text"
@@ -255,7 +253,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("State")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -269,7 +267,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("Zip code")}{' '}
+                  Zip code{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
@@ -284,7 +282,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("Phone")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -299,7 +297,7 @@ const Step2 = () => {
 
               <DeliveryFormLable>
                 <ProfileName>
-                  {t("Email")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <DeliveryFormInput
                   onChange={handleInputChange}
@@ -311,162 +309,22 @@ const Step2 = () => {
                   // placeholder="george.washington@gmail.com"
                 />
               </DeliveryFormLable>
-              <Btnwrapper>
-                <Link to={`/checkout/step1`}>
-                  <DeliveryFormBtn type="button">{t("Back")}</DeliveryFormBtn>
-                </Link>
-                <DeliveryFormBtnFinish
-                  type="button"
-                  onClick={nextStep}
-                  disabled={isDisabled}
-                >
-                  {t("Next")}
-                </DeliveryFormBtnFinish>
-              </Btnwrapper>
             </DeliveryForm>
           )}
+          <Btnwrapper>
+            <Link to={`/checkout/step1`}>
+              <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
+            </Link>
+            <DeliveryFormBtnFinish
+              type="button"
+              onClick={nextStep}
+              disabled={isDisabled}
+            >
+              Next
+            </DeliveryFormBtnFinish>
+          </Btnwrapper>
         </>
       ) : (
-        // <DeliveryForm>
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       First name
-        //       <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="name"
-        //       name="name"
-        //       value={formData.name}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Last name <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="surname"
-        //       name="surname"
-        //       value={formData.surname}
-        //       required
-        //       // placeholder="Washington"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>Company</DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="company"
-        //       value={formData.company}
-        //       name="company"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="city"
-        //       name="city"
-        //       value={formData.city}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Address 1<DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="address1"
-        //       value={formData.address1}
-        //       name="address1"
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>Address 2</DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="address2"
-        //       name="address2"
-        //       value={formData.address2}
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="state"
-        //       name="state"
-        //       value={formData.state}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Zip code <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="text"
-        //       id="zipCode"
-        //       name="zipCode"
-        //       value={formData.zipCode}
-        //       required
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="tel"
-        //       id="phone"
-        //       name="phone"
-        //       value={formData.phone}
-        //       required
-        //       // placeholder="+123456789"
-        //     />
-        //   </DeliveryFormLable>
-
-        //   <DeliveryFormLable>
-        //     <DeliveryFormLableText>
-        //       Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
-        //     </DeliveryFormLableText>
-        //     <DeliveryFormInput
-        //       onChange={handleInputChange}
-        //       type="email"
-        //       id="email"
-        //       name="email"
-        //       value={formData.email}
-        //       required
-        //       // placeholder="george.washington@gmail.com"
-        //     />
-        //   </DeliveryFormLable>
-        // </DeliveryForm>
-
         <Formik
           initialValues={formData}
           onSubmit={(values, { setSubmitting }) => {
@@ -493,7 +351,7 @@ const Step2 = () => {
             >
               <DeliveryFormLable htmlFor="userName">
                 <ProfileName>
-                  {t("First name")}{' '}
+                  First name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -510,7 +368,7 @@ const Step2 = () => {
               </DeliveryFormLable>
               <ProfileLabel htmlFor="surname">
                 <ProfileName>
-                  {t("Last name")}{' '}
+                  Last name{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -525,7 +383,7 @@ const Step2 = () => {
                 ) : null}
               </ProfileLabel>
               <ProfileLabel htmlFor="company">
-                <ProfileName>{t("Company")}</ProfileName>
+                <ProfileName>Company</ProfileName>
                 <ProfileInput
                   type="company"
                   name="company"
@@ -539,7 +397,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="address1">
                 <ProfileName>
-                  {t({Address})} 1{' '}
+                  Address 1{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -554,7 +412,7 @@ const Step2 = () => {
                 ) : null}
               </ProfileLabel>
               <ProfileLabel htmlFor="address2">
-                <ProfileName>{t("Address")} 2</ProfileName>
+                <ProfileName>Address 2</ProfileName>
                 <ProfileInput
                   type="address2"
                   name="address2"
@@ -568,7 +426,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="city">
                 <ProfileName>
-                  {t("City")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  City <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -583,7 +441,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="state">
                 <ProfileName>
-                  {t("State")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  State <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="text"
@@ -598,7 +456,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="zipCode">
                 <ProfileName>
-                  {t("Zip code")}{' '}
+                  Zip code{' '}
                   <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
@@ -614,7 +472,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="phone">
                 <ProfileName>
-                  {t("Phone")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Phone <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="tel"
@@ -629,7 +487,7 @@ const Step2 = () => {
               </ProfileLabel>
               <ProfileLabel htmlFor="email">
                 <ProfileName>
-                  {t("Email")} <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
+                  Email <DeliveryFormLableTextSpan>*</DeliveryFormLableTextSpan>
                 </ProfileName>
                 <ProfileInput
                   type="email"
@@ -645,7 +503,7 @@ const Step2 = () => {
 
               <Btnwrapper>
                 <Link to={`/checkout/step1`}>
-                  <DeliveryFormBtn type="button">{t("Back")}</DeliveryFormBtn>
+                  <DeliveryFormBtn type="button">Back</DeliveryFormBtn>
                 </Link>
                 <DeliveryFormBtnFinish
                   type="button"
@@ -655,7 +513,7 @@ const Step2 = () => {
                   // disabled={isSubmitting}
                   aria-label="Submit"
                 >
-                  {t("Next")}
+                  Next
                 </DeliveryFormBtnFinish>
               </Btnwrapper>
             </ProfileList>

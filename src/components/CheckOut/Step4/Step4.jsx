@@ -175,6 +175,7 @@ const Step4 = () => {
       removeItem('selectedDepartment');
       removeItem('formData');
       removeItem('selectedPaymentOption');
+      removeItem('selectedCountry');
       dispatch(clearBasket());
       dispatch(addReload(true));
       data?.pageUrl && window.open(data?.pageUrl);

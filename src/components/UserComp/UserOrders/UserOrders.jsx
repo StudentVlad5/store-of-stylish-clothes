@@ -217,16 +217,20 @@ export const UserOrders = () => {
                         </PaymentTotalListItemDiscr>
                       </PaymentTotalListItem>
 
-                      {/* <PaymentTotalListItem>
-                          <PaymentTotalListItemTitle>
-                            Discount amount
-                          </PaymentTotalListItemTitle>
-                          <PaymentTotalListItemDiscr>
-                            {order?.currency}
-                            {order?.totalDiscount}
-                          </PaymentTotalListItemDiscr>
-                        </PaymentTotalListItem> */}
-
+                      <PaymentTotalListItem>
+                        <PaymentTotalListItemTitle>
+                          Discount amount
+                        </PaymentTotalListItemTitle>
+                        <PaymentTotalListItemDiscr>
+                          {order?.currency}
+                          {
+                            +(order?.totalAmount - order?.totalPayment).toFixed(
+                              2,
+                            )
+                          }
+                        </PaymentTotalListItemDiscr>
+                      </PaymentTotalListItem>
+                      {/* 
                       <PaymentTotalListItem>
                         <PaymentTotalListItemTitle>
                           Delivery
@@ -241,7 +245,7 @@ export const UserOrders = () => {
                             Free
                           </PaymentTotalListItemDiscr>
                         )}
-                      </PaymentTotalListItem>
+                      </PaymentTotalListItem> */}
 
                       <PaymentTotalListItem>
                         <PaymentTotalTitle>Payment</PaymentTotalTitle>

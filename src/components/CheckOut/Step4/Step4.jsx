@@ -66,6 +66,11 @@ const Step4 = () => {
   const [selectedCity] = useState(
     getFromStorage('selectedCity') ? getFromStorage('selectedCity') : '',
   );
+  const [selectedCountry] = useState(
+    getFromStorage('selectedCountry')
+      ? getFromStorage('selectedCountry')
+      : 'Ukraine',
+  );
   const [selectedDepartment] = useState(
     getFromStorage('selectedDepartment')
       ? getFromStorage('selectedDepartment')
@@ -145,6 +150,7 @@ const Step4 = () => {
     zipCode: formData.zipCode,
     selectedPaymentOption,
     comments,
+    country: selectedCountry,
     user_id: auth._id,
   };
 

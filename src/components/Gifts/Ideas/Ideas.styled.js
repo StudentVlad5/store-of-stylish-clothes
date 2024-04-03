@@ -6,6 +6,7 @@ import { Headline } from 'components/baseStyles/CommonStyle.styled';
 const HeadlineIdeas = styled(Headline)`
   text-align: center;
   margin-bottom: 57px;
+  color: ${theme.colors.brown2};
 `;
 
 const IdeasList = styled.ul`

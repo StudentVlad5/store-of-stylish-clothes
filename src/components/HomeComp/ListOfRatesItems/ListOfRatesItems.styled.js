@@ -56,7 +56,7 @@ export const SectionSubTitle = styled.span`
   line-height: 25px;
   margin-bottom: 0;
   text-transform: none;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 `;
 
 export const CardContainer = styled.div`

@@ -46,8 +46,10 @@ import {
   PaymentTotalTitlePriceDiscr,
 } from 'components/Basket/Total/TotalPrice.styled';
 import { BtnBrown, BtnLight } from '../UserData/UserData.styled';
+import { useTranslation } from 'react-i18next';
 
 export const UserOrders = () => {
+  const { t } = useTranslation();
   const [orderList, setOrderList] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [page, setPages] = useState(1);
@@ -122,10 +124,10 @@ export const UserOrders = () => {
           <OrderItem key={order._id}>
             <OrderItemHeadlineList>
               <OrderItemDetails>
-                <span>Order ID:</span> <span>{order._id}</span>
+                <span>{t('Order ID')}:</span> <span>{order._id}</span>
               </OrderItemDetails>
               <OrderItemDetails>
-                <span>Order Date:</span>
+                <span>{t('Order Date')}:</span>
                 <span>
                   {order?.createdAt
                     .split('T')[0]
@@ -135,7 +137,7 @@ export const UserOrders = () => {
                 </span>
               </OrderItemDetails>
               <OrderItemDetails>
-                <span>Total: </span>
+                <span>{t('Total')}: </span>
                 <span>
                   {order?.totalPayment}
                   {order?.basket[0]?.currency}
@@ -155,21 +157,23 @@ export const UserOrders = () => {
                       <DiscrDataListItem>
                         <DiscrDataListItemHeading>
                           <DiscrDataListItemTitle>
-                            {item?.title_ua}
+                            {item?.title}
                           </DiscrDataListItemTitle>
                         </DiscrDataListItemHeading>
                       </DiscrDataListItem>
                       <table>
                         <DiscrDataTable style={{ gap: '5px' }}>
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>Size</DiscrDataTableHead>
+                            <DiscrDataTableHead>{t('Size')}</DiscrDataTableHead>
                             <DiscrDataTableData>
-                              {item?.title}
+                              {item?.options}
                             </DiscrDataTableData>
                           </DiscrDataTableLine>
 
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>Price</DiscrDataTableHead>
+                            <DiscrDataTableHead>
+                              {t('Price')}
+                            </DiscrDataTableHead>
                             {/* {item?.discount !== 0 ? ( */}
                             <DiscrDataTableData>
                               <DiscrDataListItemPrice $red>
@@ -191,8 +195,10 @@ export const UserOrders = () => {
                               // )} */}
                           </DiscrDataTableLine>
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>Quantity</DiscrDataTableHead>
-                            <DiscrDataTableData>
+                            <DiscrDataTableHead>
+                              {t('Quantity')}
+                            </DiscrDataTableHead>
+                            <DiscrDataTableData style={{ marginLeft: 10 }}>
                               <span>{item?.quantity}</span>
                             </DiscrDataTableData>
                           </DiscrDataTableLine>
@@ -204,12 +210,12 @@ export const UserOrders = () => {
               </OrderListDetails>
               <PaymentBox>
                 <PaymentTotal>
-                  <PaymentTotalTitleH4>Total</PaymentTotalTitleH4>
+                  <PaymentTotalTitleH4>{t('Total')}</PaymentTotalTitleH4>
                   <table>
                     <PaymentTotalList>
                       <PaymentTotalListItem>
                         <PaymentTotalListItemTitle>
-                          Amount for the product
+                          {t('Amount for the product')}
                         </PaymentTotalListItemTitle>
                         <PaymentTotalListItemDiscr>
                           {order?.currency}
@@ -233,7 +239,7 @@ export const UserOrders = () => {
                       {/* 
                       <PaymentTotalListItem>
                         <PaymentTotalListItemTitle>
-                          Delivery
+                          {t("Delivery")}
                         </PaymentTotalListItemTitle>
                         {order?.totalAmount < 150 ? (
                           <PaymentTotalListItemDiscr>
@@ -248,7 +254,7 @@ export const UserOrders = () => {
                       </PaymentTotalListItem> */}
 
                       <PaymentTotalListItem>
-                        <PaymentTotalTitle>Payment</PaymentTotalTitle>
+                        <PaymentTotalTitle>{t('Payment')}</PaymentTotalTitle>
                         <PaymentTotalTitle>
                           {order?.currency}
                           {order?.totalPayment}
@@ -261,7 +267,7 @@ export const UserOrders = () => {
             </OrderItemList>
             <DeliveryPayBox>
               <DeliveryBox>
-                <PaymentTotalTitleH4>Delivery</PaymentTotalTitleH4>
+                <PaymentTotalTitleH4>{t('Delivery')}</PaymentTotalTitleH4>
                 <div>
                   <p>{order?.deliveryOrder?.delivery}</p>
                   <p> {order?.deliveryOrder?.cityDelivery}</p>
@@ -269,7 +275,7 @@ export const UserOrders = () => {
                 </div>
               </DeliveryBox>
               <PayBox>
-                <PaymentTotalTitleH4>Payment</PaymentTotalTitleH4>
+                <PaymentTotalTitleH4>{t('Payment')}</PaymentTotalTitleH4>
                 <p>{order?.selectedPaymentOption}</p>
               </PayBox>
             </DeliveryPayBox>
@@ -278,7 +284,7 @@ export const UserOrders = () => {
       ) : (
         <ShopBox>
           <ShopBoxTitle>{"You don't have orders"}</ShopBoxTitle>
-          <BtnBrown>Shop</BtnBrown>
+          <BtnBrown>{t('Shop')}</BtnBrown>
         </ShopBox>
       )}
       {isLoading ? onLoading() : onLoaded()}

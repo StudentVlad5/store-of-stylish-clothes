@@ -27,8 +27,10 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { fetchData } from 'services/APIservice';
 import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { SectionWrapper } from 'components/baseStyles/CommonStyle.styled';
+import { useTranslation } from 'react-i18next';
 
 export const ListOfDiscountsItems = () => {
+  const { t } = useTranslation();
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const [listOfDiscountItems, setListOfDiscountItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,13 +58,17 @@ export const ListOfDiscountsItems = () => {
       <SectionWrapper style={{ paddingBottom: '20px' }}>
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
-          <SectionTitle>Discounts</SectionTitle>
+          <SectionTitle>{t('Discounts')}</SectionTitle>
           <Link to="/discounts" style={{ textDecoration: 'none' }}>
-            <SectionSubTitle>See all</SectionSubTitle>
+            <SectionSubTitle style={{ textDecoration: 'underline' }}>
+              {t('See all')}
+            </SectionSubTitle>
           </Link>
         </SectionTitleWrap>
         <SectionTitleWrap>
-          <SectionSubTitle>Have a look on huge discounts!</SectionSubTitle>
+          <SectionSubTitle>
+            {t('Have a look on huge discounts!')}
+          </SectionSubTitle>
         </SectionTitleWrap>
         <CardContainer>
           <ViewportBox $version={'desktop'}>

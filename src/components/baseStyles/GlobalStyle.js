@@ -150,9 +150,9 @@ img {
 .isActive.isImportant.real + input,
 .isActive.isImportant.real + span {
    & span {
-    color: #6f8d4c;
-    background-color: ${theme.colors.green5};
-    border: 1px solid ${theme.colors.green2};
+    color: ${theme.colors.fon};
+    background-color: rgb(119 79 35 / 81%);
+    border: 1px solid ${theme.colors.brown4};
    }
 }
 
@@ -231,19 +231,19 @@ input::-webkit-calendar-picker-indicator:hover {
 }
 
 .rc-slider-track {
-    background-color: ${theme.colors.green} !important;
+    background-color: ${theme.colors.brown4} !important;
 }
 
 .rc-slider-handle{
   background-color: ${theme.colors.fon} !important;
-  border: solid 2px ${theme.colors.green} !important;
+  border: solid 2px ${theme.colors.brown4} !important;
 
   &:focus-visible{
-    box-shadow: 0 0 0 3px ${theme.colors.green2} !important;
+    box-shadow: 0 0 0 3px ${theme.colors.brown4} !important;
   }
 
   &-dragging{
-    box-shadow: 0 0 0 5px ${theme.colors.green2} !important;
+    box-shadow: 0 0 0 5px ${theme.colors.brown4} !important;
   }
 }
 

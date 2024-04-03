@@ -17,15 +17,14 @@ const SortList = styled.ul`
   padding: 15px;
 
   background-color: ${theme.colors.fon};
-  border: 0.5px solid ${theme.colors.brown2};
-  border-radius: 5px;
+  border: 0.5px solid ${theme.colors.brown4};
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 4px 2px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     top: 58px;
     right: 0;
     width: 100%;
-    border-radius: 0;
   }
 `;
 
@@ -37,7 +36,7 @@ const SortItem = styled.li`
   line-height: normal;
   /* text-transform: uppercase; */
 
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown4};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;

@@ -75,7 +75,7 @@ const HeadlineShop = styled.h2`
   font-weight: 400;
   text-transform: capitalize;
   color: ${props =>
-    props.$primary ? theme.colors.green : theme.colors.green1};
+    props.$primary ? theme.colors.brown2 : theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 28px;
@@ -117,7 +117,8 @@ const Accord = styled.div`
     gap: 50px;
 
     padding: 10px;
-    border: 0.5px solid ${theme.colors.brown2};
+    border-radius: 12px;
+    border: 0.5px solid ${theme.colors.brown4};
   }
 
   & span {
@@ -126,7 +127,7 @@ const Accord = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown2};
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
       font-size: 14px;

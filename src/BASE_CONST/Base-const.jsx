@@ -25,6 +25,13 @@ export const homeProductLinks = {
   jacets: { ua: 'Жакети', ru: 'Жакеты', en: 'Jackets', de: 'Jacken' },
   pants: { ua: 'Штани', ru: 'Брюки', en: 'Pants', de: 'Hosen' },
   footwear: { ua: 'Взуття', ru: 'Обувь', en: 'Shoes', de: 'Schuhe' },
+  accessories: {
+    ua: 'Аксесуари',
+    ru: 'Аксессуары',
+    en: 'Accessories',
+    de: 'Zubehör',
+  },
+  clothing: { ua: 'Одяг', ru: 'Одежда', en: 'Clothing', de: 'Kleidung' },
   Hoodies_Sweatshirts: {
     ua: 'Світшоти, толстовки',
     ru: 'Свитшоты, толстовки',

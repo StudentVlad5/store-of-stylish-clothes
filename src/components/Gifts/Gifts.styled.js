@@ -8,6 +8,14 @@ import {
 } from 'components/baseStyles/CommonStyle.styled';
 
 const GiftsSection = styled(Section)`
+  margin-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    margin-top: 70px;
+    padding-bottom: 70px;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -55,10 +63,11 @@ const InnerRightWrapper = styled.div`
 
 const GiftsHeadline = styled(Headline)`
   margin-bottom: 40px;
+  color: ${theme.colors.brown4};
 `;
 
 const GiftsSubtitle = styled(Subtitle)`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   margin-bottom: 24px;
 `;
 
@@ -70,6 +79,7 @@ const Description = styled.p`
   font-style: normal;
   font-weight: 300;
   line-height: 166%; /* 26.56px */
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;
@@ -94,22 +104,24 @@ const LinkBtn = styled(NavLink)`
 
   color: ${theme.colors.fon};
 
-  background-color: ${theme.colors.green};
+  background-color: transparent;
 
-  border: 0.5px solid ${theme.colors.green};
-  border-radius: 5px;
+  border: 0.5px solid ${theme.colors.brown4};
+  border-radius: 12px;
 
+  transition: ${theme.transition[1]};
   cursor: pointer;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px 55px;
   }
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.green2};
-    border: 0.5px solid ${theme.colors.green2};
+    background-color: ${theme.colors.brown4};
+    border: 0.5px solid ${theme.colors.brown4};
+    transition: ${theme.transition[1]};
   }
 
   &:disabled {

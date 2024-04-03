@@ -5,6 +5,7 @@ import { getListOfCities, getListOfDepartments } from 'services/APIservice';
 import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { PoshtaTitle } from 'components/CheckOut/Order/Order.styled';
 import { getFromStorage } from 'services/localStorService';
+import { useTranslation } from 'react-i18next';
 
 const customStyles = {
   control: (base, state) => ({
@@ -31,6 +32,7 @@ const customStyles = {
 };
 
 export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [cityName, setCityName] = useState(
     getFromStorage('selectedCity') ? getFromStorage('selectedCity') : '',
@@ -56,7 +58,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         const { data } = await getListOfCities('/cities', { filter: cityName });
         setListOfSities(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -91,7 +93,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         });
         setListOfDepartment(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -149,7 +151,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   return (
     <>
       <Box>
-        <PoshtaTitle>City</PoshtaTitle>
+        <PoshtaTitle>{t('City')}</PoshtaTitle>
 
         <SelectInput
           name="cityName"
@@ -169,13 +171,13 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           isSearchable={true}
           validate={schemas.checkDepartmentNP.city}
           options={optionsNP(cityName)}
-          placeholder={cityName === '' ? 'Select city please...' : cityName}
+          placeholder={cityName === '' ? t('Select city please...') : cityName}
           styles={customStyles}
           classNamePrefix="custom-select"
         />
       </Box>
       <Box>
-        <PoshtaTitle>Point office</PoshtaTitle>
+        <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
         <SelectInput
           name="departmentName"
@@ -191,7 +193,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           options={oNP(departmentName)}
           placeholder={
             departmentName === ''
-              ? 'Select department please...'
+              ? t('Select department please...')
               : departmentName
           }
           onChange={e => {

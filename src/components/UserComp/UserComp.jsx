@@ -10,8 +10,11 @@ import {
   LinkFolder,
 } from './UserComp.styled';
 import { Title } from 'components/baseStyles/CommonStyle.styled';
+import { useTranslation } from 'react-i18next';
 
 export const UserComp = () => {
+  const { t } = useTranslation();
+
   return (
     <UserSection>
       <UserContainer>
@@ -24,16 +27,16 @@ export const UserComp = () => {
               className="linkFolder sideBar_menu"
               to={`/user/profile`}
             >
-              My account
+              {t('My account')}
             </LinkFolder>
             <LinkFolder className="linkFolder sideBar_menu" to={`/user/orders`}>
-              My orders
+              {t('My orders')}
             </LinkFolder>
             <LinkFolder
               className="linkFolder sideBar_menu"
               to={`/user/favorites`}
             >
-              My favorites
+              {t('My favorites')}
             </LinkFolder>
             <Logout />
           </FolderWrapper>

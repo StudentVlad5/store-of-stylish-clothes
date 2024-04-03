@@ -12,8 +12,10 @@ import {
   LinkFolderTitle,
 } from './Checkout.styled';
 import { getFromStorage } from 'services/localStorService';
+import { useTranslation } from 'react-i18next';
 
 export const CheckOut = () => {
+  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(
     getFromStorage('step') ? getFromStorage('step') : 1,
   );
@@ -37,7 +39,7 @@ export const CheckOut = () => {
           <FolderWrapper>
             <LinkFolder className="linkFolder step1Btn" to={`/checkout/step1`}>
               <span>1</span>
-              <LinkFolderTitle>Delivery</LinkFolderTitle>
+              <LinkFolderTitle>{t('Delivery')}</LinkFolderTitle>
             </LinkFolder>
             <Liner>
               <span></span>
@@ -47,21 +49,21 @@ export const CheckOut = () => {
               to={`/checkout/step2`}
             >
               <span>2</span>
-              <LinkFolderTitle>Address</LinkFolderTitle>
+              <LinkFolderTitle>{t('Address')}</LinkFolderTitle>
             </LinkFolder>
             <Liner>
               <span></span>
             </Liner>
             <LinkFolder className="linkFolder step3Btn" to={`/checkout/step3`}>
               <span>3</span>
-              <LinkFolderTitle>Payment</LinkFolderTitle>
+              <LinkFolderTitle>{t('Payment')}</LinkFolderTitle>
             </LinkFolder>
             <Liner>
               <span></span>
             </Liner>
             <LinkFolder className="linkFolder step4Btn" to={`/checkout/step4`}>
               <span>4</span>
-              <LinkFolderTitle>Total</LinkFolderTitle>
+              <LinkFolderTitle>{t('Total')}</LinkFolderTitle>
             </LinkFolder>
           </FolderWrapper>
 

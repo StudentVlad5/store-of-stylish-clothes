@@ -19,8 +19,10 @@ import {
   PensilStyle,
 } from '../UserData/UserData.styled';
 import { EditBtn, Input, Label, ShowIcon } from './ChangePassword.styled';
+import { useTranslation } from 'react-i18next';
 
 export const ChangePassword = () => {
+  const { t } = useTranslation();
   const [isShown, setIsShown] = useState(false);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
@@ -82,7 +84,7 @@ export const ChangePassword = () => {
               onChange={handleChange}
             >
               <ProfileLabel htmlFor="password">
-                <ProfileName>New password</ProfileName>
+                <ProfileName>{t('New password')}</ProfileName>
                 <ProfileInput
                   type={showPass ? 'text' : 'password'}
                   name="password"
@@ -98,7 +100,7 @@ export const ChangePassword = () => {
                 ) : null}
               </ProfileLabel>
               <ProfileLabel htmlFor="confirmPassword">
-                <ProfileName>Repeat new password</ProfileName>
+                <ProfileName>{t('Repeat new password')}</ProfileName>
                 <ProfileInput
                   type={showConfirmPass ? 'text' : 'password'}
                   name="confirmPassword"
@@ -119,14 +121,14 @@ export const ChangePassword = () => {
                   aria-label="Close"
                   onClick={() => setIsShown(false)}
                 >
-                  CANCEL
+                  {t('CANCEL')}
                 </BtnLight>
                 <BtnBrown
                   type="submit"
                   disabled={isSubmitting}
                   aria-label="Submit"
                 >
-                  SAVE
+                  {t('SAVE')}
                 </BtnBrown>
               </BtnContainer>
             </ProfileList>

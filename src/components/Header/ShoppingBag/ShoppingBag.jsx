@@ -36,7 +36,7 @@ import {
   IconBasket,
   IconWrapper,
 } from 'components/Header/Navigation/Navigation.styled';
-
+import { homeProductLinks } from 'BASE_CONST/Base-const';
 import photoJacetsCategory from 'images/hero/category/jacket_2x.webp';
 import photoPantsCategory from 'images/hero/category/pants_2x.webp';
 import photoFootwearCategory from 'images/hero/category/footwear_2x.webp';
@@ -44,9 +44,12 @@ import photoHoodiesSweatshirtsCategory from 'images/hero/category/hoodies_2x.web
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { useTranslation } from 'react-i18next';
 
 export const ShoppingBag = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   // ---------------------------------------------
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -129,26 +132,49 @@ export const ShoppingBag = () => {
   }
 
   // ____________________________________________
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
 
   const dataArr = [
     {
       imageUrl: photoJacetsCategory,
-      title: 'Jacets',
-      link: '/',
+      title: t('Jackets'),
+      link: `shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.jacets[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoPantsCategory,
-      title: 'Pants',
-      link: '/',
+      title: t('Pants'),
+      link: `shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.pants[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoHoodiesSweatshirtsCategory,
-      title: 'Hoodies & Sweatshirts',
-      link: '/',
+      title: t('Hoodies & Sweatshirts'),
+      link: `shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoFootwearCategory,
-      title: 'Gifts',
+      title: t('Gifts'),
       link: '/gifts',
     },
   ];
@@ -192,7 +218,7 @@ export const ShoppingBag = () => {
 
       <BasketBox open={isOpen}>
         <BasketBoxTitle>
-          <BasketTitle>Cart</BasketTitle>
+          <BasketTitle>{t('Cart')}</BasketTitle>
           <BasketIconClose onClick={() => handlecheckout()} />
         </BasketBoxTitle>
 
@@ -201,7 +227,7 @@ export const ShoppingBag = () => {
           datas[0]?.optionData?.length !== 0 &&
           datas[0]?.optionData?.length !== undefined ? (
             <OrderBox>
-              <div style={{paddingBottom: 25}}>
+              <div style={{ paddingBottom: 25 }}>
                 <OrderList>
                   {datas[0]?.optionData?.map((product, idx) => (
                     <ShoppingBagList
@@ -216,7 +242,7 @@ export const ShoppingBag = () => {
               </div>
               <TotalTitleBox>
                 {/* <div> */}
-                  {/* <TotalTitle>Total</TotalTitle>
+                {/* <TotalTitle>Total</TotalTitle>
                   <TotalTitlePrice>
                     {totalPayment}
                     {currency}
@@ -229,7 +255,7 @@ export const ShoppingBag = () => {
                 </TotalDiscr> */}
 
                 <OrderBtn to="/basket" onClick={() => handlecheckout()}>
-                  checkout
+                  {t('checkout')}
                   <span style={{ marginLeft: 30 }}>
                     {totalPayment}
                     {currency}
@@ -239,13 +265,19 @@ export const ShoppingBag = () => {
             </OrderBox>
           ) : (
             <Box>
-              <BasketBoxListTitle>Your cart is empty</BasketBoxListTitle>
+              <BasketBoxListTitle>{t('Your cart is empty')}</BasketBoxListTitle>
               <BasketBoxListDiscr>
-                We recommend checking out:
+                {t('We recommend checking out:')}
               </BasketBoxListDiscr>
               <List>
-                {dataArr.map((item, idx) => (
-                  <ListItem key={idx} onClick={() => setIsOpen(false)}>
+                {/* {dataArr.map((item, idx) => (
+                  <ListItem
+                    key={idx}
+                    onClick={() => {
+                      setIsOpen(false);
+                      item.nav;
+                    }}
+                  >
                     <NavLink to={item.link}>
                       <ListImage
                         src={item.imageUrl}
@@ -259,7 +291,95 @@ export const ShoppingBag = () => {
                       </ListTitleBox>
                     </NavLink>
                   </ListItem>
-                ))}
+                ))} */}
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [homeProductLinks?.jacets[selectedLanguage]],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoJacetsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Jackets')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [homeProductLinks?.pants[selectedLanguage]],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoPantsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Pants')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [
+                        homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage],
+                      ],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoHoodiesSweatshirtsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Hoodies & Sweatshirts')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem>
+                  <NavLink to={`/gifts`}>
+                    <ListImage
+                      src={photoJacetsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Gifts')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
               </List>
             </Box>
           )}

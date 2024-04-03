@@ -39,6 +39,7 @@ import {
 import { ReactComponent as Minus } from 'images/svg/minus.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
 import { addToBasket } from 'redux/basket/operations';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 export const ShoppingBagList = ({
@@ -70,6 +71,7 @@ export const ShoppingBagList = ({
   // ----------------------------------------->
 
   // console.log(optionData);
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userAnonimusID] = useState(
@@ -208,7 +210,7 @@ export const ShoppingBagList = ({
           <table>
             <DiscrDataTable>
               <DiscrDataTableLine>
-                <DiscrDataTableHead>Size</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Size')}</DiscrDataTableHead>
                 {options === null ? (
                   <DiscrDataTableData>-</DiscrDataTableData>
                 ) : (
@@ -217,7 +219,7 @@ export const ShoppingBagList = ({
               </DiscrDataTableLine>
 
               <DiscrDataTableLine>
-                <DiscrDataTableHead>Price</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Price')}</DiscrDataTableHead>
                 {/* {discount !== 0 ? ( */}
                 <DiscrDataTableData>
                   <DiscrDataListItemPrice $red>
@@ -240,7 +242,7 @@ export const ShoppingBagList = ({
               </DiscrDataTableLine>
 
               <DiscrDataTableLine>
-                <DiscrDataTableHead>Quantity</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Quantity')}</DiscrDataTableHead>
                 <DiscrDataTableData>
                   <IconBtn
                     type="button"
@@ -271,7 +273,7 @@ export const ShoppingBagList = ({
           }}
         >
           <BasketCompIconClose />
-          remove
+          {t('remove')}
         </BtnItem>
       </BoxForDiscrData>
     </BasketCompItem>
@@ -325,7 +327,7 @@ export const ShoppingBagList = ({
                   removeProductHandler(_id, title);
                 }}
               >
-                remove
+                {t('remove')}
               </RemoveBtn>
             </QuantityBox>
           </DiscrBox>

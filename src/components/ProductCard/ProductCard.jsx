@@ -25,6 +25,7 @@ import {
   selectOldPrice,
 } from 'services/selectCurrency';
 import uuid4 from 'uuid4';
+import { useTranslation } from 'react-i18next';
 
 export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const {
@@ -54,16 +55,17 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     size_chart,
   } = item[0];
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   let imageArray = [];
 
   useEffect(() => {
-    if (images) {
-      imageArray = images.split(',');
-      imageArray.unshift(mainImage);
-    }
-    slides = imageArray?.length;
-    setIndxSlideImg(0);
-    setSlideImg(imageArray.slice(0, slides));
+    // if (images) {
+    //   imageArray = images.split(',');
+    //   imageArray.unshift(mainImage);
+    // }
+    // slides = imageArray?.length;
+    // setIndxSlideImg(0);
+    // setSlideImg(imageArray.slice(0, slides));
     setOptionData(prev => ({
       ...prev,
       oldPrice: selectOldPrice(selectedCurrency, item[0]),
@@ -74,10 +76,10 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
 
   const _id = uuid4();
 
-  if (images) {
-    imageArray = images.split(',');
-    imageArray.unshift(mainImage);
-  }
+  // if (images) {
+  //   imageArray = images.split(',');
+  //   imageArray.unshift(mainImage);
+  // }
   let options = [];
   if (sizes) {
     options = sizes.split(',');
@@ -203,40 +205,76 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   });
 
   //change images
+  // const [indxImg, setIndxImg] = useState(0);
+
+  // let slides = imageArray?.length;
+  // const [indxSlideImg, setIndxSlideImg] = useState(0);
+  // const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
+
+  // const handleChangeImg = e => {
+  //   const currentIndx = e.target.id;
+  //   setIndxImg(currentIndx);
+  // };
+
+  // const handleScrollImg = e => {
+  //   const type = e.target.dataset.controls;
+  //   switch (type) {
+  //     case 'up':
+  //       setIndxSlideImg(prevState =>
+  //         prevState - slides < 0
+  //           ? imageArray?.length - slides
+  //           : prevState - slides,
+  //       );
+  //       setSlideImg(imageArray.slice(0, slides));
+  //       break;
+  //     case 'down':
+  //       setIndxSlideImg(prevState =>
+  //         prevState + slides >= imageArray?.length ? 0 : prevState + slides,
+  //       );
+  //       setSlideImg(
+  //         imageArray.slice(imageArray?.length - slides, imageArray?.length),
+  //       );
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  useEffect(() => {
+    if (images) {
+      imageArray = images.split(',');
+      imageArray.unshift(mainImage);
+    }
+    setSlideImg(imageArray);
+  }, [images, mainImage]);
+
   const [indxImg, setIndxImg] = useState(0);
+  const [slideImages, setSlideImg] = useState([]);
 
-  let slides = imageArray?.length;
-  const [indxSlideImg, setIndxSlideImg] = useState(0);
-  const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
-
-  const handleChangeImg = e => {
-    const currentIndx = e.target.id;
-    setIndxImg(currentIndx);
+  const handleChangeImg = index => {
+    setIndxImg(index);
   };
 
-  const handleScrollImg = e => {
-    const type = e.target.dataset.controls;
-    switch (type) {
-      case 'up':
-        setIndxSlideImg(prevState =>
-          prevState - slides < 0
-            ? imageArray?.length - slides
-            : prevState - slides,
-        );
-        setSlideImg(imageArray.slice(0, slides));
-        break;
-      case 'down':
-        setIndxSlideImg(prevState =>
-          prevState + slides >= imageArray?.length ? 0 : prevState + slides,
-        );
-        setSlideImg(
-          imageArray.slice(imageArray?.length - slides, imageArray?.length),
-        );
-        break;
-      default:
-        break;
+  const handleScrollImg = direction => {
+    if (direction === 'up') {
+      setIndxImg(prevIdx =>
+        prevIdx === 0 ? slideImages.length - 1 : prevIdx - 1,
+      );
+    } else if (direction === 'down') {
+      setIndxImg(prevIdx =>
+        prevIdx === slideImages.length - 1 ? 0 : prevIdx + 1,
+      );
     }
   };
+
+  useEffect(() => {
+    const startIdx = indxImg;
+    const endIdx =
+      startIdx + 4 >= slideImages.length ? slideImages.length : startIdx + 4;
+    setSlideImagesToShow(slideImages.slice(startIdx, endIdx));
+  }, [indxImg, slideImages]);
+
+  const [slideImagesToShow, setSlideImagesToShow] = useState([]);
 
   // open details for the info section
   const [showCareDetails, setCareShowDetails] = useState(false);
@@ -250,7 +288,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
           <SC.ProductNavList>
             <SC.ProductNavItem>
               <SC.ProductNavLink to={`shop/?perPage=12&page=1`}>
-                Shop
+                {t('Shop')}
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
@@ -264,7 +302,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
           </SC.ProductNavList>
         </SC.ProductNav>
         <SC.ProductContent>
-          <SC.ProductGallery>
+          {/* <SC.ProductGallery>
             <SC.ControlsList>
               {images?.length > slides && indxSlideImg !== 0 && (
                 <FiChevronUp
@@ -332,7 +370,79 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 </SC.DeliveryInfoItem>
               </SC.DeliveryInfo>
             </SC.ProductImageWrapper>
+          </SC.ProductGallery> */}
+
+          <SC.ProductGallery>
+            <SC.ControlsList>
+              {slideImages.length > 4 && (
+                <>
+                  <SC.BtnProduct
+                    type="button"
+                    onClick={() => handleScrollImg('up')}
+                  >
+                    <SC.BtnArrow />
+                  </SC.BtnProduct>
+
+                  {slideImagesToShow.map((img, i) => (
+                    <SC.ControlsItem key={i}>
+                      <img
+                        src={img}
+                        alt={`Image ${i}`}
+                        className={i === indxImg % 4 ? 'active' : ''}
+                        onClick={() =>
+                          handleChangeImg(indxImg - (indxImg % 5) + i)
+                        }
+                      />
+                    </SC.ControlsItem>
+                  ))}
+                  <SC.BtnProduct
+                    type="button"
+                    onClick={() => handleScrollImg('down')}
+                  >
+                    <SC.BtnArrowDown />
+                  </SC.BtnProduct>
+                </>
+              )}
+              {slideImages.length <= 4 &&
+                slideImages.map((img, i) => (
+                  <SC.ControlsItem key={i}>
+                    <img
+                      src={img}
+                      alt={`Image ${i}`}
+                      className={i === indxImg ? 'active' : ''}
+                      onClick={() => handleChangeImg(i)}
+                    />
+                  </SC.ControlsItem>
+                ))}
+            </SC.ControlsList>
+            <SC.ProductImageWrapper>
+              <SC.ProductImage
+                width={347}
+                height={600}
+                src={slideImages[indxImg]}
+                alt="Product image"
+                loading="lazy"
+              />
+
+              <SC.DeliveryInfo>
+                <SC.DeliveryInfoItem>
+                  <Car width={32} height={32} />
+                  <span>{t('Fast Shipping')}</span>
+                  <p>{t('Enjoy fast shipping on all clothing orders.')}</p>
+                </SC.DeliveryInfoItem>
+                <SC.DeliveryInfoItem>
+                  <Done width={32} height={32} />
+                  <span>{t('Return Policy')}</span>
+                  <p>
+                    {t(
+                      'If the clothing item doesn’t fit, you can return it within 7 days for a full refund.',
+                    )}
+                  </p>
+                </SC.DeliveryInfoItem>
+              </SC.DeliveryInfo>
+            </SC.ProductImageWrapper>
           </SC.ProductGallery>
+
           <SC.ProductInfo>
             <div>
               <SC.Heading>
@@ -367,7 +477,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   )}
                   <SC.Prices>
                     <SC.Discount style={{ width: '100%', textAlign: 'right' }}>
-                      Rate: {optionData.rate}
+                      {t('Rate')}: {optionData.rate}
                       {/* Status: {optionData.status} */}
                     </SC.Discount>
                   </SC.Prices>
@@ -380,7 +490,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
             {options?.length !== 0 && console.log('check', check)}
             {options?.length !== 0 && (
               <SC.Options>
-                <SC.ProductSubTitle>Option:</SC.ProductSubTitle>
+                <SC.ProductSubTitle>{t('Option')}:</SC.ProductSubTitle>
                 <SC.OptionsList>
                   {options.map((option, i) => {
                     return (
@@ -412,7 +522,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
               </SC.Options>
             )}
             <SC.Options>
-              <SC.ProductSubTitle>Quantity:</SC.ProductSubTitle>
+              <SC.ProductSubTitle>{t('Quantity')}:</SC.ProductSubTitle>
               <SC.Quantity>
                 <SC.IconBtn
                   type="button"
@@ -443,8 +553,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 </SC.IconBtn>
               </SC.Quantity>
               <SC.Quantity style={{ marginTop: '10px', padding: '6px' }}>
-                {(optionData?.newPrice * optionData?.quantity).toFixed(2) + ' '}
-                {selectCurrency(selectedCurrency)}
+                <span>
+                  {(optionData?.newPrice * optionData?.quantity).toFixed(2) +
+                    ' '}
+                  {selectCurrency(selectedCurrency)}
+                </span>
               </SC.Quantity>
             </SC.Options>
             {optionData.title ? (
@@ -469,7 +582,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   setOptionData(init);
                 }}
               >
-                ADD to cart
+                {t('ADD to cart')}
               </SC.TextBtn>
             ) : (
               <>
@@ -478,7 +591,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   aria-label="Add to card"
                   disabled={true}
                 >
-                  ADD to cart
+                  {t('ADD to cart')}
                 </SC.TextBtn>
               </>
             )}
@@ -556,43 +669,44 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 )}
               </SC.InfoSection>
             ) : (
-              <SC.InfoSection>
-                <SC.Accord>
-                  <SC.ProductSubTitle marginBottom="0">
-                    Design
-                  </SC.ProductSubTitle>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open description"
-                    aria-expanded="false"
-                    onClick={toggleCareDetails}
-                  >
-                    {showCareDetails ? (
-                      <Open style={{ transform: 'rotate(180deg)' }} />
-                    ) : (
-                      <Open />
-                    )}
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showCareDetails && (
-                  <SC.AccordCareList>
-                    <SC.AccordCareItem>
-                      <span>
-                        The gold standard of gifting, a Homeforest gift card is
-                        a sure-fire way to make someone feel special, not to
-                        mention stylish. Just choose any amount up to $200, send
-                        by mail, and the recipient can redeem it for whatever he
-                        or she wishes.
-                      </span>
-                    </SC.AccordCareItem>
-                  </SC.AccordCareList>
-                )}
-              </SC.InfoSection>
+              // <SC.InfoSection>
+              //   <SC.Accord>
+              //     <SC.ProductSubTitle marginBottom="0">
+              //       Design
+              //     </SC.ProductSubTitle>
+              //     <SC.IconBtn
+              //       type="button"
+              //       aria-label="switch to open description"
+              //       aria-expanded="false"
+              //       onClick={toggleCareDetails}
+              //     >
+              //       {showCareDetails ? (
+              //         <Open style={{ transform: 'rotate(180deg)' }} />
+              //       ) : (
+              //         <Open />
+              //       )}
+              //     </SC.IconBtn>
+              //   </SC.Accord>
+              //   {showCareDetails && (
+              //     <SC.AccordCareList>
+              //       <SC.AccordCareItem>
+              //         <span>
+              //           The gold standard of gifting, a Homeforest gift card is
+              //           a sure-fire way to make someone feel special, not to
+              //           mention stylish. Just choose any amount up to $200, send
+              //           by mail, and the recipient can redeem it for whatever he
+              //           or she wishes.
+              //         </span>
+              //       </SC.AccordCareItem>
+              //     </SC.AccordCareList>
+              //   )}
+              // </SC.InfoSection>
+              <></>
             )}
             <SC.InfoSection>
               <SC.Accord>
                 <SC.ProductSubTitle marginBottom="0">
-                  Details
+                  {t('Details')}
                 </SC.ProductSubTitle>
                 <SC.IconBtn
                   type="button"
@@ -614,10 +728,9 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                       <span dangerouslySetInnerHTML={{ __html: size_chart }} />
                     ) : (
                       <span>
-                        The size of the product is universal or we have not
-                        added a size chart to the product. Oops... Please
-                        familiarize yourself with the description of the
-                        characteristics.
+                        {t(
+                          'The size of the product is universal or we have not added a size chart to the product. Oops... Please familiarize yourself with the description of the characteristics.',
+                        )}
                       </span>
                     )}
                   </SC.AccordCareItem>

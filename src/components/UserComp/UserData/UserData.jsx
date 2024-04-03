@@ -37,8 +37,10 @@ import { Profile } from '../Profile/Profile';
 import { ChangePassword } from '../ChangePassword/ChangePassword';
 import { DefaultDelivery } from '../DefaultDelivery/DefaultDelivery';
 import { Address } from '../Address/Address';
+import { useTranslation } from 'react-i18next';
 
 export const UserData = () => {
+  const { t } = useTranslation();
   const [editProfileSettings, setEditProfileSettings] = useState(false);
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [showAddDelivery, setShowAddDelivery] = useState(false);
@@ -86,7 +88,7 @@ export const UserData = () => {
                 />
               </EditCameraForm>
             </UserDataImgWrapper>
-            <TitleArticle>Profile</TitleArticle>
+            <TitleArticle>{t('Profile')}</TitleArticle>
             <ProfileContainer>
               <IconBtn onClick={() => setEditProfileSettings(true)}>
                 <PensilStyle />
@@ -104,14 +106,14 @@ export const UserData = () => {
         {editProfileSettings && <Profile onClose={setEditProfileSettings} />}
       </UserDataContainer>
       <UserDataContainer>
-        <TitleArticle>Change Password</TitleArticle>
+        <TitleArticle>{t('Change Password')}</TitleArticle>
         <ChangePassword />
       </UserDataContainer>
       <UserDataContainer>
-        <TitleArticle>My addresses</TitleArticle>
+        <TitleArticle>{t('My addresses')}</TitleArticle>
         {userIn.address === '' && !showAddAddress && (
           <BtnLight onClick={() => setShowAddAddress(true)}>
-            add address
+            {t('add address')}
           </BtnLight>
         )}
         {showAddAddress && <Address onClose={setShowAddAddress} />}
@@ -139,7 +141,7 @@ export const UserData = () => {
         )}
       </UserDataContainer>
       <UserDataContainer>
-        <TitleArticle>Default delivery</TitleArticle>
+        <TitleArticle>{t('Default delivery')}</TitleArticle>
         <DefaultDelivery />
       </UserDataContainer>
     </UserDataSection>

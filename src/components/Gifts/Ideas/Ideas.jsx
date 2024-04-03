@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { saveToStorage } from 'services/localStorService';
 import { GiftsSection } from '../Gifts.styled';
 import * as SC from './Ideas.styled';
@@ -19,82 +19,109 @@ import img4_png from 'images/gifts/img4.png';
 import img4_png_2x from 'images/gifts/img4@2x.png';
 import img4_webp from 'images/gifts/img4.webp';
 import img4_webp_2x from 'images/gifts/img4@2x.webp';
+import { useTranslation } from 'react-i18next';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
 
 export const Ideas = () => {
+  const { t } = useTranslation();
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
+
   return (
     <GiftsSection>
-      <SC.HeadlineIdeas>Our ideas for gifts</SC.HeadlineIdeas>
+      <SC.HeadlineIdeas>{t('Our ideas for gifts')}</SC.HeadlineIdeas>
       <SC.IdeasList>
         <SC.IdeasItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img1_webp} 1x, ${img1_webp_2x} 2x`}
               type="image/webp"
-            />
-            <img
-              src={img1_png}
-              srcSet={`${img1_png} 285w, ${img1_png_2x} 570w`}
-              width={285}
-              height={400}
-              alt="Plants"
-              loading="lazy"
-            />
-          </picture>
+            /> */}
+          <img
+            src={img1_webp_2x}
+            // srcSet={`${img1_png} 285w, ${img1_png_2x} 570w`}
+            width={285}
+            height={400}
+            alt="Plants"
+            loading="lazy"
+          />
+          {/* </picture> */}
           <SC.Link
-            to={`/shop/plants?page=1&perPage=12&rare=rare`}
+            to={`/shop?category=${homeProductLinks?.clothing[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
-              saveToStorage('rare', 'rare');
+              saveToStorage('filters', {
+                ...init,
+                category: [homeProductLinks?.clothing[selectedLanguage]],
+              });
             }}
           >
-            Unique plant Gifts
+            {t('Clothes')}
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img2_webp} 1x, ${img2_webp_2x} 2x`}
               type="image/webp"
-            />
-            <img
-              src={img2_png}
-              srcSet={`${img2_png} 285w, ${img2_png_2x} 570w`}
-              width={285}
-              height={400}
-              alt="Plants"
-              loading="lazy"
-            />
-          </picture>
+            /> */}
+          <img
+            src={img3_webp_2x}
+            // srcSet={`${img2_png} 285w, ${img2_png_2x} 570w`}
+            width={285}
+            height={400}
+            alt="Plants"
+            loading="lazy"
+          />
+          {/* </picture> */}
           <SC.Link
-            to={`/shop/plants?page=1&perPage=12&light=low+to+bright+indirect+light`}
+            to={`/shop?category=${homeProductLinks?.accessories[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
-              saveToStorage('light', 'low to bright indirect light');
+              saveToStorage('filters', {
+                ...init,
+                category: [homeProductLinks?.accessories[selectedLanguage]],
+              });
             }}
           >
-            Winter blooms
+            {t('Accessories')}
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img3_webp} 1x, ${img3_webp_2x} 2x`}
               type="image/webp"
-            />
-            <img
-              src={img3_png}
-              srcSet={`${img3_png} 285w, ${img3_png_2x} 570w`}
-              width={285}
-              height={400}
-              alt="Plants"
-              loading="lazy"
-            />
-          </picture>
+            /> */}
+          <img
+            src={img2_webp_2x}
+            // srcSet={`${img3_png} 285w, ${img3_png_2x} 570w`}
+            width={285}
+            height={400}
+            alt="Plants"
+            loading="lazy"
+          />
+          {/* </picture> */}
           <SC.Link
-            to={`/shop/plants?page=1&perPage=12&petFriendly=pet+friendly`}
+            to={`/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
-              saveToStorage('petFriendly', 'pet friendly');
+              saveToStorage('filters', {
+                ...init,
+                category: [homeProductLinks?.footwear[selectedLanguage]],
+              });
             }}
           >
-            Pet friendly
+            {t('Shoes')}
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>

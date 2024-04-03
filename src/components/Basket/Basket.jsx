@@ -18,15 +18,17 @@ import {
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { ShoppingBagList } from 'components/Header/ShoppingBag/ShoppingBagList/ShoppingBagList';
 import { BtnLight } from 'components/UserComp/UserData/UserData.styled';
+import { useTranslation } from 'react-i18next';
 
 export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
+  const { t } = useTranslation();
   const auth = useSelector(getUser);
   const { contextBasket, setContextBasket } = useContext(StatusContext);
 
   return (
     <BasketSection>
       <BasketContainer>
-        <Legend>Basket</Legend>
+        <Legend>{t('Basket')}</Legend>
         {contextBasket && contextBasket[0]?.optionData?.length !== undefined ? (
           <BasketWrapper>
             <BasketCompList>
@@ -50,13 +52,10 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
           </BasketWrapper>
         ) : (
           <AuthCheckOutBox>
-            <TitleCheckOut>YOUR Basket is empty</TitleCheckOut>
-            <TextCheckOut>Please add an item to checkout</TextCheckOut>
-            <Link
-              to="/shop"
-              style={{ textDecoration: 'none' }}
-            >
-              <Btn>SHOP</Btn>
+            <TitleCheckOut>{t('YOUR Basket is empty')}</TitleCheckOut>
+            <TextCheckOut>{t('Please add an item to checkout')}</TextCheckOut>
+            <Link to="/shop" style={{ textDecoration: 'none' }}>
+              <Btn>{t('Shop')}</Btn>
             </Link>
           </AuthCheckOutBox>
         )}
@@ -66,25 +65,27 @@ export const Basket = ({ confirm, handleAddOrder, isClosed }) => {
           contextBasket[0]?.optionData?.length !== 0 && (
             <AuthCheckOutBox isClosed={isClosed}>
               <TitleCheckOut>
-                For quick ordering and saving order history
+                {t('For quick ordering and saving order history')}
               </TitleCheckOut>
               <TextCheckOut>
-                Make sure you’re signed into your account
+                {t('Make sure you’re signed into your account')}
               </TextCheckOut>
               <Link to="/signin" style={{ textDecoration: 'none' }}>
-                <BtnLight>SIGN IN</BtnLight>
+                <BtnLight>{t('SIGN IN')}</BtnLight>
               </Link>
               {!contextBasket &&
                 contextBasket[0]?.optionData?.length == undefined &&
                 contextBasket[0]?.optionData?.length == 0 && (
                   <>
-                    <TitleCheckOut>YOUR Basket is empty</TitleCheckOut>
-                    <TextCheckOut>Please add an item to checkout</TextCheckOut>
+                    <TitleCheckOut>{t('YOUR Basket is empty')}</TitleCheckOut>
+                    <TextCheckOut>
+                      {t('Please add an item to checkout')}
+                    </TextCheckOut>
                     <Link
                       to="/shop?perPage=12&page=1"
                       style={{ textDecoration: 'none' }}
                     >
-                      <BtnLight>SHOP</BtnLight>
+                      <BtnLight>{t('Shop')}</BtnLight>
                     </Link>
                   </>
                 )}

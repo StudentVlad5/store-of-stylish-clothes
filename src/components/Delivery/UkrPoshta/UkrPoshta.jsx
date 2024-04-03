@@ -5,18 +5,19 @@ import { getListOfCitiesUP, getListOfDepartmentsUP } from 'services/APIservice';
 import { onLoaded, onLoading } from 'components/helpers/Loader/Loader';
 import { PoshtaTitle } from 'components/CheckOut/Order/Order.styled';
 import { getFromStorage } from 'services/localStorService';
+import { useTranslation } from 'react-i18next';
 
 const customStyles = {
   control: (base, state) => ({
     ...base,
     backgroundColor: 'transparent',
-    color:'#2F2F2F',
+    color: '#2F2F2F',
     border: state.isFocused ? '2px solid  #754F23' : '1px solid  #754F23',
     boxShadow: state.isFocused ? 'none' : 'none',
     cursor: 'pointer',
     '&:hover': {
-      border: '2px solid #754F23'
-    }
+      border: '2px solid #754F23',
+    },
   }),
   option: (base, state) => ({
     ...base,
@@ -25,9 +26,9 @@ const customStyles = {
     color: state.isSelected ? '#FCF9F2' : '#2F2F2F',
     '&:hover': {
       backgroundColor: '#754F23',
-      color: '#FCF9F2'
-    }
-  })
+      color: '#FCF9F2',
+    },
+  }),
 };
 
 export const UkrPoshta = ({
@@ -36,6 +37,7 @@ export const UkrPoshta = ({
   setSelectedDepartment,
   selectedCity_UP_NAME,
 }) => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [listOfCities, setListOfSities] = useState([]);
 
@@ -70,7 +72,7 @@ export const UkrPoshta = ({
         });
         setListOfSitiesUP(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -105,7 +107,7 @@ export const UkrPoshta = ({
         });
         setListOfDepartmentUP(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -170,7 +172,7 @@ export const UkrPoshta = ({
   return (
     <>
       <Box>
-        <PoshtaTitle>City</PoshtaTitle>
+        <PoshtaTitle>{t('City')}</PoshtaTitle>
         <SelectInput
           name="cityNameUP"
           type="text"
@@ -191,7 +193,7 @@ export const UkrPoshta = ({
           options={optionsUP(cityNameUP)}
           placeholder={
             selectedCity_UP_NAME === ''
-              ? 'Select city please...'
+              ? t('Select city please...')
               : selectedCity_UP_NAME
           }
           styles={customStyles}
@@ -200,7 +202,7 @@ export const UkrPoshta = ({
       </Box>
 
       <Box>
-        <PoshtaTitle>Point office</PoshtaTitle>
+        <PoshtaTitle>{t('Point office')}</PoshtaTitle>
         <SelectInput
           name="departmentNameUP"
           type="text"
@@ -215,7 +217,7 @@ export const UkrPoshta = ({
           options={oUP(departmentNameUP)}
           placeholder={
             departmentNameUP === ''
-              ? 'Select department please...'
+              ? t('Select department please...')
               : departmentNameUP
           }
           onChange={e => {

@@ -144,40 +144,40 @@ export const ShoppingBag = () => {
     sizes: [],
   };
 
-  const dataArr = [
-    {
-      imageUrl: photoJacetsCategory,
-      title: t('Jackets'),
-      link: `shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
-      nav: saveToStorage('filters', {
-        ...init,
-        product: [homeProductLinks?.jacets[selectedLanguage]],
-      }),
-    },
-    {
-      imageUrl: photoPantsCategory,
-      title: t('Pants'),
-      link: `shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
-      nav: saveToStorage('filters', {
-        ...init,
-        product: [homeProductLinks?.pants[selectedLanguage]],
-      }),
-    },
-    {
-      imageUrl: photoHoodiesSweatshirtsCategory,
-      title: t('Hoodies & Sweatshirts'),
-      link: `shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
-      nav: saveToStorage('filters', {
-        ...init,
-        product: [homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]],
-      }),
-    },
-    {
-      imageUrl: photoFootwearCategory,
-      title: t('Gifts'),
-      link: '/gifts',
-    },
-  ];
+  // const dataArr = [
+  //   {
+  //     imageUrl: photoJacetsCategory,
+  //     title: t('Jackets'),
+  //     link: `shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+  //     nav: saveToStorage('filters', {
+  //       ...init,
+  //       product: [homeProductLinks?.jacets[selectedLanguage]],
+  //     }),
+  //   },
+  //   {
+  //     imageUrl: photoPantsCategory,
+  //     title: t('Pants'),
+  //     link: `shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+  //     nav: saveToStorage('filters', {
+  //       ...init,
+  //       product: [homeProductLinks?.pants[selectedLanguage]],
+  //     }),
+  //   },
+  //   {
+  //     imageUrl: photoHoodiesSweatshirtsCategory,
+  //     title: t('Hoodies & Sweatshirts'),
+  //     link: `shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+  //     nav: saveToStorage('filters', {
+  //       ...init,
+  //       product: [homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]],
+  //     }),
+  //   },
+  //   {
+  //     imageUrl: photoFootwearCategory,
+  //     title: t('Gifts'),
+  //     link: '/gifts',
+  //   },
+  // ];
 
   const [totalPayment, setTotalPayment] = useState(0);
 

@@ -21,6 +21,8 @@ const HeadingSection = styled(Section)`
 
 const ImageContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 const Background = styled.div`

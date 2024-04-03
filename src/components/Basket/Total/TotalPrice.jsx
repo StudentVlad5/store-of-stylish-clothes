@@ -17,8 +17,10 @@ import {
   PaymentTotalTitlePriceDiscr,
   ShippingFast,
 } from './TotalPrice.styled';
+import { useTranslation } from 'react-i18next';
 
 export const TotalPrice = basket => {
+  const {t} = useTranslation();
   const { confirm, handleAddOrder } = basket;
 
   const totalPayment = basket.contextBasket
@@ -43,12 +45,12 @@ export const TotalPrice = basket => {
   return (
     <PaymentBox>
       <PaymentTotal>
-        <PaymentTotalTitle>Total</PaymentTotalTitle>
+        <PaymentTotalTitle>{t("Total")}</PaymentTotalTitle>
         <table>
           <PaymentTotalList>
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                Amount for the product
+                {t("Amount for the product")}
               </PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
                 <b>{totalAmount}</b>
@@ -56,7 +58,7 @@ export const TotalPrice = basket => {
               </PaymentTotalListItemDiscr>
             </PaymentTotalListItem>
             <PaymentTotalListItem>
-              <PaymentTotalListItemTitle>Discount</PaymentTotalListItemTitle>
+              <PaymentTotalListItemTitle>{t("Discount")}</PaymentTotalListItemTitle>
               <PaymentTotalListItemDiscr>
                 <b>{totalDiscount}</b>
                 {currency}
@@ -64,7 +66,7 @@ export const TotalPrice = basket => {
             </PaymentTotalListItem>
 
             <PaymentTotalListItem>
-              <PaymentTotalTitle>Payment</PaymentTotalTitle>
+              <PaymentTotalTitle>{t("Payment")}</PaymentTotalTitle>
               <PaymentTotalTitle>
                 {totalPayment}
                 {currency}
@@ -73,34 +75,34 @@ export const TotalPrice = basket => {
 
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                Delivery in Ukraine
+                {t("Delivery in Ukraine")}
               </PaymentTotalListItemTitle>
               {currency === '₴' && (
                 <PaymentTotalListItemDiscr>
-                  from <b>70</b> {currency}
+                  {t("from")} <b>70</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
               {currency !== '₴' && (
                 <PaymentTotalListItemDiscr>
-                  from <b>2</b> {currency}
+                  {t("from")} <b>2</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
             </PaymentTotalListItem>
 
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                Shipping to other countries
+                {t("Shipping to other countries")}
               </PaymentTotalListItemTitle>
               {currency === '₴' && (
                 <PaymentTotalListItemDiscr>
                   {' '}
-                  from <b>1000</b> {currency}
+                  {t("from")} <b>1000</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
               {currency !== '₴' && (
                 <PaymentTotalListItemDiscr>
                   {' '}
-                  from <b>25</b> {currency}
+                  {t("from")} <b>25</b> {currency}
                 </PaymentTotalListItemDiscr>
               )}
             </PaymentTotalListItem>
@@ -109,22 +111,22 @@ export const TotalPrice = basket => {
       </PaymentTotal>
       {confirm ? (
         <PaymentBtn onClick={handleAddOrder} id="paymentBtn">
-          confirm
+          {t("confirm")}
         </PaymentBtn>
       ) : (
         <PaymentBtn to={`/checkout/step1`} id="paymentBtn">
-          checkout
+          {t("checkout")}
         </PaymentBtn>
       )}
       {!confirm && (
         <DeliverBox>
           <DeliverBoxItem>
             <ShippingFast />
-            The delivery time in Ukraine is from 4-5 days
+            {t("The delivery time in Ukraine is from 4-5 days")}
           </DeliverBoxItem>
           <DeliverBoxItem>
             <Done />
-            the delivery time in Europe is from 14 days
+            {t("the delivery time in Europe is from 14 days")}
           </DeliverBoxItem>
         </DeliverBox>
       )}

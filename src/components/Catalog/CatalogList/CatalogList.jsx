@@ -17,8 +17,10 @@ import {
   selectNewPrice,
   selectOldPrice,
 } from 'services/selectCurrency';
+import { useTranslation } from 'react-i18next';
 
 export const CatalogList = ({ products }) => {
+  const {t} = useTranslation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(getUser).favorites;
   let favorites;
@@ -95,7 +97,7 @@ export const CatalogList = ({ products }) => {
                     <SC.CardPrices>
                       {card.price_ua && (
                         <SC.CardDiscount>
-                          <span>Price: </span>
+                          <span>{t("Price")}: </span>
                           {selectNewPrice(selectedCurrency, card)}
                           {selectCurrency(selectedCurrency)}
                         </SC.CardDiscount>

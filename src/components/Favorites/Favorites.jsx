@@ -89,10 +89,10 @@ export const Favorites = () => {
             ) : (
               <ShopBox>
                 <ShopBoxTitle>
-                  {"You don't have favorite products"}
+                  {t("You don't have favorite products")}
                 </ShopBoxTitle>
                 <Link to="/shop" style={{ textDecoration: 'none' }}>
-                  <BtnBrown>Shop</BtnBrown>
+                  <BtnBrown>{t("Shop")}</BtnBrown>
                 </Link>
               </ShopBox>
             )}

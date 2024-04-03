@@ -21,8 +21,10 @@ import {
   Span,
   StyledLink,
 } from '../AuthForm.styled';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = () => {
+  const { t } = useTranslation();
   const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
@@ -96,7 +98,7 @@ const RegisterForm = () => {
       <FormContainer>
         <Formik validationSchema={schemas.registerSchema}>
           <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleRegister>{'Register'}</TitleRegister>
+            <TitleRegister>{t('Register')}</TitleRegister>
             {isShown && (
               <div>
                 <Input
@@ -122,7 +124,7 @@ const RegisterForm = () => {
                 {formik.errors.email && formik.touched.email ? (
                   <ErrorBox>{formik.errors.email}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Email</Span>
+                <Span className="floating-label">{t("Email")}</Span>
               </div>
             )}
             {isShown && (
@@ -146,7 +148,7 @@ const RegisterForm = () => {
                 {formik.errors.password && formik.touched.password ? (
                   <ErrorBox>{formik.errors.password}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Password</Span>
+                <Span className="floating-label">{t("Password")}</Span>
               </div>
             )}
             {isShown && (
@@ -171,17 +173,17 @@ const RegisterForm = () => {
                 formik.touched.confirmPassword ? (
                   <ErrorBox>{formik.errors.confirmPassword}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Confirm Password</Span>
+                <Span className="floating-label">{t("Confirm Password")}</Span>
               </div>
             )}
             {isShown && (
               <BtnContainer>
                 <Btn type="button" onClick={showForm} disabled={isValid}>
-                  {'Next'}
+                  {t('Next')}
                 </Btn>
                 <BoxText>
-                  <span>{'Already have an account?'}</span>
-                  <StyledLink to="/signin">{'Sign In'}</StyledLink>
+                  <span>{t('Already have an account?')}</span>
+                  <StyledLink to="/signin">{t('Sign In')}</StyledLink>
                 </BoxText>
               </BtnContainer>
             )}
@@ -208,7 +210,7 @@ const RegisterForm = () => {
                 {formik.errors.name && formik.touched.name ? (
                   <ErrorBox>{formik.errors.name}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Name</Span>
+                <Span className="floating-label">{t("Name")}</Span>
               </div>
             )}
             {!isShown && (
@@ -237,7 +239,7 @@ const RegisterForm = () => {
                 {formik.errors.location && formik.touched.location ? (
                   <ErrorBox>{formik.errors.location}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Location, region</Span>
+                <Span className="floating-label">{t("Location, region")}</Span>
               </div>
             )}
             {!isShown && (
@@ -264,7 +266,7 @@ const RegisterForm = () => {
                 {formik.errors.phone && formik.touched.phone ? (
                   <ErrorBox>{formik.errors.phone}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Mobile phone</Span>
+                <Span className="floating-label">{t("Phone")}</Span>
               </div>
             )}
             {!isShown && (
@@ -274,7 +276,7 @@ const RegisterForm = () => {
                   aria-label="back button"
                   onClick={hideForm}
                 >
-                  {'Back'}
+                  {t('Back')}
                 </BackButton>
 
                 <Btn type="submit" aria-label="submit registration">
@@ -282,8 +284,8 @@ const RegisterForm = () => {
                 </Btn>
 
                 <BoxText>
-                  <span>{'Already have an account?'}</span>{' '}
-                  <StyledLink to="/signin">{'Sign In'}</StyledLink>
+                  <span>{t('Already have an account?')}</span>{' '}
+                  <StyledLink to="/signin">{t('Sign In')}</StyledLink>
                 </BoxText>
               </BtnContainer>
             )}

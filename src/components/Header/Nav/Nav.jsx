@@ -91,7 +91,7 @@ export const MobileNav = ({ toggleMenu }) => {
       <MobileNavBox>
         <NavItem to={`/`} onClick={toggleMenu}>
           <IconFeather />
-          {t('About Us')}
+          {t('About us')}
         </NavItem>
 
         <NavItemBoxModal>
@@ -99,7 +99,7 @@ export const MobileNav = ({ toggleMenu }) => {
             <IconFeather />
             {t('Shop')}
           </NavItem>
-          <IconArrow onClick={toggleModal} />
+          {/* <IconArrow onClick={toggleModal} /> */}
         </NavItemBoxModal>
 
         {isModalOpen && (
@@ -123,7 +123,7 @@ export const MobileNav = ({ toggleMenu }) => {
         </NavItem>
         <NavItem to="novetly" onClick={toggleMenu}>
           <IconFeather />
-          {t('Novetly')}
+          {t('Novelty')}
         </NavItem>
       </MobileNavBox>
     </MobileNavList>
@@ -152,7 +152,7 @@ export const Nav = () => {
         <NavItem to={`/`}>
           {' '}
           <IconFeather />
-          {t('About Us')}
+          {t('About us')}
         </NavItem>
         <NavItem to={`shop`}>
           <IconFeather />
@@ -168,7 +168,7 @@ export const Nav = () => {
         </NavItem>
         <NavItem to="novetly">
           <IconFeather />
-          {t('Novetly')}
+          {t('Novelty')}
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>

@@ -19,8 +19,10 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { saveToStorage, getFromStorage } from 'services/localStorService';
+import { useTranslation } from 'react-i18next';
 
 const Step3 = () => {
+  const { t } = useTranslation();
   const [selectedPaymentOption, setSelectedPaymentOption] = useState(
     getFromStorage('selectedPaymentOption')
       ? getFromStorage('selectedPaymentOption')
@@ -63,7 +65,7 @@ const Step3 = () => {
           <Visa />
           <DeliveryBlockOptionsLableBox>
             <DeliveryBlockOptionsTitle>
-              Payment by bank card, Apple Pay, Google Pay
+              {t("Payment by bank card, Apple Pay, Google Pay")}
             </DeliveryBlockOptionsTitle>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
@@ -95,21 +97,21 @@ const Step3 = () => {
           <Wallet style={{ width: 65 }} />
           <DeliveryBlockOptionsLableBox>
             <DeliveryBlockOptionsTitle>
-              Cash on delivery
+              {t("Cash on delivery")}
             </DeliveryBlockOptionsTitle>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
       </PaymentBlockOptionsLableBox>
       <PaymentFormBtnBox>
         <Link to={`/checkout/step2`}>
-          <PaymentFormBtn type="button">Back</PaymentFormBtn>
+          <PaymentFormBtn type="button">{t("Back")}</PaymentFormBtn>
         </Link>
         <PaymentFormBtnFinish
           type="button"
           onClick={handleAddOrder}
           disabled={isDisabled}
         >
-          Next
+          {t("Next")}
         </PaymentFormBtnFinish>
       </PaymentFormBtnBox>
     </Payment>

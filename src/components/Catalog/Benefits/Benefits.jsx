@@ -14,11 +14,14 @@ import img3_png from 'images/catalog/img3.png';
 import img3_2x_png from 'images/catalog/img3@2x.png';
 import img3_webp from 'images/catalog/img3.webp';
 import img3_2x_webp from 'images/catalog/img3@2x.webp';
+import { useTranslation } from 'react-i18next';
 
 export const Benefits = () => {
+  const { t } = useTranslation();
+
   return (
     <SC.BenefitsSection>
-      <Headline>Why buy from us</Headline>
+      <Headline>{t("Why buy from us?")}</Headline>
       <SC.BenefitsList>
         <SC.BenefitsItem>
           <picture>
@@ -35,9 +38,9 @@ export const Benefits = () => {
               loading="lazy"
             />
           </picture>
-          <SC.BenefitsSubtitle>Fast shipping</SC.BenefitsSubtitle>
+          <SC.BenefitsSubtitle>{t("Fast shipping")}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
-            We offer fast and reliable delivery straight to your doorstep.
+           {t("We offer fast and reliable delivery straight to your doorstep.")}
           </SC.BenefitsDescription>
         </SC.BenefitsItem>
         <SC.BenefitsItem>
@@ -55,12 +58,12 @@ export const Benefits = () => {
               loading="lazy"
             />
           </picture>
-          <SC.BenefitsSubtitle>Quality guaranteed</SC.BenefitsSubtitle>
+          <SC.BenefitsSubtitle>{t("Quality guaranteed")}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
-            We offer a quality guarantee on all of our plants.
+            {t("We offer a quality guarantee on all of our products.")}
           </SC.BenefitsDescription>
         </SC.BenefitsItem>
-        <SC.BenefitsItem>
+        {/* <SC.BenefitsItem>
           <picture>
             <source
               srcSet={`${img3_webp} 1x, ${img3_2x_webp} 2x`}
@@ -75,12 +78,12 @@ export const Benefits = () => {
               loading="lazy"
             />
           </picture>
-          <SC.BenefitsSubtitle>Support from specialists</SC.BenefitsSubtitle>
+          <SC.BenefitsSubtitle>{t("Support from specialists")}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
             Our services include assistance and guidance in growing indoor
             plants.
           </SC.BenefitsDescription>
-        </SC.BenefitsItem>
+        </SC.BenefitsItem> */}
       </SC.BenefitsList>
     </SC.BenefitsSection>
   );

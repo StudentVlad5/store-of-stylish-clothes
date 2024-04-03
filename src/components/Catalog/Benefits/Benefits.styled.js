@@ -4,6 +4,11 @@ import { Section, Subtitle } from 'components/baseStyles/CommonStyle.styled';
 
 const BenefitsSection = styled(Section)`
   text-align: center;
+  margin-top: 40px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    margin-top: 70px;
+  }
 `;
 
 const BenefitsList = styled.ul`

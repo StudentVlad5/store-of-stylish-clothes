@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FooterSection,
@@ -31,29 +31,40 @@ import {
   FooterInputFormBtn,
   LinkBrand,
 } from './Footer.styled';
-import theme from 'components/baseStyles/Variables.styled';
+import { useTranslation } from 'react-i18next';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const faqItems = [
     {
-      title: 'Catalog',
+      title: t('Catalog'),
       options: [
-        'Discounts',
-        'Novelty',
-        'Clothes',
-        'Footwear',
-        'Backpacks and Bags',
-        'Accessories',
+        t('Discounts'),
+        t('Novelty'),
+        t('Clothes'),
+        t('Shoes'),
+        t('Backpacks and Bags'),
+        t('Accessories'),
       ],
-      links: [`/shop`, `/shop`, `/shop`, `/shop`, `/shop`, `/shop`],
+      links: [
+        `/discounts`,
+        `/novetly`,
+        `/shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
+        `/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
+        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
+      ],
     },
     {
-      title: 'EXPLORE',
-      options: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
+      title: t('Explore'),
+      options: [t('About us'), t('Delivery, Payment, Returns'), t('Privacy Policy')],
       links: [`/`, `/`, `/`],
     },
     {
-      title: 'CONTACTS',
+      title: t('CONTACTS'),
       options: ['+380111111111', 'support@quillis.com'],
       links: [`tel:380111111111`, `mailto:support@quillis.com`],
     },

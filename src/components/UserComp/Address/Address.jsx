@@ -14,8 +14,10 @@ import {
   ProfileName,
   ProfileList,
 } from '../Profile/Profile.styled';
+import { useTranslation } from 'react-i18next';
 
 export const Address = ({ onClose }) => {
+  const {t} = useTranslation();
   let { userIn } = useAuth();
   const [addressData, setAddressData] = useState(userIn.address ?? []);
   const id = useSelector(selectId);
@@ -58,7 +60,7 @@ export const Address = ({ onClose }) => {
         >
           <ProfileLabel htmlFor="userName">
             <ProfileName>
-              First name <span style={{ color: 'red' }}>*</span>
+              {t("First name")} <span style={{ color: 'red' }}>*</span>
             </ProfileName>
             <ProfileInput
               type="text"
@@ -72,7 +74,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="surname">
-            <ProfileName>Last name <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("Last name")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="surname"
@@ -84,7 +86,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="company">
-            <ProfileName>Company</ProfileName>
+            <ProfileName>{t("Company")}</ProfileName>
             <ProfileInput
               type="company"
               name="company"
@@ -96,7 +98,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="address1">
-            <ProfileName>Address 1 <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("Address")} 1 <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="address1"
               name="address1"
@@ -108,7 +110,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="address2">
-            <ProfileName>Address 2</ProfileName>
+            <ProfileName>{t("Address")} 2</ProfileName>
             <ProfileInput
               type="address2"
               name="address2"
@@ -120,7 +122,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="city">
-            <ProfileName>City <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("City")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="city"
@@ -130,7 +132,7 @@ export const Address = ({ onClose }) => {
             {errors.city && touched.city ? <Error>{errors.city}</Error> : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="state">
-            <ProfileName>State <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("State")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="state"
@@ -142,7 +144,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="zipCode">
-            <ProfileName>Zip code <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("Zip code")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="text"
               name="zipCode"
@@ -154,7 +156,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="phone">
-            <ProfileName>Phone <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("Phone")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="tel"
               name="phone"
@@ -166,7 +168,7 @@ export const Address = ({ onClose }) => {
             ) : null}
           </ProfileLabel>
           <ProfileLabel htmlFor="email">
-            <ProfileName>Email <span style={{ color: 'red' }}>*</span></ProfileName>
+            <ProfileName>{t("Email")} <span style={{ color: 'red' }}>*</span></ProfileName>
             <ProfileInput
               type="email"
               name="email"
@@ -184,10 +186,10 @@ export const Address = ({ onClose }) => {
               aria-label="Close"
               onClick={() => onClose(false)}
             >
-              CANCEL
+              {t("CANCEL")}
             </BtnLight>
             <BtnBrown type="submit" disabled={isSubmitting} aria-label="Submit">
-              SAVE
+              {t("SAVE")}
             </BtnBrown>
           </BtnContainer>
         </ProfileList>

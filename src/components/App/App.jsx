@@ -17,16 +17,6 @@ import Step3 from 'components/CheckOut/Step3/Step3';
 import Step4 from 'components/CheckOut/Step4/Step4';
 import { UserOrders } from 'components/UserComp/UserOrders/UserOrders';
 import { BasketRoute } from 'routes/BasketRoute';
-import { AboutUs } from 'components/Addition/AboutUs/AboutUs';
-import { Faq } from 'components/Addition/FAQ/Faq';
-import { Blog } from 'components/Addition/Blog/Blog';
-import { Shipping } from 'components/Addition/Shipping/Shipping';
-import { Guarantee } from 'components/Addition/Guarantee/Guarantee';
-import { Courses } from 'components/Addition/Courses/Courses';
-import { Rewards } from 'components/Addition/Rewards/Rewards';
-import { Contact } from 'components/Addition/Contact/Contact';
-import { Location } from 'components/Addition/Location/Location';
-import { Careers } from 'components/Addition/Careers/Careers';
 
 const HomePage = lazy(() => import('pages/Home'));
 const UserPage = lazy(() => import('pages/User'));
@@ -34,12 +24,12 @@ const CatalogPage = lazy(() => import('pages/Catalog'));
 const ProductCardPage = lazy(() => import('pages/ProductCard'));
 const FavoritePage = lazy(() => import('pages/Favorite'));
 const GiftsPage = lazy(() => import('pages/Gifts'));
-const CarePage = lazy(() => import('pages/Care'));
+const ConfidentialPolitics = lazy(() => import('pages/ConfidentialPolitics'));
 const RegisterPage = lazy(() => import('pages/Register'));
 const LoginPage = lazy(() => import('pages/Login'));
 const CheckOutPage = lazy(() => import('pages/CheckOut'));
 const ForgotPasswordPage = lazy(() => import('pages/ForgotPassword'));
-const AdditionPage = lazy(() => import('pages/Addition'));
+const Delivery_and_payments = lazy(() => import('pages/Delivery_and_payments'));
 const BasketPage = lazy(() => import('pages/Basket'));
 const DiscountsShop = lazy(() => import('pages/DiscountsCatalog'));
 
@@ -106,7 +96,11 @@ export const App = () => {
             />
             <Route path="gifts" element={<GiftsPage />} />
             <Route path="discounts" element={<DiscountsShop />} />
-            <Route path="care" element={<CarePage />} />
+            <Route path="confidential" element={<ConfidentialPolitics />} />
+            <Route
+              path="delivery_and_payments"
+              element={<Delivery_and_payments />}
+            />
 
             <Route
               path="basket"
@@ -129,19 +123,6 @@ export const App = () => {
               <Route path="step2" element={<Step2 />} />
               <Route path="step3" element={<Step3 />} />
               <Route path="step4" element={<Step4 />} />
-            </Route>
-
-            <Route path="addition" element={<AdditionPage />}>
-              <Route path="about_company" element={<AboutUs />} />
-              <Route path="faq" element={<Faq />} />
-              <Route path="blogs" element={<Blog />} />
-              <Route path="shipping" element={<Shipping />} />
-              <Route path="guarantee" element={<Guarantee />} />
-              <Route path="course" element={<Courses />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="careers" element={<Careers />} />
-              <Route path="location" element={<Location />} />
-              <Route path="rewards_program" element={<Rewards />} />
             </Route>
 
             <Route

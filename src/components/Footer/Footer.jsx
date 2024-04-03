@@ -50,7 +50,7 @@ export const Footer = () => {
     {
       title: 'EXPLORE',
       options: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
-      links: [`/`, `/`, `/`],
+      links: [`/`, `delivery_and_payments`, `confidential`],
     },
     {
       title: 'CONTACTS',

@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { SEO } from 'utils/SEO';
 import { useDispatch } from 'react-redux';
 import { cleanHeaderBottom } from 'redux/header_bottom/operation';
-import { Addition } from 'components/Addition/Addition';
+import { Confidential } from '../components/Confidential/Confidential';
 
-const AdditionPage = () => {
+const ConfidentialPolitics = () => {
   const dispatch = useDispatch();
 
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -16,13 +16,10 @@ const AdditionPage = () => {
 
   return (
     <>
-      <SEO
-        title="Addition"
-        description="Addition Blogs Deliveries"
-      />
-      <Addition />
+      <SEO title="Confidential Politics" description="Confidential Politics" />
+      <Confidential />
     </>
   );
 };
 
-export default AdditionPage;
+export default ConfidentialPolitics;

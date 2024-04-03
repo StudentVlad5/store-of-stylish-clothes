@@ -55,7 +55,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     size_chart,
   } = item[0];
   const dispatch = useDispatch();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   let imageArray = [];
 
   useEffect(() => {
@@ -288,7 +288,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
           <SC.ProductNavList>
             <SC.ProductNavItem>
               <SC.ProductNavLink to={`shop/?perPage=12&page=1`}>
-                {t("Shop")}
+                {t('Shop')}
               </SC.ProductNavLink>
             </SC.ProductNavItem>
             <SC.ProductNavItem>
@@ -427,14 +427,16 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
               <SC.DeliveryInfo>
                 <SC.DeliveryInfoItem>
                   <Car width={32} height={32} />
-                  <span>{t("Fast Shipping")}</span>
-                  <p>{t("Enjoy fast shipping on all clothing orders.")}</p>
+                  <span>{t('Fast Shipping')}</span>
+                  <p>{t('Enjoy fast shipping on all clothing orders.')}</p>
                 </SC.DeliveryInfoItem>
                 <SC.DeliveryInfoItem>
                   <Done width={32} height={32} />
-                  <span>{t("Return Policy")}</span>
+                  <span>{t('Return Policy')}</span>
                   <p>
-                    {t("If the clothing item doesn’t fit, you can return it within 7 days for a full refund.")}
+                    {t(
+                      'If the clothing item doesn’t fit, you can return it within 7 days for a full refund.',
+                    )}
                   </p>
                 </SC.DeliveryInfoItem>
               </SC.DeliveryInfo>
@@ -475,7 +477,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   )}
                   <SC.Prices>
                     <SC.Discount style={{ width: '100%', textAlign: 'right' }}>
-                      {t("Rate")}: {optionData.rate}
+                      {t('Rate')}: {optionData.rate}
                       {/* Status: {optionData.status} */}
                     </SC.Discount>
                   </SC.Prices>
@@ -488,7 +490,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
             {options?.length !== 0 && console.log('check', check)}
             {options?.length !== 0 && (
               <SC.Options>
-                <SC.ProductSubTitle>{t("Option")}:</SC.ProductSubTitle>
+                <SC.ProductSubTitle>{t('Option')}:</SC.ProductSubTitle>
                 <SC.OptionsList>
                   {options.map((option, i) => {
                     return (
@@ -520,7 +522,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
               </SC.Options>
             )}
             <SC.Options>
-              <SC.ProductSubTitle>{t("Quantity")}:</SC.ProductSubTitle>
+              <SC.ProductSubTitle>{t('Quantity')}:</SC.ProductSubTitle>
               <SC.Quantity>
                 <SC.IconBtn
                   type="button"
@@ -580,7 +582,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   setOptionData(init);
                 }}
               >
-                {t("ADD to cart")}
+                {t('ADD to cart')}
               </SC.TextBtn>
             ) : (
               <>
@@ -589,7 +591,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   aria-label="Add to card"
                   disabled={true}
                 >
-                  {t("ADD to cart")}
+                  {t('ADD to cart')}
                 </SC.TextBtn>
               </>
             )}
@@ -704,7 +706,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
             <SC.InfoSection>
               <SC.Accord>
                 <SC.ProductSubTitle marginBottom="0">
-                  {t("Details")}
+                  {t('Details')}
                 </SC.ProductSubTitle>
                 <SC.IconBtn
                   type="button"
@@ -726,7 +728,9 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                       <span dangerouslySetInnerHTML={{ __html: size_chart }} />
                     ) : (
                       <span>
-                        {t("The size of the product is universal or we have not added a size chart to the product. Oops... Please familiarize yourself with the description of the characteristics.")}
+                        {t(
+                          'The size of the product is universal or we have not added a size chart to the product. Oops... Please familiarize yourself with the description of the characteristics.',
+                        )}
                       </span>
                     )}
                   </SC.AccordCareItem>

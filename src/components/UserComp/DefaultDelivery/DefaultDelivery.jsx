@@ -21,7 +21,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 export const DefaultDelivery = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [isShown, setIsShown] = useState(false);
   const id = useSelector(selectId);
   let { userIn } = useAuth();
@@ -71,10 +71,12 @@ export const DefaultDelivery = () => {
                   value={values.delivery}
                   onChange={handleChange}
                 >
-                  <option value="">{t("Select a delivery")}</option>
-                  <option value="Nova Poshta">{t("Nova Poshta")}</option>
-                  <option value="Ukr Poshta">{t("Ukr Poshta")}</option>
-                  <option value="Courier delivery">{t("Courier delivery")}</option>
+                  <option value="">{t('Select a delivery')}</option>
+                  <option value="Nova Poshta">{t('Nova Poshta')}</option>
+                  <option value="Ukr Poshta">{t('Ukr Poshta')}</option>
+                  <option value="Courier delivery">
+                    {t('Courier delivery')}
+                  </option>
                 </ProfileInputSelect>
                 {errors.delivery && touched.delivery ? (
                   <Error>{errors.delivery}</Error>
@@ -87,14 +89,14 @@ export const DefaultDelivery = () => {
                   aria-label="Close"
                   onClick={() => setIsShown(false)}
                 >
-                  {t("CANCEL")}
+                  {t('CANCEL')}
                 </BtnLight>
                 <BtnBrown
                   type="submit"
                   disabled={isSubmitting}
                   aria-label="Submit"
                 >
-                  {t("SAVE")}
+                  {t('SAVE')}
                 </BtnBrown>
               </BtnContainer>
             </ProfileList>

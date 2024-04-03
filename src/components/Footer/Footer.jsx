@@ -60,8 +60,12 @@ export const Footer = () => {
     },
     {
       title: t('Explore'),
-      options: [t('About us'), t('Delivery, Payment, Returns'), t('Privacy Policy')],
-      links: [`/`, `/`, `/`],
+      options: [
+        t('About us'),
+        t('Delivery, Payment, Returns'),
+        t('Privacy Policy'),
+      ],
+      links: [`/`, `delivery_and_payments`, `confidential`],
     },
     {
       title: t('CONTACTS'),

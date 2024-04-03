@@ -11,13 +11,13 @@ const customStyles = {
   control: (base, state) => ({
     ...base,
     backgroundColor: 'transparent',
-    color:'#2F2F2F',
+    color: '#2F2F2F',
     border: state.isFocused ? '2px solid  #754F23' : '1px solid  #754F23',
     boxShadow: state.isFocused ? 'none' : 'none',
     cursor: 'pointer',
     '&:hover': {
-      border: '2px solid #754F23'
-    }
+      border: '2px solid #754F23',
+    },
   }),
   option: (base, state) => ({
     ...base,
@@ -26,9 +26,9 @@ const customStyles = {
     color: state.isSelected ? '#FCF9F2' : '#2F2F2F',
     '&:hover': {
       backgroundColor: '#754F23',
-      color: '#FCF9F2'
-    }
-  })
+      color: '#FCF9F2',
+    },
+  }),
 };
 
 export const UkrPoshta = ({
@@ -172,7 +172,7 @@ export const UkrPoshta = ({
   return (
     <>
       <Box>
-        <PoshtaTitle>{t("City")}</PoshtaTitle>
+        <PoshtaTitle>{t('City')}</PoshtaTitle>
         <SelectInput
           name="cityNameUP"
           type="text"
@@ -202,7 +202,7 @@ export const UkrPoshta = ({
       </Box>
 
       <Box>
-        <PoshtaTitle>{t("Point office")}</PoshtaTitle>
+        <PoshtaTitle>{t('Point office')}</PoshtaTitle>
         <SelectInput
           name="departmentNameUP"
           type="text"

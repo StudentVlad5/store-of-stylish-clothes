@@ -124,10 +124,10 @@ export const UserOrders = () => {
           <OrderItem key={order._id}>
             <OrderItemHeadlineList>
               <OrderItemDetails>
-                <span>{t("Order ID")}:</span> <span>{order._id}</span>
+                <span>{t('Order ID')}:</span> <span>{order._id}</span>
               </OrderItemDetails>
               <OrderItemDetails>
-                <span>{t("Order Date")}:</span>
+                <span>{t('Order Date')}:</span>
                 <span>
                   {order?.createdAt
                     .split('T')[0]
@@ -137,7 +137,7 @@ export const UserOrders = () => {
                 </span>
               </OrderItemDetails>
               <OrderItemDetails>
-                <span>{t("Total")}: </span>
+                <span>{t('Total')}: </span>
                 <span>
                   {order?.totalPayment}
                   {order?.basket[0]?.currency}
@@ -164,14 +164,16 @@ export const UserOrders = () => {
                       <table>
                         <DiscrDataTable style={{ gap: '5px' }}>
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>{t("Size")}</DiscrDataTableHead>
+                            <DiscrDataTableHead>{t('Size')}</DiscrDataTableHead>
                             <DiscrDataTableData>
                               {item?.options}
                             </DiscrDataTableData>
                           </DiscrDataTableLine>
 
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>{t("Price")}</DiscrDataTableHead>
+                            <DiscrDataTableHead>
+                              {t('Price')}
+                            </DiscrDataTableHead>
                             {/* {item?.discount !== 0 ? ( */}
                             <DiscrDataTableData>
                               <DiscrDataListItemPrice $red>
@@ -193,8 +195,10 @@ export const UserOrders = () => {
                               // )} */}
                           </DiscrDataTableLine>
                           <DiscrDataTableLine>
-                            <DiscrDataTableHead>{t("Quantity")}</DiscrDataTableHead>
-                            <DiscrDataTableData style={{marginLeft: 10}}>
+                            <DiscrDataTableHead>
+                              {t('Quantity')}
+                            </DiscrDataTableHead>
+                            <DiscrDataTableData style={{ marginLeft: 10 }}>
                               <span>{item?.quantity}</span>
                             </DiscrDataTableData>
                           </DiscrDataTableLine>
@@ -206,12 +210,12 @@ export const UserOrders = () => {
               </OrderListDetails>
               <PaymentBox>
                 <PaymentTotal>
-                  <PaymentTotalTitleH4>{t("Total")}</PaymentTotalTitleH4>
+                  <PaymentTotalTitleH4>{t('Total')}</PaymentTotalTitleH4>
                   <table>
                     <PaymentTotalList>
                       <PaymentTotalListItem>
                         <PaymentTotalListItemTitle>
-                          {t("Amount for the product")}
+                          {t('Amount for the product')}
                         </PaymentTotalListItemTitle>
                         <PaymentTotalListItemDiscr>
                           {order?.currency}
@@ -250,7 +254,7 @@ export const UserOrders = () => {
                       </PaymentTotalListItem> */}
 
                       <PaymentTotalListItem>
-                        <PaymentTotalTitle>{t("Payment")}</PaymentTotalTitle>
+                        <PaymentTotalTitle>{t('Payment')}</PaymentTotalTitle>
                         <PaymentTotalTitle>
                           {order?.currency}
                           {order?.totalPayment}
@@ -263,7 +267,7 @@ export const UserOrders = () => {
             </OrderItemList>
             <DeliveryPayBox>
               <DeliveryBox>
-                <PaymentTotalTitleH4>{t("Delivery")}</PaymentTotalTitleH4>
+                <PaymentTotalTitleH4>{t('Delivery')}</PaymentTotalTitleH4>
                 <div>
                   <p>{order?.deliveryOrder?.delivery}</p>
                   <p> {order?.deliveryOrder?.cityDelivery}</p>
@@ -271,7 +275,7 @@ export const UserOrders = () => {
                 </div>
               </DeliveryBox>
               <PayBox>
-                <PaymentTotalTitleH4>{t("Payment")}</PaymentTotalTitleH4>
+                <PaymentTotalTitleH4>{t('Payment')}</PaymentTotalTitleH4>
                 <p>{order?.selectedPaymentOption}</p>
               </PayBox>
             </DeliveryPayBox>
@@ -280,7 +284,7 @@ export const UserOrders = () => {
       ) : (
         <ShopBox>
           <ShopBoxTitle>{"You don't have orders"}</ShopBoxTitle>
-          <BtnBrown>{t("Shop")}</BtnBrown>
+          <BtnBrown>{t('Shop')}</BtnBrown>
         </ShopBox>
       )}
       {isLoading ? onLoading() : onLoaded()}

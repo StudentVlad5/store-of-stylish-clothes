@@ -10,7 +10,7 @@ export const NotFound = () => {
   return (
     <SC.ErrorBox>
       <SC.ErrorBoxText>
-        <SC.ErrorDiscr>{t("Page under development")}</SC.ErrorDiscr>
+        <SC.ErrorDiscr>{t('Page under development')}</SC.ErrorDiscr>
         <SC.ErrorBtn
           aria-label="switch to return to home page"
           onClick={() =>
@@ -19,7 +19,7 @@ export const NotFound = () => {
               : '/'
           }
         >
-          {t("Back")}
+          {t('Back')}
         </SC.ErrorBtn>
       </SC.ErrorBoxText>
     </SC.ErrorBox>

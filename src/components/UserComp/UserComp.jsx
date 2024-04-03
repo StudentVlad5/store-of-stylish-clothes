@@ -13,7 +13,7 @@ import { Title } from 'components/baseStyles/CommonStyle.styled';
 import { useTranslation } from 'react-i18next';
 
 export const UserComp = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <UserSection>
@@ -27,16 +27,16 @@ export const UserComp = () => {
               className="linkFolder sideBar_menu"
               to={`/user/profile`}
             >
-              {t("My account")}
+              {t('My account')}
             </LinkFolder>
             <LinkFolder className="linkFolder sideBar_menu" to={`/user/orders`}>
-              {t("My orders")}
+              {t('My orders')}
             </LinkFolder>
             <LinkFolder
               className="linkFolder sideBar_menu"
               to={`/user/favorites`}
             >
-              {t("My favorites")}
+              {t('My favorites')}
             </LinkFolder>
             <Logout />
           </FolderWrapper>

@@ -124,7 +124,7 @@ const RegisterForm = () => {
                 {formik.errors.email && formik.touched.email ? (
                   <ErrorBox>{formik.errors.email}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Email")}</Span>
+                <Span className="floating-label">{t('Email')}</Span>
               </div>
             )}
             {isShown && (
@@ -148,7 +148,7 @@ const RegisterForm = () => {
                 {formik.errors.password && formik.touched.password ? (
                   <ErrorBox>{formik.errors.password}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Password")}</Span>
+                <Span className="floating-label">{t('Password')}</Span>
               </div>
             )}
             {isShown && (
@@ -173,7 +173,7 @@ const RegisterForm = () => {
                 formik.touched.confirmPassword ? (
                   <ErrorBox>{formik.errors.confirmPassword}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Confirm Password")}</Span>
+                <Span className="floating-label">{t('Confirm Password')}</Span>
               </div>
             )}
             {isShown && (
@@ -210,7 +210,7 @@ const RegisterForm = () => {
                 {formik.errors.name && formik.touched.name ? (
                   <ErrorBox>{formik.errors.name}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Name")}</Span>
+                <Span className="floating-label">{t('Name')}</Span>
               </div>
             )}
             {!isShown && (
@@ -239,7 +239,7 @@ const RegisterForm = () => {
                 {formik.errors.location && formik.touched.location ? (
                   <ErrorBox>{formik.errors.location}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Location, region")}</Span>
+                <Span className="floating-label">{t('Location, region')}</Span>
               </div>
             )}
             {!isShown && (
@@ -266,7 +266,7 @@ const RegisterForm = () => {
                 {formik.errors.phone && formik.touched.phone ? (
                   <ErrorBox>{formik.errors.phone}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Phone")}</Span>
+                <Span className="floating-label">{t('Phone')}</Span>
               </div>
             )}
             {!isShown && (

@@ -210,7 +210,7 @@ export const ShoppingBagList = ({
           <table>
             <DiscrDataTable>
               <DiscrDataTableLine>
-                <DiscrDataTableHead>{t("Size")}</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Size')}</DiscrDataTableHead>
                 {options === null ? (
                   <DiscrDataTableData>-</DiscrDataTableData>
                 ) : (
@@ -219,7 +219,7 @@ export const ShoppingBagList = ({
               </DiscrDataTableLine>
 
               <DiscrDataTableLine>
-                <DiscrDataTableHead>{t("Price")}</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Price')}</DiscrDataTableHead>
                 {/* {discount !== 0 ? ( */}
                 <DiscrDataTableData>
                   <DiscrDataListItemPrice $red>
@@ -242,7 +242,7 @@ export const ShoppingBagList = ({
               </DiscrDataTableLine>
 
               <DiscrDataTableLine>
-                <DiscrDataTableHead>{t("Quantity")}</DiscrDataTableHead>
+                <DiscrDataTableHead>{t('Quantity')}</DiscrDataTableHead>
                 <DiscrDataTableData>
                   <IconBtn
                     type="button"
@@ -273,7 +273,7 @@ export const ShoppingBagList = ({
           }}
         >
           <BasketCompIconClose />
-          {t("remove")}
+          {t('remove')}
         </BtnItem>
       </BoxForDiscrData>
     </BasketCompItem>
@@ -327,7 +327,7 @@ export const ShoppingBagList = ({
                   removeProductHandler(_id, title);
                 }}
               >
-                {t("remove")}
+                {t('remove')}
               </RemoveBtn>
             </QuantityBox>
           </DiscrBox>

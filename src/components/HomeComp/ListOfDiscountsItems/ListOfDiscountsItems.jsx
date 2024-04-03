@@ -58,13 +58,17 @@ export const ListOfDiscountsItems = () => {
       <SectionWrapper style={{ paddingBottom: '20px' }}>
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
-          <SectionTitle>{t("Discounts")}</SectionTitle>
+          <SectionTitle>{t('Discounts')}</SectionTitle>
           <Link to="/discounts" style={{ textDecoration: 'none' }}>
-            <SectionSubTitle style={{textDecoration: 'underline'}}>{t("See all")}</SectionSubTitle>
+            <SectionSubTitle style={{ textDecoration: 'underline' }}>
+              {t('See all')}
+            </SectionSubTitle>
           </Link>
         </SectionTitleWrap>
         <SectionTitleWrap>
-          <SectionSubTitle>{t("Have a look on huge discounts!")}</SectionSubTitle>
+          <SectionSubTitle>
+            {t('Have a look on huge discounts!')}
+          </SectionSubTitle>
         </SectionTitleWrap>
         <CardContainer>
           <ViewportBox $version={'desktop'}>

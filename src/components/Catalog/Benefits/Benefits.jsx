@@ -21,7 +21,7 @@ export const Benefits = () => {
 
   return (
     <SC.BenefitsSection>
-      <Headline>{t("Why buy from us?")}</Headline>
+      <Headline>{t('Why buy from us?')}</Headline>
       <SC.BenefitsList>
         <SC.BenefitsItem>
           <picture>
@@ -38,9 +38,11 @@ export const Benefits = () => {
               loading="lazy"
             />
           </picture>
-          <SC.BenefitsSubtitle>{t("Fast shipping")}</SC.BenefitsSubtitle>
+          <SC.BenefitsSubtitle>{t('Fast shipping')}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
-           {t("We offer fast and reliable delivery straight to your doorstep.")}
+            {t(
+              'We offer fast and reliable delivery straight to your doorstep.',
+            )}
           </SC.BenefitsDescription>
         </SC.BenefitsItem>
         <SC.BenefitsItem>
@@ -58,9 +60,9 @@ export const Benefits = () => {
               loading="lazy"
             />
           </picture>
-          <SC.BenefitsSubtitle>{t("Quality guaranteed")}</SC.BenefitsSubtitle>
+          <SC.BenefitsSubtitle>{t('Quality guaranteed')}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
-            {t("We offer a quality guarantee on all of our products.")}
+            {t('We offer a quality guarantee on all of our products.')}
           </SC.BenefitsDescription>
         </SC.BenefitsItem>
         {/* <SC.BenefitsItem>

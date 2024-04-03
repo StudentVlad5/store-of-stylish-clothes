@@ -104,7 +104,7 @@ export const LoginForm = () => {
                 {formik.errors.email || formik.touched.email ? (
                   <ErrorBox>{formik.errors.email}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Email")}</Span>
+                <Span className="floating-label">{t('Email')}</Span>
               </div>
             )}
 
@@ -130,7 +130,7 @@ export const LoginForm = () => {
                 {formik.errors.password && formik.touched.password ? (
                   <ErrorBox>{formik.errors.password}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">{t("Password")}</Span>
+                <Span className="floating-label">{t('Password')}</Span>
               </div>
             )}
             <BtnContainer>

@@ -38,7 +38,7 @@ export const Ideas = () => {
     product: [],
     sizes: [],
   };
-  
+
   return (
     <GiftsSection>
       <SC.HeadlineIdeas>{t('Our ideas for gifts')}</SC.HeadlineIdeas>

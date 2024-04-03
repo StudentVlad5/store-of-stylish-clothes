@@ -9,7 +9,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 export const Logout = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(state => !state);
 
@@ -23,7 +23,7 @@ export const Logout = () => {
     <>
       <LogoutBtn onClick={toggleModal} aria-label="open log out window">
         <LogoutIconStyled />
-        <LogoutBtnText>{t("Log Out")}</LogoutBtnText>
+        <LogoutBtnText>{t('Log Out')}</LogoutBtnText>
       </LogoutBtn>
 
       {isModalOpen && (

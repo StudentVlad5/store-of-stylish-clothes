@@ -29,7 +29,7 @@ import { SectionWrapper } from 'components/baseStyles/CommonStyle.styled';
 import { useTranslation } from 'react-i18next';
 
 export const ListOfRatesItems = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const [listOfDiscountItems, setListOfDiscountItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,9 +57,11 @@ export const ListOfRatesItems = () => {
       <SectionWrapper>
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
-          <SectionTitle>{t("Rates")}</SectionTitle>
+          <SectionTitle>{t('Rates')}</SectionTitle>
           <Link to="" style={{ textDecoration: 'none' }}>
-            <SectionSubTitle style={{textDecoration: 'underline'}}>See all</SectionSubTitle>
+            <SectionSubTitle style={{ textDecoration: 'underline' }}>
+              See all
+            </SectionSubTitle>
           </Link>
         </SectionTitleWrap>
         <CardContainer>

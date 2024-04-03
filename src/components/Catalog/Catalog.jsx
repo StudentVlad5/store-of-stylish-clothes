@@ -331,7 +331,7 @@ export const Catalog = () => {
             <SC.HeadingBtnBox>
               <SC.SortBox>
                 <SC.Accord onClick={toggleSort}>
-                  <span>{t("SORT BY")}</span>
+                  <span>{t('SORT BY')}</span>
                   <SC.IconBtn
                     type="button"
                     aria-label="switch to open sort list"

@@ -262,7 +262,9 @@ export const CatalogFilter = ({
                         toggleFilterItem(e);
                       }}
                     >
-                      <span>{t("Size")} {card}</span>
+                      <span>
+                        {t('Size')} {card}
+                      </span>
                       <SC.IconBtn
                         type="button"
                         aria-label="switch to open filter"
@@ -316,7 +318,7 @@ export const CatalogFilter = ({
           <SC.FilterInnerList>
             <SC.RangeWrapper>
               <label>
-                {t("From")}
+                {t('From')}
                 <SC.FilterInnerListItem
                   type="number"
                   name="minPrice"
@@ -333,7 +335,7 @@ export const CatalogFilter = ({
                 {selectedCurrency === 'euro' && '€'}
               </label>
               <label>
-                {t("To")}
+                {t('To')}
                 <SC.FilterInnerListItem
                   type="number"
                   name="maxPrice"

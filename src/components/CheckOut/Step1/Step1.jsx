@@ -21,12 +21,14 @@ import { NovaPoshta } from 'components/Delivery/NovaPoshta/NovaPoshta';
 import { UkrPoshta } from 'components/Delivery/UkrPoshta/UkrPoshta';
 import curier from 'images/delivery/pngegg.png';
 import { useAuth } from 'hooks/useAuth';
+import { useTranslation } from 'react-i18next';
 
 const Step1 = () => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
   const { userIn } = useAuth();
+  const {t} = useTranslation();
 
   const [selectedCountry, setSelectedCountry] = useState(
     getFromStorage('selectedCountry') ? getFromStorage('selectedCountry') : '',
@@ -137,9 +139,9 @@ const Step1 = () => {
             onChange={e => handleSelectCountry(e)}
           />
           <DeliveryBlockOptionsLableBox>
-            <DeliveryBlockOptionsTitle>Ukraine</DeliveryBlockOptionsTitle>
+            <DeliveryBlockOptionsTitle>{t("Ukraine")}</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              Delivery in Ukraine
+              {t("Delivery in Ukraine")}
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
@@ -152,9 +154,9 @@ const Step1 = () => {
             onChange={e => handleSelectCountry(e)}
           />
           <DeliveryBlockOptionsLableBox>
-            <DeliveryBlockOptionsTitle>Other country</DeliveryBlockOptionsTitle>
+            <DeliveryBlockOptionsTitle>{t("Other country")}</DeliveryBlockOptionsTitle>
             <DeliveryBlockOptionsTitleDiscr>
-              Delivery to the countries of Europe, Asia, the USA, etc
+              {t("Delivery to the countries of Europe, Asia, the USA, etc")}
             </DeliveryBlockOptionsTitleDiscr>
           </DeliveryBlockOptionsLableBox>
         </DeliveryBlockOptionsLable>
@@ -171,9 +173,9 @@ const Step1 = () => {
             <NovaPoshtaIcon />
 
             <DeliveryBlockOptionsLableBox>
-              <DeliveryBlockOptionsTitle>NovaPoshta</DeliveryBlockOptionsTitle>
+              <DeliveryBlockOptionsTitle>{t("Nova Poshta")}</DeliveryBlockOptionsTitle>
               <DeliveryBlockOptionsTitleDiscr>
-                Cash upon delivery, card payment Visa, Master Card
+                {t("Cash upon delivery, card payment Visa, Master Card")}
               </DeliveryBlockOptionsTitleDiscr>
             </DeliveryBlockOptionsLableBox>
           </DeliveryBlockOptionsLable>
@@ -181,7 +183,7 @@ const Step1 = () => {
           {selectedDeliveryOption === 'NovaPoshta' && (
             <BoxPost style={{ width: '100%' }}>
               <PoshtaBoxTitle>
-                Select point office (In ukrainian)
+               {t("Select point office (In ukrainian)")}
               </PoshtaBoxTitle>
 
               <PoshtaBox>
@@ -206,9 +208,9 @@ const Step1 = () => {
             <UkrPoshtaIcon />
 
             <DeliveryBlockOptionsLableBox>
-              <DeliveryBlockOptionsTitle>UkrPoshta</DeliveryBlockOptionsTitle>
+              <DeliveryBlockOptionsTitle>{t("Ukr Poshta")}</DeliveryBlockOptionsTitle>
               <DeliveryBlockOptionsTitleDiscr>
-                Cash upon delivery, card payment Visa, Master Card
+                {t("Cash upon delivery, card payment Visa, Master Card")}
               </DeliveryBlockOptionsTitleDiscr>
             </DeliveryBlockOptionsLableBox>
           </DeliveryBlockOptionsLable>
@@ -216,7 +218,7 @@ const Step1 = () => {
           {selectedDeliveryOption === 'UkrPoshta' && (
             <BoxPost>
               <PoshtaBoxTitle>
-                Select point office (in ukrainian)
+                {t("Select point office (In ukrainian)")}
               </PoshtaBoxTitle>
 
               <PoshtaBox>
@@ -243,10 +245,10 @@ const Step1 = () => {
             <img style={{ width: 55 }} src={curier} alt="Courier delivery" />
             <DeliveryBlockOptionsLableBox>
               <DeliveryBlockOptionsTitle>
-                Courier delivery
+                {t("Courier delivery")}
               </DeliveryBlockOptionsTitle>
               <DeliveryBlockOptionsTitleDiscr>
-                Cash upon delivery, card payment Visa, Master Card
+                {t("Cash upon delivery, card payment Visa, Master Card")}
               </DeliveryBlockOptionsTitleDiscr>
             </DeliveryBlockOptionsLableBox>
           </DeliveryBlockOptionsLable>

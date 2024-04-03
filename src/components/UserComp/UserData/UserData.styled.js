@@ -135,7 +135,8 @@ const BtnLight = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
+  /* width: 130px; */
+  width: 100%;
   height: 35px;
 
   font-family: ${theme.fonts[0]};
@@ -154,7 +155,7 @@ const BtnLight = styled(Button)`
   transition: ${theme.transition[1]};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    width: 180px;
+    /* width: 180px; */
     height: 45px;
     font-size: 14px;
   }

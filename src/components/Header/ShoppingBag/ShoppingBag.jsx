@@ -36,7 +36,7 @@ import {
   IconBasket,
   IconWrapper,
 } from 'components/Header/Navigation/Navigation.styled';
-
+import { homeProductLinks } from 'BASE_CONST/Base-const';
 import photoJacetsCategory from 'images/hero/category/jacket_2x.webp';
 import photoPantsCategory from 'images/hero/category/pants_2x.webp';
 import photoFootwearCategory from 'images/hero/category/footwear_2x.webp';
@@ -49,6 +49,7 @@ import { useTranslation } from 'react-i18next';
 export const ShoppingBag = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   // ---------------------------------------------
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -131,22 +132,45 @@ export const ShoppingBag = () => {
   }
 
   // ____________________________________________
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
 
   const dataArr = [
     {
       imageUrl: photoJacetsCategory,
       title: t('Jackets'),
-      link: '/',
+      link: `shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.jacets[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoPantsCategory,
       title: t('Pants'),
-      link: '/',
+      link: `shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.pants[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoHoodiesSweatshirtsCategory,
       title: t('Hoodies & Sweatshirts'),
-      link: '/',
+      link: `shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+      nav: saveToStorage('filters', {
+        ...init,
+        product: [homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]],
+      }),
     },
     {
       imageUrl: photoFootwearCategory,
@@ -194,7 +218,7 @@ export const ShoppingBag = () => {
 
       <BasketBox open={isOpen}>
         <BasketBoxTitle>
-          <BasketTitle>{t("Cart")}</BasketTitle>
+          <BasketTitle>{t('Cart')}</BasketTitle>
           <BasketIconClose onClick={() => handlecheckout()} />
         </BasketBoxTitle>
 
@@ -231,7 +255,7 @@ export const ShoppingBag = () => {
                 </TotalDiscr> */}
 
                 <OrderBtn to="/basket" onClick={() => handlecheckout()}>
-                  {t("checkout")}
+                  {t('checkout')}
                   <span style={{ marginLeft: 30 }}>
                     {totalPayment}
                     {currency}
@@ -241,13 +265,19 @@ export const ShoppingBag = () => {
             </OrderBox>
           ) : (
             <Box>
-              <BasketBoxListTitle>{t("Your cart is empty")}</BasketBoxListTitle>
+              <BasketBoxListTitle>{t('Your cart is empty')}</BasketBoxListTitle>
               <BasketBoxListDiscr>
-                {t("We recommend checking out:")}
+                {t('We recommend checking out:')}
               </BasketBoxListDiscr>
               <List>
-                {dataArr.map((item, idx) => (
-                  <ListItem key={idx} onClick={() => setIsOpen(false)}>
+                {/* {dataArr.map((item, idx) => (
+                  <ListItem
+                    key={idx}
+                    onClick={() => {
+                      setIsOpen(false);
+                      item.nav;
+                    }}
+                  >
                     <NavLink to={item.link}>
                       <ListImage
                         src={item.imageUrl}
@@ -261,7 +291,95 @@ export const ShoppingBag = () => {
                       </ListTitleBox>
                     </NavLink>
                   </ListItem>
-                ))}
+                ))} */}
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [homeProductLinks?.jacets[selectedLanguage]],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoJacetsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Jackets')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [homeProductLinks?.pants[selectedLanguage]],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoPantsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Pants')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem
+                  onClick={() => {
+                    saveToStorage('filters', {
+                      ...init,
+                      product: [
+                        homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage],
+                      ],
+                    });
+                  }}
+                >
+                  <NavLink
+                    to={`shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+                  >
+                    <ListImage
+                      src={photoHoodiesSweatshirtsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Hoodies & Sweatshirts')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem>
+                  <NavLink to={`/gifts`}>
+                    <ListImage
+                      src={photoJacetsCategory}
+                      width={120}
+                      height={130}
+                      alt="Image"
+                      loading="lazy"
+                    />
+                    <ListTitleBox>
+                      <ListTitle>{t('Gifts')}</ListTitle>
+                    </ListTitleBox>
+                  </NavLink>
+                </ListItem>
               </List>
             </Box>
           )}

@@ -13,8 +13,11 @@ import mainImage_png from 'images/gifts/desktop.png';
 import mainImage_png_2x from 'images/gifts/desktop@2x.png';
 import mainImage_webp from 'images/gifts/desktop.webp';
 import mainImage_webp_2x from 'images/gifts/desktop@2x.webp';
+import { useTranslation } from 'react-i18next';
 
 export const GiftsHeading = () => {
+  const {t} = useTranslation();
+  
   return (
     <SC.HeadingSection>
       <SC.ImageContainer>
@@ -41,8 +44,8 @@ export const GiftsHeading = () => {
         </picture> */}
         <img src={mainImage_webp_2x} width={1280} height={400} alt="" />
         <SC.Background>
-          <Title>Gifts</Title>
-          <LinkBtn to={`/shop/plants?page=1&perPage=12`}>Shop now</LinkBtn>
+          <Title>{t("Gifts")}</Title>
+          <LinkBtn to={`/shop/plants?page=1&perPage=12`}>{t("Shop now")}</LinkBtn>
         </SC.Background>
       </SC.ImageContainer>
     </SC.HeadingSection>

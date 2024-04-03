@@ -22,9 +22,11 @@ import {
   Span,
   StyledLink,
 } from '../AuthForm.styled';
+import { useTranslation } from 'react-i18next';
 
 export const LoginForm = () => {
-  const [isShown, setIsShown] = useState(true); 
+  const { t } = useTranslation();
+  const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -77,7 +79,7 @@ export const LoginForm = () => {
       <FormContainer>
         <Formik validationSchema={schemas.schemasLogin}>
           <FormLogin onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleLogin>{'Login'}</TitleLogin>
+            <TitleLogin>{t('Login')}</TitleLogin>
             {isShown && (
               <div>
                 <Input
@@ -102,7 +104,7 @@ export const LoginForm = () => {
                 {formik.errors.email || formik.touched.email ? (
                   <ErrorBox>{formik.errors.email}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Email</Span>
+                <Span className="floating-label">{t("Email")}</Span>
               </div>
             )}
 
@@ -128,7 +130,7 @@ export const LoginForm = () => {
                 {formik.errors.password && formik.touched.password ? (
                   <ErrorBox>{formik.errors.password}</ErrorBox>
                 ) : null}
-                <Span className="floating-label">Password</Span>
+                <Span className="floating-label">{t("Password")}</Span>
               </div>
             )}
             <BtnContainer>
@@ -138,17 +140,17 @@ export const LoginForm = () => {
                   disabled={isValid}
                   aria-label="submit sign in"
                 >
-                  {isLoading ? 'Loading' : 'Sign In'}
+                  {isLoading ? 'Loading' : t('Sign In')}
                 </Btn>
               )}
 
               {!isShown && (
-                <Btn type="submit">{isLoading ? 'Loading' : 'Sign In'}</Btn>
+                <Btn type="submit">{isLoading ? 'Loading' : t('Sign In')}</Btn>
               )}
               <BoxText>
-                <StyledLink to="/register">{'Create acount'}</StyledLink>
+                <StyledLink to="/register">{t('Create account')}</StyledLink>
                 <StyledLink to="/forgot_password">
-                  {'Forgot your password?'}
+                  {t('Forgot your password?')}
                 </StyledLink>
               </BoxText>
             </BtnContainer>

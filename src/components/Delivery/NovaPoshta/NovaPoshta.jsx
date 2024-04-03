@@ -58,7 +58,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         const { data } = await getListOfCities('/cities', { filter: cityName });
         setListOfSities(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -93,7 +93,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         });
         setListOfDepartment(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);

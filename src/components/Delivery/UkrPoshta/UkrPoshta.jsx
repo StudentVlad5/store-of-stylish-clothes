@@ -72,7 +72,7 @@ export const UkrPoshta = ({
         });
         setListOfSitiesUP(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);
@@ -107,7 +107,7 @@ export const UkrPoshta = ({
         });
         setListOfDepartmentUP(data);
         if (!data) {
-          return alert('Whoops, something went wrong');
+          return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
         alert(error.message);

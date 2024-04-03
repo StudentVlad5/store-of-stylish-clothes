@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FooterSection,
@@ -31,11 +31,13 @@ import {
   FooterInputFormBtn,
   LinkBrand,
 } from './Footer.styled';
-import theme from 'components/baseStyles/Variables.styled';
 import { useTranslation } from 'react-i18next';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const faqItems = [
     {
       title: t('Catalog'),
@@ -43,15 +45,22 @@ export const Footer = () => {
         t('Discounts'),
         t('Novelty'),
         t('Clothes'),
-        t('Footwear'),
+        t('Shoes'),
         t('Backpacks and Bags'),
         t('Accessories'),
       ],
-      links: [`/shop`, `/shop`, `/shop`, `/shop`, `/shop`, `/shop`],
+      links: [
+        `/discounts`,
+        `/novetly`,
+        `/shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
+        `/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
+        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
+      ],
     },
     {
       title: t('Explore'),
-      options: [t('About us'), 'Delivery, Payment, Returns', 'Privacy Policy'],
+      options: [t('About us'), t('Delivery, Payment, Returns'), t('Privacy Policy')],
       links: [`/`, `/`, `/`],
     },
     {

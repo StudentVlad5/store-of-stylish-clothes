@@ -63,10 +63,11 @@ const InnerRightWrapper = styled.div`
 
 const GiftsHeadline = styled(Headline)`
   margin-bottom: 40px;
+  color: ${theme.colors.brown4};
 `;
 
 const GiftsSubtitle = styled(Subtitle)`
-  color: ${theme.colors.brown1};
+  color: ${theme.colors.brown2};
   margin-bottom: 24px;
 `;
 
@@ -78,6 +79,7 @@ const Description = styled.p`
   font-style: normal;
   font-weight: 300;
   line-height: 166%; /* 26.56px */
+  color: ${theme.colors.brown2};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 14px;
@@ -111,7 +113,7 @@ const LinkBtn = styled(NavLink)`
   cursor: pointer;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px 55px;
   }
 

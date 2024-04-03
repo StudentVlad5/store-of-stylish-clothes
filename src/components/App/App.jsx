@@ -41,6 +41,7 @@ const CheckOutPage = lazy(() => import('pages/CheckOut'));
 const ForgotPasswordPage = lazy(() => import('pages/ForgotPassword'));
 const AdditionPage = lazy(() => import('pages/Addition'));
 const BasketPage = lazy(() => import('pages/Basket'));
+const DiscountsShop = lazy(() => import('pages/DiscountsCatalog'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -104,6 +105,7 @@ export const App = () => {
               }
             />
             <Route path="gifts" element={<GiftsPage />} />
+            <Route path="discounts" element={<DiscountsShop />} />
             <Route path="care" element={<CarePage />} />
 
             <Route

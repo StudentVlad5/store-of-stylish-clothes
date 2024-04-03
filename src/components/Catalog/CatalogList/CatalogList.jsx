@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -26,6 +26,7 @@ export const CatalogList = ({ products }) => {
   const _id = useSelector(selectId); //isLoggedIn
 
   const routeParams = useParams();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const { selectedCurrency } = useContext(StatusContext);
@@ -68,7 +69,14 @@ export const CatalogList = ({ products }) => {
                 }}
               >
                 <SC.CardStatus>
-                  {card?.status ? card.status : 'new'}
+                  {location.pathname.includes('discount')
+                    ? `discount: ${(
+                        +selectOldPrice(selectedCurrency, card).toFixed(2) -
+                        +selectNewPrice(selectedCurrency, card).toFixed(2)
+                      ).toFixed(2)} ${selectCurrency(selectedCurrency)}`
+                    : card?.status
+                    ? card.status
+                    : 'new'}
                 </SC.CardStatus>
                 <SC.CardImage
                   src={card.mainImage}

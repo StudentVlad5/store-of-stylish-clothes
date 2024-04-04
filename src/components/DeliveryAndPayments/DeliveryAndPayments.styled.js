@@ -5,6 +5,10 @@ import {
   Section,
   Title,
 } from 'components/baseStyles/CommonStyle.styled';
+import { ReactComponent as delivery } from 'images/svg/delivery.svg';
+import { ReactComponent as done } from 'images/svg/done.svg';
+import { ReactComponent as creditCard } from 'images/svg/credit-card.svg';
+import { ReactComponent as exchange } from 'images/svg/exchange.svg';
 import { NavLink } from 'react-router-dom';
 
 export const AdditionSection = styled(Section)`
@@ -80,3 +84,53 @@ export const AdditionAboutWrapper = styled.div`
 `;
 
 export const LinkFolder = styled(NavLink)``;
+
+export const DPBox = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 45px;
+  }
+`;
+
+export const DPBoxIcon = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+export const DPBoxList = styled.ul`
+  list-style: disc;
+  margin: 10px 0 20px 30px;
+`;
+
+export const DPBoxListItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`;
+
+export const DeliveryIcon = styled(delivery)`
+  width: 55px;
+  height: 55px;
+  fill: ${theme.colors.brown4};
+  margin-right: 10px;
+`;
+
+export const DoneIcon = styled(done)`
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+`;
+
+export const CreditCardIcon = styled(creditCard)`
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  fill: ${theme.colors.brown4};
+`;
+
+export const ExchangeIcon = styled(exchange)`
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  fill: ${theme.colors.brown4};
+`;

@@ -30,6 +30,7 @@ import {
   FooterSubscribtionDiscr1,
   FooterInputFormBtn,
   LinkBrand,
+  QuillisLogoFooter,
 } from './Footer.styled';
 import { useTranslation } from 'react-i18next';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
@@ -69,8 +70,8 @@ export const Footer = () => {
     },
     {
       title: t('CONTACTS'),
-      options: ['+380111111111', 'support@quillis.com'],
-      links: [`tel:380111111111`, `mailto:support@quillis.com`],
+      options: ['+380111111111', 'quillis.info@gmail.com'],
+      links: [`tel:380111111111`, `mailto:quillis.info@gmail.com`],
     },
   ];
 
@@ -128,17 +129,19 @@ export const Footer = () => {
         </FooterFaqList>
 
         <div>
-          <FooterSubscribtion>Subscribtion</FooterSubscribtion>
-          <FooterSubscribtion>Subscribe to enjoy 10% off</FooterSubscribtion>
+          <FooterSubscribtion>{t('Subscribtion')}</FooterSubscribtion>
+          <FooterSubscribtion>
+            {t('Subscribe to enjoy 10% off')}
+          </FooterSubscribtion>
 
           <FooterSubscribtionDiscr>
-            Receive exclusive updates on new arrivals, care tips, and
-            promotions.
+            {t('Receive exclusive updates on new arrivals and promotions.')}
           </FooterSubscribtionDiscr>
 
           <FooterSubscribtionDiscr1>
-            Join our community and receive exclusive updates on new arrivals,
-            care tips, and promotions.
+            {t(
+              'Join our community and receive exclusive updates on new arrivals and promotions.',
+            )}
           </FooterSubscribtionDiscr1>
 
           <FooterInputForm>
@@ -147,15 +150,17 @@ export const Footer = () => {
                 type="email"
                 name=""
                 id=""
-                placeholder="Enter your email here"
+                placeholder={t('Enter your email here')}
               />
             </label>
 
-            <FooterInputFormBtn>SUBSCRIBE</FooterInputFormBtn>
+            <FooterInputFormBtn>{t('SUBSCRIBE')}</FooterInputFormBtn>
           </FooterInputForm>
 
           <FooterContacts>
-            <FooterLogo>Quillis</FooterLogo>
+            <FooterLogo to="/">
+              <QuillisLogoFooter />
+            </FooterLogo>
 
             <FooterContactsList>
               <FooterContactsListItem>

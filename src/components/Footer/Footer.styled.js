@@ -8,8 +8,8 @@ import { ReactComponent as tiktok } from 'images/svg/tiktok.svg';
 import { ReactComponent as youtube } from 'images/svg/youtube.svg';
 import { ReactComponent as pinterest } from 'images/svg/pinterest.svg';
 import { ReactComponent as arrowDown } from 'images/svg/arrowDown.svg';
+import { ReactComponent as logo } from 'images/svg/logoWhite.svg';
 import theme from 'components/baseStyles/Variables.styled';
-import { Text } from 'components/Header/Elements/logo/Logo.styled';
 
 export const FooterSection = styled.footer`
   background-color: ${theme.colors.brown4};
@@ -17,7 +17,7 @@ export const FooterSection = styled.footer`
   padding-top: 30px;
   margin-top: 80px;
 
-  @media screen and (min-width: ${theme.breakpoints.desktop}){
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
     margin-top: 120px;
   }
 `;
@@ -320,12 +320,8 @@ export const FooterContacts = styled.div`
   }
 `;
 
-export const FooterLogo = styled(Text)`
-  font-size: 24px;
-  font-weight: 600;
-  line-height: normal;
-  color: ${theme.colors.text};
-
+export const FooterLogo = styled(Link)`
+display: block;
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
@@ -345,6 +341,9 @@ export const FooterContactsList = styled.ul`
 
 export const FooterContactsListItem = styled.li`
   cursor: pointer;
+`;
+
+export const QuillisLogoFooter = styled(logo)`
 `;
 
 // ICONS

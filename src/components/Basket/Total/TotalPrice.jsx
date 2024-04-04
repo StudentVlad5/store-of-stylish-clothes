@@ -77,7 +77,7 @@ export const TotalPrice = basket => {
 
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                {t('Delivery in Ukraine')}
+                {t('The price of delivery in Ukraine')}
               </PaymentTotalListItemTitle>
               {currency === '₴' && (
                 <PaymentTotalListItemDiscr>
@@ -93,7 +93,7 @@ export const TotalPrice = basket => {
 
             <PaymentTotalListItem>
               <PaymentTotalListItemTitle>
-                {t('Shipping to other countries')}
+                {t('The price of delivery to other countries')}
               </PaymentTotalListItemTitle>
               {currency === '₴' && (
                 <PaymentTotalListItemDiscr>
@@ -128,7 +128,7 @@ export const TotalPrice = basket => {
           </DeliverBoxItem>
           <DeliverBoxItem>
             <Done />
-            {t('the delivery time in Europe is from 14 days')}
+            {t('The delivery time in Europe is from 14 days')}
           </DeliverBoxItem>
         </DeliverBox>
       )}

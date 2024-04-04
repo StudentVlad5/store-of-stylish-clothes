@@ -435,7 +435,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                   <span>{t('Return Policy')}</span>
                   <p>
                     {t(
-                      'If the clothing item doesn’t fit, you can return it within 7 days for a full refund.',
+                      'If the clothing item doesn’t fit, you can return it within 14 days for a full refund.',
                     )}
                   </p>
                 </SC.DeliveryInfoItem>

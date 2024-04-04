@@ -30,6 +30,7 @@ import {
   ProgressBarBox,
   ProgressBarTitle,
   ProgressBar,
+  ListItemLink,
 } from './ShoppingBag.styled';
 import {
   Count,
@@ -37,10 +38,10 @@ import {
   IconWrapper,
 } from 'components/Header/Navigation/Navigation.styled';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
-import photoJacetsCategory from 'images/hero/category/jacket_2x.webp';
-import photoPantsCategory from 'images/hero/category/pants_2x.webp';
-import photoFootwearCategory from 'images/hero/category/footwear_2x.webp';
-import photoHoodiesSweatshirtsCategory from 'images/hero/category/hoodies_2x.webp';
+import photoJacetsCategory from 'images/basket/jacket_mobile_2x.webp';
+import photoPantsCategory from 'images/basket/pants_mobile_2x.webp';
+import photoHoodiesSweatshirtsCategory from 'images/basket/hoodies_mobile_2x.webp';
+import photoGifts from 'images/basket/gifts_mobile_2x.png';
 import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
@@ -300,20 +301,20 @@ export const ShoppingBag = () => {
                     });
                   }}
                 >
-                  <NavLink
+                  <ListItemLink
                     to={`shop?product=${homeProductLinks?.jacets[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
                   >
                     <ListImage
                       src={photoJacetsCategory}
-                      width={120}
-                      height={130}
+                      // width={120}
+                      // height={130}
                       alt="Image"
                       loading="lazy"
                     />
                     <ListTitleBox>
                       <ListTitle>{t('Jackets')}</ListTitle>
                     </ListTitleBox>
-                  </NavLink>
+                  </ListItemLink>
                 </ListItem>
 
                 <ListItem
@@ -324,20 +325,20 @@ export const ShoppingBag = () => {
                     });
                   }}
                 >
-                  <NavLink
+                  <ListItemLink
                     to={`shop?product=${homeProductLinks?.pants[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
                   >
                     <ListImage
                       src={photoPantsCategory}
-                      width={120}
-                      height={130}
+                      // width={120}
+                      // height={130}
                       alt="Image"
                       loading="lazy"
                     />
                     <ListTitleBox>
                       <ListTitle>{t('Pants')}</ListTitle>
                     </ListTitleBox>
-                  </NavLink>
+                  </ListItemLink>
                 </ListItem>
 
                 <ListItem
@@ -350,35 +351,35 @@ export const ShoppingBag = () => {
                     });
                   }}
                 >
-                  <NavLink
+                  <ListItemLink
                     to={`shop?product=${homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
                   >
                     <ListImage
                       src={photoHoodiesSweatshirtsCategory}
-                      width={120}
-                      height={130}
+                      // width={120}
+                      // height={130}
                       alt="Image"
                       loading="lazy"
                     />
                     <ListTitleBox>
                       <ListTitle>{t('Hoodies & Sweatshirts')}</ListTitle>
                     </ListTitleBox>
-                  </NavLink>
+                  </ListItemLink>
                 </ListItem>
 
                 <ListItem>
-                  <NavLink to={`/gifts`}>
+                  <ListItemLink to={`/gifts`}>
                     <ListImage
-                      src={photoJacetsCategory}
-                      width={120}
-                      height={130}
+                      src={photoGifts}
+                      // width={120}
+                      // height={130}
                       alt="Image"
                       loading="lazy"
                     />
                     <ListTitleBox>
                       <ListTitle>{t('Gifts')}</ListTitle>
                     </ListTitleBox>
-                  </NavLink>
+                  </ListItemLink>
                 </ListItem>
               </List>
             </Box>

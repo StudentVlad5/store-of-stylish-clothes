@@ -16,10 +16,11 @@ const CareSection = styled(Section)`
 const CareContainer = styled(Container)`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    flex-direction: row;
+    /* flex-direction: row; */
     gap: 40px;
   }
 `;
@@ -42,6 +43,7 @@ const CareContainerWrapper = styled.div`
     }
   }
 `;
+
 const ListContainer = styled.div`
   margin: 0 auto;
   width: 100%;
@@ -57,85 +59,51 @@ const ListContainer = styled.div`
   }
 `;
 
-const CareUl = styled.ul`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 14px;
-
-  background-color: ${theme.colors.green6};
-
-  @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    padding: 20px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    padding: 30px;
-  }
+const CareUl = styled.ol`
+  /* margin-bottom: 20px; */
 `;
 
 const CareLi = styled.li`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-
-  width: 100%;
-
-  &:first-child {
-    margin-bottom: 10px;
-  }
-
-  & > svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  & div {
-    width: calc(100% - 30px);
-  }
+  margin-bottom: 10px;
 `;
 
-const CareSpanTitle = styled.span`
-  color: ${theme.colors.green1};
+const CareSpanTitle = styled.h2`
+  color: ${theme.colors.brown4};
   font-family: ${theme.fonts[0]};
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   line-height: normal;
+  margin-bottom: 10px;
+
   &:first-letter {
     text-transform: uppercase;
   }
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 20px;
+    font-size: 24px;
   }
 `;
 
-const CareSpanName = styled.span`
-  color: ${theme.colors.green};
+const CareSpanName = styled.p`
+  color: ${theme.colors.brown2};
   font-family: ${theme.fonts[0]};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 16px;
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 24px;
+    font-size: 18px;
   }
 `;
 

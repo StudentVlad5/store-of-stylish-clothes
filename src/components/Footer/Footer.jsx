@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FooterSection,
@@ -35,9 +35,19 @@ import { useTranslation } from 'react-i18next';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
+import {
+  onFetchError,
+  onSuccess,
+} from 'components/helpers/Messages/NotifyMessages';
+import { makeEmail } from 'services/APIservice';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const [emailUser, setEmailUser] = useState('');
+  const [emailSend, setEmailSend] = useState('');
+  const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+  const [error, setError] = useState(null);
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
   const init = {
     category: [],
@@ -137,6 +147,34 @@ export const Footer = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    console.log('emailSend', emailSend);
+    async function getData() {
+      try {
+        const { data } = await makeEmail({ email: emailUser });
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        if (data) {
+          setEmailUser('');
+          setEmailSend('');
+          return onSuccess(t('Thank you, we send your email to our community'));
+        }
+      } catch (error) {
+        setError(error);
+        onFetchError(t('Whoops, something went wrong'));
+      } finally {
+      }
+    }
+    if (emailSend !== '') {
+      getData();
+    }
+  }, [emailSend]);
+
+  const handleSubmit = () => {
+    setEmailSend(emailUser);
+  };
   return (
     <FooterSection id="footer">
       <FooterContainer>
@@ -153,7 +191,14 @@ export const Footer = () => {
               {isOpen[idx] && (
                 <FaqListOptionsBox>
                   {item.links.map((it, el) => (
-                    <Link style={{ textDecoration: 'none' }} key={el} to={it}>
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      key={el}
+                      to={it}
+                      onClick={() =>
+                        hendleSaveFilterToLOcalStorige(item.opt[el])
+                      }
+                    >
                       <FaqListOptions>{item.options[el]}</FaqListOptions>
                     </Link>
                   ))}
@@ -204,13 +249,25 @@ export const Footer = () => {
             <label>
               <FooterInput
                 type="email"
-                name=""
-                id=""
+                name="emailUser"
+                id="emailUser"
+                value={emailUser}
+                onChange={e => {
+                  setEmailUser(e.target.value);
+                }}
                 placeholder="Enter your email here"
               />
             </label>
 
-            <FooterInputFormBtn>SUBSCRIBE</FooterInputFormBtn>
+            <FooterInputFormBtn
+              type="button"
+              title="submit email"
+              aria-label="submit email"
+              onClick={() => handleSubmit()}
+              disabled={!emailUser.match(isValidEmail)}
+            >
+              SUBSCRIBE
+            </FooterInputFormBtn>
           </FooterInputForm>
 
           <FooterContacts>

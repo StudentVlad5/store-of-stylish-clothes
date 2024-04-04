@@ -14,7 +14,9 @@ export const StatusProvider = ({ children }) => {
     saveToStorage('userAnonimusID', userAnonimusID);
   }
   const [contextBasket, setContextBasket] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState('ua');
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    getFromStorage('chosenCurrency') ? getFromStorage('chosenCurrency') : 'ua',
+  );
   const [selectedLanguage, setSelectedLanguage] = useState(
     getFromStorage('chosenLanguage') ? getFromStorage('chosenLanguage') : 'ua',
   );

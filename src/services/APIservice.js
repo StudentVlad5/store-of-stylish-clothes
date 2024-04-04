@@ -14,7 +14,6 @@ async function fetchData(pathParams) {
       // 'Access-Control-Allow-Header': 'Origin, Content-Type, X-Auth-Token',
     },
   });
-
   return await axiosInstance.get();
 }
 
@@ -170,6 +169,16 @@ async function updateItemInBasket(pathParams, body) {
   });
 }
 
+async function makeEmail(body) {
+  return await axios.post(`${BASE_URL}/message`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
 fetchData.propTypes = {
   pathParams: PropTypes.string.isRequired,
 };
@@ -239,6 +248,9 @@ updateItemInBasket.propTypes = {
 getItemInBasket.propTypes = {
   pathParams: PropTypes.string.isRequired,
 };
+makeEmail.propTypes = {
+  body: PropTypes.string.isRequired,
+};
 export {
   fetchData,
   updateUserData,
@@ -255,4 +267,5 @@ export {
   getItemInBasket,
   removeItemInBasket,
   updateItemInBasket,
+  makeEmail,
 };

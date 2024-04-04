@@ -34,10 +34,22 @@ import {
 import { useTranslation } from 'react-i18next';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { saveToStorage } from 'services/localStorService';
 
 export const Footer = () => {
   const { t } = useTranslation();
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
   const faqItems = [
     {
       title: t('Catalog'),
@@ -48,6 +60,14 @@ export const Footer = () => {
         t('Shoes'),
         t('Backpacks and Bags'),
         t('Accessories'),
+      ],
+      opt: [
+        'discounts',
+        'novelty',
+        'clothes',
+        'shoes',
+        'backpacks and Bags',
+        'accessories',
       ],
       links: [
         `/discounts`,
@@ -65,6 +85,7 @@ export const Footer = () => {
         t('Delivery, Payment, Returns'),
         t('Privacy Policy'),
       ],
+      opt: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
       links: [`/`, `delivery_and_payments`, `confidential`],
     },
     {
@@ -83,6 +104,39 @@ export const Footer = () => {
     }));
   };
 
+  const hendleSaveFilterToLOcalStorige = it => {
+    switch (it) {
+      case 'clothes':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.clothing[selectedLanguage]],
+        });
+        break;
+      case 'shoes':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.footwear[selectedLanguage]],
+        });
+        break;
+      case 'backpacks and Bags':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.accessories[selectedLanguage]],
+        });
+        break;
+      case 'accessories':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.accessories[selectedLanguage]],
+        });
+        break;
+      default:
+        saveToStorage('filters', {
+          ...init,
+        });
+        break;
+    }
+  };
   return (
     <FooterSection id="footer">
       <FooterContainer>
@@ -118,7 +172,12 @@ export const Footer = () => {
 
               <FaqListOptionsBox>
                 {item.links.map((it, el) => (
-                  <Link style={{ textDecoration: 'none' }} key={el} to={it}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    key={el}
+                    to={it}
+                    onClick={() => hendleSaveFilterToLOcalStorige(item.opt[el])}
+                  >
                     <FaqListOptions>{item.options[el]}</FaqListOptions>
                   </Link>
                 ))}

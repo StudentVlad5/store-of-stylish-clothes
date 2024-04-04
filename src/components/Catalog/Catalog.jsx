@@ -282,7 +282,9 @@ export const Catalog = () => {
 
   const setParams = () => {
     let params = Object.fromEntries(searchParams);
-
+    const filters = getFromStorage('filters')
+      ? getFromStorage('filters')
+      : filters;
     if (filters.man_woman !== '') {
       params.man_woman = filters.man_woman;
     }

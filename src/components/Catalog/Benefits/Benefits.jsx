@@ -24,20 +24,20 @@ export const Benefits = () => {
       <Headline>{t('Why buy from us?')}</Headline>
       <SC.BenefitsList>
         <SC.BenefitsItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img1_webp} 1x, ${img1_2x_webp} 2x`}
               type="image/webp"
-            />
+            /> */}
             <img
-              src={img1_png}
+              src={img2_2x_webp}
               alt="Girl with flower"
-              srcSet={`${img1_png} 159w, ${img1_2x_png} 318w`}
+              // srcSet={`${img1_png} 159w, ${img1_2x_png} 318w`}
               width="159"
               height="159"
               loading="lazy"
             />
-          </picture>
+          {/* </picture> */}
           <SC.BenefitsSubtitle>{t('Fast shipping')}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
             {t(
@@ -46,20 +46,20 @@ export const Benefits = () => {
           </SC.BenefitsDescription>
         </SC.BenefitsItem>
         <SC.BenefitsItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img2_webp} 1x, ${img2_2x_webp} 2x`}
               type="image/webp"
-            />
+            /> */}
             <img
-              src={img2_png}
+              src={img1_2x_webp}
               alt="Girl with flower"
-              srcSet={`${img2_png} 159w, ${img2_2x_png} 318w`}
+              // srcSet={`${img2_png} 159w, ${img2_2x_png} 318w`}
               width="159"
               height="159"
               loading="lazy"
             />
-          </picture>
+          {/* </picture> */}
           <SC.BenefitsSubtitle>{t('Quality guaranteed')}</SC.BenefitsSubtitle>
           <SC.BenefitsDescription>
             {t('We offer a quality guarantee on all of our products.')}

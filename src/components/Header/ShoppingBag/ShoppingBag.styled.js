@@ -1,6 +1,6 @@
 import theme from 'components/baseStyles/Variables.styled';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IconClose } from 'components/Header/MobileMenu/MobileMenu.styled';
 
 export const Overlay = styled.div`
@@ -115,11 +115,11 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 24px;
+  gap: 20px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     justify-content: space-between;
-    padding: 0 51px;
+    padding: 0 15px;
   }
 `;
 
@@ -130,13 +130,19 @@ export const ListItem = styled.li`
   }
 `;
 
+export const ListItemLink = styled(NavLink)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const ListImage = styled.img`
-  width: 95px;
-  height: 105px;
+  width: 120px;
+  height: 75px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    width: 131px;
-    height: 125px;
+    width: 160px;
+    height: 104px;
   }
 `;
 

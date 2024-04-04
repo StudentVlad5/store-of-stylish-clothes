@@ -78,7 +78,7 @@ const Headline = styled.h2`
   line-height: 144.5%; /* 46.24px */
   letter-spacing: 0.64px;
 
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown4};
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 24px;

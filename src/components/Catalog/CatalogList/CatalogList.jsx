@@ -40,11 +40,11 @@ export const CatalogList = ({ products }) => {
       : (isInFavorite = false);
     if (isInFavorite) {
       dispatch(removeFavorite(id));
-      onSuccess('Ups, just remove from the favorite!');
+      onSuccess(t('Ups, just remove from the favorite!'));
       return;
     }
     dispatch(addFavorite(id));
-    onSuccess('Great, just add to the favorite!');
+    onSuccess(t('Great, just add to the favorite!'));
   };
 
   const handleFavoriteBtnClick = id => e => {
@@ -53,7 +53,7 @@ export const CatalogList = ({ products }) => {
     if (routeParams.id === 'favorite') {
       dispatch(addReload(true));
     }
-    !isLoggedIn ? onInfo('You must be loggined!') : toggleFavorite(id);
+    !isLoggedIn ? onInfo(t('You must be logged!')) : toggleFavorite(id);
   };
 
   return (
@@ -72,13 +72,19 @@ export const CatalogList = ({ products }) => {
               >
                 <SC.CardStatus>
                   {location.pathname.includes('discount')
-                    ? `discount: ${(
+                    ? `${t("discount")}: ${(
                         +selectOldPrice(selectedCurrency, card).toFixed(2) -
                         +selectNewPrice(selectedCurrency, card).toFixed(2)
                       ).toFixed(2)} ${selectCurrency(selectedCurrency)}`
-                    : card?.status
-                    ? card.status
-                    : 'new'}
+                      : card?.status === 'rate'
+                      ? t('rate')
+                      : card?.status === 'discount'
+                      ? t('discount')
+                      : t('new')
+                    // : card?.status
+                    // ? card.status
+                    // : t('new')
+                    }
                 </SC.CardStatus>
                 <SC.CardImage
                   src={card.mainImage}

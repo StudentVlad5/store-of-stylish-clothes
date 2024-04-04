@@ -322,12 +322,12 @@ export const DiscountCatalog = () => {
             justifyContent: 'space-between',
           }}
         >
-          <SC.HeadlineShop $primary>SHOP</SC.HeadlineShop>
+          <SC.HeadlineShop $primary>{t("Shop")}</SC.HeadlineShop>
           <SC.Heading>
             <SC.HeadingBtnBox>
               <SC.SortBox>
                 <SC.Accord onClick={toggleSort}>
-                  <span>SORT BY</span>
+                  <span>{t("SORT BY")}</span>
                   <SC.IconBtn
                     type="button"
                     aria-label="switch to open sort list"
@@ -343,7 +343,7 @@ export const DiscountCatalog = () => {
         </div>
         {search && (
           <SC.SearchResults>
-            <span>Search results:</span> {search}
+            <span>{t("Search results")}:</span> {search}
             <Close
               data-key="search"
               onClick={() => {
@@ -391,10 +391,10 @@ export const DiscountCatalog = () => {
             {products.length === 0 && !isLoading && !error && (
               <>
                 <Headline style={{ textAlign: 'center' }}>
-                  Nothing found for these parameters...
+                 {t("Nothing found for these parameters...")}
                 </Headline>
                 <Headline style={{ textAlign: 'center' }}>
-                  Please, try to clear filter
+                  {t("Please, try to clear filter")}
                 </Headline>
               </>
             )}

@@ -80,12 +80,12 @@ export const Footer = () => {
         'accessories',
       ],
       links: [
-        `/discounts`,
-        `/novetly`,
-        `/shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
-        `/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
-        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
-        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
+        `discounts`,
+        `novetly`,
+        `shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
+        `shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+        `shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
+        `shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
       ],
     },
     {

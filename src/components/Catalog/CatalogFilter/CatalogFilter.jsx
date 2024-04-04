@@ -13,9 +13,9 @@ export const CatalogFilter = ({
   setParams,
   filters,
   setFilters,
-  setSearchParams = { setSearchParams },
+  searchParams,
+  setSearchParams,
 }) => {
-  // const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
   const { selectedCurrency } = useContext(StatusContext);
 
@@ -135,6 +135,7 @@ export const CatalogFilter = ({
         {filterState[0]?.level_1 && filterState[0]?.level_1.length > 0 && (
           <SC.Filter>
             <SC.FilterHeading
+              className="active"
               data-key="man_woman"
               onClick={e => {
                 toggleFilterItem(e);
@@ -153,7 +154,7 @@ export const CatalogFilter = ({
               {filterState[0]?.level_1 &&
                 filterState[0]?.level_1.map((card, i) => {
                   return (
-                    <label key={i} data-key={card}>
+                    <label key={i + searchParams} data-key={card}>
                       <SC.FilterInnerListItem
                         type="checkbox"
                         name="man_woman"
@@ -175,6 +176,7 @@ export const CatalogFilter = ({
         {filterState[0]?.level_2 && filterState[0]?.level_2.length > 0 && (
           <SC.Filter>
             <SC.FilterHeading
+              className="active"
               data-key="category"
               onClick={e => {
                 toggleFilterItem(e);
@@ -193,7 +195,7 @@ export const CatalogFilter = ({
               {filterState[0]?.level_2 &&
                 filterState[0]?.level_2.map((card, i) => {
                   return (
-                    <label key={i} data-key={card}>
+                    <label key={i + searchParams} data-key={card}>
                       <SC.FilterInnerListItem
                         type="checkbox"
                         name="category"
@@ -219,6 +221,7 @@ export const CatalogFilter = ({
                 <div style={{ width: '100%' }} key={i}>
                   <SC.Filter>
                     <SC.FilterHeading
+                      className="active"
                       data-key="product"
                       onClick={e => {
                         toggleFilterItem(e);
@@ -238,7 +241,7 @@ export const CatalogFilter = ({
                         filterState[0]?.level_3 &&
                         filterState[0]?.level_3[card].map((card, i) => {
                           return (
-                            <label key={i} data-key={card}>
+                            <label key={i + searchParams} data-key={card}>
                               <SC.FilterInnerListItem
                                 type="checkbox"
                                 name="product"

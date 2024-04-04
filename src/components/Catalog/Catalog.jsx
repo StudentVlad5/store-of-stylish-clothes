@@ -381,6 +381,7 @@ export const Catalog = () => {
               filters={filters}
               setFilters={setFilters}
               setSearchParams={setSearchParams}
+              searchParams={searchParams}
             />
           </SC.FiltersContainer>
           <SC.GridWrapper>

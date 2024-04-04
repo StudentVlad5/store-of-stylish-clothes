@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FooterSection,
@@ -35,10 +35,32 @@ import {
 import { useTranslation } from 'react-i18next';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { saveToStorage } from 'services/localStorService';
+import {
+  onFetchError,
+  onSuccess,
+} from 'components/helpers/Messages/NotifyMessages';
+import { makeEmail } from 'services/APIservice';
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const [emailUser, setEmailUser] = useState('');
+  const [emailSend, setEmailSend] = useState('');
+  const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+  const [error, setError] = useState(null);
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
   const faqItems = [
     {
       title: t('Catalog'),
@@ -50,13 +72,21 @@ export const Footer = () => {
         t('Backpacks and Bags'),
         t('Accessories'),
       ],
+      opt: [
+        'discounts',
+        'novelty',
+        'clothes',
+        'shoes',
+        'backpacks and Bags',
+        'accessories',
+      ],
       links: [
-        `/discounts`,
-        `/novetly`,
-        `/shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
-        `/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
-        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
-        `/shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
+        `discounts`,
+        `novetly`,
+        `shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
+        `shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
+        `shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,
+        `shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}`,
       ],
     },
     {
@@ -66,6 +96,7 @@ export const Footer = () => {
         t('Delivery, Payment, Returns'),
         t('Privacy Policy'),
       ],
+      opt: ['About us', 'Delivery, Payment, Returns', 'Privacy Policy'],
       links: [`/`, `delivery_and_payments`, `confidential`],
     },
     {
@@ -84,6 +115,67 @@ export const Footer = () => {
     }));
   };
 
+  const hendleSaveFilterToLOcalStorige = it => {
+    switch (it) {
+      case 'clothes':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.clothing[selectedLanguage]],
+        });
+        break;
+      case 'shoes':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.footwear[selectedLanguage]],
+        });
+        break;
+      case 'backpacks and Bags':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.accessories[selectedLanguage]],
+        });
+        break;
+      case 'accessories':
+        saveToStorage('filters', {
+          ...init,
+          category: [homeProductLinks?.accessories[selectedLanguage]],
+        });
+        break;
+      default:
+        saveToStorage('filters', {
+          ...init,
+        });
+        break;
+    }
+  };
+
+  useEffect(() => {
+    console.log('emailSend', emailSend);
+    async function getData() {
+      try {
+        const { data } = await makeEmail({ email: emailUser });
+        if (!data) {
+          return onFetchError(t('Whoops, something went wrong'));
+        }
+        if (data) {
+          setEmailUser('');
+          setEmailSend('');
+          return onSuccess(t('Thank you, we send your email to our community'));
+        }
+      } catch (error) {
+        setError(error);
+        onFetchError(t('Whoops, something went wrong'));
+      } finally {
+      }
+    }
+    if (emailSend !== '') {
+      getData();
+    }
+  }, [emailSend]);
+
+  const handleSubmit = () => {
+    setEmailSend(emailUser);
+  };
   return (
     <FooterSection id="footer">
       <FooterContainer>
@@ -100,7 +192,14 @@ export const Footer = () => {
               {isOpen[idx] && (
                 <FaqListOptionsBox>
                   {item.links.map((it, el) => (
-                    <Link style={{ textDecoration: 'none' }} key={el} to={it}>
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      key={el}
+                      to={it}
+                      onClick={() =>
+                        hendleSaveFilterToLOcalStorige(item.opt[el])
+                      }
+                    >
                       <FaqListOptions>{item.options[el]}</FaqListOptions>
                     </Link>
                   ))}
@@ -119,7 +218,12 @@ export const Footer = () => {
 
               <FaqListOptionsBox>
                 {item.links.map((it, el) => (
-                  <Link style={{ textDecoration: 'none' }} key={el} to={it}>
+                  <Link
+                    style={{ textDecoration: 'none' }}
+                    key={el}
+                    to={it}
+                    onClick={() => hendleSaveFilterToLOcalStorige(item.opt[el])}
+                  >
                     <FaqListOptions>{item.options[el]}</FaqListOptions>
                   </Link>
                 ))}
@@ -148,13 +252,25 @@ export const Footer = () => {
             <label>
               <FooterInput
                 type="email"
-                name=""
-                id=""
+                name="emailUser"
+                id="emailUser"
+                value={emailUser}
+                onChange={e => {
+                  setEmailUser(e.target.value);
+                }}
                 placeholder={t('Enter your email here')}
               />
             </label>
 
-            <FooterInputFormBtn>{t('SUBSCRIBE')}</FooterInputFormBtn>
+            <FooterInputFormBtn
+              type="button"
+              title="submit email"
+              aria-label="submit email"
+              onClick={() => handleSubmit()}
+              disabled={!emailUser.match(isValidEmail)}
+            >
+              {t('SUBSCRIBE')}
+            </FooterInputFormBtn>
           </FooterInputForm>
 
           <FooterContacts>

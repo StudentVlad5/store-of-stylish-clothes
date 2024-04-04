@@ -15,10 +15,10 @@ export const FooterSection = styled.footer`
   background-color: ${theme.colors.brown4};
   color: ${theme.colors.text};
   padding-top: 30px;
-  margin-top: 80px;
+  /* margin-top: 80px; */
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    margin-top: 120px;
+    /* margin-top: 120px; */
   }
 `;
 export const LinkBrand = styled(Link)`
@@ -247,7 +247,7 @@ export const FooterInput = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 
   background: ${theme.colors.text};
   border-color: transparent;
@@ -278,7 +278,9 @@ export const FooterInputFormBtn = styled.button`
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
-
+  :disabled {
+    cursor: not-allowed;
+  }
   &:hover,
   &:focus {
     background-color: rgb(200, 200, 200);

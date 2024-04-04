@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import { Link, useSearchParams } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import photoManCategory from 'images/hero/man_2x.webp';
 import photoWomanCategory from 'images/hero/woman_2x.webp';
@@ -59,7 +58,7 @@ export const Hero = () => {
             }
           >
             <HeroItem props={`url(${photoManCategory})`}>
-              <ImgTitle>{t("Men")}</ImgTitle>
+              <ImgTitle>{t('Men')}</ImgTitle>
             </HeroItem>
           </LinkCategory>
           <LinkCategory
@@ -72,11 +71,11 @@ export const Hero = () => {
             }
           >
             <HeroItem props={`url(${photoWomanCategory})`}>
-              <ImgTitle>{t("Women")}</ImgTitle>
+              <ImgTitle>{t('Women')}</ImgTitle>
             </HeroItem>
           </LinkCategory>
           <ContainerForBtnReadyStyle>
-            <SideBarTitle>{t("Choose your perfect style")}</SideBarTitle>
+            <SideBarTitle>{t('Choose your perfect style')}</SideBarTitle>
             <Link to="/ready_style" style={{ textDecoration: 'none' }}>
               <ButtonForReadyStyle
                 type="button"
@@ -84,7 +83,7 @@ export const Hero = () => {
                 aria-label="click for choose your perfect style"
               >
                 <TitleForBtnReadyStyle TitleForBtnReadyStyle>
-                  {t("Explore")}
+                  {t('Explore')}
                 </TitleForBtnReadyStyle>
                 <WhiteArrow />
               </ButtonForReadyStyle>
@@ -108,7 +107,7 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoJacetsCategory})`}>
-                <CategoryTitle>{t("Jackets")}</CategoryTitle>
+                <CategoryTitle>{t('Jackets')}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
 
@@ -124,7 +123,7 @@ export const Hero = () => {
                   })
                 }
               >
-                <CategoryTitle>{t("Pants")}</CategoryTitle>
+                <CategoryTitle>{t('Pants')}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
 
@@ -140,7 +139,7 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoHoodiesSweatshirtsCategory})`}>
-                <CategoryTitle>{t("Hoodies & Sweatshirts")}</CategoryTitle>
+                <CategoryTitle>{t('Hoodies & Sweatshirts')}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
             <LinkCategory
@@ -153,13 +152,12 @@ export const Hero = () => {
               }
             >
               <CategoryItem props={`url(${photoFootwearCategory})`}>
-                <CategoryTitle>{t("Shoes")}</CategoryTitle>
+                <CategoryTitle>{t('Shoes')}</CategoryTitle>
               </CategoryItem>
             </LinkCategory>
           </HeroContainer>
         </SectionWrapper>
       </CategorySection>
-      {/* {isLoading ? onLoading() : onLoaded()} */}
     </>
   );
 };

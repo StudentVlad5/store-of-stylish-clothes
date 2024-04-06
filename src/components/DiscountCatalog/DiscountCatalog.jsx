@@ -208,10 +208,10 @@ export const DiscountCatalog = () => {
   };
 
   const [showFilter, setShowFilter] = useState(false);
-  // const toggleFilter = () => {
-  //   setShowFilter(state => !state);
-  //   setShowSort(false);
-  // };
+  const toggleFilter = () => {
+    setShowFilter(state => !state);
+    setShowSort(false);
+  };
 
   const handleClick = () => {
     setShowSort(false);
@@ -315,19 +315,13 @@ export const DiscountCatalog = () => {
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <SC.HeadlineShop $primary>{t("Shop")}</SC.HeadlineShop>
+        <SC.CatalogTitleWrapper>
+          <SC.HeadlineShop $primary>{t('Shop')}</SC.HeadlineShop>
           <SC.Heading>
             <SC.HeadingBtnBox>
               <SC.SortBox>
                 <SC.Accord onClick={toggleSort}>
-                  <span>{t("SORT BY")}</span>
+                  <span>{t('SORT BY')}</span>
                   <SC.IconBtn
                     type="button"
                     aria-label="switch to open sort list"
@@ -339,11 +333,35 @@ export const DiscountCatalog = () => {
                 {showSort && <CatalogSort sort={sort} setSort={setSort} />}
               </SC.SortBox>
             </SC.HeadingBtnBox>
+            <SC.FiltersBox>
+              <SC.Accord onClick={toggleFilter}>
+                <span>FILTER BY</span>
+                <SC.IconBtn
+                  type="button"
+                  aria-label="switch to open filter list"
+                  aria-expanded="false"
+                >
+                  <Open />
+                </SC.IconBtn>
+              </SC.Accord>
+              {showFilter && (
+                <SC.FiltersWrapper>
+                  <CatalogFilter
+                    filterState={filterState}
+                    setParams={setParams}
+                    filters={filters}
+                    setFilters={setFilters}
+                    setSearchParams={setSearchParams}
+                    searchParams={searchParams}
+                  />
+                </SC.FiltersWrapper>
+              )}
+            </SC.FiltersBox>
           </SC.Heading>
-        </div>
+        </SC.CatalogTitleWrapper>
         {search && (
           <SC.SearchResults>
-            <span>{t("Search results")}:</span> {search}
+            <span>{t('Search results')}:</span> {search}
             <Close
               data-key="search"
               onClick={() => {
@@ -391,10 +409,10 @@ export const DiscountCatalog = () => {
             {products.length === 0 && !isLoading && !error && (
               <>
                 <Headline style={{ textAlign: 'center' }}>
-                 {t("Nothing found for these parameters...")}
+                  {t('Nothing found for these parameters...')}
                 </Headline>
                 <Headline style={{ textAlign: 'center' }}>
-                  {t("Please, try to clear filter")}
+                  {t('Please, try to clear filter')}
                 </Headline>
               </>
             )}

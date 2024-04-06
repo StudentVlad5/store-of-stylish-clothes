@@ -258,46 +258,48 @@ export const CatalogFilter = ({
                         })}
                     </SC.FilterInnerList>
                   </SC.Filter>
-                  <SC.Filter>
-                    <SC.FilterHeading
-                      data-key="sizes"
-                      onClick={e => {
-                        toggleFilterItem(e);
-                      }}
-                    >
-                      <span>
-                        {t('Size')} {card}
-                      </span>
-                      <SC.IconBtn
-                        type="button"
-                        aria-label="switch to open filter"
-                        aria-expanded="false"
+                  {filterState[0]?.level_4[card]?.length > 0 && (
+                    <SC.Filter>
+                      <SC.FilterHeading
+                        data-key="sizes"
+                        onClick={e => {
+                          toggleFilterItem(e);
+                        }}
                       >
-                        <Open />
-                      </SC.IconBtn>
-                    </SC.FilterHeading>
-                    <SC.FilterInnerList>
-                      {filterState[0]?.level_4 &&
-                        filterState[0]?.level_4[card].length > 0 &&
-                        filterState[0]?.level_4[card].map((card, i) => {
-                          return (
-                            <label key={i} data-key={card}>
-                              <SC.FilterInnerListItem
-                                type="checkbox"
-                                name="sizes"
-                                value={card}
-                                data-input={card}
-                                // defaultChecked={filters['size'].includes(card)}
-                                onChange={e => {
-                                  handleChange(e);
-                                }}
-                              />
-                              <span>{card}</span>
-                            </label>
-                          );
-                        })}
-                    </SC.FilterInnerList>
-                  </SC.Filter>
+                        <span>
+                          {t('Size')} {card}
+                        </span>
+                        <SC.IconBtn
+                          type="button"
+                          aria-label="switch to open filter"
+                          aria-expanded="false"
+                        >
+                          <Open />
+                        </SC.IconBtn>
+                      </SC.FilterHeading>
+                      <SC.FilterInnerList>
+                        {filterState[0]?.level_4 &&
+                          filterState[0]?.level_4[card]?.length > 0 &&
+                          filterState[0]?.level_4[card].map((card, i) => {
+                            return (
+                              <label key={i} data-key={card}>
+                                <SC.FilterInnerListItem
+                                  type="checkbox"
+                                  name="sizes"
+                                  value={card}
+                                  data-input={card}
+                                  // defaultChecked={filters['size'].includes(card)}
+                                  onChange={e => {
+                                    handleChange(e);
+                                  }}
+                                />
+                                <span>{card}</span>
+                              </label>
+                            );
+                          })}
+                      </SC.FilterInnerList>
+                    </SC.Filter>
+                  )}
                 </div>
               );
           })}

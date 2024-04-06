@@ -1,10 +1,10 @@
-// export const BASE_URL = 'http://localhost:3030/api';
-// export const BASE_URL_IMG =
-//   'https://res.cloudinary.com/dfqhj2far/image/upload/v1711870092/quillis_users/';
-export const BASE_URL =
-  'https://store-of-stylish-clothes-backend.vercel.app/api';
+export const BASE_URL = 'http://localhost:3030/api';
 export const BASE_URL_IMG =
   'https://res.cloudinary.com/dfqhj2far/image/upload/v1711870092/quillis_users/';
+// export const BASE_URL =
+//   'https://store-of-stylish-clothes-backend.vercel.app/api';
+// export const BASE_URL_IMG =
+//   'https://res.cloudinary.com/dfqhj2far/image/upload/v1711870092/quillis_users/';
 
 export const language = [
   { value: 'ua', option: 'UA' },

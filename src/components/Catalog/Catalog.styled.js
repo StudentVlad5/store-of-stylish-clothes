@@ -17,7 +17,7 @@ const CatalogContainer = styled(Container)`
 
 const Heading = styled.div`
   display: inline-flex;
-  justify-content: space-between;
+  gap: 20px;
   align-items: baseline;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -173,7 +173,7 @@ const FiltersWrapper = styled.div`
   position: absolute;
   top: 25px;
   right: 0;
-  z-index: 2;
+  z-index: 200;
 
   display: flex;
   flex-direction: column;
@@ -276,6 +276,20 @@ const GridWrapper = styled.div`
     padding-left: 20px;
   }
 `;
+const CatalogTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 0 0px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    padding: 0 0px;
+  }
+`;
 
 export {
   CatalogSection,
@@ -293,4 +307,5 @@ export {
   FiltersBox,
   FiltersWrapper,
   GridWrapper,
+  CatalogTitleWrapper,
 };

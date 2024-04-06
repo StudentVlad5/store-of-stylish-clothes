@@ -106,7 +106,6 @@ export const ShoppingBagList = ({
   };
 
   async function updateItem(items) {
-    console.log('items', items);
     if (items !== undefined) {
       setIsLoading(true);
       const perem = { optionData: [...items] };

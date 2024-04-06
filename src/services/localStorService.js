@@ -23,7 +23,7 @@ function getFromStorage(storageKey) {
     const data = localStorage.getItem(storageKey);
     return data === null ? undefined : JSON.parse(data);
   } catch (err) {
-    console.warn('Cannot parse JSON from localStorage');
+    // console.warn('Cannot parse JSON from localStorage');
     return null;
   }
 }

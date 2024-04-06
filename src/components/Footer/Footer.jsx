@@ -150,7 +150,6 @@ export const Footer = () => {
   };
 
   useEffect(() => {
-    console.log('emailSend', emailSend);
     async function getData() {
       try {
         const { data } = await makeEmail({ email: emailUser });

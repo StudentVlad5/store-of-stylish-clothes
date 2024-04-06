@@ -81,7 +81,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   if (departmentCity && departmentCity.Ref !== cityRef) {
     setCityRef(departmentCity.Ref);
   }
-  console.log('cityRef', cityRef);
+
   // get departments for Nova Poshta
   useEffect(() => {
     async function getData() {

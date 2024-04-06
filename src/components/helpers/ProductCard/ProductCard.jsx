@@ -7,6 +7,7 @@ import {
   IconBookmark,
   ImgItem,
 } from './ProductCard.styled';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 export const ProductCard = ({ item, selectedCurrency, status }) => {
   return (
@@ -24,7 +25,9 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
         <CardLi>Rate: {item.rate}</CardLi>
       )}
       <CardLi>
-        <ImgItem props={`url(${item.mainImage})`} />
+        <LazyLoadComponent id={item.mainImage}>
+          <ImgItem props={`url(${item.mainImage})`} />
+        </LazyLoadComponent>
       </CardLi>
       <CardLi>
         {item.title.length < 40 ? item.title : item.title.slice(0, 40) + '...'}

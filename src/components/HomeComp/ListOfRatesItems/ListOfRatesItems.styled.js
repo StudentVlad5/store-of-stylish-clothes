@@ -90,16 +90,16 @@ export const ViewportBox = styled.div`
   }
 `;
 export const Pagination = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 0px;
+  margin-top: 25px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    margin-top: 25px;
+    display: flex;
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    margin-top: 25px;
+    display: flex;
   }
 `;
 

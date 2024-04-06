@@ -7,7 +7,7 @@ const MobileAccountButton = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 46px auto 0 auto;
+  margin-top: 46px ;
   /* padding: 8px 36px; */
 
   height: 35px;

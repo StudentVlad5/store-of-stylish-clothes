@@ -44,4 +44,10 @@ const Text = styled(Link)`
     font-size: ${theme.fontSizes.extraXXL};
   }
 `;
-export { MobileHeader, IconClose, Text };
+
+const MobileMenuBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export { MobileHeader, IconClose, Text, MobileMenuBox };

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeroSection = styled(Section)`
-  margin-top: 100px;
+  margin-top: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,23 +72,28 @@ export const SideBarTitle = styled.h2`
   min-height: 158px;
   margin-bottom: 0;
   color: ${theme.colors.brown2};
-  font-size: 64px;
+  font-size: 38px;
   font-style: normal;
   margin-top: 0;
   text-align: center;
   font-family: ${theme.fonts[0]};
   font-weight: 400;
-  line-height: 84px;
+  line-height: 38px;
   margin-bottom: 0;
   letter-spacing: 0;
   text-transform: uppercase;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     text-align: left;
+    line-height: 44px;
+    font-size: 44px;
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    line-height: 84px;
+    font-size: 64px;
     text-align: left;
   }
 `;
+
 export const ImgTitle = styled.h3`
   position: absolute;
   display: block;

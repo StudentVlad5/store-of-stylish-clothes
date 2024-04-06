@@ -43,7 +43,10 @@ const HeaderUnderLine = styled.div`
   margin: auto;
   width: 100%;
   height: 1px;
-  margin-top: 40px;
+
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    margin-top: 40px;
+  }
 `;
 
 const HeaderContainer = styled(Container)`

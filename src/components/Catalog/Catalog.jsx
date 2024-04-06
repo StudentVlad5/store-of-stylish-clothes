@@ -207,15 +207,16 @@ export const Catalog = () => {
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
+    console.log('BLALA');
     setShowSort(state => !state);
     setShowFilter(false);
   };
 
   const [showFilter, setShowFilter] = useState(false);
-  // const toggleFilter = () => {
-  //   setShowFilter(state => !state);
-  //   setShowSort(false);
-  // };
+  const toggleFilter = () => {
+    setShowFilter(state => !state);
+    setShowSort(false);
+  };
 
   const handleClick = () => {
     setShowSort(false);
@@ -321,13 +322,7 @@ export const Catalog = () => {
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
+        <SC.CatalogTitleWrapper>
           <SC.HeadlineShop $primary>{t('Shop')}</SC.HeadlineShop>
           <SC.Heading>
             <SC.HeadingBtnBox>
@@ -345,8 +340,32 @@ export const Catalog = () => {
                 {showSort && <CatalogSort sort={sort} setSort={setSort} />}
               </SC.SortBox>
             </SC.HeadingBtnBox>
+            <SC.FiltersBox>
+              <SC.Accord onClick={toggleFilter}>
+                <span>FILTER BY</span>
+                <SC.IconBtn
+                  type="button"
+                  aria-label="switch to open filter list"
+                  aria-expanded="false"
+                >
+                  <Open />
+                </SC.IconBtn>
+              </SC.Accord>
+              {showFilter && (
+                <SC.FiltersWrapper>
+                  <CatalogFilter
+                    filterState={filterState}
+                    setParams={setParams}
+                    filters={filters}
+                    setFilters={setFilters}
+                    setSearchParams={setSearchParams}
+                    searchParams={searchParams}
+                  />
+                </SC.FiltersWrapper>
+              )}
+            </SC.FiltersBox>
           </SC.Heading>
-        </div>
+        </SC.CatalogTitleWrapper>
         {search && (
           <SC.SearchResults>
             <span>Search results:</span> {search}

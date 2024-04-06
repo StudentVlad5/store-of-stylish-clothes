@@ -90,7 +90,7 @@ img {
   line-height: 1.375;
   letter-spacing: 0.04em;
   text-align: left;
-
+  gap:7px;
   background-color: transparent;
 
 
@@ -141,7 +141,7 @@ img {
   pointer-events: none;
   border: 0.5px solid ${theme.colors.brown1};
   border-radius: 5px;
-
+  padding: 2px;
 }
 
 //----- ProductList -----//
@@ -168,7 +168,7 @@ img {
   height:auto !important;
   text-align: center;
   font-size: 18px;
-  background: ${theme.colors.fonPrimary};
+  background: ${theme.colors.fon};
   padding: 30px;
   border-radius: 16px;
 

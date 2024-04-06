@@ -99,7 +99,7 @@ const NavBlock = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: flex;
-    gap: 24px;
+    /* gap: 24px; */
   }
 `;
 
@@ -107,7 +107,7 @@ const MobileContainer = styled(Container)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 36px;
   position: relative;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {

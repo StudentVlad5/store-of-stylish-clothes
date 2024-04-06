@@ -77,7 +77,7 @@ export const SearchResult = ({
       </SC.ButtonClose>
       <SC.Wrapper>
         <SC.InnerLeftWrapper onClick={toggleMobileMenu}>
-          <Subtitle>recommend</Subtitle>
+          <Subtitle>{t("recommend")}</Subtitle>
           {isLoading ? onLoading() : onLoaded()}
           {error && onFetchError(t('Whoops, something went wrong'))}
           {products.length > 0 && !error && (
@@ -123,17 +123,17 @@ export const SearchResult = ({
           )}
           {total > 4 ? (
             <SC.LinkToCatalog to={`/shop?page=1&perPage=12`} onClick={onClose}>
-              See more
+              {t("See more")}
             </SC.LinkToCatalog>
           ) : (
             <>
               <Logo />
-              <span> Lets find smth else</span>
+              <span> {t("Let's find smth else")}</span>
             </>
           )}
         </SC.InnerLeftWrapper>
         <SC.InnerRightWrapper onClick={toggleMobileMenu}>
-          <Subtitle>Goods in the shop</Subtitle>
+          <Subtitle>{t("Goods in the shop")}</Subtitle>
           <SC.Category>
             {products.length > 0 && !error
               ? products.map((card, i) => {
@@ -145,10 +145,10 @@ export const SearchResult = ({
                     </li>
                   );
                 })
-              : 'Sorry! Nothing found'}
+              : t('Sorry! Nothing found')}
           </SC.Category>
           <SC.LinkToGifts to={`/gifts`} onClick={onClose}>
-            <span>Our ideas for gifts</span>
+            <span>{t("Our ideas for gifts")}</span>
             <MdEast size={18} />
           </SC.LinkToGifts>
         </SC.InnerRightWrapper>

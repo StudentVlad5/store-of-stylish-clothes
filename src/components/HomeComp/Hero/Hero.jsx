@@ -22,6 +22,7 @@ import {
   TitleForBtnReadyStyle,
   ContainerForBtnReadyStyle,
   ButtonForReadyStyle,
+  HeroImgBox,
 } from './Hero.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { saveToStorage } from 'services/localStorService';
@@ -48,32 +49,35 @@ export const Hero = () => {
     <>
       <HeroSection>
         <HeroContainer>
-          <LinkCategory
-            to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
-            onClick={() =>
-              saveToStorage('filters', {
-                ...init,
-                man_woman: [homeProductLinks?.man[selectedLanguage]],
-              })
-            }
-          >
-            <HeroItem props={`url(${photoManCategory})`}>
-              <ImgTitle>{t('Men')}</ImgTitle>
-            </HeroItem>
-          </LinkCategory>
-          <LinkCategory
-            to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
-            onClick={() =>
-              saveToStorage('filters', {
-                ...init,
-                man_woman: [homeProductLinks?.woman[selectedLanguage]],
-              })
-            }
-          >
-            <HeroItem props={`url(${photoWomanCategory})`}>
-              <ImgTitle>{t('Women')}</ImgTitle>
-            </HeroItem>
-          </LinkCategory>
+          <HeroImgBox>
+            <LinkCategory
+              to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+              onClick={() =>
+                saveToStorage('filters', {
+                  ...init,
+                  man_woman: [homeProductLinks?.man[selectedLanguage]],
+                })
+              }
+            >
+              <HeroItem props={`url(${photoManCategory})`}>
+                <ImgTitle>{t('Men')}</ImgTitle>
+              </HeroItem>
+            </LinkCategory>
+            <LinkCategory
+              to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+              onClick={() =>
+                saveToStorage('filters', {
+                  ...init,
+                  man_woman: [homeProductLinks?.woman[selectedLanguage]],
+                })
+              }
+            >
+              <HeroItem props={`url(${photoWomanCategory})`}>
+                <ImgTitle>{t('Women')}</ImgTitle>
+              </HeroItem>
+            </LinkCategory>
+          </HeroImgBox>
+
           <ContainerForBtnReadyStyle>
             <SideBarTitle>{t('Choose your perfect style')}</SideBarTitle>
             <Link to="/ready_style" style={{ textDecoration: 'none' }}>

@@ -6,7 +6,7 @@ export const AboutSection = styled(Section)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.fonPrimary};
+  /* background-color: ${theme.colors.fonPrimary}; */
 `;
 
 export const AboutContainer = styled.div`
@@ -19,7 +19,7 @@ export const AboutContainer = styled.div`
   align-items: center;
   padding: 0;
   width: 100%;
-  gap: 40px;
+  gap: 20px;
   padding: 0px 50px;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
@@ -28,22 +28,25 @@ export const AboutContainer = styled.div`
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     flex-direction: row;
     padding: 0px 200px;
+    gap: 40px;
   }
 `;
 export const AboutSubTitle = styled.p`
   color: ${theme.colors.brown2};
-  font-size: ${theme.fontSizes.extraXL};
+  font-size: 20px;
   font-style: normal;
   margin-top: 0;
   text-align: left;
   font-weight: 400;
-  line-height: 48px;
+  line-height: 26px;
   margin-bottom: 0;
   letter-spacing: 0;
   text-transform: none;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 32px;
+    line-height: 48px;
   }
 `;
 export const Title = styled.h1`

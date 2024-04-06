@@ -32,7 +32,9 @@ const FormContainer = styled.form`
   background-color: ${theme.colors.fon};
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    right: 0;
     width: 250px;
   }
 `;

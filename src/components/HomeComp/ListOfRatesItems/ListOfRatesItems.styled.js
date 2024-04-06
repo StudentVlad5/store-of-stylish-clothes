@@ -8,7 +8,7 @@ export const CardContainerSection = styled(Section)`
   align-items: center;
   flex-direction: column;
   padding-top: 0;
-  background-color: ${theme.colors.fonPrimary};
+  /* background-color: ${theme.colors.fonPrimary}; */
 `;
 export const SectionTitleWrap = styled.div`
   display: flex;
@@ -32,17 +32,22 @@ export const SectionTitleWrap = styled.div`
     }
   }
 `;
-export const SectionTitle = styled.h1`
+export const SectionTitle = styled.h2`
   color: ${theme.colors.brown2};
-  font-size: ${theme.fontSizes.extraXL};
+  font-size: 24px;
   font-style: normal;
   font-family: ${theme.fonts[1]};
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0;
   text-transform: uppercase;
-  padding-right: 20px;
+  padding-right: 7px;
   border-bottom: 1px solid ${theme.colors.brown4};
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 32px;
+    padding-right: 20px;
+  }
 `;
 export const SectionSubTitle = styled.span`
   color: ${theme.colors.brown2};
@@ -67,7 +72,7 @@ export const CardContainer = styled.div`
   gap: 10px;
   width: 100%;
   padding-top: 30px;
-  background-color: ${theme.colors.fonPrimary};
+  /* background-color: ${theme.colors.fonPrimary}; */
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -75,7 +80,7 @@ export const CardContainer = styled.div`
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     flex-direction: row;
-    gap: 60px;
+    /* gap: 60px; */
   }
 `;
 export const ViewportBox = styled.div`

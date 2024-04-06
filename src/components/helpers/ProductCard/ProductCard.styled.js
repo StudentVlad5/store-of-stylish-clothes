@@ -32,7 +32,7 @@ export const CardLi = styled.li`
   align-items: start;
   width: 100%;
   font-family: ${theme.fonts[1]};
-  font-size: ${theme.fontSizes.medium};
+  font-size: 12px;
   color: ${theme.colors.brown2};
   &:first-of-type {
     position: absolute;

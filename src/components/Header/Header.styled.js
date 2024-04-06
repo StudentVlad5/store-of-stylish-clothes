@@ -54,9 +54,9 @@ const HeaderContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 40px 30px 0px 30px;
+  padding: 20px 20px 0px 20px;
 
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
     padding: 40px 40px 0px 40px;
   }
 `;

@@ -7,11 +7,24 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 const Language = () => {
   const { selectedLanguage, setSelectedLanguage } = useContext(StatusContext);
 
+  // useEffect(() => {
+  //   const saveLanguage = localStorage.getItem('chosenLanguage');
+  //   if (saveLanguage) {
+  //     i18next.changeLanguage(saveLanguage);
+  //     setSelectedLanguage(saveLanguage);
+  //   }
+  // }, []);
+
   useEffect(() => {
     const saveLanguage = localStorage.getItem('chosenLanguage');
     if (saveLanguage) {
       i18next.changeLanguage(saveLanguage);
       setSelectedLanguage(saveLanguage);
+    } else {
+      const defaultLanguage = 'en';
+      i18next.changeLanguage(defaultLanguage);
+      localStorage.setItem('chosenLanguage', defaultLanguage);
+      setSelectedLanguage(defaultLanguage);
     }
   }, []);
 

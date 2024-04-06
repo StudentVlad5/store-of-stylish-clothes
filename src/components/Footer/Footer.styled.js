@@ -21,7 +21,7 @@ export const FooterSection = styled.footer`
     /* margin-top: 120px; */
   }
 `;
-export const LinkBrand = styled(Link)`
+export const LinkBrand = styled.a`
   text-decoration: none;
   color: ${theme.colors.text};
   @media screen and (min-width: ${theme.breakpoints.tablet}) {

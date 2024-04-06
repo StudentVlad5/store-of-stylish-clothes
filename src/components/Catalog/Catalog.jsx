@@ -342,7 +342,7 @@ export const Catalog = () => {
             </SC.HeadingBtnBox>
             <SC.FiltersBox>
               <SC.Accord onClick={toggleFilter}>
-                <span>FILTER BY</span>
+                <span>{t("FILTER BY")}</span>
                 <SC.IconBtn
                   type="button"
                   aria-label="switch to open filter list"

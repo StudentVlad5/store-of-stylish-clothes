@@ -220,9 +220,11 @@
   "Receive exclusive updates on new arrivals and promotions.": "Отримувати ексклюзивні оновлення про нові надходження та акції.",
   "Join our community and receive exclusive updates on new arrivals and promotions.": "Приєднуйтеся до нашої спільноти та отримуйте ексклюзивні оновлення про нові надходження та акції.",
   "Enter your email here": "Введіть свою електронну адресу тут",
-  "recommend":"рекомендації",
-  "See more":"Побачити більше",
-  "Let's find smth else":"Давайте знайдемо щось інше",
-  "Goods in the shop":"Товар в магазині",
-  "Sorry! Nothing found":"Вибачте! Нічого не знайдено"
+  "recommend": "рекомендації",
+  "See more": "Побачити більше",
+  "Let's find smth else": "Давайте знайдемо щось інше",
+  "Goods in the shop": "Товар в магазині",
+  "Sorry! Nothing found": "Вибачте! Нічого не знайдено",
+  "FILTER BY": "ФІЛЬТРУВАТИ ЗА",
+  "Free":"Знижка"
 }

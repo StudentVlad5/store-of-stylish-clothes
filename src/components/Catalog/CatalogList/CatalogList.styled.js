@@ -197,20 +197,25 @@ const BtnForFavorite = styled.button`
   border: none;
   background: transparent;
 `;
-const CardStatus = styled.div`
+const CardStatus = styled.p`
   display: flex;
   justify-content: start;
   align-items: start;
   width: 100%;
   font-family: ${theme.fonts[1]};
-  font-size: ${theme.fontSizes.extra};
+  font-size: 20px;
   color: ${theme.colors.brown2};
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 24px;
+  }
+
   &:first-of-type {
     position: absolute;
     width: auto;
     top: -10px;
     right: -10px;
-    padding: 10px 22px;
+    padding: 10px 13px;
     text-transform: lowercase;
     font-family: ${theme.fonts[0]};
     color: ${theme.colors.white};

@@ -20,7 +20,11 @@ export const MobileUserNav = ({ toggleMenu }) => {
   }
 
   return (
-    <MobileAccountButton to="/user/profile" onClick={toggleMenu}>
+    <MobileAccountButton
+      to="/user/profile"
+      onClick={toggleMenu}
+      style={{ marginRight: 20 }}
+    >
       {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
       {user}
     </MobileAccountButton>

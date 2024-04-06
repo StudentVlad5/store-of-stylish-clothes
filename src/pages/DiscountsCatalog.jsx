@@ -19,7 +19,7 @@ const DiscountsShop = () => {
 
   return (
     <>
-      <SEO title="Catalog" description="Catalog of goods" />
+      <SEO title="Discounts" description="Discounts of goods" />
       <DiscountCatalog />
     </>
   );

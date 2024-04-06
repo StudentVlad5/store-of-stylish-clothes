@@ -24,9 +24,9 @@ const Heading = styled.div`
     align-items: center;
   }
 
-  & > div {
+  /* & > div {
     display: inline-flex;
-  }
+  } */
 
   & a {
     text-decoration: none;
@@ -159,8 +159,9 @@ const IconBtn = styled.button`
 `;
 
 const FiltersBox = styled.div`
+  display: block;
   position: relative;
-  display: inline-flex;
+  /* display: inline-flex; */
   flex-direction: column;
   gap: 36px;
 

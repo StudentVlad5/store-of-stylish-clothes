@@ -37,13 +37,19 @@ export const Navigation = () => {
     <Container>
       <Nav />
       <NavBlock>
+        <Currency />
+        <Language />
+
+        {!showSearchForm && (
+          <IconSearch onClick={toggleSearchForm} aria-label="Search" />
+        )}
+        {showSearchForm && <Search onClose={closeSearchForm} />}
+
         <View>
-          <Language />
-          <Currency />
-          {!showSearchForm && (
+          {/* {!showSearchForm && (
             <IconSearch onClick={toggleSearchForm} aria-label="Search" />
           )}
-          {showSearchForm && <Search onClose={closeSearchForm} />}
+          {showSearchForm && <Search onClose={closeSearchForm} />} */}
 
           {isLoggedIn ? <UserNav /> : <AuthNav />}
 
@@ -62,7 +68,6 @@ export const Navigation = () => {
             </Link>
           )}
         </View>
-
         <ShoppingBag />
       </NavBlock>
     </Container>
@@ -82,7 +87,7 @@ export const MobileNavigation = ({ toggleMobileMenu }) => {
     <MobileContainer>
       <Nav />
       <MobileNavBlock>
-        {!showSearchForm && (
+        {/* {!showSearchForm && (
           <IconSearch onClick={toggleSearchForm} aria-label="Search" />
         )}
         {showSearchForm && (
@@ -90,7 +95,7 @@ export const MobileNavigation = ({ toggleMobileMenu }) => {
             onClose={toggleSearchForm}
             toggleMobileMenu={toggleMobileMenu}
           />
-        )}
+        )} */}
 
         {isLoggedIn ? (
           <Link to={'/user/favorites'} onClick={toggleMobileMenu}>

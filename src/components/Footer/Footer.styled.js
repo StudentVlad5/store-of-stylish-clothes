@@ -21,7 +21,7 @@ export const FooterSection = styled.footer`
     /* margin-top: 120px; */
   }
 `;
-export const LinkBrand = styled(Link)`
+export const LinkBrand = styled.a`
   text-decoration: none;
   color: ${theme.colors.text};
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -323,7 +323,7 @@ export const FooterContacts = styled.div`
 `;
 
 export const FooterLogo = styled(Link)`
-display: block;
+  display: block;
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
@@ -345,8 +345,7 @@ export const FooterContactsListItem = styled.li`
   cursor: pointer;
 `;
 
-export const QuillisLogoFooter = styled(logo)`
-`;
+export const QuillisLogoFooter = styled(logo)``;
 
 // ICONS
 export const ArrowDown = styled(arrowDown)`

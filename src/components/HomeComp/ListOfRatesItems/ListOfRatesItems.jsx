@@ -60,7 +60,7 @@ export const ListOfRatesItems = () => {
           <SectionTitle>{t('Rates')}</SectionTitle>
           <Link to="" style={{ textDecoration: 'none' }}>
             <SectionSubTitle style={{ textDecoration: 'underline' }}>
-              See all
+              {t('See all')}
             </SectionSubTitle>
           </Link>
         </SectionTitleWrap>

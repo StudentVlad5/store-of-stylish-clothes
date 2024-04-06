@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const MobileAuthNav = ({ toggleMenu }) => {
   return (
-    <MobileContainer>
+    <MobileContainer style={{ marginRight: 20 }}>
       <Link to={'/login'}>
         <IconUser onClick={toggleMenu} />
       </Link>

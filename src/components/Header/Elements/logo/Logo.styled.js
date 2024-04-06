@@ -20,6 +20,11 @@ const Text = styled(Link)`
   }
 `;
 
-const QuillisLogo = styled(logo)``;
+const QuillisLogo = styled(logo)`
+  width: 100px;
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    width: 129px;
+  }
+`;
 
-export { Text,QuillisLogo };
+export { Text, QuillisLogo };

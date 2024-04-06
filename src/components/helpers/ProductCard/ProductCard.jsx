@@ -8,13 +8,16 @@ import {
   ImgItem,
 } from './ProductCard.styled';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { useTranslation } from 'react-i18next';
 
 export const ProductCard = ({ item, selectedCurrency, status }) => {
+  const { t } = useTranslation();
+
   return (
     <CardContainer>
       {status !== undefined ? (
         <CardLi>
-          Free:{' '}
+          {t('Free')}:{' '}
           {(
             ((item.oldPrice_ua - item.newPrice_ua) / item.oldPrice_ua) *
             100
@@ -22,7 +25,9 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
           %
         </CardLi>
       ) : (
-        <CardLi>Rate: {item.rate}</CardLi>
+        <CardLi>
+          {t('Rate')}: {item.rate}
+        </CardLi>
       )}
       <CardLi>
         <LazyLoadComponent id={item.mainImage}>

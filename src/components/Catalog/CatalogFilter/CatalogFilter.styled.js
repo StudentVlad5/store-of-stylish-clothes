@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import theme from 'components/baseStyles/Variables.styled';
-import done_light from 'images/svg/done_light.svg';
 
 const Filters = styled.ul`
   display: flex;

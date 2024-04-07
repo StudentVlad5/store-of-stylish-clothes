@@ -72,7 +72,7 @@ export const ListOfRatesItems = () => {
                 // when window width is >= 375
                 425: {
                   slidesPerView: 1,
-                  spaceBetween: 10,
+                  spaceBetween: 30,
                 },
                 // when window width is >= 768
                 700: {

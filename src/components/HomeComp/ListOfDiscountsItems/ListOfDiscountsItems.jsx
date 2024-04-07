@@ -65,15 +65,37 @@ export const ListOfDiscountsItems = () => {
           </SectionSubTitle>
         </SectionTitleWrap>
         <CardContainer>
-          <ViewportBox $version={'desktop'}>
+          <ViewportBox>
             <Swiper
               key={listOfDiscountItems}
+              className="swiperUpdate"
               modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
-              // spaceBetween={30}
-              slidesPerView={3}
+              // spaceBetween={10}
+              slidesPerView={1}
+              // Responsive breakpoints
+              breakpoints={{
+                // when window width is >= 375
+                425: {
+                  slidesPerView: 1,
+                  spaceBetween: 30,
+                },
+                // when window width is >= 768
+                700: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1000: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                // when window width is >= 1440
+                1440: {
+                  slidesPerView: 4,
+                },
+              }}
               navigation={{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-btn-prev',
+                nextEl: '.swiper-btn-next',
               }}
               pagination={{ clickable: true }}
               keyboard={true}
@@ -90,25 +112,6 @@ export const ListOfDiscountsItems = () => {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              breakpoints={{
-                // when window width is >= 375
-                425: {
-                  slidesPerView: 1,
-                },
-                // when window width is >= 768
-                700: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1000: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-                // when window width is >= 1440
-                1440: {
-                  slidesPerView: 4,
-                },
-              }}
             >
               {listOfDiscountItems &&
                 listOfDiscountItems.length > 0 &&
@@ -121,7 +124,6 @@ export const ListOfDiscountsItems = () => {
                       <ProductCard
                         item={it}
                         selectedCurrency={selectedCurrency}
-                        status={true}
                       />
                     </Link>
                   </SwiperSlide>

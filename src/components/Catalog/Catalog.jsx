@@ -31,7 +31,7 @@ export const Catalog = () => {
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
   const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
-
+  const [showFilter, setShowFilter] = useState(false);
   // const routeParams = useParams();
   let initialState;
   getFromStorage('filters')
@@ -183,6 +183,7 @@ export const Catalog = () => {
     searchParams,
     selectedCurrency,
     selectedLanguage,
+    showFilter,
   ]);
 
   useEffect(() => {
@@ -208,7 +209,6 @@ export const Catalog = () => {
     setShowFilter(false);
   };
 
-  const [showFilter, setShowFilter] = useState(false);
   const toggleFilter = () => {
     setShowFilter(state => !state);
     setShowSort(false);
@@ -337,7 +337,7 @@ export const Catalog = () => {
               </SC.SortBox>
             </SC.HeadingBtnBox>
             <SC.FiltersBox>
-              <SC.Accord onClick={toggleFilter}>
+              <SC.Accord onClick={() => toggleFilter()}>
                 <span>{t('FILTER BY')}</span>
                 <SC.IconBtn
                   type="button"

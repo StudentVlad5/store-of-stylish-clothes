@@ -15,20 +15,22 @@ import img3_2x_png from 'images/catalog/img3@2x.png';
 import img3_webp from 'images/catalog/img3.webp';
 import img3_2x_webp from 'images/catalog/img3@2x.webp';
 import { useTranslation } from 'react-i18next';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 export const Benefits = () => {
   const { t } = useTranslation();
 
   return (
-    <SC.BenefitsSection>
-      <Headline>{t('Why buy from us?')}</Headline>
-      <SC.BenefitsList>
-        <SC.BenefitsItem>
-          {/* <picture>
-            <source
-              srcSet={`${img1_webp} 1x, ${img1_2x_webp} 2x`}
-              type="image/webp"
-            /> */}
+    <LazyLoadComponent id="benefits">
+      <SC.BenefitsSection>
+        <Headline>{t('Why buy from us?')}</Headline>
+        <SC.BenefitsList>
+          <SC.BenefitsItem>
+            {/* <picture>
+              <source
+                srcSet={`${img1_webp} 1x, ${img1_2x_webp} 2x`}
+                type="image/webp"
+              /> */}
             <img
               src={img2_2x_webp}
               alt="Girl with flower"
@@ -37,20 +39,20 @@ export const Benefits = () => {
               height="159"
               loading="lazy"
             />
-          {/* </picture> */}
-          <SC.BenefitsSubtitle>{t('Fast shipping')}</SC.BenefitsSubtitle>
-          <SC.BenefitsDescription>
-            {t(
-              'We offer fast and reliable delivery straight to your doorstep.',
-            )}
-          </SC.BenefitsDescription>
-        </SC.BenefitsItem>
-        <SC.BenefitsItem>
-          {/* <picture>
-            <source
-              srcSet={`${img2_webp} 1x, ${img2_2x_webp} 2x`}
-              type="image/webp"
-            /> */}
+            {/* </picture> */}
+            <SC.BenefitsSubtitle>{t('Fast shipping')}</SC.BenefitsSubtitle>
+            <SC.BenefitsDescription>
+              {t(
+                'We offer fast and reliable delivery straight to your doorstep.',
+              )}
+            </SC.BenefitsDescription>
+          </SC.BenefitsItem>
+          <SC.BenefitsItem>
+            {/* <picture>
+              <source
+                srcSet={`${img2_webp} 1x, ${img2_2x_webp} 2x`}
+                type="image/webp"
+              /> */}
             <img
               src={img1_2x_webp}
               alt="Girl with flower"
@@ -59,34 +61,35 @@ export const Benefits = () => {
               height="159"
               loading="lazy"
             />
-          {/* </picture> */}
-          <SC.BenefitsSubtitle>{t('Quality guaranteed')}</SC.BenefitsSubtitle>
-          <SC.BenefitsDescription>
-            {t('We offer a quality guarantee on all of our products.')}
-          </SC.BenefitsDescription>
-        </SC.BenefitsItem>
-        {/* <SC.BenefitsItem>
-          <picture>
-            <source
-              srcSet={`${img3_webp} 1x, ${img3_2x_webp} 2x`}
-              type="image/webp"
-            />
-            <img
-              src={img3_png}
-              alt="Girl with flower"
-              srcSet={`${img3_png} 159w, ${img3_2x_png} 318w`}
-              width="159"
-              height="159"
-              loading="lazy"
-            />
-          </picture>
-          <SC.BenefitsSubtitle>{t("Support from specialists")}</SC.BenefitsSubtitle>
-          <SC.BenefitsDescription>
-            Our services include assistance and guidance in growing indoor
-            plants.
-          </SC.BenefitsDescription>
-        </SC.BenefitsItem> */}
-      </SC.BenefitsList>
-    </SC.BenefitsSection>
+            {/* </picture> */}
+            <SC.BenefitsSubtitle>{t('Quality guaranteed')}</SC.BenefitsSubtitle>
+            <SC.BenefitsDescription>
+              {t('We offer a quality guarantee on all of our products.')}
+            </SC.BenefitsDescription>
+          </SC.BenefitsItem>
+          {/* <SC.BenefitsItem>
+            <picture>
+              <source
+                srcSet={`${img3_webp} 1x, ${img3_2x_webp} 2x`}
+                type="image/webp"
+              />
+              <img
+                src={img3_png}
+                alt="Girl with flower"
+                srcSet={`${img3_png} 159w, ${img3_2x_png} 318w`}
+                width="159"
+                height="159"
+                loading="lazy"
+              />
+            </picture>
+            <SC.BenefitsSubtitle>{t("Support from specialists")}</SC.BenefitsSubtitle>
+            <SC.BenefitsDescription>
+              Our services include assistance and guidance in growing indoor
+              plants.
+            </SC.BenefitsDescription>
+          </SC.BenefitsItem> */}
+        </SC.BenefitsList>
+      </SC.BenefitsSection>
+    </LazyLoadComponent>
   );
 };

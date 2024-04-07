@@ -71,11 +71,12 @@ export const CatalogList = ({ products }) => {
                 }}
               >
                 <SC.CardStatus>
-                  {location.pathname.includes('discount')
-                    ? `${t("discount")}: ${(
-                        +selectOldPrice(selectedCurrency, card).toFixed(2) -
-                        +selectNewPrice(selectedCurrency, card).toFixed(2)
-                      ).toFixed(2)} ${selectCurrency(selectedCurrency)}`
+                  {
+                    location.pathname.includes('discount')
+                      ? `${t('discount')}: ${(
+                          +selectOldPrice(selectedCurrency, card).toFixed(2) -
+                          +selectNewPrice(selectedCurrency, card).toFixed(2)
+                        ).toFixed(2)} ${selectCurrency(selectedCurrency)}`
                       : card?.status === 'rate'
                       ? t('rate')
                       : card?.status === 'discount'
@@ -84,13 +85,11 @@ export const CatalogList = ({ products }) => {
                     // : card?.status
                     // ? card.status
                     // : t('new')
-                    }
+                  }
                 </SC.CardStatus>
                 <SC.CardImage
                   src={card.mainImage}
                   alt={card.title}
-                  width="285"
-                  height="460"
                   loading="lazy"
                 />
                 <SC.CardDescription>

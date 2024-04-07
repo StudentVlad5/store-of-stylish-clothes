@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { FaCheck, FaTimes } from 'react-icons/fa';
 import { Button } from 'components/helpers/ButtonSplit/ButtonSplit.styled';
 import {
   Container,
@@ -9,6 +8,8 @@ import {
   Title,
 } from 'components/baseStyles/CommonStyle.styled';
 import theme from 'components/baseStyles/Variables.styled';
+import { ReactComponent as faCheck } from 'images/svg/FaTeam.svg';
+import { ReactComponent as faTimes } from 'images/svg/icon_close.svg';
 
 const FormSection = styled(Section)`
   padding-top: 123px;
@@ -82,7 +83,6 @@ const Input = styled(Field)`
   color: ${theme.colors.brown2};
   background-color: transparent;
 
-
   border: 2px solid ${theme.colors.brown4};
   border-radius: 16px;
   transition: ${theme.transition[0]};
@@ -150,7 +150,7 @@ const Span = styled.span`
   transition: ${theme.transition[0]};
 `;
 
-const IconValid = styled(FaCheck)`
+const IconValid = styled(faCheck)`
   display: inline-block;
   position: absolute;
   width: 20px;
@@ -166,7 +166,7 @@ const IconValid = styled(FaCheck)`
   }
 `;
 
-const IconInValid = styled(FaTimes)`
+const IconInValid = styled(faTimes)`
   display: inline-block;
   position: absolute;
   width: 20px;

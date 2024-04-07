@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from 'components/baseStyles/Variables.styled';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { ReactComponent as IconFavorite } from 'images/svg/icon_favorite__header.svg';
 
 const IconFav = styled(IconFavorite)`
@@ -61,7 +62,7 @@ const Card = styled.li`
   }
 `;
 
-const CardImage = styled.img`
+const CardImage = styled(LazyLoadImage)`
   width: 150px;
   height: 200px;
   margin: 0 auto;

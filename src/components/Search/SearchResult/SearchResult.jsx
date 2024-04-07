@@ -11,8 +11,8 @@ import * as SC from './SearchResult.styled';
 import { Subtitle } from 'components/baseStyles/CommonStyle.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
-import { MdEast } from 'react-icons/md';
-// import { BASE_URL_IMG } from 'BASE_CONST/Base-const';
+import { ReactComponent as MdEast } from 'images/svg/gift-box-svgrepo-com.svg';
+
 import {
   selectCurrency,
   selectNewPrice,

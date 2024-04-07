@@ -2,9 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik, Formik } from 'formik';
-import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import schemas from 'utils/schemas';
 import theme from 'components/baseStyles/Variables.styled';
+import { ReactComponent as ImEye } from 'images/svg/eye-key-look-password-security-see-svgrepo-com.svg';
+import { ReactComponent as ImEyeBlocked } from 'images/svg/eye-crossed-svgrepo-com.svg';
 
 import { FormLogin, TitleLogin } from './LoginForm.styled';
 import { logIn } from 'redux/auth/operations';

@@ -7,11 +7,7 @@ import { Benefits } from './Benefits/Benefits';
 import { CatalogList } from './CatalogList/CatalogList';
 import { Pagination } from 'utils/pagination';
 import { fetchData } from 'services/APIservice';
-import {
-  saveToStorage,
-  getFromStorage,
-  removeItem,
-} from 'services/localStorService';
+import { saveToStorage, getFromStorage } from 'services/localStorService';
 import { onLoading, onLoaded } from 'components/helpers/Loader/Loader';
 import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 
@@ -20,16 +16,17 @@ import { ReactComponent as Open } from 'images/svg/open.svg';
 import { ReactComponent as Close } from 'images/svg/icon_close.svg';
 import { Headline } from 'components/baseStyles/CommonStyle.styled';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { catalog_sceleton } from 'BASE_CONST/catalog-sceleton';
 
 let perPage = 12;
 
 export const Catalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterState, setFilterState] = useState({});
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(catalog_sceleton.catalog);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [totalPage, setTotalPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(catalog_sceleton.total);
   const [page, setPages] = useState(
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
@@ -207,7 +204,6 @@ export const Catalog = () => {
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
-    console.log('BLALA');
     setShowSort(state => !state);
     setShowFilter(false);
   };

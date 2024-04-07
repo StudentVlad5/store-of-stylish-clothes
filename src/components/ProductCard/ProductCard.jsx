@@ -8,7 +8,6 @@ import { reloadValue } from 'redux/reload/selectors';
 import { addReload } from 'redux/reload/slice';
 import * as SC from './ProductCard.styled';
 
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { ReactComponent as Car } from 'images/svg/shipping.svg';
 import { ReactComponent as Done } from 'images/svg/done.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
@@ -18,7 +17,6 @@ import { ReactComponent as Cat } from 'images/svg/cat.svg';
 import { ReactComponent as Evenodd } from 'images/svg/evenodd.svg';
 import { ReactComponent as Oil } from 'images/svg/oil.svg';
 import { ReactComponent as Sun } from 'images/svg/sun.svg';
-import noImg from 'images/No-image-available.webp';
 import {
   selectCurrency,
   selectNewPrice,
@@ -302,76 +300,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
           </SC.ProductNavList>
         </SC.ProductNav>
         <SC.ProductContent>
-          {/* <SC.ProductGallery>
-            <SC.ControlsList>
-              {images?.length > slides && indxSlideImg !== 0 && (
-                <FiChevronUp
-                  data-controls="up"
-                  size={36}
-                  onClick={e => {
-                    handleScrollImg(e);
-                  }}
-                />
-              )}
-              {slideImages?.map((img, i) => {
-                return (
-                  <SC.ControlsItem
-                    key={i}
-                    onClick={e => {
-                      handleChangeImg(e);
-                    }}
-                  >
-                    <img src={img} alt="Image" loading="lazy" id={i} />
-                  </SC.ControlsItem>
-                );
-              })}
-              {images?.length > slides &&
-                indxSlideImg !== slideImages?.length && (
-                  <FiChevronDown
-                    data-controls="down"
-                    size={36}
-                    onClick={e => {
-                      handleScrollImg(e);
-                    }}
-                  />
-                )}
-            </SC.ControlsList>
-            <SC.ProductImageWrapper>
-              {slideImages?.length !== 0 ? (
-                <SC.ProductImage
-                  width={347}
-                  height={600}
-                  src={slideImages[indxImg]}
-                  alt="Product image"
-                  loading="lazy"
-                />
-              ) : (
-                <SC.ProductImage
-                  width={347}
-                  height={600}
-                  src={noImg}
-                  alt="Default image"
-                  loading="lazy"
-                />
-              )}
-              <SC.DeliveryInfo>
-                <SC.DeliveryInfoItem>
-                  <Car width={32} height={32} />
-                  <span>Free shipping</span>
-                  <p>Get free standard shipping when you spend $150 or more.</p>
-                </SC.DeliveryInfoItem>
-                <SC.DeliveryInfoItem>
-                  <Done width={32} height={32} />
-                  <span>Guarantee</span>
-                  <p>
-                    If your plant dies withing 30 days, we’ll replace it for
-                    free.
-                  </p>
-                </SC.DeliveryInfoItem>
-              </SC.DeliveryInfo>
-            </SC.ProductImageWrapper>
-          </SC.ProductGallery> */}
-
           <SC.ProductGallery>
             <SC.ControlsList>
               {slideImages.length > 4 && (

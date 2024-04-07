@@ -20,8 +20,9 @@ import {
   EffectCreative,
 } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/effect-creative';
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+// import 'swiper/css/effect-creative';
+import { ReactComponent as MdKeyboardArrowLeft } from 'images/svg/arrow-left-3099.svg';
+import { ReactComponent as MdKeyboardArrowRight } from 'images/svg/arrow-right-3098.svg';
 import { Link } from 'react-router-dom';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { fetchData } from 'services/APIservice';

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ImEye, ImEyeBlocked } from 'react-icons/im';
+import { useDispatch } from 'react-redux';
+import { ReactComponent as ImEye } from 'images/svg/eye-key-look-password-security-see-svgrepo-com.svg';
+import { ReactComponent as ImEyeBlocked } from 'images/svg/eye-crossed-svgrepo-com.svg';
 import { Formik } from 'formik';
 import { useAuth } from 'hooks/useAuth';
 import { changePasswordAuth } from 'redux/auth/operations';

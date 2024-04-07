@@ -1,7 +1,7 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-to-top';
 import theme from 'components/baseStyles/Variables.styled';
-import { MdKeyboardDoubleArrowUp } from 'react-icons/md';
+import { ReactComponent as MdKeyboardDoubleArrowUp } from 'images/svg/double-arrow-up-14217.svg';
 
 const ScrollTop = () => {
   return (

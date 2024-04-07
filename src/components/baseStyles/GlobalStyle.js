@@ -169,7 +169,7 @@ img {
   text-align: center;
   font-size: 18px;
   background: ${theme.colors.fon};
-  padding: 30px;
+  padding-top: 30px;
   border-radius: 16px;
 
   /* Center slide text vertically */
@@ -177,6 +177,7 @@ img {
   justify-content: center;
   align-items: center;
 }
+
 .swiper-slide.swiper-slide-active {
   display: flex;
   justify-content: center;
@@ -213,16 +214,6 @@ color:${theme.colors.green} !important;
   /* transform: scale(1.1); */
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-
-  opacity: 1;
-}
-
-input::-webkit-calendar-picker-indicator:hover {
-  opacity: 0.6;
-  transform: scale(1.2);
-  cursor: pointer;
-}
 
 //-----Range-----//
 .rc-slider {

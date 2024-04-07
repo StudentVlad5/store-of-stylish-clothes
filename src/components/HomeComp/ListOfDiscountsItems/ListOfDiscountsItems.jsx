@@ -103,63 +103,24 @@ export const ListOfDiscountsItems = () => {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              effect={'coverflow'}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-            >
-              {listOfDiscountItems &&
-                listOfDiscountItems.length > 0 &&
-                listOfDiscountItems.map(it => (
-                  <SwiperSlide key={it.article}>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      to={`shop/byid/${it.article}`}
-                    >
-                      <ProductCard
-                        item={it}
-                        selectedCurrency={selectedCurrency}
-                        status={true}
-                      />
-                    </Link>
-                  </SwiperSlide>
-                ))}
-            </Swiper>
-          </ViewportBox>
-          <ViewportBox $version={'tablet'}>
-            <Swiper
-              key={listOfDiscountItems}
-              modules={[
-                Navigation,
-                Mousewheel,
-                Keyboard,
-                EffectCoverflow,
-                Autoplay,
-              ]}
-              // spaceBetween={30}
-              slidesPerView={2}
-              navigation={{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
-              }}
-              pagination={{ clickable: true }}
-              keyboard={true}
-              loop={true}
-              loopPreventsSliding={true}
-              loopedslides={1}
-              grabCursor={true}
-              centeredSlides={true}
-              speed={800}
-              observer={true}
-              observeParents={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+              breakpoints={{
+                // when window width is >= 375
+                425: {
+                  slidesPerView: 1,
+                },
+                // when window width is >= 768
+                700: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1000: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                // when window width is >= 1440
+                1440: {
+                  slidesPerView: 4,
+                },
               }}
               effect={'coverflow'}
               coverflowEffect={{
@@ -168,66 +129,6 @@ export const ListOfDiscountsItems = () => {
                 depth: 100,
                 modifier: 1,
                 slideShadows: true,
-              }}
-            >
-              {listOfDiscountItems &&
-                listOfDiscountItems.length > 0 &&
-                listOfDiscountItems.map(it => (
-                  <SwiperSlide key={it.article}>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      to={`shop/byid/${it.article}`}
-                    >
-                      <ProductCard
-                        item={it}
-                        selectedCurrency={selectedCurrency}
-                        status={true}
-                      />
-                    </Link>
-                  </SwiperSlide>
-                ))}
-            </Swiper>
-          </ViewportBox>
-          <ViewportBox $version={'mobile'}>
-            <Swiper
-              key={listOfDiscountItems}
-              modules={[
-                Navigation,
-                Mousewheel,
-                Keyboard,
-                Autoplay,
-                EffectCreative,
-              ]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation={{
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
-              }}
-              pagination={{ clickable: true }}
-              keyboard={true}
-              loop={true}
-              loopPreventsSliding={true}
-              loopedslides={1}
-              grabCursor={true}
-              centeredSlides={true}
-              speed={800}
-              observer={true}
-              observeParents={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              effect={'creative'}
-              creativeEffect={{
-                prev: {
-                  shadow: true,
-                  translate: [0, 0, -400],
-                },
-                next: {
-                  translate: ['100%', 0, 0],
-                },
               }}
             >
               {listOfDiscountItems &&

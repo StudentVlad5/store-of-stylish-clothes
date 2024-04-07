@@ -85,13 +85,15 @@ export const CardContainer = styled.div`
 `;
 export const ViewportBox = styled.div`
   width: 100%;
-  display: ${props => (props.$version === 'mobile' ? 'block' : 'none')};
+  display: block;
+  /* display: ${props => (props.$version === 'mobile' ? 'block' : 'none')}; */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    display: ${props => (props.$version === 'tablet' ? 'block' : 'none')};
+    /* display: ${props => (props.$version === 'tablet' ? 'block' : 'none')}; */
   }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    display: ${props => (props.$version === 'desktop' ? 'block' : 'none')};
+    /* display: ${props =>
+      props.$version === 'desktop' ? 'block' : 'none'}; */
   }
 `;
 export const Pagination = styled.div`

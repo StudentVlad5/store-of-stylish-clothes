@@ -11,14 +11,7 @@ import {
 } from '../ListOfRatesItems/ListOfRatesItems.styled';
 import { ProductCard } from 'components/helpers/ProductCard/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Navigation,
-  Mousewheel,
-  Keyboard,
-  Autoplay,
-  EffectCoverflow,
-  EffectCreative,
-} from 'swiper/modules';
+import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 // import 'swiper/css/effect-creative';
 import { ReactComponent as MdKeyboardArrowLeft } from 'images/svg/arrow-left-3099.svg';
@@ -75,13 +68,7 @@ export const ListOfDiscountsItems = () => {
           <ViewportBox $version={'desktop'}>
             <Swiper
               key={listOfDiscountItems}
-              modules={[
-                Navigation,
-                Mousewheel,
-                Keyboard,
-                EffectCoverflow,
-                Autoplay,
-              ]}
+              modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
               // spaceBetween={30}
               slidesPerView={3}
               navigation={{
@@ -121,14 +108,6 @@ export const ListOfDiscountsItems = () => {
                 1440: {
                   slidesPerView: 4,
                 },
-              }}
-              effect={'coverflow'}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
               }}
             >
               {listOfDiscountItems &&

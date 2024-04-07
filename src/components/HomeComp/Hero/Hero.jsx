@@ -51,7 +51,7 @@ export const Hero = () => {
         <HeroContainer>
           <HeroImgBox>
             <LinkCategory
-              to={`/shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+              to={`shop?man_woman=${homeProductLinks?.man[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,
@@ -64,7 +64,7 @@ export const Hero = () => {
               </HeroItem>
             </LinkCategory>
             <LinkCategory
-              to={`/shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
+              to={`shop?man_woman=${homeProductLinks?.woman[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`}
               onClick={() =>
                 saveToStorage('filters', {
                   ...init,
@@ -80,7 +80,7 @@ export const Hero = () => {
 
           <ContainerForBtnReadyStyle>
             <SideBarTitle>{t('Choose your perfect style')}</SideBarTitle>
-            <Link to="/ready_style" style={{ textDecoration: 'none' }}>
+            <Link to="shop" style={{ textDecoration: 'none' }}>
               <ButtonForReadyStyle
                 type="button"
                 title="Button for choose your perfect style"

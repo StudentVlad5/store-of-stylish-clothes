@@ -11,13 +11,7 @@ import {
 } from './ListOfRatesItems.styled';
 import { ProductCard } from 'components/helpers/ProductCard/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Navigation,
-  Mousewheel,
-  Keyboard,
-  Autoplay,
-  EffectCreative,
-} from 'swiper/modules';
+import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 // import 'swiper/css/effect-creative';
 import { ReactComponent as MdKeyboardArrowLeft } from 'images/svg/arrow-left-3099.svg';

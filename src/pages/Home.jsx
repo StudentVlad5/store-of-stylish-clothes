@@ -17,7 +17,9 @@ const HomePage = () => {
     <>
       <SEO
         title="Quillis"
-        description="Take good care of your your plant. You can buy the best plants for your house or apartment. Get advice and help with plant care and maintenance"
+        description="
+        You deserve a reward, so you have the opportunity to choose the most stylish clothes and shoes from the store
+        Delight yourself with beautiful things"
       />
       <HomeComp />
     </>

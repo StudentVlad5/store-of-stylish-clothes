@@ -285,7 +285,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
         <SC.ProductNav>
           <SC.ProductNavList>
             <SC.ProductNavItem>
-              <SC.ProductNavLink to={`shop/?perPage=12&page=1`}>
+              <SC.ProductNavLink to={`/shop/?perPage=12&page=1`}>
                 {t('Shop')}
               </SC.ProductNavLink>
             </SC.ProductNavItem>

@@ -119,6 +119,9 @@ const FilterHeading = styled.div`
     line-height: normal;
     text-transform: uppercase;
   }
+  &.active > button > svg {
+    transform: rotate(180deg);
+  }
 `;
 
 const FilterInnerList = styled.div`

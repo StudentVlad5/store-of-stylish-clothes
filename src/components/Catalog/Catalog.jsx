@@ -330,7 +330,11 @@ export const Catalog = () => {
                     aria-label="switch to open sort list"
                     aria-expanded="false"
                   >
-                    <Open />
+                    {showSort ? (
+                      <Open style={{ transform: 'rotate(180deg)' }} />
+                    ) : (
+                      <Open />
+                    )}
                   </SC.IconBtn>
                 </SC.Accord>
                 {showSort && <CatalogSort sort={sort} setSort={setSort} />}
@@ -344,7 +348,11 @@ export const Catalog = () => {
                   aria-label="switch to open filter list"
                   aria-expanded="false"
                 >
-                  <Open />
+                  {showFilter ? (
+                    <Open style={{ transform: 'rotate(180deg)' }} />
+                  ) : (
+                    <Open />
+                  )}
                 </SC.IconBtn>
               </SC.Accord>
               {showFilter && (

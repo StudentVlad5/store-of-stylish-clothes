@@ -147,7 +147,7 @@ export const CatalogFilter = ({
                 aria-label="switch to open filter"
                 aria-expanded="false"
               >
-                <Open />
+                <Open className="openArrow" />
               </SC.IconBtn>
             </SC.FilterHeading>
             <SC.FilterInnerList>

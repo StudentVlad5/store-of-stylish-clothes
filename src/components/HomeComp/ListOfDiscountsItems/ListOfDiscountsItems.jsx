@@ -94,8 +94,8 @@ export const ListOfDiscountsItems = () => {
                 },
               }}
               navigation={{
-                prevEl: '.swiper-btn-prev',
-                nextEl: '.swiper-btn-next',
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
               }}
               pagination={{ clickable: true }}
               keyboard={true}

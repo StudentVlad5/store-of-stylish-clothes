@@ -92,7 +92,7 @@ const Description = styled.p`
 
 const LinkBtn = styled(NavLink)`
   /* width: 220px; */
-  padding: 10px 25px;
+  padding: 10px 14px;
 
   font-family: ${theme.fonts[0]}; //Raisonne Pro
   font-size: 10px;
@@ -115,6 +115,7 @@ const LinkBtn = styled(NavLink)`
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 16px;
     padding: 10px 55px;
+    padding: 10px 25px;
   }
 
   &:hover,

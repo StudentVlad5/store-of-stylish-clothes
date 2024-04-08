@@ -217,12 +217,17 @@ const CardStatus = styled.p`
     top: -10px;
     right: -10px;
     padding: 10px 13px;
+    font-size: 15px;
     text-transform: lowercase;
     font-family: ${theme.fonts[0]};
     color: ${theme.colors.white};
     border-radius: 16px;
     background-color: ${theme.colors.brown4};
     z-index: 10;
+
+    @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 20px;
+  }
   }
   &:last-of-type {
     justify-content: space-between;

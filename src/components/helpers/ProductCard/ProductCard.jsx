@@ -39,7 +39,7 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
       </CardLi>
       <CardLi>
         <span>
-          Price: {item[`newPrice_${selectedCurrency}`]}
+          {t("Price")}: {item[`newPrice_${selectedCurrency}`]}
           {selectCurrency(selectedCurrency)}
         </span>
         <span>

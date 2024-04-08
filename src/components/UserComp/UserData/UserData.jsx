@@ -90,7 +90,7 @@ export const UserData = () => {
             </UserDataImgWrapper>
             <TitleArticle>{t('Profile')}</TitleArticle>
             <ProfileContainer>
-              <IconBtn onClick={() => setEditProfileSettings(true)}>
+              <IconBtn type='button' onClick={() => setEditProfileSettings(true)}>
                 <PensilStyle />
               </IconBtn>
               <ProfileSpanName>
@@ -119,7 +119,7 @@ export const UserData = () => {
         {showAddAddress && <Address onClose={setShowAddAddress} />}
         {userIn.address !== '' && (
           <ProfileContainer>
-            <IconBtn onClick={() => setShowAddAddress(true)}>
+            <IconBtn type='button' onClick={() => setShowAddAddress(true)}>
               <PensilStyle />
             </IconBtn>
             <ProfileSpanValues>

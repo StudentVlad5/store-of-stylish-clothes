@@ -171,7 +171,7 @@ img {
   background: ${theme.colors.fon};
   padding-top: 30px;
   border-radius: 16px;
-
+  margin-right: 30px;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;

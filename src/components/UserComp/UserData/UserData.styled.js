@@ -135,8 +135,8 @@ const BtnLight = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 130px; */
-  width: 100%;
+  width: 130px;
+  /* width: 100%; */
   height: 35px;
 
   font-family: ${theme.fonts[0]};
@@ -299,11 +299,11 @@ const IconBtn = styled.button`
     background-color: ${theme.colors.fon};
   }
 
-  &:disabled {
+  /* &:disabled {
     svg {
       fill: ${theme.colors.brown4};
     }
-  }
+  } */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     width: 30px;
@@ -314,8 +314,8 @@ const IconBtn = styled.button`
 const PensilStyle = styled(Pencil)`
   width: 14px;
   height: 14px;
-  fill: ${theme.colors.white};
-  transform: ${theme.transition[1]};
+  /* fill: ${theme.colors.white}; */
+  /* transform: ${theme.transition[1]}; */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     width: 18px;

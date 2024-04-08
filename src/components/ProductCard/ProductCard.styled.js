@@ -618,7 +618,11 @@ const BtnProduct = styled.button`
   cursor: pointer;
   &:last-child {
     position: absolute;
-    bottom: 72px;
+    bottom: -42px;
+
+    @media screen and (min-width: ${theme.breakpoints.desktop}) {
+      bottom: 72px;
+    }
   }
 `;
 

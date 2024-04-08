@@ -149,7 +149,7 @@ export const SearchResult = ({
           </SC.Category>
           <SC.LinkToGifts to={`/gifts`} onClick={onClose}>
             <span>{t('Our ideas for gifts')}</span>
-            <MdEast size={18} />
+            {/* <MdEast size={18} /> */}
           </SC.LinkToGifts>
         </SC.InnerRightWrapper>
       </SC.Wrapper>

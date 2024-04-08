@@ -66,7 +66,7 @@ const Subtitle = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown4};
   text-transform: uppercase;
 `;
 

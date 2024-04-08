@@ -98,16 +98,18 @@ const LinkToGifts = styled(NavLink)`
   text-decoration: none;
   text-align: center;
 
-  color: ${theme.colors.green};
+  color: ${theme.colors.brown2};
 
   &:hover,
   &:focus {
-    color: ${theme.colors.brown};
+    color: ${theme.colors.brown4};
   }
 
   & span {
-    position: relative;
+    position: absolute;
     padding-left: 24px;
+    right: 30px;
+    bottom: 10px;
 
     &::before {
       content: '';
@@ -141,15 +143,16 @@ const LinkToCatalog = styled(NavLink)`
 
   color: ${theme.colors.fon};
 
-  background-color: ${theme.colors.green};
+  background-color: ${theme.colors.brown4};
 
-  border: 0.5px solid ${theme.colors.green};
+  border: 0.5px solid ${theme.colors.brown4};
   border-radius: 10px;
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.green2};
-    border: 0.5px solid ${theme.colors.green2};
+    color: ${theme.colors.brown4};
+    background-color: transparent;
+    border: 0.5px solid ${theme.colors.brown4};
   }
 `;
 
@@ -217,7 +220,7 @@ const Category = styled.ul`
     font-size: 12px;
     text-decoration: none;
     text-transform: capitalize;
-    color: ${theme.colors.green};
+    color: ${theme.colors.brown2};
 
     &:first-of-type {
       opacity: 0.4;
@@ -225,7 +228,7 @@ const Category = styled.ul`
 
     &:hover,
     &:focus {
-      color: ${theme.colors.brown1};
+      color: ${theme.colors.brown4};
     }
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {

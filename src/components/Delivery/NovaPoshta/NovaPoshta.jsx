@@ -223,7 +223,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           className="basic-single"
           onInputChange={e => setDepartmentName(e)}
           defaultValue={departmentName}
-          isDisabled={!cityRef}
+          // isDisabled={!cityRef}
           isClearable={true}
           isSearchable={true}
           validate={schemas.checkDepartmentNP.department}

@@ -50,7 +50,6 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   // const [listOfDepartment, setListOfDepartment] = useState([]);
   const [optionOfDepartment, setOptionOfDepartment] = useState([]);
   const [optionListOfCities, setOptionListOfCities] = useState([]);
-  const [citykey, setCityKey] = useState(1);
 
   //  get cities for Nova Poshta
   useEffect(() => {
@@ -61,7 +60,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         const { data } = await getListOfCities('/cities', { filter: cityName });
         setListOfSities(data);
         const options = [];
-        const list = [...listOfCities];
+        const list = [...data];
         list
           .filter(key =>
             key.Description.toLowerCase()
@@ -82,6 +81,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         if (departmentCity && departmentCity.Ref !== cityRef) {
           setCityRef(departmentCity.Ref);
         }
+        console.log('cityRef in cityName', cityRef);
         if (!data) {
           return console.log(t('Whoops, something went wrong'));
         }
@@ -131,7 +131,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
             }
           });
         setOptionOfDepartment(options);
-        setCityKey(prev => prev + 1);
+        console.log('options in departments', !cityRef);
         if (!data) {
           return console.log(t('Whoops, something went wrong'));
         }
@@ -189,10 +189,15 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   // }
 
   return (
-    <div key={citykey}>
+    <>
       <Box>
+        <div>{cityRef}</div>
+        <div>{!cityRef && 'GGGGGGGGGG'}</div>
+        <div>{checkCityRef}</div>
+
         <PoshtaTitle>{t('City')}</PoshtaTitle>
         <SelectInput
+          key={cityRef}
           name="cityName"
           type="text"
           className="basic-single"
@@ -219,12 +224,13 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
         <SelectInput
+          key={cityRef}
           name="departmentName"
           type="text"
           className="basic-single"
           onInputChange={e => setDepartmentName(e)}
           defaultValue={departmentName}
-          // isDisabled={!cityRef}
+          isDisabled={!cityRef}
           isClearable={true}
           isSearchable={true}
           validate={schemas.checkDepartmentNP.department}
@@ -245,6 +251,6 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       </Box>
 
       {isLoading ? onLoading() : onLoaded()}
-    </div>
+    </>
   );
 };

@@ -48,6 +48,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   const [cityRef, setCityRef] = useState('');
   const [checkCityRef, setCheckCityRef] = useState('');
   const [listOfDepartment, setListOfDepartment] = useState([]);
+  const [optionOfDepartment, setOptionOfDepartment] = useState([]);
 
   //  get cities for Nova Poshta
   useEffect(() => {
@@ -92,6 +93,20 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           filter: cityRef,
         });
         setListOfDepartment(data);
+        const options = [];
+        data
+          // .filter(key =>
+          //   key.Description.toLowerCase().includes(city.toLowerCase()),
+          // )
+          .forEach(key => {
+            const obj = {};
+            if (key.Description) {
+              obj.value = key.Description;
+              obj.label = key.Description;
+              options.push(obj);
+            }
+          });
+        setOptionOfDepartment(options);
         if (!data) {
           return alert(t('Whoops, something went wrong'));
         }
@@ -128,25 +143,25 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
     return options;
   }
 
-  function oNP(city) {
-    const options = [];
-    if (listOfDepartment) {
-      const list = [...listOfDepartment];
-      list
-        .filter(key =>
-          key.Description.toLowerCase().includes(city.toLowerCase()),
-        )
-        .forEach(key => {
-          const obj = {};
-          if (key.Description) {
-            obj.value = key.Description;
-            obj.label = key.Description;
-            options.push(obj);
-          }
-        });
-    }
-    return options;
-  }
+  // function oNP(city) {
+  //   const options = [];
+  //   if (listOfDepartment) {
+  //     const list = [...listOfDepartment];
+  //     list
+  //       .filter(key =>
+  //         key.Description.toLowerCase().includes(city.toLowerCase()),
+  //       )
+  //       .forEach(key => {
+  //         const obj = {};
+  //         if (key.Description) {
+  //           obj.value = key.Description;
+  //           obj.label = key.Description;
+  //           options.push(obj);
+  //         }
+  //       });
+  //   }
+  //   return options;
+  // }
 
   return (
     <>
@@ -180,18 +195,16 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
         <SelectInput
-          key={listOfDepartment}
           name="departmentName"
           type="text"
           className="basic-single"
           onInputChange={e => setDepartmentName(e)}
           defaultValue={departmentName}
-          // isDisabled={!checkCityRef}
-          isDisabled={false}
+          isDisabled={!checkCityRef}
           isClearable={true}
           isSearchable={true}
           validate={schemas.checkDepartmentNP.department}
-          options={oNP(departmentName)}
+          options={optionOfDepartment}
           placeholder={
             departmentName === ''
               ? t('Select department please...')

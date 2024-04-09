@@ -165,7 +165,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
 
   return (
     <>
-      <Box>
+      <Box key={optionOfDepartment + cityName}>
         <PoshtaTitle>{t('City')}</PoshtaTitle>
 
         <SelectInput

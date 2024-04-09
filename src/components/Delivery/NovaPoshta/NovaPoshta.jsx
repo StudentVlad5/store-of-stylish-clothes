@@ -107,6 +107,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
             }
           });
         setOptionOfDepartment(options);
+        alert('options', options);
         if (!data) {
           return alert(t('Whoops, something went wrong'));
         }
@@ -165,7 +166,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
 
   return (
     <>
-      <Box key={optionOfDepartment + cityName}>
+      <Box key={optionOfDepartment + cityRef}>
         <PoshtaTitle>{t('City')}</PoshtaTitle>
 
         <SelectInput
@@ -194,7 +195,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       <Box>
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
-        {cityName && (
+        {cityRef && (
           <SelectInput
             name="departmentName"
             type="text"

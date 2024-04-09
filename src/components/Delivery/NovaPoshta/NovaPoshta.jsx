@@ -76,6 +76,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
             }
           });
         setOptionListOfCities(options);
+        alert('options cities');
         let departmentCity;
         departmentCity = data.filter(key => key.Description === cityName)[0];
         if (departmentCity && departmentCity.Ref !== cityRef) {

@@ -59,10 +59,10 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         const { data } = await getListOfCities('/cities', { filter: cityName });
         setListOfSities(data);
         let departmentCity;
-        departmentCity = listOfCities.filter(
-          key => key.Description === checkCityName,
-        )[0];
-        setCityRef(departmentCity.Ref);
+        departmentCity = data.filter(key => key.Description === cityName)[0];
+        if (departmentCity && departmentCity.Ref !== cityRef) {
+          setCityRef(departmentCity.Ref);
+        }
         if (!data) {
           return alert(t('Whoops, something went wrong'));
         }
@@ -112,12 +112,11 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
             }
           });
         setOptionOfDepartment(options);
-        alert('options', options);
         if (!data) {
           return alert(t('Whoops, something went wrong'));
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }

@@ -194,30 +194,32 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       <Box>
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
-        <SelectInput
-          name="departmentName"
-          type="text"
-          className="basic-single"
-          onInputChange={e => setDepartmentName(e)}
-          defaultValue={departmentName}
-          isDisabled={!checkCityRef}
-          isClearable={true}
-          isSearchable={true}
-          validate={schemas.checkDepartmentNP.department}
-          options={optionOfDepartment}
-          placeholder={
-            departmentName === ''
-              ? t('Select department please...')
-              : departmentName
-          }
-          onChange={e => {
-            if (e?.value) {
-              setSelectedDepartment(e.value);
+        {checkCityRef && (
+          <SelectInput
+            name="departmentName"
+            type="text"
+            className="basic-single"
+            onInputChange={e => setDepartmentName(e)}
+            defaultValue={departmentName}
+            // isDisabled={!checkCityRef}
+            isClearable={true}
+            isSearchable={true}
+            validate={schemas.checkDepartmentNP.department}
+            options={optionOfDepartment}
+            placeholder={
+              departmentName === ''
+                ? t('Select department please...')
+                : departmentName
             }
-          }}
-          styles={customStyles}
-          classNamePrefix="custom-select"
-        />
+            onChange={e => {
+              if (e?.value) {
+                setSelectedDepartment(e.value);
+              }
+            }}
+            styles={customStyles}
+            classNamePrefix="custom-select"
+          />
+        )}
       </Box>
 
       {isLoading ? onLoading() : onLoaded()}

@@ -144,7 +144,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
     if (cityRef !== checkCityRef) {
       getData();
     }
-  }, [cityRef, checkCityRef]);
+  }, [cityRef, checkCityRef, checkCityName, cityName]);
 
   // options for Nova Poshta
 

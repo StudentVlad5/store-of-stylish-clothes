@@ -47,7 +47,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   );
   const [cityRef, setCityRef] = useState('');
   const [checkCityRef, setCheckCityRef] = useState('');
-  const [listOfDepartment, setListOfDepartment] = useState([]);
+  // const [listOfDepartment, setListOfDepartment] = useState([]);
   const [optionOfDepartment, setOptionOfDepartment] = useState([]);
   const [optionListOfCities, setOptionListOfCities] = useState([]);
 
@@ -129,6 +129,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
               options.push(obj);
             }
           });
+        alert('options');
         setOptionOfDepartment(options);
         if (!data) {
           return alert(t('Whoops, something went wrong'));

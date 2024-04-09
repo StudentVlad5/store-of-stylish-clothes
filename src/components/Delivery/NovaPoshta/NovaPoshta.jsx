@@ -49,6 +49,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   const [checkCityRef, setCheckCityRef] = useState('');
   const [listOfDepartment, setListOfDepartment] = useState([]);
   const [optionOfDepartment, setOptionOfDepartment] = useState([]);
+  const [optionListOfCities, setOptionListOfCities] = useState([]);
 
   //  get cities for Nova Poshta
   useEffect(() => {
@@ -58,6 +59,23 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       try {
         const { data } = await getListOfCities('/cities', { filter: cityName });
         setListOfSities(data);
+        const options = [];
+        const list = [...listOfCities];
+        list
+          .filter(key =>
+            key.Description.toLowerCase()
+              .split('(')[0]
+              .includes(cityName.toLowerCase()),
+          )
+          .forEach(key => {
+            const obj = {};
+            if (key.Description) {
+              obj.value = key.Description;
+              obj.label = key.Description + ', ' + key.AreaDescription;
+              options.push(obj);
+            }
+          });
+        setOptionListOfCities(options);
         let departmentCity;
         departmentCity = data.filter(key => key.Description === cityName)[0];
         if (departmentCity && departmentCity.Ref !== cityRef) {
@@ -128,25 +146,25 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
 
   // options for Nova Poshta
 
-  function optionsNP(city) {
-    const options = [];
-    const list = [...listOfCities];
-    list
-      .filter(key =>
-        key.Description.toLowerCase()
-          .split('(')[0]
-          .includes(city.toLowerCase()),
-      )
-      .forEach(key => {
-        const obj = {};
-        if (key.Description) {
-          obj.value = key.Description;
-          obj.label = key.Description + ', ' + key.AreaDescription;
-          options.push(obj);
-        }
-      });
-    return options;
-  }
+  // function optionsNP(city) {
+  //   const options = [];
+  //   const list = [...listOfCities];
+  //   list
+  //     .filter(key =>
+  //       key.Description.toLowerCase()
+  //         .split('(')[0]
+  //         .includes(city.toLowerCase()),
+  //     )
+  //     .forEach(key => {
+  //       const obj = {};
+  //       if (key.Description) {
+  //         obj.value = key.Description;
+  //         obj.label = key.Description + ', ' + key.AreaDescription;
+  //         options.push(obj);
+  //       }
+  //     });
+  //   return options;
+  // }
 
   // function oNP(city) {
   //   const options = [];
@@ -190,7 +208,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
           isClearable={true}
           isSearchable={true}
           validate={schemas.checkDepartmentNP.city}
-          options={optionsNP(cityName)}
+          options={optionListOfCities}
           placeholder={cityName === '' ? t('Select city please...') : cityName}
           styles={customStyles}
           classNamePrefix="custom-select"

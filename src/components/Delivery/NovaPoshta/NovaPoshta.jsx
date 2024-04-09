@@ -180,6 +180,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
         <SelectInput
+          key={listOfDepartment}
           name="departmentName"
           type="text"
           className="basic-single"

@@ -194,7 +194,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       <Box>
         <PoshtaTitle>{t('Point office')}</PoshtaTitle>
 
-        {checkCityRef && (
+        {cityName && (
           <SelectInput
             name="departmentName"
             type="text"

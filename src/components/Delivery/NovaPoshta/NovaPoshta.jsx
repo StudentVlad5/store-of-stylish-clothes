@@ -50,6 +50,7 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   // const [listOfDepartment, setListOfDepartment] = useState([]);
   const [optionOfDepartment, setOptionOfDepartment] = useState([]);
   const [optionListOfCities, setOptionListOfCities] = useState([]);
+  const [citykey, setCityKey] = useState(1);
 
   //  get cities for Nova Poshta
   useEffect(() => {
@@ -76,17 +77,16 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
             }
           });
         setOptionListOfCities(options);
-        alert('options cities');
         let departmentCity;
         departmentCity = data.filter(key => key.Description === cityName)[0];
         if (departmentCity && departmentCity.Ref !== cityRef) {
           setCityRef(departmentCity.Ref);
         }
         if (!data) {
-          return alert(t('Whoops, something went wrong'));
+          return console.log(t('Whoops, something went wrong'));
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -130,10 +130,10 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
               options.push(obj);
             }
           });
-        alert('options');
         setOptionOfDepartment(options);
+        setCityKey(prev => prev + 1);
         if (!data) {
-          return alert(t('Whoops, something went wrong'));
+          return console.log(t('Whoops, something went wrong'));
         }
       } catch (error) {
         console.log(error.message);
@@ -187,12 +187,11 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   //   }
   //   return options;
   // }
-  console.log('cityRef', cityRef);
+
   return (
-    <>
+    <div key={citykey}>
       <Box>
         <PoshtaTitle>{t('City')}</PoshtaTitle>
-
         <SelectInput
           name="cityName"
           type="text"
@@ -246,6 +245,6 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
       </Box>
 
       {isLoading ? onLoading() : onLoaded()}
-    </>
+    </div>
   );
 };

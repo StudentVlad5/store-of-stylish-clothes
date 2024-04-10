@@ -33,9 +33,9 @@ const customStyles = {
 
 export const UkrPoshta = ({
   setSelectedCity_UP_NAME,
-  setSelectedDepartment,
+  setSelectedDepartment_UP,
   selectedCity_UP_NAME,
-  selectedCity,
+  setSelectedCity_UP,
 }) => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
@@ -161,9 +161,10 @@ export const UkrPoshta = ({
           onInputChange={e => setCityNameUP(e)}
           onChange={e => {
             if (e?.value) {
-              // setCityNameUP(e.value);
+              setCityNameUP(e.value);
               setCityRef(e.value);
               setSelectedCity_UP_NAME(e.label);
+              setSelectedCity_UP(e.label);
             }
           }}
           defaultValue={cityNameUP}
@@ -202,7 +203,7 @@ export const UkrPoshta = ({
           }
           onChange={e => {
             if (e?.value) {
-              setSelectedDepartment(e.value);
+              setSelectedDepartment_UP(e.value);
             }
           }}
           styles={customStyles}

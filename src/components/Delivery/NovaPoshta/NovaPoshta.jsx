@@ -100,17 +100,6 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
     }
   }, [cityName, checkCityName]);
 
-  // let departmentCity;
-
-  // if (listOfCities) {
-  //   departmentCity = listOfCities.filter(
-  //     key => key.Description === checkCityName,
-  //   )[0];
-  // }
-  // if (departmentCity && departmentCity.Ref !== cityRef) {
-  //   setCityRef(departmentCity.Ref);
-  // }
-
   // get departments for Nova Poshta
   useEffect(() => {
     async function getData() {
@@ -152,10 +141,6 @@ export const NovaPoshta = ({ setSelectedCity, setSelectedDepartment }) => {
   return (
     <>
       <Box>
-        <div>{cityRef}</div>
-        <div>{!cityRef && 'GGGGGGGGGG'}</div>
-        <div>{checkCityRef}</div>
-
         <PoshtaTitle>{t('City')}</PoshtaTitle>
         <SelectInput
           key={cityRef}

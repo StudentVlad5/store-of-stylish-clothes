@@ -33,14 +33,13 @@ const customStyles = {
 
 export const UkrPoshta = ({
   setSelectedCity_UP_NAME,
-  setSelectedCity,
   setSelectedDepartment,
   selectedCity_UP_NAME,
+  selectedCity,
 }) => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [listOfCities, setListOfSities] = useState([]);
-
   const [cityRef, setCityRef] = useState('');
 
   const [cityNameUP, setCityNameUP] = useState(
@@ -51,8 +50,7 @@ export const UkrPoshta = ({
       ? getFromStorage('selectedCity_UP_NAME')
       : '',
   );
-  const [listOfCitiesUP, setListOfSitiesUP] = useState([]);
-
+  // const [listOfCitiesUP, setListOfSitiesUP] = useState([]);
   const [departmentNameUP, setDepartmentNameUP] = useState(
     getFromStorage('selectedDepartment_UP')
       ? getFromStorage('selectedDepartment_UP')
@@ -64,18 +62,35 @@ export const UkrPoshta = ({
   //  get cities for Ukr Poshta
   useEffect(() => {
     async function getData(cityNameUP) {
-      setCheckCityNameUP(cityNameUP);
+      // setCheckCityNameUP(cityNameUP);
       setIsLoading(true);
       try {
         const { data } = await getListOfCitiesUP('/cities/up', {
           filter: cityNameUP,
         });
-        setListOfSitiesUP(data);
+        // setListOfSitiesUP(data);
+        const options = [];
+        if (data !== '' && data !== undefined) {
+          const list = [...data];
+          list
+            .filter(key =>
+              key.CITY_UA.toLowerCase().includes(cityNameUP.toLowerCase()),
+            )
+            .forEach(key => {
+              const obj = {};
+              if (key.CITY_UA) {
+                obj.value = key.CITY_ID;
+                obj.label = key.CITY_UA + ` ` + key.REGION_UA + ` область`;
+                options.push(obj);
+              }
+            });
+        }
+        setListOfSities(options);
         if (!data) {
-          return alert(t('Whoops, something went wrong'));
+          return console.log(t('Whoops, something went wrong'));
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -85,71 +100,36 @@ export const UkrPoshta = ({
     }
   }, [cityNameUP, checkCityNameUP]);
 
-  let departmentCity;
-
-  if (listOfCities) {
-    departmentCity = listOfCities.filter(
-      key => key.Description === checkCityName,
-    )[0];
-  }
-  if (departmentCity && departmentCity.Ref !== cityRef) {
-    setCityRef(departmentCity.Ref);
-  }
-
   // get departments for Ukr Poshta
   useEffect(() => {
     async function getData() {
-      setCityIDUP(checkCityNameUP);
+      setCityIDUP(cityRef);
       setIsLoading(true);
       try {
         const { data } = await getListOfDepartmentsUP('/departments/up', {
-          filter: checkCityNameUP,
+          filter: cityRef,
         });
         setListOfDepartmentUP(data);
         if (!data) {
-          return alert(t('Whoops, something went wrong'));
+          return console.log(t('Whoops, something went wrong'));
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }
     }
     if (
-      Number(checkCityNameUP) &&
-      checkCityNameUP !== '' &&
-      checkCityNameUP !== undefined
+      Number(cityRef) &&
+      cityRef !== '' &&
+      cityRef !== undefined &&
+      cityRef !== cityIDUP
     ) {
       getData();
     }
-  }, [checkCityNameUP]);
+  }, [selectedCity_UP_NAME, cityRef]);
 
-  // options for UKR Poshta
-
-  function optionsUP(city) {
-    const options = [];
-    if (
-      listOfCitiesUP !== '' &&
-      listOfCitiesUP !== undefined &&
-      Array.isArray(listOfCitiesUP)
-    ) {
-      const list = [...listOfCitiesUP];
-      list
-        .filter(key => key.CITY_UA.toLowerCase().includes(city.toLowerCase()))
-        .forEach(key => {
-          const obj = {};
-          if (key.CITY_UA) {
-            obj.value = key.CITY_ID;
-            obj.label = key.CITY_UA + ` ` + key.REGION_UA + ` область`;
-            options.push(obj);
-          }
-        });
-    }
-
-    return options;
-  }
-
-  function oUP(city) {
+  function oUP() {
     const options = [];
     if (listOfDepartmentUP) {
       const list = [...listOfDepartmentUP];
@@ -181,8 +161,8 @@ export const UkrPoshta = ({
           onInputChange={e => setCityNameUP(e)}
           onChange={e => {
             if (e?.value) {
-              setCityNameUP(e.value);
-              setSelectedCity(e.value);
+              // setCityNameUP(e.value);
+              setCityRef(e.value);
               setSelectedCity_UP_NAME(e.label);
             }
           }}
@@ -190,7 +170,7 @@ export const UkrPoshta = ({
           isDisabled={false}
           isClearable={true}
           isSearchable={true}
-          options={optionsUP(cityNameUP)}
+          options={listOfCities}
           placeholder={
             selectedCity_UP_NAME === ''
               ? t('Select city please...')

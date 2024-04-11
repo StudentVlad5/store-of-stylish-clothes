@@ -154,7 +154,10 @@ export const CatalogFilter = ({
               {filterState[0]?.level_1 &&
                 filterState[0]?.level_1.map((card, i) => {
                   return (
-                    <label key={i + searchParams} data-key={card}>
+                    <label
+                      key={searchParams?.size > 0 ? i + searchParams : i}
+                      data-key={card}
+                    >
                       <SC.FilterInnerListItem
                         type="checkbox"
                         name="man_woman"
@@ -195,7 +198,10 @@ export const CatalogFilter = ({
               {filterState[0]?.level_2 &&
                 filterState[0]?.level_2.map((card, i) => {
                   return (
-                    <label key={i + searchParams} data-key={card}>
+                    <label
+                      key={searchParams?.size > 0 ? i + searchParams : i}
+                      data-key={card}
+                    >
                       <SC.FilterInnerListItem
                         type="checkbox"
                         name="category"
@@ -241,7 +247,12 @@ export const CatalogFilter = ({
                         filterState[0]?.level_3 &&
                         filterState[0]?.level_3[card].map((card, i) => {
                           return (
-                            <label key={i + searchParams} data-key={card}>
+                            <label
+                              key={
+                                searchParams?.size > 0 ? i + searchParams : i
+                              }
+                              data-key={card}
+                            >
                               <SC.FilterInnerListItem
                                 type="checkbox"
                                 name="product"
@@ -282,7 +293,12 @@ export const CatalogFilter = ({
                           filterState[0]?.level_4[card]?.length > 0 &&
                           filterState[0]?.level_4[card].map((card, i) => {
                             return (
-                              <label key={i} data-key={card}>
+                              <label
+                                key={
+                                  searchParams?.size > 0 ? i + searchParams : i
+                                }
+                                data-key={card}
+                              >
                                 <SC.FilterInnerListItem
                                   type="checkbox"
                                   name="sizes"

@@ -153,7 +153,7 @@ export const Catalog = () => {
 
   useEffect(() => {
     setParams();
-    (async function getData() {
+    async function getData() {
       setIsLoading(true);
       try {
         const { data } = await fetchData(
@@ -174,7 +174,10 @@ export const Catalog = () => {
       } finally {
         setIsLoading(false);
       }
-    })();
+    }
+    if (searchParams.size > 0) {
+      getData();
+    }
   }, [
     t,
     page,

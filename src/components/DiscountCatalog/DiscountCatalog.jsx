@@ -152,7 +152,7 @@ export const DiscountCatalog = () => {
 
   useEffect(() => {
     setParams();
-    (async function getData() {
+    async function getData() {
       setIsLoading(true);
       try {
         const { data } = await fetchData(
@@ -173,7 +173,10 @@ export const DiscountCatalog = () => {
       } finally {
         setIsLoading(false);
       }
-    })();
+    }
+    if (searchParams.size > 0) {
+      getData();
+    }
   }, [
     t,
     page,
@@ -311,7 +314,7 @@ export const DiscountCatalog = () => {
     }
     setSearchParams(params);
   };
-
+  console.log('searchParams', searchParams.size);
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>

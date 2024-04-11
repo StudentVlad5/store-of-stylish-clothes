@@ -41,7 +41,6 @@ export const MobileNav = ({ toggleMenu }) => {
     setIsModalOpen(!isModalOpen);
   };
   const location = useLocation();
-  console.log(location.pathname.includes('shop'));
   return (
     <MobileNavList>
       <NavSubContainerUp>

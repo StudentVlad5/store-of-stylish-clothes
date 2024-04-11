@@ -7,11 +7,11 @@ import {
   NavItem,
   NavSubContainerUp,
   NavSubContainerDown,
-  IconArrow,
   MobileNavBox,
   NavItemBoxModal,
   IconFeather,
   LinkItem,
+  NavItemCategory,
 } from './Nav.styled';
 import { useTranslation } from 'react-i18next';
 import { ModalFirst } from './ModalFirst/ModalFirst';
@@ -41,13 +41,14 @@ export const MobileNav = ({ toggleMenu }) => {
     setIsModalOpen(!isModalOpen);
   };
   const location = useLocation();
-
+  console.log(location.pathname.includes('shop'));
   return (
     <MobileNavList>
       <NavSubContainerUp>
-        <NavItem
+        <NavItemCategory
           className={
-            location.pathname.includes('shop')
+            location.pathname.includes('shop') ||
+            location.pathname.includes('discounts')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -65,10 +66,11 @@ export const MobileNav = ({ toggleMenu }) => {
           }}
         >
           {t('Men')}
-        </NavItem>
-        <NavItem
+        </NavItemCategory>
+        <NavItemCategory
           className={
-            location.pathname.includes('shop')
+            location.pathname.includes('shop') ||
+            location.pathname.includes('discounts')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -86,7 +88,7 @@ export const MobileNav = ({ toggleMenu }) => {
           }}
         >
           {t('Women')}
-        </NavItem>
+        </NavItemCategory>
       </NavSubContainerUp>
       <MobileNavBox>
         <NavItem to={`/`} onClick={toggleMenu}>
@@ -174,7 +176,8 @@ export const Nav = () => {
       <NavSubContainerDown>
         <LinkItem
           className={
-            location.pathname.includes('shop')
+            location.pathname.includes('shop') ||
+            location.pathname.includes('discounts')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -194,7 +197,8 @@ export const Nav = () => {
         </LinkItem>
         <LinkItem
           className={
-            location.pathname.includes('shop')
+            location.pathname.includes('shop') ||
+            location.pathname.includes('discounts')
               ? 'changeStyle'
               : 'not-changeStyle'
           }

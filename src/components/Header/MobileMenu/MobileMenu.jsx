@@ -13,7 +13,6 @@ import { MobileAuthNav } from 'components/Header/AuthNav/AuthNav';
 import { MobileUserNav } from 'components/Header/UserNav/UserNav';
 import { MobileNav } from 'components/Header/Nav/Nav';
 import { MobileNavigation } from '../Navigation/Navigation';
-import { Logo } from '../Elements/logo/Logo';
 
 export const MobileMenu = ({ toggleMenu }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

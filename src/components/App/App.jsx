@@ -83,7 +83,7 @@ export const App = () => {
             />
 
             <Route path="shop" element={<CatalogPage />} />
-            <Route path="shop/:category" element={<CatalogPage />} />
+            {/* <Route path="shop/:category" element={<CatalogPage />} /> */}
             <Route path="shop/byid/:id" element={<ProductCardPage />} />
             <Route
               path="shop/favorite"

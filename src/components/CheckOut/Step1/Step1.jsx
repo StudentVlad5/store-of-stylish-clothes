@@ -231,8 +231,8 @@ const Step1 = () => {
 
               <PoshtaBox>
                 <UkrPoshta
-                  setSelectedCity={setSelectedCity_UP}
-                  setSelectedDepartment={setSelectedDepartment_UP}
+                  setSelectedCity_UP={setSelectedCity_UP}
+                  setSelectedDepartment_UP={setSelectedDepartment_UP}
                   setSelectedCity_UP_NAME={setSelectedCity_UP_NAME}
                   selectedCity_UP_NAME={selectedCity_UP_NAME}
                 />

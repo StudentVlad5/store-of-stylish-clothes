@@ -27,14 +27,18 @@ export const BasketBox = styled.div`
 
   width: 100%;
   max-width: 300px;
-  height: 100vh;
+  height: 90vh;
   padding: 20px;
 
   background: ${theme.colors.fon};
   z-index: 11;
 
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
+    height: 100vh;
+  }
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     width: 437px;
+    height: 100vh;
     max-width: 437px;
     max-height: 780px;
     padding: 40px 24px;

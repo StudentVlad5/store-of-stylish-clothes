@@ -90,7 +90,7 @@ const NavBlock = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -99,6 +99,7 @@ const NavBlock = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: flex;
+    align-items: center;
     /* gap: 24px; */
   }
 `;

@@ -34,7 +34,7 @@ const AccountButton = styled(MobileAccountButton)`
     /* padding: 8px 28px; */
     display: flex;
     height: 44px;
-    font-size: 20px;
+    font-size: 14px;
     line-height: normal;
   }
 `;

@@ -113,7 +113,7 @@ export const ImgTitle = styled.h3`
   border-radius: 12px;
   font-family: ${theme.fonts[1]};
   font-size: 24px;
-  color: #f0eadc;
+  color: ${theme.colors.fon};
   text-transform: capitalize;
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     padding: 11px 30px 14px;
@@ -135,6 +135,8 @@ export const CategoryItem = styled(HeroItem)`
 export const CategoryTitle = styled(ImgTitle)`
   border-radius: 16px;
   color: ${theme.colors.brown4};
+  text-align: center;
+  background-color: rgba(225, 225, 225, 0.65);
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;

@@ -20,7 +20,7 @@ export const BasketContainer = styled(Container)`
   justify-content: space-between;
 
   width: 100%;
-  padding-top: 68px;
+  /* padding-top: 68px; */
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     padding: 68px 30px 0 30px;
@@ -50,9 +50,10 @@ export const TitleCheckOut = styled(Title)`
   margin-bottom: 40px;
   margin-top: 0;
   text-transform: uppercase;
+  font-size: 16px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
-    font-size: ${theme.fontSizes.extraXL};
+    font-size: ${theme.fontSizes.extra};
     font-weight: 500;
     margin-bottom: 32px;
     color: ${theme.colors.brown1};

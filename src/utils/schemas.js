@@ -23,10 +23,10 @@ const registerSchema = Yup.object().shape({
     .required('Require field'),
   name: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   phone: Yup.number()
     .nullable(true)
@@ -34,10 +34,10 @@ const registerSchema = Yup.object().shape({
     .min(99999)
     .max(999999999999),
   location: Yup.string()
-    .matches(
-      /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
-      'Invalid format. Example: Brovary, Kyiv ...',
-    )
+    // .matches(
+    //   /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+    //   'Invalid format. Example: Brovary, Kyiv ...',
+    // )
     .required('Require field'),
 });
 
@@ -79,17 +79,17 @@ const changePasswordSchema = Yup.object().shape({
 const updateSchema = Yup.object().shape({
   userName: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   surname: Yup.string()
-    .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Surname must includes only Latin alphabet',
-    ),
+    .matches(/\S{2,}/, 'Name too short (min 2)'),
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Surname must includes only Latin alphabet',
+    // ),
   email: Yup.string()
     .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
     .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
@@ -132,17 +132,17 @@ const updatePasswordSchema = Yup.object().shape({
 const addressSchema = Yup.object().shape({
   userName: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   surname: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Surname must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Surname must includes only Latin alphabet',
+    // )
     .required('Require field'),
   email: Yup.string()
     .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
@@ -165,10 +165,10 @@ const addressSchema = Yup.object().shape({
   address1: Yup.string(),
   address2: Yup.string(),
   city: Yup.string()
-    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
+    // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
     .required('Require field'),
   state: Yup.string()
-    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
+    // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
     .required('Require field'),
   zipCode: Yup.number()
     .nullable(true)

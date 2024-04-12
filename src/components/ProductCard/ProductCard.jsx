@@ -419,6 +419,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     width: '100%',
+                    justifyContent: 'space-between',
                   }}
                 >
                   {discount_ua !== 0 ? (

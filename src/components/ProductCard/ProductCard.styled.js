@@ -302,7 +302,7 @@ const Name = styled.h2`
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `;
 

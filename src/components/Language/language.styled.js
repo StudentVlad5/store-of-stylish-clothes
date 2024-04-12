@@ -34,7 +34,7 @@ export const SelectLanguage = styled.select`
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   position: relative;
   background: transparent;
   border: transparent;

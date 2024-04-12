@@ -99,20 +99,7 @@ export const ModalFirstListItem = styled(Link)`
     border-bottom: solid 1px ${theme.colors.brown4};
   }
   &.changeStyle {
-    width: 100%;
-    margin: 0;
-    display: block;
-    padding: 8px 10px;
-    border: solid 1px ${theme.colors.brown4};
-    border-radius: 9px;
-    color: ${theme.colors.white};
-    font-size: ${theme.fontSizes.extra};
-    font-style: normal;
-    font-family: ${theme.fonts[0]};
-    font-weight: 500;
-    line-height: 19px;
-    letter-spacing: 0;
-    background-color: ${theme.colors.brown4};
+    display: none;
   }
   &.not-changeStyle {
     width: 100%;

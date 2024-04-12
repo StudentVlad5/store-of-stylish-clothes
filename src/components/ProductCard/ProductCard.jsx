@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { onSuccess } from 'components/helpers/Messages/NotifyMessages';
+import { onSuccess, onInfo } from 'components/helpers/Messages/NotifyMessages';
 import { getFromStorage } from 'services/localStorService';
 import { addItemInBasket } from 'services/APIservice';
 import { reloadValue } from 'redux/reload/selectors';
+import { addFavorite, removeFavorite } from 'redux/auth/operations';
+import { getUser, selectIsLoggedIn } from 'redux/auth/selectors';
 import { addReload } from 'redux/reload/slice';
+import theme from 'components/baseStyles/Variables.styled';
 import * as SC from './ProductCard.styled';
 
 import { ReactComponent as Car } from 'images/svg/shipping.svg';
@@ -24,6 +27,7 @@ import {
 } from 'services/selectCurrency';
 import uuid4 from 'uuid4';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const {
@@ -54,6 +58,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   } = item[0];
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const routeParams = useParams();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   let imageArray = [];
 
   useEffect(() => {
@@ -86,6 +92,9 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
+  const user = useSelector(getUser).favorites;
+  let favorites;
+  user ? (favorites = user.map(item => item)) : (favorites = []);
 
   async function addItem(state) {
     setIsLoading(true);
@@ -279,6 +288,29 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const toggleCareDetails = () => setCareShowDetails(state => !state);
   const [showIncludedDetails, setShowIncludedDetails] = useState(false);
   const toggleIncludedDetails = () => setShowIncludedDetails(state => !state);
+
+  const toggleFavorite = async id => {
+    let isInFavorite = false;
+    favorites
+      ? (isInFavorite = favorites.includes(id))
+      : (isInFavorite = false);
+    if (isInFavorite) {
+      dispatch(removeFavorite(id));
+      onSuccess(t('Ups, just remove from the favorite!'));
+      return;
+    }
+    dispatch(addFavorite(id));
+    onSuccess(t('Great, just add to the favorite!'));
+  };
+
+  const handleFavoriteBtnClick = id => e => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (routeParams.id === 'favorite') {
+      dispatch(addReload(true));
+    }
+    !isLoggedIn ? onInfo(t('You must be logged!')) : toggleFavorite(id);
+  };
   return (
     <SC.ProductCardContainer>
       <SC.ProductCardSection>
@@ -375,11 +407,19 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
             <div>
               <SC.Heading>
                 <SC.Name> {title}</SC.Name>
+                <SC.BtnForFavorite onClick={handleFavoriteBtnClick(article)}>
+                  {favorites.includes(article) ? (
+                    <SC.IconFav size={30} fill={theme.colors.brown4} />
+                  ) : (
+                    <SC.IconFav size={30} color={theme.colors.beige} />
+                  )}
+                </SC.BtnForFavorite>
                 <div
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
                     width: '100%',
+                    justifyContent: 'space-between',
                   }}
                 >
                   {discount_ua !== 0 ? (
@@ -415,7 +455,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 dangerouslySetInnerHTML={{ __html: description }}
               ></SC.Description>
             </div>
-            {options?.length !== 0 && console.log('check', check)}
             {options?.length !== 0 && (
               <SC.Options>
                 <SC.ProductSubTitle>{t('Option')}:</SC.ProductSubTitle>

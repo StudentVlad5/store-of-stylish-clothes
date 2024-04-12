@@ -85,7 +85,14 @@ export const SearchResult = ({
               {products.slice(0, 4).map(card => {
                 return (
                   <SC.CardSearch key={card._id} onClick={onClose}>
-                    <NavLink to={`shop/byid/${card.article}`}>
+                    <NavLink
+                      to={`shop/byid/${card.article}`}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'start',
+                        alignItems: 'start',
+                      }}
+                    >
                       <SC.CardImageSearch
                         src={card.mainImage}
                         alt={card.title}

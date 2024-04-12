@@ -7,6 +7,25 @@ import {
 } from 'components/baseStyles/CommonStyle.styled';
 import { Link } from 'react-router-dom';
 import { ReactComponent as arrowDown } from 'images/svg/arrowDownNav.svg';
+import { ReactComponent as IconFavorite } from 'images/svg/icon_favorite__header.svg';
+
+const IconFav = styled(IconFavorite)`
+  display: block;
+  size: 30px;
+
+  transition: ${theme.transition[0]};
+  cursor: pointer;
+
+  & > path {
+    stroke: ${theme.colors.brown1};
+  }
+
+  &:hover,
+  &:focus {
+    transform: ${theme.scale[0]};
+    transition: ${theme.transition[0]};
+  }
+`;
 
 const ProductCardSection = styled(Section)`
   padding-top: 122px;
@@ -283,7 +302,7 @@ const Name = styled.h2`
   }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `;
 
@@ -638,6 +657,18 @@ const BtnArrowDown = styled(arrowDown)`
   height: 25px;
 `;
 
+const BtnForFavorite = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  background: transparent;
+`;
+
 export {
   ProductCardSection,
   ProductCardContainer,
@@ -676,4 +707,6 @@ export {
   BtnArrow,
   BtnArrowDown,
   BtnProduct,
+  BtnForFavorite,
+  IconFav,
 };

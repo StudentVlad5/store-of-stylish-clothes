@@ -7,10 +7,10 @@ export const BASE_URL_IMG =
   'https://res.cloudinary.com/dfqhj2far/image/upload/v1711870092/quillis_users/';
 
 export const language = [
-  { value: 'ua', option: 'UA' },
-  { value: 'en', option: 'EN' },
-  { value: 'de', option: 'DE' },
-  { value: 'ru', option: 'RU' },
+  { value: 'ua', option: 'Ua' },
+  { value: 'en', option: 'En' },
+  { value: 'de', option: 'De' },
+  { value: 'ru', option: 'Ru' },
 ];
 
 export const currency = [

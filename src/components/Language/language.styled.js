@@ -45,6 +45,8 @@ export const SelectLanguage = styled.select`
   @media screen and (min-width: 1280px) {
     font-size: ${theme.fontSizes.extra};
   }
+  transition: ${theme.transition[0]};
+
 
   &:focus,
   &:hover,

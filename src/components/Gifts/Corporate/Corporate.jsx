@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
   GiftsHeadline,
@@ -15,10 +15,27 @@ import corp_png_2x from 'images/gifts/corp@2x.png';
 import corp_webp from 'images/gifts/corp.webp';
 import corp_webp_2x from 'images/gifts/corp@2x.webp';
 import { useTranslation } from 'react-i18next';
-import { BtnLight } from 'components/UserComp/UserData/UserData.styled';
+import { BtnGiftCard } from '../GiftCard/GiftCard.styled';
+import { saveToStorage } from 'services/localStorService';
+import { homeProductLinks } from 'BASE_CONST/Base-const';
+import { StatusContext } from 'components/ContextStatus/ContextStatus';
+import { Link } from 'react-router-dom';
 
 export const Corporate = () => {
   const { t } = useTranslation();
+  const { selectedLanguage, selectedCurrency } = useContext(StatusContext);
+
+  const init = {
+    category: [],
+    currency: selectedCurrency,
+    man_woman: [],
+    maxPrice: '5000',
+    minPrice: '0',
+    page: 1,
+    perPage: 12,
+    product: [],
+    sizes: [],
+  };
 
   return (
     <GiftsSection>
@@ -47,7 +64,18 @@ export const Corporate = () => {
               "Welcome new hires, thank clients, or recognize your team's efforts with our versatile gift card. Spread joy and appreciation effortlessly!",
             )}
           </Description>
-          <BtnLight to={`/shop/cards`}>{t('Shop gift card')}</BtnLight>
+          <Link
+            to={`/shop?category=${homeProductLinks?.giftCard[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
+            onClick={() => {
+              saveToStorage('filters', {
+                ...init,
+                category: [homeProductLinks?.giftCard[selectedLanguage]],
+              });
+            }}
+            style={{ textDecoration: 'none' }}
+          >
+            <BtnGiftCard>{t('Buy gift card')}</BtnGiftCard>
+          </Link>
         </SC.InnerRight>
       </GiftsInnerContainer>
     </GiftsSection>

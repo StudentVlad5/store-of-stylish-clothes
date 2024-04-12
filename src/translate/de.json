@@ -136,7 +136,7 @@
   "The Perfect Present": "Das perfekte Geschenk",
   "Give the Gift of Style": "Verschenken Sie Stil",
   "Looking for the ideal gift? Our online store gift cards are the perfect solution! Treat your friends and loved ones to the luxury of choice with our versatile gift cards. Whether they're into fashion-forward clothing, stylish footwear, or trendy accessories, they'll find something they love in our extensive collection. With various denominations available, you can give the gift of endless shopping possibilities. Purchase now and brighten someone's day with the gift of style!": "Auf der Suche nach dem idealen Geschenk? Unsere Geschenkkarten für den Online-Shop sind die perfekte Lösung! Gönnen Sie Ihren Freunden und Liebsten den Luxus der Wahl mit unseren vielseitigen Geschenkkarten. Ganz gleich, ob sie auf modische Kleidung, stilvolle Schuhe oder trendige Accessoires stehen , sie werden in unserer umfangreichen Kollektion etwas finden, das ihnen gefällt. Da verschiedene Stückelungen verfügbar sind, können Sie endlose Einkaufsmöglichkeiten verschenken. Kaufen Sie jetzt und erfreuen Sie jemandem den Tag mit einem stilvollen Geschenk!",
-  "Shop gift card": "Kaufen Sie eine Geschenkkarte",
+  "Buy gift card": "Kaufen Sie eine Geschenkkarte",
   "great way to show appreciation": "tolle Möglichkeit, Wertschätzung zu zeigen",
   "Corporate Gifting": "Unternehmensgeschenke",
   "Welcome new hires, thank clients, or recognize your team's efforts with our versatile gift card. Spread joy and appreciation effortlessly!": "Begrüßen Sie neue Mitarbeiter, bedanken Sie sich bei Kunden oder würdigen Sie die Bemühungen Ihres Teams mit unserer vielseitigen Geschenkkarte. Verbreiten Sie mühelos Freude und Wertschätzung!",
@@ -229,5 +229,18 @@
   "Free": "Rabatt",
   "Catalog": "Katalog",
   "SUBSCRIBE":"ABONNIEREN",
-  "Designed and Developed by Brand Maze":"Designed und entwickelt von Brand Maze"
+  "Designed and Developed by Brand Maze":"Designed und entwickelt von Brand Maze",
+  "Added":"Hinzugefügt",
+  "Email must be without spaces":"E-Mail-Adresse muss ohne Leerzeichen sein",
+  "Email too short (min 7 symbols)":"E-Mail-Adresse ist zu kurz (mindestens 7 Zeichen)",
+  "Invalid email":"Ungültige E-Mail-Adresse",
+  "Dashes should only be inside email":"Der Bindestrich sollte nur innerhalb der E-Mail stehen",
+  "Require field":"Pflichtfeld",
+  "Password too short (min 7)":"Das Passwort ist zu kurz (min. 7)",
+  "Password too long (max 32)":"Passwort zu lang (max. 32)",
+  "Password must be without spaces":"Passwort muss ohne Leerzeichen sein",
+  "Password must match":"Passwort muss übereinstimmen",
+  "Name too short (min 2)":"Der Name ist zu kurz (min. 2)",
+  "Require":"Obligatorisch",
+  "Your passwords do not match":"Ihre Passwörter stimmen nicht überein"
 }

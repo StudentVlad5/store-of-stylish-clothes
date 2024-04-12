@@ -38,4 +38,5 @@ export const homeProductLinks = {
     en: 'Sweatshirts, hoodies',
     de: 'Sweatshirts, Kapuzenpullover',
   },
+  giftCard:{ua: 'Подарункові картки', ru: 'Подарочные карт', en: 'Gift cards', de:'Geschenkkarten'}
 };

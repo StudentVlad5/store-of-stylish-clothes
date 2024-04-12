@@ -157,7 +157,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
       .querySelectorAll('.checkOptions')
       .forEach(v => (v.checked = false));
     useCheck(isChekedArray);
-    onSuccess('Added');
+    onSuccess(t('Added'));
   };
 
   // get data from selected option

@@ -69,6 +69,12 @@ const FilterBtn = styled.button`
     border: 1px solid ${theme.colors.brown4};
   }
 
+  &.active {
+    color: ${theme.colors.brown4};
+    background-color: transparent;
+    border: 0.5px solid ${theme.colors.brown4};
+  }
+
   &:disabled {
     color: ${theme.colors.brown1};
     border: 1px solid ${theme.colors.brown2};

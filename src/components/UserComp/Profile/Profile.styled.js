@@ -93,7 +93,7 @@ const ProfileInput = styled(Field)`
 
 const Error = styled.span`
   position: absolute;
-  bottom: -10px;
+  bottom: -18px;
   right: 0;
   z-index: 2;
 

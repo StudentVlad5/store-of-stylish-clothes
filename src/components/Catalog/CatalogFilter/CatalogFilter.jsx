@@ -127,6 +127,8 @@ export const CatalogFilter = ({
 
     const listOfLabel = document.querySelectorAll('.active_label');
     listOfLabel.forEach(item => item.classList.remove('active_label'));
+    const button = document.querySelector('.filter-btn');
+    button.classList.toggle('active');
   };
 
   return (
@@ -374,7 +376,11 @@ export const CatalogFilter = ({
           </SC.FilterInnerList>
         </SC.Filter>
       </SC.Filters>
-      <SC.FilterBtn type="button" onClick={handleClearAllFilters}>
+      <SC.FilterBtn
+        className="filter-btn"
+        type="button"
+        onClick={handleClearAllFilters}
+      >
         {t('CLEAR ALL')}
       </SC.FilterBtn>
     </>

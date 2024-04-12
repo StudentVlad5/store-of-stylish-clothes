@@ -102,7 +102,7 @@ const LinkBtn = styled(NavLink)`
   text-transform: uppercase;
   text-decoration: none;
 
-  color: ${theme.colors.fon};
+  color: ${theme.colors.brown};
 
   background-color: transparent;
 
@@ -122,6 +122,7 @@ const LinkBtn = styled(NavLink)`
   &:focus {
     background-color: ${theme.colors.brown4};
     border: 0.5px solid ${theme.colors.brown4};
+    color: ${theme.colors.fon};
     transition: ${theme.transition[1]};
   }
 

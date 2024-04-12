@@ -272,7 +272,14 @@ export const Confidential = () => {
           <CareSpanTitle style={{ marginTop: 15 }}>{t("Feedback")}</CareSpanTitle>
           <CareSpanName>
             {t("All suggestions or questions regarding this Privacy Policy should be sent to the Quillis.com online store customer service using the email address:")} 
-            <b> quillis.info@gmail.com</b>
+            <b>
+                <a
+                  style={{ textDecoration: 'none', color: 'black' }}
+                  href="mailto:quillis.info@gmail.com"
+                >
+                  quillis.info@gmail.com
+                </a>
+              </b>
           </CareSpanName>
         </div>
       </CareContainer>

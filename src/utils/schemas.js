@@ -23,10 +23,10 @@ const registerSchema = Yup.object().shape({
     .required('Require field'),
   name: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   phone: Yup.number()
     .nullable(true)
@@ -34,10 +34,10 @@ const registerSchema = Yup.object().shape({
     .min(99999)
     .max(999999999999),
   location: Yup.string()
-    .matches(
-      /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
-      'Invalid format. Example: Brovary, Kyiv ...',
-    )
+    // .matches(
+    //   /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+    //   'Invalid format. Example: Brovary, Kyiv ...',
+    // )
     .required('Require field'),
 });
 
@@ -79,17 +79,17 @@ const changePasswordSchema = Yup.object().shape({
 const updateSchema = Yup.object().shape({
   userName: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   surname: Yup.string()
-    .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Surname must includes only Latin alphabet',
-    ),
+    .matches(/\S{2,}/, 'Name too short (min 2)'),
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Surname must includes only Latin alphabet',
+    // ),
   email: Yup.string()
     .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
     .matches(/\S{7,}/, 'Email too short (min 7 symbols)')
@@ -132,17 +132,17 @@ const updatePasswordSchema = Yup.object().shape({
 const addressSchema = Yup.object().shape({
   userName: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Name must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Name must includes only Latin alphabet',
+    // )
     .required('Require field'),
   surname: Yup.string()
     .matches(/\S{2,}/, 'Name too short (min 2)')
-    .matches(
-      /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
-      'Surname must includes only Latin alphabet',
-    )
+    // .matches(
+    //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    //   'Surname must includes only Latin alphabet',
+    // )
     .required('Require field'),
   email: Yup.string()
     .matches(/^\s*\S+\s*$/, 'Email must be without spaces')
@@ -165,10 +165,10 @@ const addressSchema = Yup.object().shape({
   address1: Yup.string(),
   address2: Yup.string(),
   city: Yup.string()
-    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
+    // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
     .required('Require field'),
   state: Yup.string()
-    .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
+    // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
     .required('Require field'),
   zipCode: Yup.number()
     .nullable(true)
@@ -193,3 +193,204 @@ const schemas = {
 };
 
 export default schemas;
+
+
+// // import { useTranslation } from 'react-i18next';
+// import * as Yup from 'yup';
+// import i18n from 'i18next';
+
+// // const { t } = useTranslation();
+// const t = i18n.t.bind(i18n);
+
+// const registerSchema = Yup.object().shape({
+//   email: Yup.string()
+//     .matches(/^\s*\S+\s*$/, t('Email must be without spaces'))
+//     .matches(/\S{7,}/, t('Email too short (min 7 symbols)'))
+//     .matches(
+//       /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+//       t('Invalid email'),
+//     )
+//     .matches(
+//       /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+//       ('Dashes should only be inside email'),
+//     )
+//     .required(t('Require field')),
+//   password: Yup.string()
+//     .min(7, t('Password too short (min 7)'))
+//     .max(32, t('Password too long (max 32)'))
+//     .matches(/^\s*\S+\s*$/, t('Password must be without spaces'))
+//     .required(t('Require field')),
+//   confirmPassword: Yup.string()
+//     .oneOf([Yup.ref('password')], t('Password must match'))
+//     .required(t('Require field')),
+//   name: Yup.string()
+//     .matches(/\S{2,}/, t('Name too short (min 2)'))
+//     // .matches(
+//     //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+//     //   'Name must includes only Latin alphabet',
+//     // )
+//     .required(t('Require field')),
+//   phone: Yup.number()
+//     .nullable(true)
+//     .required(t('Require field'))
+//     .min(99999)
+//     .max(999999999999),
+//   location: Yup.string()
+//     // .matches(
+//     //   /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+//     //   'Invalid format. Example: Brovary, Kyiv ...',
+//     // )
+//     .required(t('Require field')),
+// });
+
+// const schemasLogin = Yup.object().shape({
+//   email: Yup.string()
+//     .matches(/^\s*\S+\s*$/, t('Email must be without spaces'))
+//     .matches(/\S{7,}/, t('Email too short (min 7 symbols)'))
+//     .matches(
+//       /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+//       t('Invalid email'),
+//     )
+//     .matches(
+//       /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+//       t('Dashes should only be inside email'),
+//     )
+//     .required(t('Require')),
+//   password: Yup.string()
+//     .min(7, t('Password too short (min 7)'))
+//     .max(32, t('Password too long (max 32)'))
+//     .matches(/^\s*\S+\s*$/, t('Password must be without spaces'))
+//     .required(t('Require')),
+// });
+
+// const changePasswordSchema = Yup.object().shape({
+//   email: Yup.string()
+//     .matches(/^\s*\S+\s*$/, t('Email must be without spaces'))
+//     .matches(/\S{7,}/, t('Email too short (min 7 symbols)'))
+//     .matches(
+//       /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+//       t('Invalid email'),
+//     )
+//     .matches(
+//       /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+//       t('Dashes should only be inside email'),
+//     )
+//     .required(t('Require field')),
+// });
+
+// const updateSchema = Yup.object().shape({
+//   userName: Yup.string()
+//     .matches(/\S{2,}/, t('Name too short (min 2)'))
+//     // .matches(
+//     //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+//     //   'Name must includes only Latin alphabet',
+//     // )
+//     .required(t('Require field')),
+//   surname: Yup.string().matches(/\S{2,}/, t('Name too short (min 2)')),
+//   // .matches(
+//   //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+//   //   'Surname must includes only Latin alphabet',
+//   // ),
+//   email: Yup.string()
+//     .matches(/^\s*\S+\s*$/, t('Email must be without spaces'))
+//     .matches(/\S{7,}/, t('Email too short (min 7 symbols)'))
+//     .matches(
+//       /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+//       t('Invalid email'),
+//     )
+//     .matches(
+//       /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+//       t('Dashes should only be inside email'),
+//     )
+//     .required(t('Require field')),
+//   phone: Yup.number()
+//     .nullable(true)
+//     .required(t('Require field'))
+//     .min(99999)
+//     .max(999999999999),
+//   birthday: Yup.date(),
+//   location: Yup.string()
+//     .matches(
+//       /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
+//       'Invalid format. Example: Brovary, Kyiv ...',
+//     )
+//     .required(t('Require field')),
+//   delivery: Yup.string(),
+//   address: Yup.mixed(),
+// });
+
+// const updatePasswordSchema = Yup.object().shape({
+//   password: Yup.string()
+//     .min(7, t('Password too short (min 7)'))
+//     .max(32, t('Password too long (max 32)'))
+//     .matches(/^\s*\S+\s*$/, t('Password must be without spaces'))
+//     .required(t('Require field')),
+//   confirmPassword: Yup.string()
+//     .oneOf([Yup.ref('password')], t('Your passwords do not match'))
+//     .required(t('Require field')),
+// });
+
+// const addressSchema = Yup.object().shape({
+//   userName: Yup.string()
+//     .matches(/\S{2,}/, t('Name too short (min 2)'))
+//     // .matches(
+//     //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+//     //   'Name must includes only Latin alphabet',
+//     // )
+//     .required(t('Require field')),
+//   surname: Yup.string()
+//     .matches(/\S{2,}/, t('Name too short (min 2)'))
+//     // .matches(
+//     //   /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+//     //   'Surname must includes only Latin alphabet',
+//     // )
+//     .required(t('Require field')),
+//   email: Yup.string()
+//     .matches(/^\s*\S+\s*$/, t('Email must be without spaces'))
+//     .matches(/\S{7,}/, t('Email too short (min 7 symbols)'))
+//     .matches(
+//       /^(?=.{7,63}$)([^а-яА-Я]+@([a-zA-Z]+\.)+[a-zA-z]{2,3})$/g,
+//       t(t('Invalid email')),
+//     )
+//     .matches(
+//       /^[^-]+((.*[^-]))*@([a-zA-Z]+\.)+[a-zA-z]{2,3}$/g,
+//       t('Dashes should only be inside email'),
+//     )
+//     .required(t('Require field')),
+//   phone: Yup.number()
+//     .nullable(true)
+//     .required(t('Require field'))
+//     .min(99999)
+//     .max(999999999999),
+//   company: Yup.string(),
+//   address1: Yup.string(),
+//   address2: Yup.string(),
+//   city: Yup.string()
+//     // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyiv')
+//     .required(t('Require field')),
+//   state: Yup.string()
+//     // .matches(/(([A-Za-zsd&.-]){1,})/, 'Invalid format. Example: Kyivska')
+//     .required(t('Require field')),
+//   zipCode: Yup.number()
+//     .nullable(true)
+//     .required(t('Require field'))
+//     .min(11)
+//     .max(9999999),
+// });
+
+// const checkDepartmentNP = Yup.object().shape({
+//   city: Yup.string().min(3).max(80).required(t('Require field')),
+//   department: Yup.string().min(3).max(180).required(t('Require field')),
+// });
+
+// const schemas = {
+//   registerSchema,
+//   schemasLogin,
+//   changePasswordSchema,
+//   checkDepartmentNP,
+//   updateSchema,
+//   updatePasswordSchema,
+//   addressSchema,
+// };
+
+// export default schemas;

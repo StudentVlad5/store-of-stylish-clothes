@@ -18,11 +18,6 @@ const IconWrapper = styled.div`
     transition: ${theme.transition[0]};
     cursor: pointer;
 
-    & > path {
-      stroke: ${theme.colors.brown1};
-      /* fill: ${theme.colors.brown1}; */
-    }
-
     &:hover,
     &:focus {
       transform: ${theme.scale[0]};
@@ -56,7 +51,7 @@ const View = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 24px;
   }
 `;
@@ -65,6 +60,12 @@ const IconSearch = styled(iconSearch)`
   width: 32px;
   height: 32px;
   cursor: pointer;
+  transition: all 0.25s ease-in 0s;
+  &:hover,
+  &:focus {
+    transform: scale(1.15);
+    transition: all 0.25s ease-in 0s;
+  }
 `;
 const IconBookmark = styled(iconBookmark)`
   width: 32px;
@@ -90,7 +91,7 @@ const NavBlock = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
@@ -99,6 +100,7 @@ const NavBlock = styled.div`
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     display: flex;
+    /* align-items: center; */
     /* gap: 24px; */
   }
 `;

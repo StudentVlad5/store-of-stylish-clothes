@@ -19,7 +19,11 @@ const ProfileLabel = styled.label`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 281px; */
+
+  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+    width: 100%;
+  }
 `;
 
 const ProfileName = styled.span`
@@ -89,7 +93,7 @@ const ProfileInput = styled(Field)`
 
 const Error = styled.span`
   position: absolute;
-  bottom: -10px;
+  bottom: -18px;
   right: 0;
   z-index: 2;
 

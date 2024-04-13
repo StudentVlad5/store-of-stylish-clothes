@@ -349,7 +349,7 @@ export const Btnwrapper = styled.div`
 `;
 
 export const DeliveryFormBtn = styled.button`
-  width: 150px;
+  width: 112px;
   height: 35px;
 
   color: ${theme.colors.brown4};
@@ -483,7 +483,13 @@ export const PaymentOptionBox = styled.div`
 `;
 
 export const Mastercard = styled(mastercard)``;
-export const Visa = styled(visa)``;
+export const Visa = styled(visa)`
+  width: 91px;
+
+  @media screen and (min-width: 490px) {
+    width: 50px;
+  }
+`;
 
 export const Wallet = styled(wallet)``;
 
@@ -530,7 +536,7 @@ export const DeliveryBlockOptionsBtn = styled(PaymentFormBtn)`
 `;
 
 export const PaymentBlockOptionsLableBox = styled.div`
- background-color: transparent;
+  background-color: transparent;
   width: 100%;
   position: relative;
 
@@ -547,7 +553,7 @@ export const PaymentBlockOptionsLableBox = styled.div`
     height: 1px;
     background-color: ${theme.colors.brown4};
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -557,7 +563,6 @@ export const PaymentBlockOptionsLableBox = styled.div`
     height: 1px;
     background-color: ${theme.colors.brown4};
   }
-
 
   /* display: flex;
   align-items: center;

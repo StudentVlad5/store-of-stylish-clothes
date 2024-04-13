@@ -281,7 +281,7 @@ const RegisterForm = () => {
                 </BackButton>
 
                 <Btn type="submit" aria-label="submit registration">
-                  {isLoading ? 'Loading' : 'Register'}
+                  {isLoading ? 'Loading' : t('Register')}
                 </Btn>
 
                 <BoxText>

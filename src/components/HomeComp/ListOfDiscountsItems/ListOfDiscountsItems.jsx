@@ -52,7 +52,9 @@ export const ListOfDiscountsItems = () => {
       <SectionWrapper style={{ paddingBottom: '20px' }}>
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
-          <SectionTitle>{t('Discounts')}</SectionTitle>
+          <Link to="/discounts" style={{ textDecoration: 'none' }}>
+            <SectionTitle>{t('Discounts')}</SectionTitle>
+          </Link>
           <Link to="/discounts" style={{ textDecoration: 'none' }}>
             <SectionSubTitle style={{ textDecoration: 'underline' }}>
               {t('See all')}
@@ -122,6 +124,7 @@ export const ListOfDiscountsItems = () => {
                       to={`shop/byid/${it.article}`}
                     >
                       <ProductCard
+                        style={{ marginRight: 30 }}
                         item={it}
                         selectedCurrency={selectedCurrency}
                       />

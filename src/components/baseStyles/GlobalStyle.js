@@ -176,6 +176,12 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 0px;
+
+  @media screen and (min-width: ${theme.breakpoints.tablet}){
+    margin-right: 40px;
+  }
+
 }
 
 .swiper-slide.swiper-slide-active {

@@ -53,11 +53,11 @@ export const ListOfRatesItems = () => {
         {isLoading ? onLoading() : onLoaded()}
         <SectionTitleWrap>
           <SectionTitle>{t('Rates')}</SectionTitle>
-          <Link to="" style={{ textDecoration: 'none' }}>
+          {/* <Link to="" style={{ textDecoration: 'none' }}>
             <SectionSubTitle style={{ textDecoration: 'underline' }}>
               {t('See all')}
             </SectionSubTitle>
-          </Link>
+          </Link> */}
         </SectionTitleWrap>
         <CardContainer>
           <ViewportBox>

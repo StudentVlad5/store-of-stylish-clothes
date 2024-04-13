@@ -47,7 +47,7 @@ export const Hero = () => {
 
   return (
     <>
-      <HeroSection>
+      <HeroSection id="about_us">
         <HeroContainer>
           <HeroImgBox>
             <LinkCategory

@@ -242,19 +242,6 @@ export const ShoppingBag = () => {
                 </OrderList>
               </div>
               <TotalTitleBox>
-                {/* <div> */}
-                {/* <TotalTitle>Total</TotalTitle>
-                  <TotalTitlePrice>
-                    {totalPayment}
-                    {currency}
-                  </TotalTitlePrice> */}
-                {/* </div> */}
-
-                {/* <TotalDiscr>
-                  Separate shipping is applicable to the majority of items. Once
-                  an order is placed, it cannot be cancelled.
-                </TotalDiscr> */}
-
                 <OrderBtn to="/basket" onClick={() => handlecheckout()}>
                   {t('checkout')}
                   <span style={{ marginLeft: 30 }}>
@@ -271,34 +258,13 @@ export const ShoppingBag = () => {
                 {t('We recommend checking out:')}
               </BasketBoxListDiscr>
               <List>
-                {/* {dataArr.map((item, idx) => (
-                  <ListItem
-                    key={idx}
-                    onClick={() => {
-                      setIsOpen(false);
-                      item.nav;
-                    }}
-                  >
-                    <NavLink to={item.link}>
-                      <ListImage
-                        src={item.imageUrl}
-                        width={120}
-                        height={130}
-                        alt="Image"
-                        loading="lazy"
-                      />
-                      <ListTitleBox>
-                        <ListTitle>{item.title}</ListTitle>
-                      </ListTitleBox>
-                    </NavLink>
-                  </ListItem>
-                ))} */}
                 <ListItem
                   onClick={() => {
                     saveToStorage('filters', {
                       ...init,
                       product: [homeProductLinks?.jacets[selectedLanguage]],
                     });
+                    handlecheckout();
                   }}
                 >
                   <ListItemLink
@@ -323,6 +289,7 @@ export const ShoppingBag = () => {
                       ...init,
                       product: [homeProductLinks?.pants[selectedLanguage]],
                     });
+                    handlecheckout();
                   }}
                 >
                   <ListItemLink
@@ -349,6 +316,7 @@ export const ShoppingBag = () => {
                         homeProductLinks?.Hoodies_Sweatshirts[selectedLanguage],
                       ],
                     });
+                    handlecheckout();
                   }}
                 >
                   <ListItemLink
@@ -367,7 +335,7 @@ export const ShoppingBag = () => {
                   </ListItemLink>
                 </ListItem>
 
-                <ListItem>
+                <ListItem onClick={() => handlecheckout()}>
                   <ListItemLink to={`/gifts`}>
                     <ListImage
                       src={photoGifts}

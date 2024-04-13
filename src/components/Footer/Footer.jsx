@@ -145,6 +145,7 @@ export const Footer = () => {
         saveToStorage('filters', {
           ...init,
         });
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
         break;
     }
   };
@@ -322,7 +323,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Designed and Developed by Brand Maze")}
+                {t('Designed and Developed by Brand Maze')}
               </LinkBrand>
             </span>
           </FooterFaqListItem>

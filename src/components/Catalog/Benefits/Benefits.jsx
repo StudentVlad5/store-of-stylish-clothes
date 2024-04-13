@@ -40,7 +40,7 @@ export const Benefits = () => {
               loading="lazy"
             />
             {/* </picture> */}
-            <SC.BenefitsSubtitle>{t('Fast shipping')}</SC.BenefitsSubtitle>
+            <SC.BenefitsSubtitle>{t('Fast Shipping')}</SC.BenefitsSubtitle>
             <SC.BenefitsDescription>
               {t(
                 'We offer fast and reliable delivery straight to your doorstep.',

@@ -47,13 +47,16 @@ export const SelectLanguage = styled.select`
   }
   transition: ${theme.transition[0]};
 
-
   &:focus,
   &:hover,
   &:focus-visible {
     transform: ${theme.scale[0]};
     transition: ${theme.transition[0]};
+    outline: 0;
+    outline-offset: 0;
   }
   &.active {
+    outline: 0;
+    outline-offset: 0;
   }
 `;

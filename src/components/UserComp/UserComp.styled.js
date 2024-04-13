@@ -74,5 +74,6 @@ export const FolderWrapper = styled.div`
 `;
 
 export const LinkFolder = styled(NavLink)`
+  display: block;
   transition: ${theme.transition[1]};
 `;

@@ -36,8 +36,8 @@ const Container = styled(MobileContainer)`
   }
 `;
 const IconUser = styled(iconUser)`
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 `;
 
 export { MobileContainer, Container, IconUser };

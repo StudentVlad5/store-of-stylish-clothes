@@ -390,7 +390,8 @@ color:${theme.colors.green} !important;
 }
 
 .linkFolder.sideBar_menu{
-   position: relative;
+  display: block;
+  position: relative;
   padding-left: 10px;
   font-family: ${theme.fonts[0]};
   font-size: 16px;
@@ -412,17 +413,17 @@ color:${theme.colors.green} !important;
 
   &:hover,
   &:focus {
-    color: ${theme.colors.brown3};
+    color: ${theme.colors.brown4};
   }
 
   &::before {
     content: '';
     position: absolute;
-    top: 25px;
+    bottom: -4px;
     left: 0;
     width: 110%;
     height: 0.5px;
-    background: ${theme.colors.brown3};
+    background: ${theme.colors.brown4};
 
     @media (min-width: ${theme.breakpoints.tablet}) {
       width: 150px;
@@ -436,7 +437,7 @@ color:${theme.colors.green} !important;
   &.active {
     margin-left: 5px;
     font-weight: 500;
-    color: ${theme.colors.brown3};
+    color: ${theme.colors.brown4};
     transform: ${theme.scale[0]};
     transition: ${theme.transition[0]};
     background-color: transparent;

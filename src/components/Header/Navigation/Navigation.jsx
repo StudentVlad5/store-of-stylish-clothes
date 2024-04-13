@@ -105,7 +105,7 @@ export const MobileNavigation = ({ toggleMobileMenu }) => {
             </IconWrapper>
           </Link>
         ) : (
-          <Link to={'/signin'}>
+          <Link to={'/signin'} onClick={toggleMobileMenu}>
             <IconWrapper>
               <IconBookmark aria-label="Bookmark" />
             </IconWrapper>

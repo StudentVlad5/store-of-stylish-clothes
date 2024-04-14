@@ -136,7 +136,7 @@ export const CategoryTitle = styled(ImgTitle)`
   border-radius: 16px;
   color: ${theme.colors.brown4};
   text-align: center;
-  background-color: rgba(225, 225, 225, 0.65);
+  background-color: rgba(225, 225, 225, 0.8);
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;

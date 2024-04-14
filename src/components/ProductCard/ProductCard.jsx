@@ -63,13 +63,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   let imageArray = [];
 
   useEffect(() => {
-    // if (images) {
-    //   imageArray = images.split(',');
-    //   imageArray.unshift(mainImage);
-    // }
-    // slides = imageArray?.length;
-    // setIndxSlideImg(0);
-    // setSlideImg(imageArray.slice(0, slides));
     setOptionData(prev => ({
       ...prev,
       oldPrice: selectOldPrice(selectedCurrency, item[0]),
@@ -79,11 +72,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   }, [selectedCurrency, item[0]]);
 
   const _id = uuid4();
-
-  // if (images) {
-  //   imageArray = images.split(',');
-  //   imageArray.unshift(mainImage);
-  // }
   let options = [];
   if (sizes) {
     options = sizes.split(',');
@@ -198,7 +186,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     selectedData.options = [];
     selectedData.options = options.find(option => option === selectedOption);
     selectedData.quantity = optionData.quantity;
-    // selectedData.title = selectedOption;
     setOptionData(prev => ({ ...prev, ...selectedData }));
   };
 
@@ -210,42 +197,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     );
     return item ? item.optionData.quantity : value;
   });
-
-  //change images
-  // const [indxImg, setIndxImg] = useState(0);
-
-  // let slides = imageArray?.length;
-  // const [indxSlideImg, setIndxSlideImg] = useState(0);
-  // const [slideImages, setSlideImg] = useState(imageArray.slice(0, slides));
-
-  // const handleChangeImg = e => {
-  //   const currentIndx = e.target.id;
-  //   setIndxImg(currentIndx);
-  // };
-
-  // const handleScrollImg = e => {
-  //   const type = e.target.dataset.controls;
-  //   switch (type) {
-  //     case 'up':
-  //       setIndxSlideImg(prevState =>
-  //         prevState - slides < 0
-  //           ? imageArray?.length - slides
-  //           : prevState - slides,
-  //       );
-  //       setSlideImg(imageArray.slice(0, slides));
-  //       break;
-  //     case 'down':
-  //       setIndxSlideImg(prevState =>
-  //         prevState + slides >= imageArray?.length ? 0 : prevState + slides,
-  //       );
-  //       setSlideImg(
-  //         imageArray.slice(imageArray?.length - slides, imageArray?.length),
-  //       );
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   useEffect(() => {
     if (images) {
@@ -562,114 +513,6 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                 </SC.TextBtn>
               </>
             )}
-            {category === 'plants' ? (
-              <SC.InfoSection>
-                <SC.Accord>
-                  <SC.ProductSubTitle marginBottom="0">
-                    Care and Maintenance
-                  </SC.ProductSubTitle>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open description"
-                    aria-expanded="false"
-                    onClick={toggleCareDetails}
-                  >
-                    {showCareDetails ? (
-                      <Open style={{ transform: 'rotate(180deg)' }} />
-                    ) : (
-                      <Open />
-                    )}
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showCareDetails && (
-                  <SC.AccordCareList>
-                    <SC.AccordCareItem>
-                      <Sun width={24} height={24} />
-                      {light === 'bright and direct light' ? (
-                        <span>
-                          Put it in such a place where it is bright and the
-                          sun`s rays penetrate directly to it
-                        </span>
-                      ) : (
-                        <span>
-                          Put it in a place where the sun`s rays pierce through
-                          some cover, e.g. a curtain or a tree outside the
-                          window
-                        </span>
-                      )}
-                    </SC.AccordCareItem>
-                    <SC.AccordCareItem>
-                      <Oil width={24} height={24} />
-                      <span>
-                        {waterDescribe.charAt(0).toUpperCase() +
-                          waterDescribe.slice(1)}
-                      </span>
-                    </SC.AccordCareItem>
-                    <SC.AccordCareItem>
-                      <Evenodd width={24} height={24} />
-                      {hardToKill === 'easy to care' ? (
-                        <span>
-                          It tolerates home humidity well and you don`t have to
-                          worry about it
-                        </span>
-                      ) : (
-                        <span>
-                          Sometimes you need to worry about it and check the
-                          humidity in your home
-                        </span>
-                      )}
-                    </SC.AccordCareItem>
-                    <SC.AccordCareItem>
-                      <Cat width={24} height={24} />
-                      {petFriendly === 'not pet friendly' ? (
-                        <span>
-                          Keep away from pets - nibbling on leaves can harm pets
-                        </span>
-                      ) : (
-                        <span>
-                          You can keep it near pets - gnawing on the leaves
-                          cannot harm pets
-                        </span>
-                      )}
-                    </SC.AccordCareItem>
-                  </SC.AccordCareList>
-                )}
-              </SC.InfoSection>
-            ) : (
-              // <SC.InfoSection>
-              //   <SC.Accord>
-              //     <SC.ProductSubTitle marginBottom="0">
-              //       Design
-              //     </SC.ProductSubTitle>
-              //     <SC.IconBtn
-              //       type="button"
-              //       aria-label="switch to open description"
-              //       aria-expanded="false"
-              //       onClick={toggleCareDetails}
-              //     >
-              //       {showCareDetails ? (
-              //         <Open style={{ transform: 'rotate(180deg)' }} />
-              //       ) : (
-              //         <Open />
-              //       )}
-              //     </SC.IconBtn>
-              //   </SC.Accord>
-              //   {showCareDetails && (
-              //     <SC.AccordCareList>
-              //       <SC.AccordCareItem>
-              //         <span>
-              //           The gold standard of gifting, a Homeforest gift card is
-              //           a sure-fire way to make someone feel special, not to
-              //           mention stylish. Just choose any amount up to $200, send
-              //           by mail, and the recipient can redeem it for whatever he
-              //           or she wishes.
-              //         </span>
-              //       </SC.AccordCareItem>
-              //     </SC.AccordCareList>
-              //   )}
-              // </SC.InfoSection>
-              <></>
-            )}
             <SC.InfoSection>
               <SC.Accord>
                 <SC.ProductSubTitle marginBottom="0">
@@ -714,36 +557,30 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
 ProductCard.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      currentPrice: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      options: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          price: PropTypes.number,
-          currentPrice: PropTypes.number,
-          total: PropTypes.number,
-        }),
-      ),
-      totalQuantity: PropTypes.number,
-      typeOfPlants: PropTypes.string,
-      light: PropTypes.string,
-      petFriendly: PropTypes.string,
-      maintenance: PropTypes.string,
-      potSize: PropTypes.shape({
-        size: PropTypes.number,
-        unit: PropTypes.string,
-        _id: PropTypes.string,
-      }),
-      hardToKill: PropTypes.string,
-      rare: PropTypes.string,
-      waterSchedule: PropTypes.string,
-      waterDescribe: PropTypes.string,
-      images: PropTypes.array,
+      article: PropTypes.string,
       category: PropTypes.string,
+      description: PropTypes.string,
+      title: PropTypes.string,
+      discount_euro: PropTypes.string,
+      discount_ua: PropTypes.string,
+      discount_usd: PropTypes.string,
+      images: PropTypes.string,
+      mainImage: PropTypes.string,
+      man_women: PropTypes.string,
+      newPrice_euro: PropTypes.string,
+      newPrice_ua: PropTypes.string,
+      newPrice_usd: PropTypes.string,
+      oldPrice_euro: PropTypes.string,
+      oldPrice_ua: PropTypes.string,
+      oldPrice_usd: PropTypes.string,
+      price_euro: PropTypes.string,
+      price_ua: PropTypes.string,
+      price_usd: PropTypes.string,
+      product: PropTypes.string,
+      rate: PropTypes.string,
+      sizes: PropTypes.string,
+      status: PropTypes.string,
+      size_chart: PropTypes.string,
     }),
   ),
 };

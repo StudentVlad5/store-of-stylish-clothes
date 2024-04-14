@@ -102,39 +102,3 @@ export const Favorites = () => {
     </SC.CatalogContainer>
   );
 };
-
-Favorites.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      oldPrice: PropTypes.number.isRequired,
-      currentPrice: PropTypes.number.isRequired,
-      currency: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      options: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          oldPrice: PropTypes.number,
-          currentPrice: PropTypes.number,
-          total: PropTypes.number,
-        }),
-      ),
-      totalQuantity: PropTypes.number,
-      typeOfPlants: PropTypes.string,
-      light: PropTypes.string,
-      petFriendly: PropTypes.string,
-      maintenance: PropTypes.string,
-      potSize: PropTypes.shape({
-        size: PropTypes.number,
-        unit: PropTypes.string,
-        _id: PropTypes.string,
-      }),
-      hardToKill: PropTypes.string,
-      rare: PropTypes.string,
-      waterSchedule: PropTypes.string,
-      images: PropTypes.array,
-      category: PropTypes.string,
-    }),
-  ),
-};

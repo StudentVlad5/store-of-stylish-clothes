@@ -21,33 +21,10 @@ export const GiftsHeading = () => {
   return (
     <SC.HeadingSection>
       <SC.ImageContainer>
-        {/* <picture>
-          <source
-            media="(min-width:1440px)"
-            srcSet={`${mainImage_webp} 1x, ${mainImage_webp_2x} 2x`}
-            type="image/webp"
-          />
-          <source
-            media="(max-width:1439px)"
-            srcSet={`${mobImage_webp} 1x, ${mobImage_webp_2x} 2x`}
-            type="image/webp"
-          />
-          <img
-            src={mobImage_png}
-            srcSet={`${mainImage_png} 1440w, ${mainImage_png_2x} 2880w, ${mobImage_png} 840w,${mobImage_png_2x} 1680w`}
-            sizes="(min-width:1440px) 1440px, (max-width:1439px) 840px, 100vw"
-            width={1440}
-            height={400}
-            alt="Plants"
-            loading="lazy"
-          />
-        </picture> */}
         <img src={mainImage_webp_2x} width={1280} height={400} alt="" />
         <SC.Background>
           <Title>{t('Gifts')}</Title>
-          <LinkBtn to={`/shop/plants?page=1&perPage=12`}>
-            {t('Shop now')}
-          </LinkBtn>
+          <LinkBtn to={`/shop`}>{t('Shop now')}</LinkBtn>
         </SC.Background>
       </SC.ImageContainer>
     </SC.HeadingSection>

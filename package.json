@@ -77,7 +77,7 @@
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4"
   },
-  "description": "The Online store of the indoor plants",
+  "description": "The Online store of the clothes and shoes",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -86,8 +86,8 @@
   "keywords": [
     "online",
     "store",
-    "indoor",
-    "plants"
+    "clothes",
+    "shoes"
   ],
   "author": "Brand Maze",
   "license": "ISC",

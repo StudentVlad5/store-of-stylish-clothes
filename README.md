@@ -1,5 +1,5 @@
-# indoor-plants
-Online store of the indoor plants 
+# quillis shop
+Online store of the stylish clothes 
 
 Provided
 1. Information about the store.
@@ -9,7 +9,6 @@ Provided
 5. The administrator can edit product parameters, add/delete ones.
 6. Orders are stored in a separate database.
 7. For analysis, a separate database is kept on the actions of users who started placing an order, but did not complete it.
-8. It is possible to blog, post videos, conduct Rewards Programs
 
 Used technologies: HTML, CSS, JavaScript, Parcel, Git / GitHub, Figma, React, Node JS, MongoDB.
 

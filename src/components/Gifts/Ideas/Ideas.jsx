@@ -44,20 +44,13 @@ export const Ideas = () => {
       <SC.HeadlineIdeas>{t('Our ideas for gifts')}</SC.HeadlineIdeas>
       <SC.IdeasList>
         <SC.IdeasItem>
-          {/* <picture>
-            <source
-              srcSet={`${img1_webp} 1x, ${img1_webp_2x} 2x`}
-              type="image/webp"
-            /> */}
           <img
             src={img1_webp_2x}
-            // srcSet={`${img1_png} 285w, ${img1_png_2x} 570w`}
             width={285}
             height={400}
-            alt="Plants"
+            alt="Gift clothes"
             loading="lazy"
           />
-          {/* </picture> */}
           <SC.Link
             to={`/shop?category=${homeProductLinks?.clothing[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
@@ -71,20 +64,13 @@ export const Ideas = () => {
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>
-          {/* <picture>
-            <source
-              srcSet={`${img2_webp} 1x, ${img2_webp_2x} 2x`}
-              type="image/webp"
-            /> */}
           <img
             src={img3_webp_2x}
-            // srcSet={`${img2_png} 285w, ${img2_png_2x} 570w`}
             width={285}
             height={400}
-            alt="Plants"
+            alt="Gift Accessories"
             loading="lazy"
           />
-          {/* </picture> */}
           <SC.Link
             to={`/shop?category=${homeProductLinks?.accessories[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
@@ -98,20 +84,13 @@ export const Ideas = () => {
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>
-          {/* <picture>
-            <source
-              srcSet={`${img3_webp} 1x, ${img3_webp_2x} 2x`}
-              type="image/webp"
-            /> */}
           <img
             src={img2_webp_2x}
-            // srcSet={`${img3_png} 285w, ${img3_png_2x} 570w`}
             width={285}
             height={400}
-            alt="Plants"
+            alt="Gift Shoes"
             loading="lazy"
           />
-          {/* </picture> */}
           <SC.Link
             to={`/shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice}`}
             onClick={() => {
@@ -135,14 +114,17 @@ export const Ideas = () => {
               srcSet={`${img4_png} 285w, ${img4_png_2x} 570w`}
               width={285}
               height={400}
-              alt="Plants"
+              alt="Gift for ready style"
               loading="lazy"
             />
           </picture>
           <SC.Link
-            to={`/shop/plants?page=1&perPage=12&hardToKill=easy+to+care`}
+            to={`/shop`}
             onClick={() => {
-              saveToStorage('hardToKill', 'easy to care');
+              saveToStorage('filters', {
+                ...init,
+                // category: [homeProductLinks?.footwear[selectedLanguage]],
+              });
             }}
           >
             Best for beginners

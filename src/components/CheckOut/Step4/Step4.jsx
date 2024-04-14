@@ -162,7 +162,7 @@ const Step4 = () => {
     setIsLoading(true);
     try {
       const { data } = await makeOrder(`/order/`, newOrder);
-      navigate('/shop/plants?perPage=12&page=1', { replace: true });
+      navigate('/shop', { replace: true });
       setContextBasket([]);
       if (!data) {
         return onFetchError(t('Whoops, something went wrong'));

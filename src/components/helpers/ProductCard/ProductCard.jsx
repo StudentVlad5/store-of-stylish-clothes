@@ -18,11 +18,13 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
       {status !== undefined ? (
         <CardLi>
           {t('Free')}:{' '}
-          {(
-            ((item.oldPrice_ua - item.newPrice_ua) / item.oldPrice_ua) *
-            100
-          ).toFixed(1)}
-          %
+          {selectedCurrency === 'ua' &&
+            (item.oldPrice_ua - item.newPrice_ua).toFixed(1)}
+          {selectedCurrency === 'usd' &&
+            (item.oldPrice_usd - item.newPrice_usd).toFixed(1)}
+          {selectedCurrency === 'euro' &&
+            (item.oldPrice_euro - item.newPrice_euro).toFixed(1)}
+          {selectCurrency(selectedCurrency)}
         </CardLi>
       ) : (
         <CardLi>
@@ -39,7 +41,7 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
       </CardLi>
       <CardLi>
         <span>
-          {t("Price")}: {item[`newPrice_${selectedCurrency}`]}
+          {t('Price')}: {item[`newPrice_${selectedCurrency}`]}
           {selectCurrency(selectedCurrency)}
         </span>
         <span>

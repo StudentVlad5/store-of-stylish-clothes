@@ -127,6 +127,7 @@ export const ListOfDiscountsItems = () => {
                         style={{ marginRight: 30 }}
                         item={it}
                         selectedCurrency={selectedCurrency}
+                        status={it.status}
                       />
                     </Link>
                   </SwiperSlide>

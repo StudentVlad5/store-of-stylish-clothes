@@ -101,8 +101,8 @@ export const Footer = () => {
     },
     {
       title: t('CONTACTS'),
-      options: ['+380111111111', 'quillis.info@gmail.com'],
-      links: [`tel:380111111111`, `mailto:quillis.info@gmail.com`],
+      options: ['+38-068-467-72-70', 'quillis.info@gmail.com'],
+      links: [`tel:380684677270`, `mailto:quillis.info@gmail.com`],
     },
   ];
 

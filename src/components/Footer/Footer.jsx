@@ -6,11 +6,9 @@ import {
   FooterContainerBrand,
   FooterFaqListBrand,
   Facebook,
-  Twiter,
   Instagram,
   Tiktok,
   YouTube,
-  Pinterest,
   FooterFaqList,
   FooterFaqListItem,
   FooterFaqListTitle,
@@ -31,6 +29,7 @@ import {
   FooterInputFormBtn,
   LinkBrand,
   QuillisLogoFooter,
+  Telegram,
 } from './Footer.styled';
 import { useTranslation } from 'react-i18next';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
@@ -280,27 +279,53 @@ export const Footer = () => {
 
             <FooterContactsList>
               <FooterContactsListItem>
-                <Facebook />
+                <a
+                  href="https://www.facebook.com/profile.php?id=61557868694003"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook />
+                </a>
               </FooterContactsListItem>
 
               <FooterContactsListItem>
-                <Twiter />
+                <a
+                  href="https://www.instagram.com/quillis_clothes?igsh=aHI3NzRwZjR5YnNh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                </a>
               </FooterContactsListItem>
 
               <FooterContactsListItem>
-                <Instagram />
+                <a
+                  href="https://www.tiktok.com/@quillis.clothes?_t=8lZJXwXTpu1&_r=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Tiktok />
+                </a>
               </FooterContactsListItem>
 
               <FooterContactsListItem>
-                <Tiktok />
+                <a
+                  href="https://t.me/quillisclothes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Telegram />
+                </a>
               </FooterContactsListItem>
 
               <FooterContactsListItem>
-                <YouTube />
-              </FooterContactsListItem>
-
-              <FooterContactsListItem>
-                <Pinterest />
+                <a
+                  href="https://youtube.com/@Quillis.Clothes?si=HxEt6M_nFi2dHwNj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <YouTube />
+                </a>
               </FooterContactsListItem>
             </FooterContactsList>
           </FooterContacts>

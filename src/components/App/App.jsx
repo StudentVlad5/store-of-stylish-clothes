@@ -32,6 +32,7 @@ const ForgotPasswordPage = lazy(() => import('pages/ForgotPassword'));
 const Delivery_and_payments = lazy(() => import('pages/Delivery_and_payments'));
 const BasketPage = lazy(() => import('pages/Basket'));
 const DiscountsShop = lazy(() => import('pages/DiscountsCatalog'));
+const MorePage = lazy(() => import('pages/More'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -100,6 +101,11 @@ export const App = () => {
             <Route
               path="delivery_and_payments"
               element={<Delivery_and_payments />}
+            />
+
+            <Route
+              path="more"
+              element={<MorePage />}
             />
 
             <Route

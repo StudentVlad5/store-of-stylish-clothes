@@ -7,6 +7,7 @@ import { ReactComponent as instagram } from 'images/svg/instagram.svg';
 import { ReactComponent as tiktok } from 'images/svg/tiktok.svg';
 import { ReactComponent as youtube } from 'images/svg/youtube.svg';
 import { ReactComponent as pinterest } from 'images/svg/pinterest.svg';
+import { ReactComponent as telegram } from 'images/svg/telegram.svg';
 import { ReactComponent as arrowDown } from 'images/svg/arrowDown.svg';
 import { ReactComponent as logo } from 'images/svg/logoWhite.svg';
 import theme from 'components/baseStyles/Variables.styled';
@@ -353,7 +354,7 @@ export const ArrowDown = styled(arrowDown)`
 `;
 
 export const Facebook = styled(facebook)`
-  fill: ${theme.colors.text};
+  fill: ${theme.colors.white};
 `;
 
 export const Twiter = styled(twiter)`
@@ -361,17 +362,22 @@ export const Twiter = styled(twiter)`
 `;
 
 export const Instagram = styled(instagram)`
-  fill: ${theme.colors.text};
+  fill: ${theme.colors.white};
 `;
 
 export const Tiktok = styled(tiktok)`
-  fill: ${theme.colors.text};
+  fill: ${theme.colors.white};
 `;
 
 export const YouTube = styled(youtube)`
-  fill: ${theme.colors.text};
+  fill: ${theme.colors.white};
+`;
+
+export const Telegram = styled(telegram)`
+  width: 20px;
+  stroke: ${theme.colors.white};
 `;
 
 export const Pinterest = styled(pinterest)`
-  fill: ${theme.colors.text};
+  fill: ${theme.colors.white};
 `;

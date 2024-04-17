@@ -282,6 +282,7 @@ const CatalogTitleWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 30px;
+  gap: 20px;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     padding: 0 0px;

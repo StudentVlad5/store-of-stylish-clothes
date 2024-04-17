@@ -101,7 +101,7 @@ const CardTitle = styled.div`
 
 const CardName = styled.span`
   color: ${theme.colors.brown2};
-  font-size: ${theme.fontSizes.extra};
+  font-size: ${theme.fontSizes.large};
   font-style: normal;
   margin-top: 0;
   text-align: left;
@@ -113,7 +113,7 @@ const CardName = styled.span`
   text-transform: none;
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: ${theme.fontSizes.extra};
   }
 `;
 
@@ -226,8 +226,8 @@ const CardStatus = styled.p`
     z-index: 10;
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 20px;
-  }
+      font-size: 20px;
+    }
   }
   &:last-of-type {
     justify-content: space-between;

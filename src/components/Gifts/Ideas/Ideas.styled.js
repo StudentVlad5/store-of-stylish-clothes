@@ -31,16 +31,17 @@ const IdeasItem = styled.li`
   }
 
   & img {
-    width: 150px;
-    height: auto;
+    width: 140px;
+    height: 210px;
 
     @media screen and (min-width: ${theme.breakpoints.tablet}) {
-      width: 250px;
+      width: 236px;
+      height: 350px;
     }
 
     @media screen and (min-width: ${theme.breakpoints.desktop}) {
       width: 285px;
-      height: 400px;
+      height: 436px;
     }
   }
 `;

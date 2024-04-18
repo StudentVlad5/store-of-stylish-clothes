@@ -18,7 +18,7 @@ import img3_webp_2x from 'images/gifts/img3@2x.webp';
 import img4_png from 'images/gifts/img4.png';
 import img4_png_2x from 'images/gifts/img4@2x.png';
 import img4_webp from 'images/gifts/img4.webp';
-import img4_webp_2x from 'images/gifts/img4@2x.webp';
+import img4_webp_2x from 'images/gifts/readyStyles@2x.webp';
 import { useTranslation } from 'react-i18next';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
 import { homeProductLinks } from 'BASE_CONST/Base-const';
@@ -104,7 +104,7 @@ export const Ideas = () => {
           </SC.Link>
         </SC.IdeasItem>
         <SC.IdeasItem>
-          <picture>
+          {/* <picture>
             <source
               srcSet={`${img4_webp} 1x, ${img4_webp_2x} 2x`}
               type="image/webp"
@@ -117,7 +117,14 @@ export const Ideas = () => {
               alt="Gift for ready style"
               loading="lazy"
             />
-          </picture>
+          </picture> */}
+              <img
+            src={img4_webp_2x}
+            width={285}
+            height={400}
+            alt="Gift clothes"
+            loading="lazy"
+          />
           <SC.Link
             to={`/shop`}
             onClick={() => {
@@ -127,7 +134,7 @@ export const Ideas = () => {
               });
             }}
           >
-            Best for beginners
+            {t("Ready styles")}
           </SC.Link>
         </SC.IdeasItem>
       </SC.IdeasList>

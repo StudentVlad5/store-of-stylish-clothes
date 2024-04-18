@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.17654e45.css",
-    "main.js": "/static/js/main.6e0f9e04.js",
+    "main.js": "/static/js/main.70b7db7c.js",
     "static/css/891.345af916.chunk.css": "/static/css/891.345af916.chunk.css",
     "static/js/891.3de6cb16.chunk.js": "/static/js/891.3de6cb16.chunk.js",
     "static/js/865.9d8dfbe8.chunk.js": "/static/js/865.9d8dfbe8.chunk.js",
@@ -9,7 +9,7 @@
     "static/js/600.33a74f67.chunk.js": "/static/js/600.33a74f67.chunk.js",
     "static/js/81.0140caa0.chunk.js": "/static/js/81.0140caa0.chunk.js",
     "static/js/978.6f4a974e.chunk.js": "/static/js/978.6f4a974e.chunk.js",
-    "static/js/904.eb399cf7.chunk.js": "/static/js/904.eb399cf7.chunk.js",
+    "static/js/571.13c62631.chunk.js": "/static/js/571.13c62631.chunk.js",
     "static/js/5.992b4aff.chunk.js": "/static/js/5.992b4aff.chunk.js",
     "static/js/741.fcf7f8b2.chunk.js": "/static/js/741.fcf7f8b2.chunk.js",
     "static/js/886.05c00f1f.chunk.js": "/static/js/886.05c00f1f.chunk.js",
@@ -26,7 +26,7 @@
     "static/media/corp.png": "/static/media/corp.2e0b741f23808d8b3555.png",
     "static/media/desktop@2x.png": "/static/media/desktop@2x.dba7c52765d52ab8c430.png",
     "static/media/mob@2x.png": "/static/media/mob@2x.7699108b6560246dce53.png",
-    "static/media/card.png": "/static/media/card.0614b181774d580e027b.png",
+    "static/media/card.png": "/static/media/card.dd399a649bffaa8fa23f.png",
     "static/media/corp@2x.png": "/static/media/corp@2x.b95f112cce096aced4e4.png",
     "static/media/img3@2x.png": "/static/media/img3@2x.de8b52c714d93f4d0b93.png",
     "static/media/desktop.png": "/static/media/desktop.fc7a273dac729cde8b86.png",
@@ -41,11 +41,11 @@
     "static/media/corp@2x.webp": "/static/media/corp@2x.8b7bb2d79e04927eb215.webp",
     "static/media/img3.png": "/static/media/img3.620cc555b0213bc920ee.png",
     "static/media/img4.png": "/static/media/img4.f90ce192ef0cfe958b7e.png",
-    "static/media/img4@2x.webp": "/static/media/img4@2x.c780bc0b0cbe0879840b.webp",
     "static/media/img2.png": "/static/media/img2.e386bb6340a5f7d7b1f2.png",
     "static/media/img1.png": "/static/media/img1.cfffdcd5cc996bdc0a7b.png",
     "static/media/desktop@2x.webp": "/static/media/desktop@2x.4adc2023460474df9bf7.webp",
     "static/media/card@2x.png": "/static/media/card@2x.38c357e0993663f54d44.png",
+    "static/media/readyStyles@2x.webp": "/static/media/readyStyles@2x.d63618fea7d63c48e001.webp",
     "static/media/404_indoor_plants_desktop_2x.webp": "/static/media/404_indoor_plants_desktop_2x.d5cd338eaf55a5996e3d.webp",
     "static/media/mob.webp": "/static/media/mob.e36c902e00e1aa1fd0ff.webp",
     "static/media/gifts_mobile_2x.png": "/static/media/gifts_mobile_2x.39076d155528dd718390.png",
@@ -129,7 +129,7 @@
     "static/media/minus.svg": "/static/media/minus.697da25cfed7592d680a3decd383e854.svg",
     "static/media/arrowDown.svg": "/static/media/arrowDown.2124174c7a9aa922cb88bb1aa1569382.svg",
     "main.17654e45.css.map": "/static/css/main.17654e45.css.map",
-    "main.6e0f9e04.js.map": "/static/js/main.6e0f9e04.js.map",
+    "main.70b7db7c.js.map": "/static/js/main.70b7db7c.js.map",
     "891.345af916.chunk.css.map": "/static/css/891.345af916.chunk.css.map",
     "891.3de6cb16.chunk.js.map": "/static/js/891.3de6cb16.chunk.js.map",
     "865.9d8dfbe8.chunk.js.map": "/static/js/865.9d8dfbe8.chunk.js.map",
@@ -137,7 +137,7 @@
     "600.33a74f67.chunk.js.map": "/static/js/600.33a74f67.chunk.js.map",
     "81.0140caa0.chunk.js.map": "/static/js/81.0140caa0.chunk.js.map",
     "978.6f4a974e.chunk.js.map": "/static/js/978.6f4a974e.chunk.js.map",
-    "904.eb399cf7.chunk.js.map": "/static/js/904.eb399cf7.chunk.js.map",
+    "571.13c62631.chunk.js.map": "/static/js/571.13c62631.chunk.js.map",
     "5.992b4aff.chunk.js.map": "/static/js/5.992b4aff.chunk.js.map",
     "741.fcf7f8b2.chunk.js.map": "/static/js/741.fcf7f8b2.chunk.js.map",
     "886.05c00f1f.chunk.js.map": "/static/js/886.05c00f1f.chunk.js.map",
@@ -154,6 +154,6 @@
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.6e0f9e04.js"
+    "static/js/main.70b7db7c.js"
   ]
 }

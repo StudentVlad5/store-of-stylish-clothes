@@ -234,7 +234,7 @@ export const Footer = () => {
         <div>
           <FooterSubscribtion>{t('Subscribtion')}</FooterSubscribtion>
           <FooterSubscribtion>
-            {t('Subscribe to enjoy 10% off')}
+            {t("Subscribe so you don't miss anything")}
           </FooterSubscribtion>
 
           <FooterSubscribtionDiscr>

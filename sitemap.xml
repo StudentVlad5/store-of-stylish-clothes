@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<meta http-equiv="Content-Type" content="text/xml; charset=utf-8" />
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://quillis.vercel.app/</loc></url>
-<url><loc>https://quillis.vercel.app/shop</loc></url>
-<url><loc>https://quillis.vercel.app/gifts</loc></url>
-<url><loc>https://quillis.vercel.app/discounts</loc></url>
-<url><loc>https://quillis.vercel.app/novetly</loc></url>
-<url><loc>https://quillis.vercel.app/user/</loc></url>
+<urlset xmlns=”http://www.sitemaps.org/schemas/sitemap/0.9” xmlns:xhtml=”http:www.w3.org/1999/xhtml”>
+
+<url>
+    <loc>https://quillis.vercel.app/</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
+<url>
+    <loc>https://quillis.vercel.app/shop</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
+<url>
+    <loc>https://quillis.vercel.app/gifts</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
+<url>
+    <loc>https://quillis.vercel.app/discounts</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
+<url>
+    <loc>https://quillis.vercel.app/novetly</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
+<url>
+    <loc>https://quillis.vercel.app/user/</loc>
+        <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
+</url>
 </urlset>

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkstore_of_stylish_clothes=self.webpackChunkstore_of_stylish_clothes||[]).push([[413],{8413:(s,e,t)=>{t.r(e),t.d(e,{default:()=>n});var o=t(2791),r=t(9434),a=t(456),c=t(4116),h=t(8472),l=t(3329);const n=()=>{const s=(0,r.I0)();return(0,o.useEffect)((()=>{s((0,a.X)({headerBottom:"addHeaderBottom"}))}),[]),(0,l.jsxs)(l.Fragment,{children:[(0,l.jsx)(c.H,{title:"Basket",description:"Your shopping bag"}),(0,l.jsx)(h.L,{})]})}}}]);
+//# sourceMappingURL=413.5c7e9453.chunk.js.map

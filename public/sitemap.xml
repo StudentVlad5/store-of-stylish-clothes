@@ -4,7 +4,7 @@
 <url>
     <loc>https://quillis.vercel.app/</loc>
     <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
@@ -12,7 +12,7 @@
 <url>
     <loc>https://quillis.vercel.app/shop</loc>
     <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
@@ -20,7 +20,7 @@
 <url>
     <loc>https://quillis.vercel.app/gifts</loc>
     <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
@@ -28,7 +28,7 @@
 <url>
     <loc>https://quillis.vercel.app/discounts</loc>
     <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
@@ -36,7 +36,7 @@
 <url>
     <loc>https://quillis.vercel.app/novetly</loc>
     <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />
@@ -44,7 +44,7 @@
 <url>
     <loc>https://quillis.vercel.app/user/</loc>
         <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quillis.vercel.app/" />
     <xhtml:link rel="alternate" hreflang="uk" href="https:/quillis.vercel.app/" />

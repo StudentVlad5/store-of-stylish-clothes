@@ -6,48 +6,44 @@
     <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
 </url>
 <url>
     <loc>https://quillis.shop/shop</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
 </url>
 <url>
     <loc>https://quillis.shop/gifts</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
+    <!-- <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" /> -->
 </url>
 <url>
     <loc>https://quillis.shop/discounts</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
+    <!-- <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" /> -->
 </url>
 <url>
     <loc>https://quillis.shop/novetly</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
+    <!-- <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" /> -->
 </url>
 <url>
     <loc>https://quillis.shop/user/</loc>
         <lastmod>2024-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" />
+    <!-- <xhtml:link rel="alternate" hreflang="en" href="https://quillis.shop/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://quillis.shop/" /> -->
 </url>
 <url> <loc>https://quillis.shop/shop/byid/FFK0527</loc><lastmod>2024-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url> <loc>https://quillis.shop/shop/byid/8SN0089</loc><lastmod>2024-04-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

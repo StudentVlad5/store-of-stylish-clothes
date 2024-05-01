@@ -100,7 +100,7 @@ export const CatalogList = ({ products }) => {
                 <SC.CardInfo>
                   {card.discount_ua !== 0 ? (
                     <SC.CardPrices>
-                      {card.price_ua && (
+                      {card.newPrice_ua && (
                         <SC.CardDiscount>
                           <span>{t('Price')}: </span>
                           {selectNewPrice(selectedCurrency, card)}
@@ -116,7 +116,7 @@ export const CatalogList = ({ products }) => {
                     </SC.CardPrices>
                   ) : (
                     <SC.CardPrices>
-                      {card?.price_ua && (
+                      {card?.newPrice_ua && (
                         <SC.CardDiscount>
                           {selectNewPrice(selectedCurrency, card)}
                           {selectCurrency(selectedCurrency)}

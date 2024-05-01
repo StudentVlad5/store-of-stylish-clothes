@@ -53,7 +53,10 @@ const ProductNavList = styled.ul`
 const ProductNavItem = styled.li`
   position: relative;
   margin-right: 13px;
-
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: capitalize;
+  }
   &:nth-child(3) {
     & a {
       text-transform: capitalize;
@@ -296,6 +299,10 @@ const Name = styled.h2`
   font-weight: 400;
   line-height: normal;
   color: ${theme.colors.brown2};
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: capitalize;
+  }
 
   @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 20px;

@@ -110,7 +110,10 @@ const CardName = styled.span`
   line-height: normal;
   margin-bottom: 0;
   letter-spacing: 0;
-  text-transform: none;
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: capitalize;
+  }
 
   @media screen and (min-width: ${theme.breakpoints.desktop}) {
     font-size: ${theme.fontSizes.extra};

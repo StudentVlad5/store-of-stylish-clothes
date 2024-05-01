@@ -393,7 +393,7 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
                     <SC.Prices>
                       <SC.Discount>
                         {optionData.newPrice}
-                        {selectedCurrency}
+                        {selectCurrency(selectedCurrency)}
                       </SC.Discount>
                     </SC.Prices>
                   )}

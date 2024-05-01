@@ -199,8 +199,11 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   });
 
   useEffect(() => {
+    let imageArray = [];
     if (images) {
       imageArray = images.split(',');
+    }
+    if (mainImage) {
       imageArray.unshift(mainImage);
     }
     setSlideImg(imageArray);

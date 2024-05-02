@@ -11,15 +11,16 @@ export function SEO({
 }) {
   return (
     <Helmet>
+      <meta charset="utf-8" />
       <title>{title}</title>
-      <meta lang="en" name="description" content={description} />
       {description_ua && (
         <meta lang="uk-UA" name="description" content={description_ua} />
       )}
-      <meta lang="en" name="keywords" content={keywords} />
       {keywords_ua && (
         <meta lang="uk-UA" name="keywords" content={keywords_ua} />
       )}
+      <meta lang="en" name="description" content={description} />
+      <meta lang="en" name="keywords" content={keywords} />
     </Helmet>
   );
 }

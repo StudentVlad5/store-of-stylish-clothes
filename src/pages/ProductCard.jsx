@@ -48,7 +48,12 @@ const ProductCardPage = ({ addToBasket }) => {
 
   return (
     <>
-      <SEO title={t('Product card')} description="Product Card Page" />
+      <SEO
+        title={t('Product card')}
+        description_ua={`Product Card Page ${product}`}
+        keywords_ua={`Product Card Page ${product}`}
+        description={`Product Card Page ${product}`}
+      />
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError(t('Whoops, something went wrong'))}
       {Object.keys(product).length > 0 && !error && (

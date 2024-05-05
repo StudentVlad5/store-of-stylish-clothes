@@ -18,6 +18,7 @@ import {
   selectOldPrice,
 } from 'services/selectCurrency';
 import { useTranslation } from 'react-i18next';
+import photoComingSoon from '../../../images/catalog/Coming-Soon-Free-Download-PNG.png';
 
 export const CatalogList = ({ products }) => {
   const { t } = useTranslation();
@@ -88,7 +89,11 @@ export const CatalogList = ({ products }) => {
                   }
                 </SC.CardStatus>
                 <SC.CardImage
-                  src={card.mainImage}
+                  src={
+                    card?.mainImage && typeof card?.mainImage === 'string'
+                      ? card.mainImage
+                      : photoComingSoon
+                  }
                   alt={card.title}
                   loading="lazy"
                 />

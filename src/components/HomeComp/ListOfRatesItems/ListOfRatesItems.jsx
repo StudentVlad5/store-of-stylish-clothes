@@ -34,7 +34,7 @@ export const ListOfRatesItems = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/shop/${selectedLanguage}/rate`);
+        const { data } = await fetchData(`/shop/rate`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -45,7 +45,7 @@ export const ListOfRatesItems = () => {
         setIsLoading(false);
       }
     })();
-  }, [selectedLanguage]);
+  }, []);
 
   return (
     <CardContainerSection>
@@ -119,6 +119,7 @@ export const ListOfRatesItems = () => {
                       <ProductCard
                         item={it}
                         selectedCurrency={selectedCurrency}
+                        selectedLanguage={selectedLanguage}
                       />
                     </Link>
                   </SwiperSlide>

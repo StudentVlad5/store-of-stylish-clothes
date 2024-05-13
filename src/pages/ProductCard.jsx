@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { SEO } from 'utils/SEO';
 import { fetchData } from '../services/APIservice';
 import { ProductCard } from '../components/ProductCard/ProductCard';
+import { StylesCard } from '../components/StylesCard/StylesCard';
 import { onLoading, onLoaded } from 'components/helpers/Loader/Loader';
 import { onFetchError } from 'components/helpers/Messages/NotifyMessages';
 import { cleanHeaderBottom } from 'redux/header_bottom/operation';
@@ -26,9 +27,7 @@ const ProductCardPage = ({ addToBasket }) => {
     async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(
-          `/shop/${selectedLanguage}/byid/${routeParams.id}`,
-        );
+        const { data } = await fetchData(`/shop/byid/${routeParams.id}`);
         setProduct(data);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
@@ -56,13 +55,26 @@ const ProductCardPage = ({ addToBasket }) => {
       />
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError(t('Whoops, something went wrong'))}
-      {Object.keys(product).length > 0 && !error && (
-        <ProductCard
-          item={product}
-          addToBasket={addToBasket}
-          selectedCurrency={selectedCurrency}
-        />
-      )}
+      {Object.keys(product).length > 0 &&
+        !error &&
+        !product[0]?.list_of_articles && (
+          <ProductCard
+            item={product}
+            addToBasket={addToBasket}
+            selectedCurrency={selectedCurrency}
+            selectedLanguage={selectedLanguage}
+          />
+        )}
+      {Object.keys(product).length > 0 &&
+        !error &&
+        product[0]?.list_of_articles && (
+          <StylesCard
+            item={product}
+            addToBasket={addToBasket}
+            selectedCurrency={selectedCurrency}
+            selectedLanguage={selectedLanguage}
+          />
+        )}
     </>
   );
 };

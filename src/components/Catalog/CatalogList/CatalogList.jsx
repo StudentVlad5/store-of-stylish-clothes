@@ -20,7 +20,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import photoComingSoon from '../../../images/catalog/Coming-Soon-Free-Download-PNG.png';
 
-export const CatalogList = ({ products }) => {
+export const CatalogList = ({ products, selectedLanguage }) => {
   const { t } = useTranslation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(getUser).favorites;
@@ -61,7 +61,7 @@ export const CatalogList = ({ products }) => {
     <SC.Grid>
       {products.map(card => {
         return (
-          <SC.Card key={card.uuid}>
+          <SC.Card key={card?.uuid + card.article}>
             <NavLink to={`/shop/byid/${card.article}`}>
               <div
                 style={{
@@ -94,12 +94,28 @@ export const CatalogList = ({ products }) => {
                       ? card.mainImage
                       : photoComingSoon
                   }
-                  alt={card.title}
+                  alt={
+                    selectedLanguage === 'de'
+                      ? card?.title_de
+                      : selectedLanguage === 'en'
+                      ? card?.title_en
+                      : selectedLanguage === 'ru'
+                      ? card?.title_ru
+                      : card?.title_ua
+                  }
                   loading="lazy"
                 />
                 <SC.CardDescription>
                   <SC.CardTitle>
-                    <SC.CardName>{card.title}</SC.CardName>
+                    <SC.CardName>
+                      {selectedLanguage === 'de'
+                        ? card?.title_de
+                        : selectedLanguage === 'en'
+                        ? card?.title_en
+                        : selectedLanguage === 'ru'
+                        ? card?.title_ru
+                        : card?.title_ua}
+                    </SC.CardName>
                   </SC.CardTitle>
                 </SC.CardDescription>
                 <SC.CardInfo>

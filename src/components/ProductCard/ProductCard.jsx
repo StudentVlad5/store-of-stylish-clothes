@@ -16,10 +16,7 @@ import { ReactComponent as Done } from 'images/svg/done.svg';
 import { ReactComponent as Plus } from 'images/svg/plus.svg';
 import { ReactComponent as Minus } from 'images/svg/minus.svg';
 import { ReactComponent as Open } from 'images/svg/open.svg';
-import { ReactComponent as Cat } from 'images/svg/cat.svg';
-import { ReactComponent as Evenodd } from 'images/svg/evenodd.svg';
-import { ReactComponent as Oil } from 'images/svg/oil.svg';
-import { ReactComponent as Sun } from 'images/svg/sun.svg';
+
 import {
   selectCurrency,
   selectNewPrice,
@@ -29,18 +26,35 @@ import uuid4 from 'uuid4';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
+export const ProductCard = ({
+  item,
+  selectedCurrency,
+  addToBasket,
+  selectedLanguage,
+}) => {
   const {
     article,
-    category,
-    description,
-    title,
+    category_ua,
+    category_ru,
+    category_en,
+    category_de,
+    description_ua,
+    description_ru,
+    description_en,
+    description_de,
+    title_ua,
+    title_ru,
+    title_en,
+    title_de,
     discount_euro,
     discount_ua,
     discount_usd,
     images,
     mainImage,
-    man_women,
+    man_women_ua,
+    man_women_ru,
+    man_women_en,
+    man_women_de,
     newPrice_euro,
     newPrice_ua,
     newPrice_usd,
@@ -52,15 +66,52 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
     price_usd,
     product,
     rate,
-    sizes,
+    sizes_ua,
+    sizes_ru,
+    sizes_en,
+    sizes_de,
     status,
-    size_chart,
+    size_chart_ua,
+    size_chart_ru,
+    size_chart_en,
+    size_chart_de,
   } = item[0];
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const routeParams = useParams();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  let imageArray = [];
+
+  let title = title_ua;
+  let description = description_ua;
+  let category = category_ua;
+  let man_women = man_women_ua;
+  let sizes = sizes_ua;
+  let size_chart = size_chart_ua;
+
+  if (selectedLanguage === 'ru') {
+    title = title_ru;
+    description = description_ru;
+    category = category_ru;
+    man_women = man_women_ru;
+    sizes = sizes_ru;
+    size_chart = size_chart_ru;
+  }
+  if (selectedLanguage === 'en') {
+    title = title_en;
+    description = description_en;
+    category = category_en;
+    man_women = man_women_en;
+    sizes = sizes_en;
+    size_chart = size_chart_en;
+  }
+  if (selectedLanguage === 'de') {
+    title = title_de;
+    description = description_de;
+    category = category_de;
+    man_women = man_women_de;
+    sizes = sizes_de;
+    size_chart = size_chart_de;
+  }
 
   useEffect(() => {
     setOptionData(prev => ({
@@ -238,8 +289,8 @@ export const ProductCard = ({ item, selectedCurrency, addToBasket }) => {
   const [slideImagesToShow, setSlideImagesToShow] = useState([]);
 
   // open details for the info section
-  const [showCareDetails, setCareShowDetails] = useState(false);
-  const toggleCareDetails = () => setCareShowDetails(state => !state);
+  // const [showCareDetails, setCareShowDetails] = useState(false);
+  // const toggleCareDetails = () => setCareShowDetails(state => !state);
   const [showIncludedDetails, setShowIncludedDetails] = useState(false);
   const toggleIncludedDetails = () => setShowIncludedDetails(state => !state);
 

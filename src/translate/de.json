@@ -13,7 +13,7 @@
   "Shop": "Shop",
   "Gifts": "Geschenke",
   "Discounts": "Rabatte",
-  "Novelty": "Neuheit",
+  "Styles": "Stile",
   "Page under development": "Seite in Entwicklung",
   "Back": "Zurück",
   "See all": "Alles sehen",
@@ -243,5 +243,10 @@
   "Name too short (min 2)": "Der Name ist zu kurz (min. 2)",
   "Require": "Obligatorisch",
   "Your passwords do not match": "Ihre Passwörter stimmen nicht überein",
-  "Ready styles": "Fertige Styles"
+  "Ready styles": "Fertige Styles",
+  "Model name": "Modellname",
+  "Discription": "Beschreibung",
+  "Choose your options...": "Wählen Sie Ihre Größe...",
+  "Wow. Sorry, we missed the product description": "Leider haben wir die Produktbeschreibung übersehen",
+  "Price for a ready set": "Preis für ein fertiges Set"
 }

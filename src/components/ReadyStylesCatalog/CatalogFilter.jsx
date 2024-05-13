@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Range from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { saveToStorage } from 'services/localStorService';
-import * as SC from './CatalogFilter.styled';
+import * as SC from '../Catalog/CatalogFilter/CatalogFilter.styled';
 import { ReactComponent as Open } from 'images/svg/open.svg';
 import debounce from 'lodash.debounce';
 import { StatusContext } from 'components/ContextStatus/ContextStatus';
@@ -180,51 +180,50 @@ export const CatalogFilter = ({
             </SC.Filter>
           )}
 
-        {filterState[0]?.level_2[selectedLanguage] &&
-          filterState[0]?.level_2[selectedLanguage].length > 0 && (
-            <SC.Filter>
-              <SC.FilterHeading
-                className="active"
-                data-key="category"
-                onClick={e => {
-                  toggleFilterItem(e);
-                }}
+        {/* {filterState[0]?.level_2[selectedLanguage] && filterState[0]?.level_2[selectedLanguage].length > 0 && (
+          <SC.Filter>
+            <SC.FilterHeading
+              className="active"
+              data-key="category"
+              onClick={e => {
+                toggleFilterItem(e);
+              }}
+            >
+              <span>{t('CATEGORY')}</span>
+              <SC.IconBtn
+                type="button"
+                aria-label="switch to open filter"
+                aria-expanded="false"
               >
-                <span>{t('CATEGORY')}</span>
-                <SC.IconBtn
-                  type="button"
-                  aria-label="switch to open filter"
-                  aria-expanded="false"
-                >
-                  <Open />
-                </SC.IconBtn>
-              </SC.FilterHeading>
-              <SC.FilterInnerList>
-                {filterState[0]?.level_2[selectedLanguage] &&
-                  filterState[0]?.level_2[selectedLanguage].map((card, i) => {
-                    return (
-                      <label
-                        key={searchParams?.size > 0 ? i + searchParams : i}
-                        data-key={card}
-                      >
-                        <SC.FilterInnerListItem
-                          type="checkbox"
-                          name="category"
-                          value={card}
-                          data-input={card}
-                          onChange={e => {
-                            handleChange(e);
-                          }}
-                        />
-                        <span>{card}</span>
-                      </label>
-                    );
-                  })}
-              </SC.FilterInnerList>
-            </SC.Filter>
-          )}
+                <Open />
+              </SC.IconBtn>
+            </SC.FilterHeading>
+            <SC.FilterInnerList>
+              {filterState[0]?.level_2[selectedLanguage] &&
+                filterState[0]?.level_2[selectedLanguage].map((card, i) => {
+                  return (
+                    <label
+                      key={searchParams?.size > 0 ? i + searchParams : i}
+                      data-key={card}
+                    >
+                      <SC.FilterInnerListItem
+                        type="checkbox"
+                        name="category"
+                        value={card}
+                        data-input={card}
+                        onChange={e => {
+                          handleChange(e);
+                        }}
+                      />
+                      <span>{card}</span>
+                    </label>
+                  );
+                })}
+            </SC.FilterInnerList>
+          </SC.Filter>
+        )} */}
 
-        {filters &&
+        {/* {filters &&
           filterState[0]?.level_2[selectedLanguage] &&
           filterState[0]?.level_2[selectedLanguage].map((card, i) => {
             if (filters?.category.includes(card))
@@ -250,34 +249,32 @@ export const CatalogFilter = ({
                     <SC.FilterInnerList>
                       {filters?.category.includes(card) &&
                         filterState[0]?.level_3[selectedLanguage] &&
-                        filterState[0]?.level_3[selectedLanguage][card].map(
-                          (card, i) => {
-                            return (
-                              <label
-                                key={
-                                  searchParams?.size > 0 ? i + searchParams : i
-                                }
-                                data-key={card}
-                              >
-                                <SC.FilterInnerListItem
-                                  type="checkbox"
-                                  name="product"
-                                  value={card}
-                                  data-input={card}
-                                  // defaultChecked={filters['size'].includes(card)}
-                                  onChange={e => {
-                                    handleChange(e);
-                                  }}
-                                />
-                                <span>{card}</span>
-                              </label>
-                            );
-                          },
-                        )}
+                        filterState[0]?.level_3[selectedLanguage][card].map((card, i) => {
+                          return (
+                            <label
+                              key={
+                                searchParams?.size > 0 ? i + searchParams : i
+                              }
+                              data-key={card}
+                            >
+                              <SC.FilterInnerListItem
+                                type="checkbox"
+                                name="product"
+                                value={card}
+                                data-input={card}
+                                // defaultChecked={filters['size'].includes(card)}
+                                onChange={e => {
+                                  handleChange(e);
+                                }}
+                              />
+                              <span>{card}</span>
+                            </label>
+                          );
+                        })
+                      }
                     </SC.FilterInnerList>
                   </SC.Filter>
-                  {filterState[0]?.level_4[selectedLanguage][card]?.length >
-                    0 && (
+                  {filterState[0]?.level_4[selectedLanguage][card]?.length > 0 && (
                     <SC.Filter>
                       <SC.FilterHeading
                         data-key="sizes"
@@ -298,42 +295,37 @@ export const CatalogFilter = ({
                       </SC.FilterHeading>
                       <SC.FilterInnerList>
                         {filterState[0]?.level_4[selectedLanguage] &&
-                          filterState[0]?.level_4[selectedLanguage][card]
-                            ?.length > 0 &&
-                          filterState[0]?.level_4[selectedLanguage][card].map(
-                            (card, i) => {
-                              return (
-                                <label
-                                  key={
-                                    searchParams?.size > 0
-                                      ? i + searchParams
-                                      : i
-                                  }
-                                  data-key={card}
-                                >
-                                  <SC.FilterInnerListItem
-                                    type="checkbox"
-                                    name="sizes"
-                                    value={card}
-                                    data-input={card}
-                                    // defaultChecked={filters['size'].includes(card)}
-                                    onChange={e => {
-                                      handleChange(e);
-                                    }}
-                                  />
-                                  <span>{card}</span>
-                                </label>
-                              );
-                            },
-                          )}
+                          filterState[0]?.level_4[selectedLanguage][card]?.length > 0 &&
+                          filterState[0]?.level_4[selectedLanguage][card].map((card, i) => {
+                            return (
+                              <label
+                                key={
+                                  searchParams?.size > 0 ? i + searchParams : i
+                                }
+                                data-key={card}
+                              >
+                                <SC.FilterInnerListItem
+                                  type="checkbox"
+                                  name="sizes"
+                                  value={card}
+                                  data-input={card}
+                                  // defaultChecked={filters['size'].includes(card)}
+                                  onChange={e => {
+                                    handleChange(e);
+                                  }}
+                                />
+                                <span>{card}</span>
+                              </label>
+                            );
+                          })}
                       </SC.FilterInnerList>
                     </SC.Filter>
                   )}
                 </div>
               );
-          })}
+          })} */}
 
-        <SC.Filter>
+        {/* <SC.Filter>
           <SC.FilterHeading
             data-key="price"
             onClick={e => {
@@ -401,7 +393,7 @@ export const CatalogFilter = ({
               />
             </SC.RangeLabel>
           </SC.FilterInnerList>
-        </SC.Filter>
+        </SC.Filter> */}
       </SC.Filters>
       <SC.FilterBtn
         className="filter-btn"

@@ -65,7 +65,7 @@ export const Footer = () => {
       title: t('Catalog'),
       options: [
         t('Discounts'),
-        t('Novelty'),
+        t('Styles'),
         t('Clothes'),
         t('Shoes'),
         t('Backpacks and Bags'),
@@ -73,7 +73,7 @@ export const Footer = () => {
       ],
       opt: [
         'discounts',
-        'novelty',
+        'styles',
         'clothes',
         'shoes',
         'backpacks and Bags',
@@ -81,7 +81,7 @@ export const Footer = () => {
       ],
       links: [
         `discounts`,
-        `novetly`,
+        `styles`,
         `shop?maxPrice=5000&minPrice=0&page=1&perPage=12&currency=${selectedCurrency}&sort=&category=${homeProductLinks?.clothing[selectedLanguage]}`,
         `shop?category=${homeProductLinks?.footwear[selectedLanguage]}&minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice`,
         `shop?minPrice=0&maxPrice=5000&page=1&perPage=12&currency=${selectedCurrency}&sort=maxMinPrice&category=${homeProductLinks?.accessories[selectedLanguage]}&product=Backpacks`,

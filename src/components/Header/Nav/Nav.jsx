@@ -47,7 +47,8 @@ export const MobileNav = ({ toggleMenu }) => {
         <NavItemCategory
           className={
             location.pathname.includes('shop') ||
-            location.pathname.includes('discounts')
+            location.pathname.includes('discounts') ||
+            location.pathname.includes('styles')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -69,7 +70,8 @@ export const MobileNav = ({ toggleMenu }) => {
         <NavItemCategory
           className={
             location.pathname.includes('shop') ||
-            location.pathname.includes('discounts')
+            location.pathname.includes('discounts') ||
+            location.pathname.includes('styles')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -122,9 +124,9 @@ export const MobileNav = ({ toggleMenu }) => {
           <IconFeather />
           {t('Discounts')}
         </NavItem>
-        <NavItem to="novetly" onClick={toggleMenu}>
+        <NavItem to="styles" onClick={toggleMenu}>
           <IconFeather />
-          {t('Novelty')}
+          {t('Styles')}
         </NavItem>
       </MobileNavBox>
     </MobileNavList>
@@ -167,16 +169,17 @@ export const Nav = () => {
           <IconFeather />
           {t('Discounts')}
         </NavItem>
-        <NavItem to="novetly">
+        <NavItem to="styles">
           <IconFeather />
-          {t('Novelty')}
+          {t('Styles')}
         </NavItem>
       </NavSubContainerUp>
       <NavSubContainerDown>
         <LinkItem
           className={
             location.pathname.includes('shop') ||
-            location.pathname.includes('discounts')
+            location.pathname.includes('discounts') ||
+            location.pathname.includes('styles')
               ? 'changeStyle'
               : 'not-changeStyle'
           }
@@ -197,7 +200,8 @@ export const Nav = () => {
         <LinkItem
           className={
             location.pathname.includes('shop') ||
-            location.pathname.includes('discounts')
+            location.pathname.includes('discounts') ||
+            location.pathname.includes('styles')
               ? 'changeStyle'
               : 'not-changeStyle'
           }

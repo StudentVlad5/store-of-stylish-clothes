@@ -32,6 +32,7 @@ const ForgotPasswordPage = lazy(() => import('pages/ForgotPassword'));
 const Delivery_and_payments = lazy(() => import('pages/Delivery_and_payments'));
 const BasketPage = lazy(() => import('pages/Basket'));
 const DiscountsShop = lazy(() => import('pages/DiscountsCatalog'));
+const ReadyStyles = lazy(() => import('pages/ReadyStyles'));
 const MorePage = lazy(() => import('pages/More'));
 
 export const App = () => {
@@ -97,16 +98,14 @@ export const App = () => {
             />
             <Route path="gifts" element={<GiftsPage />} />
             <Route path="discounts" element={<DiscountsShop />} />
+            <Route path="styles" element={<ReadyStyles />} />
             <Route path="confidential" element={<ConfidentialPolitics />} />
             <Route
               path="delivery_and_payments"
               element={<Delivery_and_payments />}
             />
 
-            <Route
-              path="more"
-              element={<MorePage />}
-            />
+            <Route path="more" element={<MorePage />} />
 
             <Route
               path="basket"

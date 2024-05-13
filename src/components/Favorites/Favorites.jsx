@@ -54,9 +54,7 @@ export const Favorites = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await getFavorites(
-          `/auth/shop/${selectedLanguage}/${id}?${searchParams}`,
-        );
+        const { data } = await getFavorites(`/auth/shop/${id}?${searchParams}`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }

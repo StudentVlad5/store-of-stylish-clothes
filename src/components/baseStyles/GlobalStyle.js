@@ -484,4 +484,13 @@ color:${theme.colors.green} !important;
   #style-1::-webkit-scrollbar-thumb:hover {
     background-color: ${theme.colors.green};
   }
+
+  // ReadystylesPage
+.showIncludedDetails.description {
+  display: none
+}
+.showIncludedDetails.description.active {
+  display: block
+}
+
 `;

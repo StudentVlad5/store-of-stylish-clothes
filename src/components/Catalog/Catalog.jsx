@@ -46,6 +46,7 @@ export const Catalog = () => {
         page: page,
         perPage: perPage,
         currency: selectedCurrency,
+        selectedLanguage: selectedLanguage,
       });
 
   const [selectedFilter, setSelectedFilter] = useState([]);
@@ -145,6 +146,9 @@ export const Catalog = () => {
     searchParams.get('currency')
       ? (param.currency = searchParams.get('currency'))
       : (param.currency = selectedCurrency);
+    searchParams.get('selectedLanguage')
+      ? (param.selectedLanguage = searchParams.get('selectedLanguage'))
+      : (param.selectedLanguage = selectedLanguage);
     searchParams.get('sort')
       ? (param.sort = searchParams.get('sort'))
       : (param.sort = '');
@@ -156,9 +160,7 @@ export const Catalog = () => {
     async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(
-          `/shop/${selectedLanguage}?${searchParams}`,
-        );
+        const { data } = await fetchData(`/shop?${searchParams}`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -193,7 +195,8 @@ export const Catalog = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/category/${selectedLanguage}`);
+        // const { data } = await fetchData(`/category/${selectedLanguage}`);
+        const { data } = await fetchData(`/category`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -204,7 +207,7 @@ export const Catalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [selectedLanguage]);
+  }, []);
 
   const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
@@ -315,6 +318,9 @@ export const Catalog = () => {
     if (filters.sort !== '') {
       params.sort = sort;
     }
+    if (filters.selectedLanguage !== '') {
+      params.selectedLanguage = selectedLanguage;
+    }
     setSearchParams(params);
   };
 
@@ -367,6 +373,7 @@ export const Catalog = () => {
                     setFilters={setFilters}
                     setSearchParams={setSearchParams}
                     searchParams={searchParams}
+                    selectedLanguage={selectedLanguage}
                   />
                 </SC.FiltersWrapper>
               )}
@@ -408,13 +415,17 @@ export const Catalog = () => {
               setFilters={setFilters}
               setSearchParams={setSearchParams}
               searchParams={searchParams}
+              selectedLanguage={selectedLanguage}
             />
           </SC.FiltersContainer>
           <SC.GridWrapper>
             {isLoading ? onLoading() : onLoaded()}
             {error && onFetchError(t('Whoops, something went wrong'))}
             {products.length > 0 && !error && (
-              <CatalogList products={products} />
+              <CatalogList
+                products={products}
+                selectedLanguage={selectedLanguage}
+              />
             )}
             <Pagination
               totalPage={totalPage}

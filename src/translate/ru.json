@@ -13,7 +13,7 @@
   "Shop": "Магазин",
   "Gifts": "Подарки",
   "Discounts": "Скидки",
-  "Novelty": "Новинки",
+  "Styles": "Стили",
   "Page under development": "Страница в разработке",
   "Back": "Назад",
   "See all": "Увидеть все",
@@ -243,5 +243,10 @@
   "Name too short (min 2)": "Имя слишком короткое (мин. 2)",
   "Require": "Обязательно",
   "Your passwords do not match": "Ваши пароли не совпадают",
-  "Ready styles": "Готовые стили"
+  "Ready styles": "Готовые стили",
+  "Model name": "Наименование изделия",
+  "Discription": "Описание",
+  "Choose your options...": "Выбрать свой размер...",
+  "Wow. Sorry, we missed the product description": "Извините, мы пропустили описание товара.",
+  "Price for a ready set": "Цена за готовый комплект"
 }

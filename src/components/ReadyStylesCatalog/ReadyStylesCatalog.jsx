@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { CatalogSort } from '../Catalog/CatalogSort/CatalogSort';
-import { CatalogFilter } from '../Catalog/CatalogFilter/CatalogFilter';
+// import { CatalogSort } from '../Catalog/CatalogSort/CatalogSort';
+import { CatalogFilter } from './CatalogFilter';
 import { Benefits } from '../Catalog/Benefits/Benefits';
 import { CatalogList } from '../Catalog/CatalogList/CatalogList';
 import { Pagination } from 'utils/pagination';
@@ -19,13 +19,14 @@ import { StatusContext } from 'components/ContextStatus/ContextStatus';
 
 let perPage = 12;
 
-export const DiscountCatalog = () => {
+export const ReadyStylesCatalog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterState, setFilterState] = useState({});
   const [products, setProducts] = useState([]);
+  const [listOfFilteredProducts, setListOfFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [totalPage, setTotalPage] = useState(0);
+  // const [totalPage, setTotalPage] = useState(0);
   const [page, setPages] = useState(
     getFromStorage('page') ? getFromStorage('page') : 1,
   );
@@ -79,11 +80,9 @@ export const DiscountCatalog = () => {
 
   const getActiveLabel = () => {
     handleActiveLabel('man_woman');
-    handleActiveLabel('category');
-    handleActiveLabel('product');
-    handleActiveLabel('sizes');
-    // handleActiveLabel('minPrice');
-    // handleActiveLabel('maxPrice');
+    // handleActiveLabel('category');
+    // handleActiveLabel('product');
+    // handleActiveLabel('sizes');
   };
 
   // =================================================>
@@ -155,20 +154,20 @@ export const DiscountCatalog = () => {
   }, []);
 
   useEffect(() => {
-    setParams();
+    // setParams();
     async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/shop/discounts?${searchParams}`);
+        const { data } = await fetchData(`/styles`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
-        setProducts(data.catalog);
-        setTotalPage(Math.ceil(data.total / perPage));
-        if ((data.total + perPage) / (perPage * page) < 1) {
-          setPage(1);
-        }
-        getSelectedFilter();
+        setProducts(data);
+        // setTotalPage(Math.ceil(data.length / perPage));
+        // if ((data.length + perPage) / (perPage * page) < 1) {
+        //   setPage(1);
+        // }
+        // getSelectedFilter();
         getActiveLabel();
       } catch (error) {
         setError(error);
@@ -176,17 +175,16 @@ export const DiscountCatalog = () => {
         setIsLoading(false);
       }
     }
-    if (searchParams.size > 0) {
-      getData();
-    }
+    // if (searchParams.size > 0) {
+    //   getData();
+    // }
+    getData();
   }, [
     t,
-    page,
-    perPage,
+    // page,
+    // perPage,
     // sort,
     searchParams,
-    selectedCurrency,
-    selectedLanguage,
   ]);
 
   useEffect(() => {
@@ -204,22 +202,43 @@ export const DiscountCatalog = () => {
         setIsLoading(false);
       }
     })();
-  }, [selectedLanguage]);
+  }, []);
 
-  const [showSort, setShowSort] = useState(false);
+  useEffect(() => {
+    if (filters?.man_woman.length > 0 && products) {
+      let arrayProduct = [];
+      filters?.man_woman.map(it =>
+        products.map(item => {
+          if (
+            item.man_women_ua === it ||
+            item.man_women_ru === it ||
+            item.man_women_en === it ||
+            item.man_women_de === it
+          ) {
+            arrayProduct.push(item);
+          }
+        }),
+      );
+      setListOfFilteredProducts(arrayProduct);
+    } else {
+      setListOfFilteredProducts(products);
+    }
+  }, [filters, products]);
+
+  // const [showSort, setShowSort] = useState(false);
   const toggleSort = () => {
-    setShowSort(state => !state);
+    // setShowSort(state => !state);
     setShowFilter(false);
   };
 
   const [showFilter, setShowFilter] = useState(false);
   const toggleFilter = () => {
     setShowFilter(state => !state);
-    setShowSort(false);
+    // setShowSort(false);
   };
 
   const handleClick = () => {
-    setShowSort(false);
+    // setShowSort(false);
     setShowFilter(false);
   };
 
@@ -228,16 +247,15 @@ export const DiscountCatalog = () => {
   //   removeItem('filters');
   // };
 
-  const getSelectedFilter = () => {
-    const LS = getFromStorage('filters');
-    setSelectedFilter([
-      ...LS.category,
-      ...LS.man_woman,
-      ...LS.product,
-      ...LS.sizes,
-    ]);
-    // console.log('selectedFilter', selectedFilter);
-  };
+  // const getSelectedFilter = () => {
+  //   const LS = getFromStorage('filters');
+  //   setSelectedFilter([
+  //     ...LS.category,
+  //     ...LS.man_woman,
+  //     ...LS.product,
+  //     ...LS.sizes,
+  //   ]);
+  // };
 
   const removeSelectedFilter = e => {
     const deletedFilter = e.currentTarget.dataset.key;
@@ -319,28 +337,13 @@ export const DiscountCatalog = () => {
     }
     setSearchParams(params);
   };
-  console.log('searchParams', searchParams.size);
+
   return (
     <SC.CatalogContainer>
       <SC.CatalogSection>
         <SC.CatalogTitleWrapper>
           <SC.HeadlineShop $primary>{t('Shop')}</SC.HeadlineShop>
           <SC.Heading>
-            <SC.HeadingBtnBox>
-              <SC.SortBox>
-                <SC.Accord onClick={toggleSort}>
-                  <span>{t('SORT BY')}</span>
-                  <SC.IconBtn
-                    type="button"
-                    aria-label="switch to open sort list"
-                    aria-expanded="false"
-                  >
-                    <Open />
-                  </SC.IconBtn>
-                </SC.Accord>
-                {showSort && <CatalogSort sort={sort} setSort={setSort} />}
-              </SC.SortBox>
-            </SC.HeadingBtnBox>
             <SC.FiltersBox>
               <SC.Accord onClick={toggleFilter}>
                 <span>{t('FILTER BY')}</span>
@@ -409,16 +412,13 @@ export const DiscountCatalog = () => {
             {isLoading ? onLoading() : onLoaded()}
             {error && onFetchError(t('Whoops, something went wrong'))}
             {products.length > 0 && !error && (
-              <CatalogList
-                products={products}
-                selectedLanguage={selectedLanguage}
-              />
+              <CatalogList products={listOfFilteredProducts} />
             )}
-            <Pagination
+            {/* <Pagination
               totalPage={totalPage}
               changePage={setPage}
               page={page}
-            />
+            /> */}
             {products.length === 0 && !isLoading && !error && (
               <>
                 <Headline style={{ textAlign: 'center' }}>

@@ -118,7 +118,7 @@ export const Ideas = () => {
               loading="lazy"
             />
           </picture> */}
-              <img
+          <img
             src={img4_webp_2x}
             width={285}
             height={400}
@@ -126,15 +126,15 @@ export const Ideas = () => {
             loading="lazy"
           />
           <SC.Link
-            to={`/shop`}
-            onClick={() => {
-              saveToStorage('filters', {
-                ...init,
-                // category: [homeProductLinks?.footwear[selectedLanguage]],
-              });
-            }}
+            to={`/styles`}
+            // onClick={() => {
+            //   saveToStorage('filters', {
+            //     ...init,
+            //     // category: [homeProductLinks?.footwear[selectedLanguage]],
+            //   });
+            // }}
           >
-            {t("Ready styles")}
+            {t('Ready styles')}
           </SC.Link>
         </SC.IdeasItem>
       </SC.IdeasList>

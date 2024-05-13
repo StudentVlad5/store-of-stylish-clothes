@@ -34,7 +34,7 @@ export const ListOfDiscountsItems = () => {
     (async function getData() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData(`/shop/${selectedLanguage}/discount`);
+        const { data } = await fetchData(`/shop/discount`);
         if (!data) {
           return onFetchError(t('Whoops, something went wrong'));
         }
@@ -45,7 +45,7 @@ export const ListOfDiscountsItems = () => {
         setIsLoading(false);
       }
     })();
-  }, [selectedLanguage]);
+  }, []);
 
   return (
     <CardContainerSection>
@@ -127,6 +127,7 @@ export const ListOfDiscountsItems = () => {
                         style={{ marginRight: 30 }}
                         item={it}
                         selectedCurrency={selectedCurrency}
+                        selectedLanguage={selectedLanguage}
                         status={it.status}
                       />
                     </Link>

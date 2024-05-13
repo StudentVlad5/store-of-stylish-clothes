@@ -10,9 +10,13 @@ import {
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { useTranslation } from 'react-i18next';
 
-export const ProductCard = ({ item, selectedCurrency, status }) => {
+export const ProductCard = ({
+  item,
+  selectedCurrency,
+  status,
+  selectedLanguage,
+}) => {
   const { t } = useTranslation();
-
   return (
     <CardContainer>
       {status !== undefined ? (
@@ -36,9 +40,35 @@ export const ProductCard = ({ item, selectedCurrency, status }) => {
           <ImgItem props={`url(${item.mainImage})`} />
         </LazyLoadComponent>
       </CardLi>
-      <CardLi>
-        {item.title.length < 40 ? item.title : item.title.slice(0, 40) + '...'}
-      </CardLi>
+      {/* <CardLi> */}
+      {selectedLanguage === 'ua' && (
+        <CardLi>
+          {item?.title_ua.length < 40
+            ? item.title_ua
+            : item.title_ua.slice(0, 40) + '...'}
+        </CardLi>
+      )}
+      {selectedLanguage === 'ru' && (
+        <CardLi>
+          {item?.title_ru.length < 40
+            ? item.title_ru
+            : item.title_ru.slice(0, 40) + '...'}
+        </CardLi>
+      )}
+      {selectedLanguage === 'en' && (
+        <CardLi>
+          {item?.title_en.length < 40
+            ? item.title_en
+            : item.title_en.slice(0, 40) + '...'}
+        </CardLi>
+      )}
+      {selectedLanguage === 'de' && (
+        <CardLi>
+          {item?.title_de.length < 40
+            ? item.title_de
+            : item.title_de.slice(0, 40) + '...'}
+        </CardLi>
+      )}
       <CardLi>
         <span>
           {t('Price')}: {item[`newPrice_${selectedCurrency}`]}

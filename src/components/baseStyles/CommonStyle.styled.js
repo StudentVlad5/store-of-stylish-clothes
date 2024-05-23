@@ -46,12 +46,12 @@ const Container = styled.div`
 const Title = styled.h1`
   color: ${theme.colors.brown2};
   font-family: ${theme.fonts[0]};
-  font-size: 36px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 
-  @media screen and (min-width: ${theme.breakpoints.desktop}) {
+  @media screen and (min-width: ${theme.breakpoints.tablet}) {
     font-size: 42px;
   }
 
